@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3f2d39e4-9446-43e4-bf8e-2b1b5cc6c3a8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "3f2d39e4-9446-43e4-bf8e-2b1b5cc6c3a8" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3f2d39e4-9446-43e4-bf8e-2b1b5cc6c3a8" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C2F98FF8-F681-4D72-B858-5EA96AC83483",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3f2d39e4-9446-43e4-bf8e-2b1b5cc6c3a8" : "ios%E5%B7%A5%E7%A8%8B\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "FBLeague",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "FBLeague\/FBLeague.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/svnchina.com\/svn\/car_manager",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3f2d39e4-9446-43e4-bf8e-2b1b5cc6c3a8"
+    }
+  ]
+}

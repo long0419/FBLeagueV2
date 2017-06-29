@@ -1,0 +1,993 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		946F75D7C259E490C6FE67F2 /* libPods-FBLeague.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D654840A8FAB860BDF22C51 /* libPods-FBLeague.a */; };
+		FD1F2C4C1F048DA600063765 /* QMUIConfigurationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C4B1F048DA600063765 /* QMUIConfigurationTemplate.m */; };
+		FD1F2C531F0490DF00063765 /* QDCommonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C4E1F0490DF00063765 /* QDCommonUI.m */; };
+		FD1F2C541F0490DF00063765 /* QDUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C501F0490DF00063765 /* QDUIHelper.m */; };
+		FD1F2C551F0490DF00063765 /* UIImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C521F0490DF00063765 /* UIImageEffects.m */; };
+		FD1F2C651F0490EC00063765 /* QDCommonGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C581F0490EC00063765 /* QDCommonGridViewController.m */; };
+		FD1F2C661F0490EC00063765 /* QDCommonGroupListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C5A1F0490EC00063765 /* QDCommonGroupListViewController.m */; };
+		FD1F2C671F0490EC00063765 /* QDCommonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C5C1F0490EC00063765 /* QDCommonListViewController.m */; };
+		FD1F2C681F0490EC00063765 /* QDCommonTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C5E1F0490EC00063765 /* QDCommonTableViewController.m */; };
+		FD1F2C691F0490EC00063765 /* QDCommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C601F0490EC00063765 /* QDCommonViewController.m */; };
+		FD1F2C6A1F0490EC00063765 /* QDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C621F0490EC00063765 /* QDNavigationController.m */; };
+		FD1F2C6B1F0490EC00063765 /* QDTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C641F0490EC00063765 /* QDTabBarViewController.m */; };
+		FD1F2C6E1F04B91700063765 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD1F2C6D1F04B91700063765 /* LaunchScreen.xib */; };
+		FDA1166C1F01FC67007F253C /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA116691F01FC67007F253C /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		FDA1166D1F01FC67007F253C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FDA1166B1F01FC67007F253C /* README.md */; };
+		FDA572AA1F035A780072DF95 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FDA572A61F035A780072DF95 /* LICENSE */; };
+		FDA572AB1F035A780072DF95 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA572A81F035A780072DF95 /* MBProgressHUD+Add.m */; };
+		FDA572AC1F035A780072DF95 /* README.mdown in Sources */ = {isa = PBXBuildFile; fileRef = FDA572A91F035A780072DF95 /* README.mdown */; };
+		FDAA37981DD2BCF80038658F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37971DD2BCF80038658F /* main.m */; };
+		FDAA379B1DD2BCF80038658F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA379A1DD2BCF80038658F /* AppDelegate.m */; };
+		FDAA37A11DD2BCF80038658F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDAA379F1DD2BCF80038658F /* Main.storyboard */; };
+		FDAA37A31DD2BCF80038658F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FDAA37A21DD2BCF80038658F /* Assets.xcassets */; };
+		FDAA37B11DD2BCF90038658F /* FBLeagueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37B01DD2BCF90038658F /* FBLeagueTests.m */; };
+		FDAA37BC1DD2BCF90038658F /* FBLeagueUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37BB1DD2BCF90038658F /* FBLeagueUITests.m */; };
+		FDAA37CD1DD2BD690038658F /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37CA1DD2BD690038658F /* BaseViewController.m */; };
+		FDAA38161DD2BDA40038658F /* ObjcRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37D21DD2BDA40038658F /* ObjcRuntime.m */; };
+		FDAA38171DD2BDA40038658F /* CommonFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37D51DD2BDA40038658F /* CommonFunc.m */; };
+		FDAA38181DD2BDA40038658F /* MWLocalDataTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37D71DD2BDA40038658F /* MWLocalDataTool.m */; };
+		FDAA38191DD2BDA40038658F /* NSObject+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37D91DD2BDA40038658F /* NSObject+Common.m */; };
+		FDAA381A1DD2BDA40038658F /* NSString+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37DB1DD2BDA40038658F /* NSString+Common.m */; };
+		FDAA381B1DD2BDA40038658F /* UIBarButtonItem+Tinted.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37DD1DD2BDA40038658F /* UIBarButtonItem+Tinted.m */; };
+		FDAA381C1DD2BDA40038658F /* UIButton+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37DF1DD2BDA40038658F /* UIButton+Block.m */; };
+		FDAA381D1DD2BDA40038658F /* UIColor+Expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37E11DD2BDA40038658F /* UIColor+Expanded.m */; };
+		FDAA381E1DD2BDA40038658F /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37E31DD2BDA40038658F /* UIImage+Common.m */; };
+		FDAA381F1DD2BDA40038658F /* UIImage+SCImage.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37E51DD2BDA40038658F /* UIImage+SCImage.m */; };
+		FDAA38201DD2BDA40038658F /* UILabel+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37E71DD2BDA40038658F /* UILabel+Common.m */; };
+		FDAA38211DD2BDA40038658F /* UIView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37E91DD2BDA40038658F /* UIView+Addition.m */; };
+		FDAA38221DD2BDA40038658F /* UIView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37EB1DD2BDA40038658F /* UIView+Common.m */; };
+		FDAA38301DD2BE1F0038658F /* LianmengViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA38291DD2BE1F0038658F /* LianmengViewController.m */; };
+		FDAA38311DD2BE1F0038658F /* QuanziViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA382B1DD2BE1F0038658F /* QuanziViewController.m */; };
+		FDAA38321DD2BE1F0038658F /* JulebuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA382D1DD2BE1F0038658F /* JulebuViewController.m */; };
+		FDAA38331DD2BE1F0038658F /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA382F1DD2BE1F0038658F /* MeViewController.m */; };
+		FDAA38791DD2BF3D0038658F /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA384A1DD2BF3D0038658F /* APIClient.m */; };
+		FDAA387A1DD2BF3D0038658F /* APIClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA384C1DD2BF3D0038658F /* APIClientManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FDAA37AD1DD2BCF90038658F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDAA378B1DD2BCF80038658F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FDAA37921DD2BCF80038658F;
+			remoteInfo = FBLeague;
+		};
+		FDAA37B81DD2BCF90038658F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDAA378B1DD2BCF80038658F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FDAA37921DD2BCF80038658F;
+			remoteInfo = FBLeague;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0D654840A8FAB860BDF22C51 /* libPods-FBLeague.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FBLeague.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		32620ACCF1BDE2BDA488716C /* Pods-FBLeague.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBLeague.release.xcconfig"; path = "Pods/Target Support Files/Pods-FBLeague/Pods-FBLeague.release.xcconfig"; sourceTree = "<group>"; };
+		93675E447FFAF16F47BF4878 /* Pods-FBLeague.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBLeague.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FBLeague/Pods-FBLeague.debug.xcconfig"; sourceTree = "<group>"; };
+		FD1F2C4A1F048DA600063765 /* QMUIConfigurationTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMUIConfigurationTemplate.h; sourceTree = "<group>"; };
+		FD1F2C4B1F048DA600063765 /* QMUIConfigurationTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMUIConfigurationTemplate.m; sourceTree = "<group>"; };
+		FD1F2C4D1F0490DF00063765 /* QDCommonUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QDCommonUI.h; path = Utils/QDCommonUI.h; sourceTree = "<group>"; };
+		FD1F2C4E1F0490DF00063765 /* QDCommonUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QDCommonUI.m; path = Utils/QDCommonUI.m; sourceTree = "<group>"; };
+		FD1F2C4F1F0490DF00063765 /* QDUIHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QDUIHelper.h; path = Utils/QDUIHelper.h; sourceTree = "<group>"; };
+		FD1F2C501F0490DF00063765 /* QDUIHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QDUIHelper.m; path = Utils/QDUIHelper.m; sourceTree = "<group>"; };
+		FD1F2C511F0490DF00063765 /* UIImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIImageEffects.h; path = Utils/UIImageEffects.h; sourceTree = "<group>"; };
+		FD1F2C521F0490DF00063765 /* UIImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIImageEffects.m; path = Utils/UIImageEffects.m; sourceTree = "<group>"; };
+		FD1F2C571F0490EC00063765 /* QDCommonGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDCommonGridViewController.h; sourceTree = "<group>"; };
+		FD1F2C581F0490EC00063765 /* QDCommonGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDCommonGridViewController.m; sourceTree = "<group>"; };
+		FD1F2C591F0490EC00063765 /* QDCommonGroupListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDCommonGroupListViewController.h; sourceTree = "<group>"; };
+		FD1F2C5A1F0490EC00063765 /* QDCommonGroupListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDCommonGroupListViewController.m; sourceTree = "<group>"; };
+		FD1F2C5B1F0490EC00063765 /* QDCommonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDCommonListViewController.h; sourceTree = "<group>"; };
+		FD1F2C5C1F0490EC00063765 /* QDCommonListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDCommonListViewController.m; sourceTree = "<group>"; };
+		FD1F2C5D1F0490EC00063765 /* QDCommonTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDCommonTableViewController.h; sourceTree = "<group>"; };
+		FD1F2C5E1F0490EC00063765 /* QDCommonTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDCommonTableViewController.m; sourceTree = "<group>"; };
+		FD1F2C5F1F0490EC00063765 /* QDCommonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDCommonViewController.h; sourceTree = "<group>"; };
+		FD1F2C601F0490EC00063765 /* QDCommonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDCommonViewController.m; sourceTree = "<group>"; };
+		FD1F2C611F0490EC00063765 /* QDNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDNavigationController.h; sourceTree = "<group>"; };
+		FD1F2C621F0490EC00063765 /* QDNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDNavigationController.m; sourceTree = "<group>"; };
+		FD1F2C631F0490EC00063765 /* QDTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDTabBarViewController.h; sourceTree = "<group>"; };
+		FD1F2C641F0490EC00063765 /* QDTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDTabBarViewController.m; sourceTree = "<group>"; };
+		FD1F2C6D1F04B91700063765 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		FDA062371DD2CD2D00CEBAA0 /* FBLeague-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FBLeague-Prefix.pch"; sourceTree = "<group>"; };
+		FDA116681F01FC67007F253C /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		FDA116691F01FC67007F253C /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		FDA1166A1F01FC67007F253C /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		FDA1166B1F01FC67007F253C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FDA572A61F035A780072DF95 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		FDA572A71F035A780072DF95 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
+		FDA572A81F035A780072DF95 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
+		FDA572A91F035A780072DF95 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
+		FDAA37931DD2BCF80038658F /* 咖盟.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "咖盟.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDAA37971DD2BCF80038658F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FDAA37991DD2BCF80038658F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		FDAA379A1DD2BCF80038658F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FDAA37A01DD2BCF80038658F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FDAA37A21DD2BCF80038658F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FDAA37A71DD2BCF90038658F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FDAA37AC1DD2BCF90038658F /* FBLeagueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FBLeagueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDAA37B01DD2BCF90038658F /* FBLeagueTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBLeagueTests.m; sourceTree = "<group>"; };
+		FDAA37B21DD2BCF90038658F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FDAA37B71DD2BCF90038658F /* FBLeagueUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FBLeagueUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDAA37BB1DD2BCF90038658F /* FBLeagueUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FBLeagueUITests.m; sourceTree = "<group>"; };
+		FDAA37BD1DD2BCF90038658F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FDAA37C91DD2BD690038658F /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		FDAA37CA1DD2BD690038658F /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		FDAA37D11DD2BDA40038658F /* ObjcRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjcRuntime.h; sourceTree = "<group>"; };
+		FDAA37D21DD2BDA40038658F /* ObjcRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjcRuntime.m; sourceTree = "<group>"; };
+		FDAA37D41DD2BDA40038658F /* CommonFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonFunc.h; sourceTree = "<group>"; };
+		FDAA37D51DD2BDA40038658F /* CommonFunc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonFunc.m; sourceTree = "<group>"; };
+		FDAA37D61DD2BDA40038658F /* MWLocalDataTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MWLocalDataTool.h; sourceTree = "<group>"; };
+		FDAA37D71DD2BDA40038658F /* MWLocalDataTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MWLocalDataTool.m; sourceTree = "<group>"; };
+		FDAA37D81DD2BDA40038658F /* NSObject+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Common.h"; sourceTree = "<group>"; };
+		FDAA37D91DD2BDA40038658F /* NSObject+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Common.m"; sourceTree = "<group>"; };
+		FDAA37DA1DD2BDA40038658F /* NSString+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Common.h"; sourceTree = "<group>"; };
+		FDAA37DB1DD2BDA40038658F /* NSString+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Common.m"; sourceTree = "<group>"; };
+		FDAA37DC1DD2BDA40038658F /* UIBarButtonItem+Tinted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Tinted.h"; sourceTree = "<group>"; };
+		FDAA37DD1DD2BDA40038658F /* UIBarButtonItem+Tinted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Tinted.m"; sourceTree = "<group>"; };
+		FDAA37DE1DD2BDA40038658F /* UIButton+Block.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Block.h"; sourceTree = "<group>"; };
+		FDAA37DF1DD2BDA40038658F /* UIButton+Block.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Block.m"; sourceTree = "<group>"; };
+		FDAA37E01DD2BDA40038658F /* UIColor+Expanded.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Expanded.h"; sourceTree = "<group>"; };
+		FDAA37E11DD2BDA40038658F /* UIColor+Expanded.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Expanded.m"; sourceTree = "<group>"; };
+		FDAA37E21DD2BDA40038658F /* UIImage+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Common.h"; sourceTree = "<group>"; };
+		FDAA37E31DD2BDA40038658F /* UIImage+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Common.m"; sourceTree = "<group>"; };
+		FDAA37E41DD2BDA40038658F /* UIImage+SCImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SCImage.h"; sourceTree = "<group>"; };
+		FDAA37E51DD2BDA40038658F /* UIImage+SCImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SCImage.m"; sourceTree = "<group>"; };
+		FDAA37E61DD2BDA40038658F /* UILabel+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Common.h"; sourceTree = "<group>"; };
+		FDAA37E71DD2BDA40038658F /* UILabel+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Common.m"; sourceTree = "<group>"; };
+		FDAA37E81DD2BDA40038658F /* UIView+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Addition.h"; sourceTree = "<group>"; };
+		FDAA37E91DD2BDA40038658F /* UIView+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Addition.m"; sourceTree = "<group>"; };
+		FDAA37EA1DD2BDA40038658F /* UIView+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Common.h"; sourceTree = "<group>"; };
+		FDAA37EB1DD2BDA40038658F /* UIView+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Common.m"; sourceTree = "<group>"; };
+		FDAA38281DD2BE1F0038658F /* LianmengViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LianmengViewController.h; sourceTree = "<group>"; };
+		FDAA38291DD2BE1F0038658F /* LianmengViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LianmengViewController.m; sourceTree = "<group>"; };
+		FDAA382A1DD2BE1F0038658F /* QuanziViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuanziViewController.h; sourceTree = "<group>"; };
+		FDAA382B1DD2BE1F0038658F /* QuanziViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuanziViewController.m; sourceTree = "<group>"; };
+		FDAA382C1DD2BE1F0038658F /* JulebuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JulebuViewController.h; sourceTree = "<group>"; };
+		FDAA382D1DD2BE1F0038658F /* JulebuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JulebuViewController.m; sourceTree = "<group>"; };
+		FDAA382E1DD2BE1F0038658F /* MeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
+		FDAA382F1DD2BE1F0038658F /* MeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
+		FDAA38491DD2BF3D0038658F /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
+		FDAA384A1DD2BF3D0038658F /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
+		FDAA384B1DD2BF3D0038658F /* APIClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClientManager.h; sourceTree = "<group>"; };
+		FDAA384C1DD2BF3D0038658F /* APIClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClientManager.m; sourceTree = "<group>"; };
+		FDF65E2B1DD374780008386D /* APIUrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIUrl.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FDAA37901DD2BCF80038658F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				946F75D7C259E490C6FE67F2 /* libPods-FBLeague.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDAA37A91DD2BCF90038658F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDAA37B41DD2BCF90038658F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2BF4F31F3C1A98217EEBCA34 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D654840A8FAB860BDF22C51 /* libPods-FBLeague.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CECFE41FC9A6A28E44B3EC53 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				93675E447FFAF16F47BF4878 /* Pods-FBLeague.debug.xcconfig */,
+				32620ACCF1BDE2BDA488716C /* Pods-FBLeague.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FD1F2C491F048DA600063765 /* QMUIConfigurationTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				FD1F2C4A1F048DA600063765 /* QMUIConfigurationTemplate.h */,
+				FD1F2C4B1F048DA600063765 /* QMUIConfigurationTemplate.m */,
+			);
+			path = QMUIConfigurationTemplate;
+			sourceTree = "<group>";
+		};
+		FD1F2C561F0490EC00063765 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FD1F2C571F0490EC00063765 /* QDCommonGridViewController.h */,
+				FD1F2C581F0490EC00063765 /* QDCommonGridViewController.m */,
+				FD1F2C591F0490EC00063765 /* QDCommonGroupListViewController.h */,
+				FD1F2C5A1F0490EC00063765 /* QDCommonGroupListViewController.m */,
+				FD1F2C5B1F0490EC00063765 /* QDCommonListViewController.h */,
+				FD1F2C5C1F0490EC00063765 /* QDCommonListViewController.m */,
+				FD1F2C5D1F0490EC00063765 /* QDCommonTableViewController.h */,
+				FD1F2C5E1F0490EC00063765 /* QDCommonTableViewController.m */,
+				FD1F2C5F1F0490EC00063765 /* QDCommonViewController.h */,
+				FD1F2C601F0490EC00063765 /* QDCommonViewController.m */,
+				FD1F2C611F0490EC00063765 /* QDNavigationController.h */,
+				FD1F2C621F0490EC00063765 /* QDNavigationController.m */,
+				FD1F2C631F0490EC00063765 /* QDTabBarViewController.h */,
+				FD1F2C641F0490EC00063765 /* QDTabBarViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FDA116671F01FC67007F253C /* GTMBase64-master */ = {
+			isa = PBXGroup;
+			children = (
+				FDA116681F01FC67007F253C /* GTMBase64.h */,
+				FDA116691F01FC67007F253C /* GTMBase64.m */,
+				FDA1166A1F01FC67007F253C /* GTMDefines.h */,
+				FDA1166B1F01FC67007F253C /* README.md */,
+			);
+			name = "GTMBase64-master";
+			path = "GTMBase64-master/GTMBase64-master";
+			sourceTree = "<group>";
+		};
+		FDA572A51F035A780072DF95 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				FDA572A61F035A780072DF95 /* LICENSE */,
+				FDA572A71F035A780072DF95 /* MBProgressHUD+Add.h */,
+				FDA572A81F035A780072DF95 /* MBProgressHUD+Add.m */,
+				FDA572A91F035A780072DF95 /* README.mdown */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		FDAA378A1DD2BCF80038658F = {
+			isa = PBXGroup;
+			children = (
+				FDAA37951DD2BCF80038658F /* FBLeague */,
+				FDAA37AF1DD2BCF90038658F /* FBLeagueTests */,
+				FDAA37BA1DD2BCF90038658F /* FBLeagueUITests */,
+				FDAA37941DD2BCF80038658F /* Products */,
+				CECFE41FC9A6A28E44B3EC53 /* Pods */,
+				2BF4F31F3C1A98217EEBCA34 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FDAA37941DD2BCF80038658F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FDAA37931DD2BCF80038658F /* 咖盟.app */,
+				FDAA37AC1DD2BCF90038658F /* FBLeagueTests.xctest */,
+				FDAA37B71DD2BCF90038658F /* FBLeagueUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FDAA37951DD2BCF80038658F /* FBLeague */ = {
+			isa = PBXGroup;
+			children = (
+				FDAA38341DD2BF3D0038658F /* Vendors */,
+				FDAA38241DD2BDD20038658F /* Classes */,
+				FDAA37CF1DD2BDA40038658F /* Util */,
+				FDAA37C91DD2BD690038658F /* BaseViewController.h */,
+				FDAA37CA1DD2BD690038658F /* BaseViewController.m */,
+				FDAA37961DD2BCF80038658F /* Supporting Files */,
+			);
+			path = FBLeague;
+			sourceTree = "<group>";
+		};
+		FDAA37961DD2BCF80038658F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FDF65E2B1DD374780008386D /* APIUrl.h */,
+				FDA062371DD2CD2D00CEBAA0 /* FBLeague-Prefix.pch */,
+				FDAA37A21DD2BCF80038658F /* Assets.xcassets */,
+				FDAA37991DD2BCF80038658F /* AppDelegate.h */,
+				FDAA379A1DD2BCF80038658F /* AppDelegate.m */,
+				FD1F2C6D1F04B91700063765 /* LaunchScreen.xib */,
+				FDAA379F1DD2BCF80038658F /* Main.storyboard */,
+				FDAA37A71DD2BCF90038658F /* Info.plist */,
+				FDAA37971DD2BCF80038658F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FDAA37AF1DD2BCF90038658F /* FBLeagueTests */ = {
+			isa = PBXGroup;
+			children = (
+				FDAA37B01DD2BCF90038658F /* FBLeagueTests.m */,
+				FDAA37B21DD2BCF90038658F /* Info.plist */,
+			);
+			path = FBLeagueTests;
+			sourceTree = "<group>";
+		};
+		FDAA37BA1DD2BCF90038658F /* FBLeagueUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FDAA37BB1DD2BCF90038658F /* FBLeagueUITests.m */,
+				FDAA37BD1DD2BCF90038658F /* Info.plist */,
+			);
+			path = FBLeagueUITests;
+			sourceTree = "<group>";
+		};
+		FDAA37CF1DD2BDA40038658F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				FD1F2C561F0490EC00063765 /* Controllers */,
+				FD1F2C4D1F0490DF00063765 /* QDCommonUI.h */,
+				FD1F2C4E1F0490DF00063765 /* QDCommonUI.m */,
+				FD1F2C4F1F0490DF00063765 /* QDUIHelper.h */,
+				FD1F2C501F0490DF00063765 /* QDUIHelper.m */,
+				FD1F2C511F0490DF00063765 /* UIImageEffects.h */,
+				FD1F2C521F0490DF00063765 /* UIImageEffects.m */,
+				FDAA37D01DD2BDA40038658F /* ObjcRuntime */,
+				FDAA37D31DD2BDA40038658F /* OC_Category */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		FDAA37D01DD2BDA40038658F /* ObjcRuntime */ = {
+			isa = PBXGroup;
+			children = (
+				FDAA37D11DD2BDA40038658F /* ObjcRuntime.h */,
+				FDAA37D21DD2BDA40038658F /* ObjcRuntime.m */,
+			);
+			path = ObjcRuntime;
+			sourceTree = "<group>";
+		};
+		FDAA37D31DD2BDA40038658F /* OC_Category */ = {
+			isa = PBXGroup;
+			children = (
+				FDAA37D41DD2BDA40038658F /* CommonFunc.h */,
+				FDAA37D51DD2BDA40038658F /* CommonFunc.m */,
+				FDAA37D61DD2BDA40038658F /* MWLocalDataTool.h */,
+				FDAA37D71DD2BDA40038658F /* MWLocalDataTool.m */,
+				FDAA37D81DD2BDA40038658F /* NSObject+Common.h */,
+				FDAA37D91DD2BDA40038658F /* NSObject+Common.m */,
+				FDAA37DA1DD2BDA40038658F /* NSString+Common.h */,
+				FDAA37DB1DD2BDA40038658F /* NSString+Common.m */,
+				FDAA37DC1DD2BDA40038658F /* UIBarButtonItem+Tinted.h */,
+				FDAA37DD1DD2BDA40038658F /* UIBarButtonItem+Tinted.m */,
+				FDAA37DE1DD2BDA40038658F /* UIButton+Block.h */,
+				FDAA37DF1DD2BDA40038658F /* UIButton+Block.m */,
+				FDAA37E01DD2BDA40038658F /* UIColor+Expanded.h */,
+				FDAA37E11DD2BDA40038658F /* UIColor+Expanded.m */,
+				FDAA37E21DD2BDA40038658F /* UIImage+Common.h */,
+				FDAA37E31DD2BDA40038658F /* UIImage+Common.m */,
+				FDAA37E41DD2BDA40038658F /* UIImage+SCImage.h */,
+				FDAA37E51DD2BDA40038658F /* UIImage+SCImage.m */,
+				FDAA37E61DD2BDA40038658F /* UILabel+Common.h */,
+				FDAA37E71DD2BDA40038658F /* UILabel+Common.m */,
+				FDAA37E81DD2BDA40038658F /* UIView+Addition.h */,
+				FDAA37E91DD2BDA40038658F /* UIView+Addition.m */,
+				FDAA37EA1DD2BDA40038658F /* UIView+Common.h */,
+				FDAA37EB1DD2BDA40038658F /* UIView+Common.m */,
+			);
+			path = OC_Category;
+			sourceTree = "<group>";
+		};
+		FDAA38241DD2BDD20038658F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FDAA38271DD2BDF90038658F /* Controller */,
+				FDAA38261DD2BDF10038658F /* View */,
+				FDAA38251DD2BDEA0038658F /* Model */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		FDAA38251DD2BDEA0038658F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		FDAA38261DD2BDF10038658F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		FDAA38271DD2BDF90038658F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FDAA38281DD2BE1F0038658F /* LianmengViewController.h */,
+				FDAA38291DD2BE1F0038658F /* LianmengViewController.m */,
+				FDAA382A1DD2BE1F0038658F /* QuanziViewController.h */,
+				FDAA382B1DD2BE1F0038658F /* QuanziViewController.m */,
+				FDAA382C1DD2BE1F0038658F /* JulebuViewController.h */,
+				FDAA382D1DD2BE1F0038658F /* JulebuViewController.m */,
+				FDAA382E1DD2BE1F0038658F /* MeViewController.h */,
+				FDAA382F1DD2BE1F0038658F /* MeViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		FDAA38341DD2BF3D0038658F /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				FD1F2C491F048DA600063765 /* QMUIConfigurationTemplate */,
+				FDA116671F01FC67007F253C /* GTMBase64-master */,
+				FDA572A51F035A780072DF95 /* MBProgressHUD */,
+				FDAA38481DD2BF3D0038658F /* Manager */,
+				FDAA38621DD2BF3D0038658F /* QHNavSliderMenuView */,
+				FDAA386F1DD2BF3D0038658F /* SVPTRView */,
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		FDAA38481DD2BF3D0038658F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				FDAA38491DD2BF3D0038658F /* APIClient.h */,
+				FDAA384A1DD2BF3D0038658F /* APIClient.m */,
+				FDAA384B1DD2BF3D0038658F /* APIClientManager.h */,
+				FDAA384C1DD2BF3D0038658F /* APIClientManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		FDAA38621DD2BF3D0038658F /* QHNavSliderMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				FDAA38631DD2BF3D0038658F /* QHUtil */,
+				FDAA38661DD2BF3D0038658F /* resource */,
+			);
+			path = QHNavSliderMenuView;
+			sourceTree = "<group>";
+		};
+		FDAA38631DD2BF3D0038658F /* QHUtil */ = {
+			isa = PBXGroup;
+			children = (
+				FDAA38641DD2BF3D0038658F /* Categorys */,
+				FDAA38651DD2BF3D0038658F /* Util */,
+			);
+			path = QHUtil;
+			sourceTree = "<group>";
+		};
+		FDAA38641DD2BF3D0038658F /* Categorys */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Categorys;
+			sourceTree = "<group>";
+		};
+		FDAA38651DD2BF3D0038658F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		FDAA38661DD2BF3D0038658F /* resource */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = resource;
+			sourceTree = "<group>";
+		};
+		FDAA386F1DD2BF3D0038658F /* SVPTRView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SVPTRView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FDAA37921DD2BCF80038658F /* FBLeague */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDAA37C01DD2BCF90038658F /* Build configuration list for PBXNativeTarget "FBLeague" */;
+			buildPhases = (
+				B7E1C1D3DD0463D4F49AC9FD /* [CP] Check Pods Manifest.lock */,
+				FDAA378F1DD2BCF80038658F /* Sources */,
+				FDAA37901DD2BCF80038658F /* Frameworks */,
+				FDAA37911DD2BCF80038658F /* Resources */,
+				F880BE8F4CE20FB5D43CD92A /* [CP] Embed Pods Frameworks */,
+				82C8D243EAD61AD383ED7977 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FBLeague;
+			productName = FBLeague;
+			productReference = FDAA37931DD2BCF80038658F /* 咖盟.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FDAA37AB1DD2BCF90038658F /* FBLeagueTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDAA37C31DD2BCF90038658F /* Build configuration list for PBXNativeTarget "FBLeagueTests" */;
+			buildPhases = (
+				FDAA37A81DD2BCF90038658F /* Sources */,
+				FDAA37A91DD2BCF90038658F /* Frameworks */,
+				FDAA37AA1DD2BCF90038658F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FDAA37AE1DD2BCF90038658F /* PBXTargetDependency */,
+			);
+			name = FBLeagueTests;
+			productName = FBLeagueTests;
+			productReference = FDAA37AC1DD2BCF90038658F /* FBLeagueTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FDAA37B61DD2BCF90038658F /* FBLeagueUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDAA37C61DD2BCF90038658F /* Build configuration list for PBXNativeTarget "FBLeagueUITests" */;
+			buildPhases = (
+				FDAA37B31DD2BCF90038658F /* Sources */,
+				FDAA37B41DD2BCF90038658F /* Frameworks */,
+				FDAA37B51DD2BCF90038658F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FDAA37B91DD2BCF90038658F /* PBXTargetDependency */,
+			);
+			name = FBLeagueUITests;
+			productName = FBLeagueUITests;
+			productReference = FDAA37B71DD2BCF90038658F /* FBLeagueUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FDAA378B1DD2BCF80038658F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "long-laptop";
+				TargetAttributes = {
+					FDAA37921DD2BCF80038658F = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 4572KNR484;
+						ProvisioningStyle = Automatic;
+					};
+					FDAA37AB1DD2BCF90038658F = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 4572KNR484;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FDAA37921DD2BCF80038658F;
+					};
+					FDAA37B61DD2BCF90038658F = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 4572KNR484;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FDAA37921DD2BCF80038658F;
+					};
+				};
+			};
+			buildConfigurationList = FDAA378E1DD2BCF80038658F /* Build configuration list for PBXProject "FBLeague" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FDAA378A1DD2BCF80038658F;
+			productRefGroup = FDAA37941DD2BCF80038658F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FDAA37921DD2BCF80038658F /* FBLeague */,
+				FDAA37AB1DD2BCF90038658F /* FBLeagueTests */,
+				FDAA37B61DD2BCF90038658F /* FBLeagueUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FDAA37911DD2BCF80038658F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FD1F2C6E1F04B91700063765 /* LaunchScreen.xib in Resources */,
+				FDAA37A31DD2BCF80038658F /* Assets.xcassets in Resources */,
+				FDA572AA1F035A780072DF95 /* LICENSE in Resources */,
+				FDAA37A11DD2BCF80038658F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDAA37AA1DD2BCF90038658F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDAA37B51DD2BCF90038658F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		82C8D243EAD61AD383ED7977 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-FBLeague/Pods-FBLeague-resources.sh",
+				"${PODS_ROOT}/QMUIKit/QMUIKit/UIResources/QMUIResources.bundle",
+				"${PODS_ROOT}/QMUIKit/QMUIKit/UIResources/QMUI_QQEmotion.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FBLeague/Pods-FBLeague-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B7E1C1D3DD0463D4F49AC9FD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FBLeague-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F880BE8F4CE20FB5D43CD92A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FBLeague/Pods-FBLeague-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FDAA378F1DD2BCF80038658F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDAA38311DD2BE1F0038658F /* QuanziViewController.m in Sources */,
+				FDAA38211DD2BDA40038658F /* UIView+Addition.m in Sources */,
+				FDAA38221DD2BDA40038658F /* UIView+Common.m in Sources */,
+				FDAA38161DD2BDA40038658F /* ObjcRuntime.m in Sources */,
+				FDAA381D1DD2BDA40038658F /* UIColor+Expanded.m in Sources */,
+				FD1F2C681F0490EC00063765 /* QDCommonTableViewController.m in Sources */,
+				FDAA38191DD2BDA40038658F /* NSObject+Common.m in Sources */,
+				FD1F2C661F0490EC00063765 /* QDCommonGroupListViewController.m in Sources */,
+				FDA572AB1F035A780072DF95 /* MBProgressHUD+Add.m in Sources */,
+				FDAA38321DD2BE1F0038658F /* JulebuViewController.m in Sources */,
+				FD1F2C551F0490DF00063765 /* UIImageEffects.m in Sources */,
+				FDAA381E1DD2BDA40038658F /* UIImage+Common.m in Sources */,
+				FDAA381C1DD2BDA40038658F /* UIButton+Block.m in Sources */,
+				FDAA37CD1DD2BD690038658F /* BaseViewController.m in Sources */,
+				FDA1166C1F01FC67007F253C /* GTMBase64.m in Sources */,
+				FD1F2C541F0490DF00063765 /* QDUIHelper.m in Sources */,
+				FDAA381A1DD2BDA40038658F /* NSString+Common.m in Sources */,
+				FD1F2C691F0490EC00063765 /* QDCommonViewController.m in Sources */,
+				FDAA38181DD2BDA40038658F /* MWLocalDataTool.m in Sources */,
+				FDA572AC1F035A780072DF95 /* README.mdown in Sources */,
+				FDAA379B1DD2BCF80038658F /* AppDelegate.m in Sources */,
+				FDAA381F1DD2BDA40038658F /* UIImage+SCImage.m in Sources */,
+				FDAA37981DD2BCF80038658F /* main.m in Sources */,
+				FD1F2C671F0490EC00063765 /* QDCommonListViewController.m in Sources */,
+				FD1F2C6A1F0490EC00063765 /* QDNavigationController.m in Sources */,
+				FD1F2C651F0490EC00063765 /* QDCommonGridViewController.m in Sources */,
+				FDAA38201DD2BDA40038658F /* UILabel+Common.m in Sources */,
+				FDAA387A1DD2BF3D0038658F /* APIClientManager.m in Sources */,
+				FDAA38171DD2BDA40038658F /* CommonFunc.m in Sources */,
+				FDA1166D1F01FC67007F253C /* README.md in Sources */,
+				FD1F2C4C1F048DA600063765 /* QMUIConfigurationTemplate.m in Sources */,
+				FD1F2C6B1F0490EC00063765 /* QDTabBarViewController.m in Sources */,
+				FDAA38301DD2BE1F0038658F /* LianmengViewController.m in Sources */,
+				FDAA38791DD2BF3D0038658F /* APIClient.m in Sources */,
+				FDAA38331DD2BE1F0038658F /* MeViewController.m in Sources */,
+				FDAA381B1DD2BDA40038658F /* UIBarButtonItem+Tinted.m in Sources */,
+				FD1F2C531F0490DF00063765 /* QDCommonUI.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDAA37A81DD2BCF90038658F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDAA37B11DD2BCF90038658F /* FBLeagueTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDAA37B31DD2BCF90038658F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDAA37BC1DD2BCF90038658F /* FBLeagueUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FDAA37AE1DD2BCF90038658F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FDAA37921DD2BCF80038658F /* FBLeague */;
+			targetProxy = FDAA37AD1DD2BCF90038658F /* PBXContainerItemProxy */;
+		};
+		FDAA37B91DD2BCF90038658F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FDAA37921DD2BCF80038658F /* FBLeague */;
+			targetProxy = FDAA37B81DD2BCF90038658F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FDAA379F1DD2BCF80038658F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDAA37A01DD2BCF80038658F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FDAA37BE1DD2BCF90038658F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FDAA37BF1DD2BCF90038658F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FDAA37C11DD2BCF90038658F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93675E447FFAF16F47BF4878 /* Pods-FBLeague.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4572KNR484;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/FBLeague/FBLeague-Prefix.pch";
+				INFOPLIST_FILE = FBLeague/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FBLeague/Vendors/JPush",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FBLeague;
+				PRODUCT_NAME = "咖盟";
+			};
+			name = Debug;
+		};
+		FDAA37C21DD2BCF90038658F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32620ACCF1BDE2BDA488716C /* Pods-FBLeague.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 4572KNR484;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/FBLeague/FBLeague-Prefix.pch";
+				INFOPLIST_FILE = FBLeague/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FBLeague/Vendors/JPush",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FBLeague;
+				PRODUCT_NAME = "咖盟";
+			};
+			name = Release;
+		};
+		FDAA37C41DD2BCF90038658F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 4572KNR484;
+				INFOPLIST_FILE = FBLeagueTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FBLeagueTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FBLeague.app/FBLeague";
+			};
+			name = Debug;
+		};
+		FDAA37C51DD2BCF90038658F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 4572KNR484;
+				INFOPLIST_FILE = FBLeagueTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FBLeagueTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FBLeague.app/FBLeague";
+			};
+			name = Release;
+		};
+		FDAA37C71DD2BCF90038658F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 4572KNR484;
+				INFOPLIST_FILE = FBLeagueUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FBLeagueUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FBLeague;
+			};
+			name = Debug;
+		};
+		FDAA37C81DD2BCF90038658F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 4572KNR484;
+				INFOPLIST_FILE = FBLeagueUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FBLeagueUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FBLeague;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FDAA378E1DD2BCF80038658F /* Build configuration list for PBXProject "FBLeague" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDAA37BE1DD2BCF90038658F /* Debug */,
+				FDAA37BF1DD2BCF90038658F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FDAA37C01DD2BCF90038658F /* Build configuration list for PBXNativeTarget "FBLeague" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDAA37C11DD2BCF90038658F /* Debug */,
+				FDAA37C21DD2BCF90038658F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FDAA37C31DD2BCF90038658F /* Build configuration list for PBXNativeTarget "FBLeagueTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDAA37C41DD2BCF90038658F /* Debug */,
+				FDAA37C51DD2BCF90038658F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FDAA37C61DD2BCF90038658F /* Build configuration list for PBXNativeTarget "FBLeagueUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDAA37C71DD2BCF90038658F /* Debug */,
+				FDAA37C81DD2BCF90038658F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FDAA378B1DD2BCF80038658F /* Project object */;
+}

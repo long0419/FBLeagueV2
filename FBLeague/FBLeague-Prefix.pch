@@ -1,0 +1,90 @@
+//
+//  CarManager-Prefix.pch
+//  CarManager
+//
+//  Created by JinXin on 15/12/9.
+//  Copyright © 2015年 droidgle. All rights reserved.
+//
+
+#ifndef FBLeague//-Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif
+
+#define kHigher_iOS_6_1 (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1)
+#define kHigher_iOS_6_1_DIS(_X_) ([[NSNumber numberWithBool:kHigher_iOS_6_1] intValue] * _X_)
+#define kNotHigher_iOS_6_1_DIS(_X_) (-([[NSNumber numberWithBool:kHigher_iOS_6_1] intValue]-1) * _X_)
+
+#define APP_VERSION                     [NSString stringWithString:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]]
+#define RGB(r,g,b)                      [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
+#define RGBA(r,g,b,a)                   [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:a]
+#define OS_VERSION                      [[[UIDevice currentDevice] systemVersion] floatValue]
+#define DEVICE_STATUS_BAR_HEIGHT        ((OS_VERSION < 7)?(0):(20))
+#define STATUS_BAR_HEIGHT_D_VAULE       ((OS_VERSION < 7)?(20):(0))
+
+#define SCREEN_SCALE                    [[UIScreen mainScreen] bounds].size.width/320.0
+#define SystemFontOfSize(s)             [UIFont systemFontOfSize:(s*RATE_6_TO_6P)]
+#define SystemBoldFontOfSize(s)         [UIFont boldSystemFontOfSize:(s*RATE_6_TO_6P)]
+
+
+#define DEFAULT_SEPERATOR_BLOCK_HEGHT   20
+
+#define DEFAULT_BACKGROUND_GRAY         [UIColor colorWithRed:240.0f/255.0f green:240.0f/255.0f blue:240.0f/255.0f alpha:1]
+
+//6p cell高度适配
+#define DEFAULT_CELL_HEIGHT             ((kScreen_Width>375.0)?(74):(67))
+
+#define DEFAULT_LINE_HEIGHT             ((kScreen_Width>375)?0.33:0.5)
+
+#define RATE_6_TO_6P                    ((kScreen_Width>375.0)?(1.16):(1))
+
+#define DEVICE_IS_IPHONE5               ([[UIScreen mainScreen] bounds].size.height == 568)
+#define DEVICE_IS_IPHONE6               ([[UIScreen mainScreen] bounds].size.height == 667)
+#define DEVICE_IS_IPHONE6Plus           ([[UIScreen mainScreen] bounds].size.height == 736)
+
+#define UserDefaultGet(s)               [[NSUserDefaults standardUserDefaults] objectForKey:s]
+#define UserDefaultSet(k,v)             [[NSUserDefaults standardUserDefaults] setObject:v forKey:k];
+
+//常用变量
+#define DebugLog(s, ...) NSLog(@"%s(%d): %@", __FUNCTION__, __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
+
+#define  kBackButtonFontSize 18
+#define  kNavTitleFontSize 18
+
+#define kScreen_Bounds [UIScreen mainScreen].bounds
+#define kScreen_Height [UIScreen mainScreen].bounds.size.height
+#define kScreen_Width [UIScreen mainScreen].bounds.size.width
+
+#define color_title @"000000"
+#define color_gray @"535353"
+#define color_orange @"f75a0e"
+
+#define light_black @"666666"
+#define color_blue @"4cc1d2"
+#define color_deep_blue @"5dbdcb"
+#define color_search_bg @"2ba4b5"
+#define color_line @"d4d4d4"
+
+#define color_bg @"e3e3e5"
+#define s_bg @"f7f7f7"
+#define color_v_line @"e6e6e6"
+#define color_item @"d8d8d8"
+
+#define JPUSHKEY @"e3058930fdab0cd794d33d1c"
+#define WXAPPID  @"wx52a26c285729e9c5"
+#define AppSecret @"4fdb48acfa4b45bbbb24064b253cb7e6"
+
+#import "UIColor+Expanded.h"
+#import "APIClient.h"
+#import "NSString+Common.h"
+#import "UIColor+Expanded.h"
+#import "UIView+Addition.h"
+#import "UIView+Common.h"
+#import "QDCommonUI.h"
+#import <QMUIKit/QMUIKit.h>
+
+#endif /* CarManager_Prefix_pch */
