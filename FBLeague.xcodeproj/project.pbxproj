@@ -20,6 +20,7 @@
 		FD1F2C6A1F0490EC00063765 /* QDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C621F0490EC00063765 /* QDNavigationController.m */; };
 		FD1F2C6B1F0490EC00063765 /* QDTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C641F0490EC00063765 /* QDTabBarViewController.m */; };
 		FD1F2C6E1F04B91700063765 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD1F2C6D1F04B91700063765 /* LaunchScreen.xib */; };
+		FD1F2C701F04CC4700063765 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C6F1F04CC4700063765 /* README.md */; };
 		FDA1166C1F01FC67007F253C /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA116691F01FC67007F253C /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FDA1166D1F01FC67007F253C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FDA1166B1F01FC67007F253C /* README.md */; };
 		FDA572AA1F035A780072DF95 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FDA572A61F035A780072DF95 /* LICENSE */; };
@@ -97,6 +98,7 @@
 		FD1F2C631F0490EC00063765 /* QDTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDTabBarViewController.h; sourceTree = "<group>"; };
 		FD1F2C641F0490EC00063765 /* QDTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDTabBarViewController.m; sourceTree = "<group>"; };
 		FD1F2C6D1F04B91700063765 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		FD1F2C6F1F04CC4700063765 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FDA062371DD2CD2D00CEBAA0 /* FBLeague-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FBLeague-Prefix.pch"; sourceTree = "<group>"; };
 		FDA116681F01FC67007F253C /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		FDA116691F01FC67007F253C /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 		FDAA37961DD2BCF80038658F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FD1F2C6F1F04CC4700063765 /* README.md */,
 				FDF65E2B1DD374780008386D /* APIUrl.h */,
 				FDA062371DD2CD2D00CEBAA0 /* FBLeague-Prefix.pch */,
 				FDAA37A21DD2BCF80038658F /* Assets.xcassets */,
@@ -719,6 +722,7 @@
 				FDA1166D1F01FC67007F253C /* README.md in Sources */,
 				FD1F2C4C1F048DA600063765 /* QMUIConfigurationTemplate.m in Sources */,
 				FD1F2C6B1F0490EC00063765 /* QDTabBarViewController.m in Sources */,
+				FD1F2C701F04CC4700063765 /* README.md in Sources */,
 				FDAA38301DD2BE1F0038658F /* LianmengViewController.m in Sources */,
 				FDAA38791DD2BF3D0038658F /* APIClient.m in Sources */,
 				FDAA38331DD2BE1F0038658F /* MeViewController.m in Sources */,
