@@ -16,6 +16,7 @@
 #import "QDUIHelper.h"
 #import "QDTabBarViewController.h"
 #import "QDNavigationController.h"
+#import "FirstLoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -29,34 +30,32 @@
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:1];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
-
     // 启动QMUI的配置模板
     [QMUIConfigurationTemplate setupConfigurationTemplate];
-    
-//    // 将全局的控件样式渲染出来
-//    [QMUIConfigurationManager renderGlobalAppearances];
-//    
-//    // QD自定义的全局样式渲染
-//    [QDCommonUI renderGlobalAppearances];
-    
+        
     // 将状态栏设置为希望的样式
     [QMUIHelper renderStatusBarStyleLight];
-
-
-    //注册 登录
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showMsg) name:@"verifyLoginStatus" object:nil];
     
-//    [self setupTabViewController];
+    //注册 登录
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createTabBarController) name:@"verifyLoginStatus" object:nil];
     
     // 界面
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self createTabBarController];
+    [self showMsg];
     
     // 启动动画
     [self startLaunchingAnimation];
     
+    
     return YES;
 }
+
+- (void) showMsg{
+    FirstLoginViewController *vc = [[FirstLoginViewController alloc] init];
+    UINavigationController *nv = [[UINavigationController alloc] initWithRootViewController:vc];
+    [self.window setRootViewController:nv];
+}
+
 
 - (void)createTabBarController {
     QDTabBarViewController *tabBarViewController = [[QDTabBarViewController alloc] init];
@@ -64,7 +63,7 @@
     LianmengViewController *uikitViewController = [[LianmengViewController alloc] init];
     uikitViewController.hidesBottomBarWhenPushed = NO;
     QDNavigationController *uikitNavController = [[QDNavigationController alloc] initWithRootViewController:uikitViewController];
-    uikitNavController.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"首页" image:[UIImageMake(@"首页") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"首页-副本") tag:0];
+    uikitNavController.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"" image:[UIImageMake(@"首页") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"首页-副本") tag:0];
     
     QuanziViewController *componentViewController = [[QuanziViewController alloc] init];
     componentViewController.hidesBottomBarWhenPushed = NO;

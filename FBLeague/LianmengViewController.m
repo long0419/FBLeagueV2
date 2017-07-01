@@ -16,8 +16,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    self.view.backgroundColor = [UIColor colorWithHexString:@"ababab"];
+    
+    self.title = @"首页" ;
+    
+//    UIView *sv = [UIView new];
+//    sv.backgroundColor = [UIColor blackColor];
+//    [self.view addSubview:sv];
+//    [sv mas_makeConstraints:^(MASConstraintMaker *make) {
+//
+//        make.center.equalTo(self.view);
+//        make.size.mas_equalTo(CGSizeMake(300, 300));
+//        
+//    }];
+//    
+//    
+//    UIView *sv1 = [UIView new];
+//    sv1.backgroundColor = [UIColor redColor];
+//    [sv addSubview:sv1];
+//    [sv1 mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.equalTo(sv).with.insets(UIEdgeInsetsMake(10, 10, 10, 10));
+//    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

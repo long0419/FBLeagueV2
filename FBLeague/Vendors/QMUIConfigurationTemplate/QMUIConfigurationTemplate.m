@@ -85,9 +85,9 @@
     QMUICMI.navBarBarTintColor = UIColorBlack;
     // NavBarBarTintColor : UINavigationBar.barTintColor，也即背景色
     //- QMUICMI.navBarTintColor = UIColorBlack;                                         // NavBarTintColor : UINavigationBar 的 tintColor，也即导航栏上面的按钮颜色
-    //- QMUICMI.navBarTitleColor = NavBarTintColor;                                     // NavBarTitleColor : UINavigationBar 的标题颜色，以及 QMUINavigationTitleView 的默认文字颜色
-    //- QMUICMI.navBarTitleFont = UIFontBoldMake(17);                                   // NavBarTitleFont : UINavigationBar 的标题字体，以及 QMUINavigationTitleView 的默认字体
-    //- QMUICMI.navBarBackButtonTitlePositionAdjustment = UIOffsetZero;                 // NavBarBarBackButtonTitlePositionAdjustment : 导航栏返回按钮的文字偏移
+    QMUICMI.navBarTitleColor = NavBarTintColor;                                     // NavBarTitleColor : UINavigationBar 的标题颜色，以及 QMUINavigationTitleView 的默认文字颜色
+    QMUICMI.navBarTitleFont = UIFontBoldMake(17);                                   // NavBarTitleFont : UINavigationBar 的标题字体，以及 QMUINavigationTitleView 的默认字体
+    QMUICMI.navBarBackButtonTitlePositionAdjustment = UIOffsetZero;                 // NavBarBarBackButtonTitlePositionAdjustment : 导航栏返回按钮的文字偏移
     //- QMUICMI.navBarBackIndicatorImage = [UIImage qmui_imageWithShape:QMUIImageShapeNavBack size:CGSizeMake(12, 20) tintColor:NavBarTintColor];    // NavBarBackIndicatorImage : 导航栏的返回按钮的图片
     //- QMUICMI.navBarCloseButtonImage = [UIImage qmui_imageWithShape:QMUIImageShapeNavClose size:CGSizeMake(16, 16) tintColor:NavBarTintColor];     // NavBarCloseButtonImage : QMUINavigationButton 用到的 × 的按钮图片
     

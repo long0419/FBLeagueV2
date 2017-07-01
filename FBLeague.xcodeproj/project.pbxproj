@@ -20,12 +20,13 @@
 		FD1F2C6A1F0490EC00063765 /* QDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C621F0490EC00063765 /* QDNavigationController.m */; };
 		FD1F2C6B1F0490EC00063765 /* QDTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C641F0490EC00063765 /* QDTabBarViewController.m */; };
 		FD1F2C6E1F04B91700063765 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD1F2C6D1F04B91700063765 /* LaunchScreen.xib */; };
-		FD1F2C701F04CC4700063765 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C6F1F04CC4700063765 /* README.md */; };
 		FDA1166C1F01FC67007F253C /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA116691F01FC67007F253C /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FDA1166D1F01FC67007F253C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FDA1166B1F01FC67007F253C /* README.md */; };
 		FDA572AA1F035A780072DF95 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FDA572A61F035A780072DF95 /* LICENSE */; };
 		FDA572AB1F035A780072DF95 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA572A81F035A780072DF95 /* MBProgressHUD+Add.m */; };
 		FDA572AC1F035A780072DF95 /* README.mdown in Sources */ = {isa = PBXBuildFile; fileRef = FDA572A91F035A780072DF95 /* README.mdown */; };
+		FDA8EE591F07F21B00F3A01A /* FirstLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA8EE581F07F21B00F3A01A /* FirstLoginViewController.m */; };
+		FDA8EE5D1F07F3B800F3A01A /* UserDataVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA8EE5C1F07F3B800F3A01A /* UserDataVo.m */; };
 		FDAA37981DD2BCF80038658F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37971DD2BCF80038658F /* main.m */; };
 		FDAA379B1DD2BCF80038658F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA379A1DD2BCF80038658F /* AppDelegate.m */; };
 		FDAA37A11DD2BCF80038658F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDAA379F1DD2BCF80038658F /* Main.storyboard */; };
@@ -98,7 +99,6 @@
 		FD1F2C631F0490EC00063765 /* QDTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDTabBarViewController.h; sourceTree = "<group>"; };
 		FD1F2C641F0490EC00063765 /* QDTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDTabBarViewController.m; sourceTree = "<group>"; };
 		FD1F2C6D1F04B91700063765 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
-		FD1F2C6F1F04CC4700063765 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FDA062371DD2CD2D00CEBAA0 /* FBLeague-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FBLeague-Prefix.pch"; sourceTree = "<group>"; };
 		FDA116681F01FC67007F253C /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		FDA116691F01FC67007F253C /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
@@ -108,6 +108,10 @@
 		FDA572A71F035A780072DF95 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		FDA572A81F035A780072DF95 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
 		FDA572A91F035A780072DF95 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
+		FDA8EE571F07F21B00F3A01A /* FirstLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLoginViewController.h; sourceTree = "<group>"; };
+		FDA8EE581F07F21B00F3A01A /* FirstLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstLoginViewController.m; sourceTree = "<group>"; };
+		FDA8EE5B1F07F3B800F3A01A /* UserDataVo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataVo.h; sourceTree = "<group>"; };
+		FDA8EE5C1F07F3B800F3A01A /* UserDataVo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataVo.m; sourceTree = "<group>"; };
 		FDAA37931DD2BCF80038658F /* 咖盟.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "咖盟.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDAA37971DD2BCF80038658F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FDAA37991DD2BCF80038658F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -260,6 +264,22 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		FDA8EE561F07F1FC00F3A01A /* login */ = {
+			isa = PBXGroup;
+			children = (
+				FDA8EE571F07F21B00F3A01A /* FirstLoginViewController.h */,
+				FDA8EE581F07F21B00F3A01A /* FirstLoginViewController.m */,
+			);
+			name = login;
+			sourceTree = "<group>";
+		};
+		FDA8EE5A1F07F39E00F3A01A /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		FDAA378A1DD2BCF80038658F = {
 			isa = PBXGroup;
 			children = (
@@ -298,7 +318,6 @@
 		FDAA37961DD2BCF80038658F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FD1F2C6F1F04CC4700063765 /* README.md */,
 				FDF65E2B1DD374780008386D /* APIUrl.h */,
 				FDA062371DD2CD2D00CEBAA0 /* FBLeague-Prefix.pch */,
 				FDAA37A21DD2BCF80038658F /* Assets.xcassets */,
@@ -389,6 +408,7 @@
 		FDAA38241DD2BDD20038658F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FDA8EE5A1F07F39E00F3A01A /* model */,
 				FDAA38271DD2BDF90038658F /* Controller */,
 				FDAA38261DD2BDF10038658F /* View */,
 				FDAA38251DD2BDEA0038658F /* Model */,
@@ -399,6 +419,8 @@
 		FDAA38251DD2BDEA0038658F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FDA8EE5B1F07F3B800F3A01A /* UserDataVo.h */,
+				FDA8EE5C1F07F3B800F3A01A /* UserDataVo.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -413,6 +435,7 @@
 		FDAA38271DD2BDF90038658F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FDA8EE561F07F1FC00F3A01A /* login */,
 				FDAA38281DD2BE1F0038658F /* LianmengViewController.h */,
 				FDAA38291DD2BE1F0038658F /* LianmengViewController.m */,
 				FDAA382A1DD2BE1F0038658F /* QuanziViewController.h */,
@@ -709,6 +732,7 @@
 				FDAA381A1DD2BDA40038658F /* NSString+Common.m in Sources */,
 				FD1F2C691F0490EC00063765 /* QDCommonViewController.m in Sources */,
 				FDAA38181DD2BDA40038658F /* MWLocalDataTool.m in Sources */,
+				FDA8EE591F07F21B00F3A01A /* FirstLoginViewController.m in Sources */,
 				FDA572AC1F035A780072DF95 /* README.mdown in Sources */,
 				FDAA379B1DD2BCF80038658F /* AppDelegate.m in Sources */,
 				FDAA381F1DD2BDA40038658F /* UIImage+SCImage.m in Sources */,
@@ -722,9 +746,9 @@
 				FDA1166D1F01FC67007F253C /* README.md in Sources */,
 				FD1F2C4C1F048DA600063765 /* QMUIConfigurationTemplate.m in Sources */,
 				FD1F2C6B1F0490EC00063765 /* QDTabBarViewController.m in Sources */,
-				FD1F2C701F04CC4700063765 /* README.md in Sources */,
 				FDAA38301DD2BE1F0038658F /* LianmengViewController.m in Sources */,
 				FDAA38791DD2BF3D0038658F /* APIClient.m in Sources */,
+				FDA8EE5D1F07F3B800F3A01A /* UserDataVo.m in Sources */,
 				FDAA38331DD2BE1F0038658F /* MeViewController.m in Sources */,
 				FDAA381B1DD2BDA40038658F /* UIBarButtonItem+Tinted.m in Sources */,
 				FD1F2C531F0490DF00063765 /* QDCommonUI.m in Sources */,
