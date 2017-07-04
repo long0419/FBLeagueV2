@@ -17,6 +17,7 @@
 #import "QDTabBarViewController.h"
 #import "QDNavigationController.h"
 #import "FirstLoginViewController.h"
+#import "RTRootNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -52,7 +53,7 @@
 
 - (void) showMsg{
     FirstLoginViewController *vc = [[FirstLoginViewController alloc] init];
-    UINavigationController *nv = [[UINavigationController alloc] initWithRootViewController:vc];
+    RTRootNavigationController *nv = [[RTRootNavigationController alloc] initWithRootViewController:vc];
     [self.window setRootViewController:nv];
 }
 
@@ -62,22 +63,22 @@
     
     LianmengViewController *uikitViewController = [[LianmengViewController alloc] init];
     uikitViewController.hidesBottomBarWhenPushed = NO;
-    QDNavigationController *uikitNavController = [[QDNavigationController alloc] initWithRootViewController:uikitViewController];
-    uikitNavController.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"" image:[UIImageMake(@"首页") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"首页-副本") tag:0];
+    RTRootNavigationController *uikitNavController = [[RTRootNavigationController alloc] initWithRootViewController:uikitViewController];
+    uikitNavController.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"首页" image:[UIImageMake(@"首页") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"首页-副本") tag:0];
     
     QuanziViewController *componentViewController = [[QuanziViewController alloc] init];
     componentViewController.hidesBottomBarWhenPushed = NO;
-    QDNavigationController *componentNavController = [[QDNavigationController alloc] initWithRootViewController:componentViewController];
+    RTRootNavigationController *componentNavController = [[RTRootNavigationController alloc] initWithRootViewController:componentViewController];
     componentNavController.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"联赛" image:[UIImageMake(@"联赛") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"联赛") tag:1];
     
     JulebuViewController *labViewController = [[JulebuViewController alloc] init];
     labViewController.hidesBottomBarWhenPushed = NO;
-    QDNavigationController *labNavController = [[QDNavigationController alloc] initWithRootViewController:labViewController];
+    RTRootNavigationController *labNavController = [[RTRootNavigationController alloc] initWithRootViewController:labViewController];
     labNavController.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"俱乐部" image:[UIImageMake(@"俱乐部") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"俱乐部") tag:2];
     
     MeViewController *uikitViewController2 = [[MeViewController alloc] init];
     uikitViewController2.hidesBottomBarWhenPushed = NO;
-    QDNavigationController *uikitNavController2 = [[QDNavigationController alloc] initWithRootViewController:uikitViewController2];
+    RTRootNavigationController *uikitNavController2 = [[RTRootNavigationController alloc] initWithRootViewController:uikitViewController2];
     uikitNavController2.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"我" image:[UIImageMake(@"我的") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"我的") tag:3];
     
     // window root controller

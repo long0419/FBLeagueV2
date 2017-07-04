@@ -20,6 +20,9 @@
 		FD1F2C6A1F0490EC00063765 /* QDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C621F0490EC00063765 /* QDNavigationController.m */; };
 		FD1F2C6B1F0490EC00063765 /* QDTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C641F0490EC00063765 /* QDTabBarViewController.m */; };
 		FD1F2C6E1F04B91700063765 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD1F2C6D1F04B91700063765 /* LaunchScreen.xib */; };
+		FD979CC51F0945B900F5BFBB /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = FD979CBE1F0945B900F5BFBB /* UIResponder+FirstResponder.m */; };
+		FD979CC61F0945B900F5BFBB /* WPAutoSpringTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD979CC41F0945B900F5BFBB /* WPAutoSpringTextViewController.m */; };
+		FD979CC91F09473700F5BFBB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD979CC81F09473700F5BFBB /* LoginViewController.m */; };
 		FDA1166C1F01FC67007F253C /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA116691F01FC67007F253C /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FDA1166D1F01FC67007F253C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FDA1166B1F01FC67007F253C /* README.md */; };
 		FDA572AA1F035A780072DF95 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FDA572A61F035A780072DF95 /* LICENSE */; };
@@ -53,6 +56,7 @@
 		FDAA38331DD2BE1F0038658F /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA382F1DD2BE1F0038658F /* MeViewController.m */; };
 		FDAA38791DD2BF3D0038658F /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA384A1DD2BF3D0038658F /* APIClient.m */; };
 		FDAA387A1DD2BF3D0038658F /* APIClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA384C1DD2BF3D0038658F /* APIClientManager.m */; };
+		FDF6B0091F0A8F740074CB39 /* DSLLoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FDF6B0081F0A8F740074CB39 /* DSLLoginTextField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +103,12 @@
 		FD1F2C631F0490EC00063765 /* QDTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDTabBarViewController.h; sourceTree = "<group>"; };
 		FD1F2C641F0490EC00063765 /* QDTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDTabBarViewController.m; sourceTree = "<group>"; };
 		FD1F2C6D1F04B91700063765 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		FD979CBD1F0945B900F5BFBB /* UIResponder+FirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+FirstResponder.h"; sourceTree = "<group>"; };
+		FD979CBE1F0945B900F5BFBB /* UIResponder+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+FirstResponder.m"; sourceTree = "<group>"; };
+		FD979CC31F0945B900F5BFBB /* WPAutoSpringTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAutoSpringTextViewController.h; sourceTree = "<group>"; };
+		FD979CC41F0945B900F5BFBB /* WPAutoSpringTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPAutoSpringTextViewController.m; sourceTree = "<group>"; };
+		FD979CC71F09473700F5BFBB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		FD979CC81F09473700F5BFBB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		FDA062371DD2CD2D00CEBAA0 /* FBLeague-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FBLeague-Prefix.pch"; sourceTree = "<group>"; };
 		FDA116681F01FC67007F253C /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		FDA116691F01FC67007F253C /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
@@ -166,6 +176,8 @@
 		FDAA384B1DD2BF3D0038658F /* APIClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClientManager.h; sourceTree = "<group>"; };
 		FDAA384C1DD2BF3D0038658F /* APIClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClientManager.m; sourceTree = "<group>"; };
 		FDF65E2B1DD374780008386D /* APIUrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIUrl.h; sourceTree = "<group>"; };
+		FDF6B0071F0A8F740074CB39 /* DSLLoginTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLLoginTextField.h; sourceTree = "<group>"; };
+		FDF6B0081F0A8F740074CB39 /* DSLLoginTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLLoginTextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -241,6 +253,73 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		FD979CB91F0945B900F5BFBB /* KeyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				FD979CBA1F0945B900F5BFBB /* Cagegory */,
+				FD979CBB1F0945B900F5BFBB /* Models */,
+				FD979CBC1F0945B900F5BFBB /* plist */,
+				FD979CBD1F0945B900F5BFBB /* UIResponder+FirstResponder.h */,
+				FD979CBE1F0945B900F5BFBB /* UIResponder+FirstResponder.m */,
+				FD979CBF1F0945B900F5BFBB /* Views */,
+				FD979CC31F0945B900F5BFBB /* WPAutoSpringTextViewController.h */,
+				FD979CC41F0945B900F5BFBB /* WPAutoSpringTextViewController.m */,
+			);
+			path = KeyBoard;
+			sourceTree = "<group>";
+		};
+		FD979CBA1F0945B900F5BFBB /* Cagegory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cagegory;
+			sourceTree = "<group>";
+		};
+		FD979CBB1F0945B900F5BFBB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FD979CBC1F0945B900F5BFBB /* plist */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = plist;
+			sourceTree = "<group>";
+		};
+		FD979CBF1F0945B900F5BFBB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FD979CC01F0945B900F5BFBB /* FacePanel */,
+				FD979CC11F0945B900F5BFBB /* MorePanel */,
+				FD979CC21F0945B900F5BFBB /* ToolBarPanel */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FD979CC01F0945B900F5BFBB /* FacePanel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FacePanel;
+			sourceTree = "<group>";
+		};
+		FD979CC11F0945B900F5BFBB /* MorePanel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MorePanel;
+			sourceTree = "<group>";
+		};
+		FD979CC21F0945B900F5BFBB /* ToolBarPanel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ToolBarPanel;
+			sourceTree = "<group>";
+		};
 		FDA116671F01FC67007F253C /* GTMBase64-master */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +348,8 @@
 			children = (
 				FDA8EE571F07F21B00F3A01A /* FirstLoginViewController.h */,
 				FDA8EE581F07F21B00F3A01A /* FirstLoginViewController.m */,
+				FD979CC71F09473700F5BFBB /* LoginViewController.h */,
+				FD979CC81F09473700F5BFBB /* LoginViewController.m */,
 			);
 			name = login;
 			sourceTree = "<group>";
@@ -451,6 +532,8 @@
 		FDAA38341DD2BF3D0038658F /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				FDF6B0061F0A8F740074CB39 /* loginTextField */,
+				FD979CB91F0945B900F5BFBB /* KeyBoard */,
 				FD1F2C491F048DA600063765 /* QMUIConfigurationTemplate */,
 				FDA116671F01FC67007F253C /* GTMBase64-master */,
 				FDA572A51F035A780072DF95 /* MBProgressHUD */,
@@ -516,6 +599,15 @@
 			children = (
 			);
 			path = SVPTRView;
+			sourceTree = "<group>";
+		};
+		FDF6B0061F0A8F740074CB39 /* loginTextField */ = {
+			isa = PBXGroup;
+			children = (
+				FDF6B0071F0A8F740074CB39 /* DSLLoginTextField.h */,
+				FDF6B0081F0A8F740074CB39 /* DSLLoginTextField.m */,
+			);
+			path = loginTextField;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -729,6 +821,8 @@
 				FDAA37CD1DD2BD690038658F /* BaseViewController.m in Sources */,
 				FDA1166C1F01FC67007F253C /* GTMBase64.m in Sources */,
 				FD1F2C541F0490DF00063765 /* QDUIHelper.m in Sources */,
+				FDF6B0091F0A8F740074CB39 /* DSLLoginTextField.m in Sources */,
+				FD979CC51F0945B900F5BFBB /* UIResponder+FirstResponder.m in Sources */,
 				FDAA381A1DD2BDA40038658F /* NSString+Common.m in Sources */,
 				FD1F2C691F0490EC00063765 /* QDCommonViewController.m in Sources */,
 				FDAA38181DD2BDA40038658F /* MWLocalDataTool.m in Sources */,
@@ -736,6 +830,7 @@
 				FDA572AC1F035A780072DF95 /* README.mdown in Sources */,
 				FDAA379B1DD2BCF80038658F /* AppDelegate.m in Sources */,
 				FDAA381F1DD2BDA40038658F /* UIImage+SCImage.m in Sources */,
+				FD979CC61F0945B900F5BFBB /* WPAutoSpringTextViewController.m in Sources */,
 				FDAA37981DD2BCF80038658F /* main.m in Sources */,
 				FD1F2C671F0490EC00063765 /* QDCommonListViewController.m in Sources */,
 				FD1F2C6A1F0490EC00063765 /* QDNavigationController.m in Sources */,
@@ -743,6 +838,7 @@
 				FDAA38201DD2BDA40038658F /* UILabel+Common.m in Sources */,
 				FDAA387A1DD2BF3D0038658F /* APIClientManager.m in Sources */,
 				FDAA38171DD2BDA40038658F /* CommonFunc.m in Sources */,
+				FD979CC91F09473700F5BFBB /* LoginViewController.m in Sources */,
 				FDA1166D1F01FC67007F253C /* README.md in Sources */,
 				FD1F2C4C1F048DA600063765 /* QMUIConfigurationTemplate.m in Sources */,
 				FD1F2C6B1F0490EC00063765 /* QDTabBarViewController.m in Sources */,

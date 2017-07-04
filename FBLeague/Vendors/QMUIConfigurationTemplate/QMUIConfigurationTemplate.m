@@ -97,7 +97,7 @@
     //- QMUICMI.navBarAccessoryViewTypeDisclosureIndicatorImage = [UIImage qmui_imageWithShape:QMUIImageShapeTriangle size:CGSizeMake(8, 5) tintColor:UIColorWhite];     // NavBarAccessoryViewTypeDisclosureIndicatorImage : QMUINavigationTitleView 右边箭头的图片
     QMUICMI.navBarBackgroundImage = [UIImageMake(@"navigationbar_background") resizableImageWithCapInsets:UIEdgeInsetsMake(0, 2, 0, 2)];                                            // NavBarBackgroundImage
     QMUICMI.navBarShadowImage = [UIImage new];                                                // NavBarShadowImage
-    QMUICMI.navBarTintColor = UIColorBlack;                                         // NavBarTintColor
+    QMUICMI.navBarTintColor = UIColorWhite;                                         // NavBarTintColor
     QMUICMI.navBarTitleColor = NavBarTintColor;                                     // NavBarTitleColor
     QMUICMI.navBarBackIndicatorImage = [UIImage qmui_imageWithShape:QMUIImageShapeNavBack size:CGSizeMake(12, 20) tintColor:NavBarTintColor];    // NavBarBackIndicatorImage
     QMUICMI.navBarCloseButtonImage = [UIImage qmui_imageWithShape:QMUIImageShapeNavClose size:CGSizeMake(16, 16) tintColor:NavBarTintColor];

@@ -107,14 +107,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-//- (void) showTabBottom {
-//    [[self rdv_tabBarController] setTabBarHidden:NO animated:NO];
-//}
-//
-//- (void) hideTabBottom {
-//    [[self rdv_tabBarController] setTabBarHidden:YES animated:NO];  
-//}
-
 - (void) forbiddenGesture {
     self.fd_interactivePopDisabled = YES ;
 
@@ -122,7 +114,6 @@
 
 - (void) goGesture {
     self.fd_interactivePopDisabled = NO ;
-
 }
 
 #pragma mark- UIGestureRecognizerDelegate

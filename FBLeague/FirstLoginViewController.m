@@ -9,6 +9,7 @@
 #import "FirstLoginViewController.h"
 #import "UserDataVo.h"
 #import "MWLocalDataTool.h"
+#import "LoginViewController.h"
 
 @interface FirstLoginViewController (){
     UIImageView *bg ;
@@ -45,6 +46,7 @@
     left.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     [left setImage:UIImageMake(@"登陆") forState:UIControlStateNormal];
     left.titleLabel.font = UIFontMake(11);
+    [left addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:left];
 
     right = [[QMUIButton alloc] init];
@@ -85,13 +87,16 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
     
     UserDataVo *vo = [[MWLocalDataTool shareInstance] readNSUserDefaultsWithKey:@"userData"];
     if (vo) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"verifyLoginStatus" object:self];
     }
+}
 
+-(void) loginAction {
+    LoginViewController *lvc = [[LoginViewController alloc] init];
+    [self.navigationController pushViewController:lvc animated:YES];
 }
 @end

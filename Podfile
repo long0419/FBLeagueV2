@@ -12,4 +12,5 @@ target 'FBLeague' do
 	pod 'YUChineseSorting'
 	pod 'MBProgressHUD'
 	pod 'QMUIKit'
+	pod "RTRootNavigationController"
 end
