@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YCSlideView.h"
 
-@interface LianmengViewController : QMUICommonViewController
+@interface LianmengViewController : QMUICommonViewController<UIScrollViewDelegate>
+
 
 @end

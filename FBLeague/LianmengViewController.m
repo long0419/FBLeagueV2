@@ -7,6 +7,10 @@
 //
 
 #import "LianmengViewController.h"
+#import "YCSlideView.h"
+#import "FocusViewController.h"
+#import "JiaoLianViewController.h"
+#import "DongtaiViewController.h"
 
 @interface LianmengViewController ()
 
@@ -16,42 +20,52 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"动态" ;
+    [self setBackBottmAndTitle];
+    [self setRightBottom];
     
-    self.title = @"首页" ;
+    JiaoLianViewController *jiaolian = [JiaoLianViewController new] ;
+//    jiaolian.delegate = self ;
     
-//    UIView *sv = [UIView new];
-//    sv.backgroundColor = [UIColor blackColor];
-//    [self.view addSubview:sv];
-//    [sv mas_makeConstraints:^(MASConstraintMaker *make) {
-//
-//        make.center.equalTo(self.view);
-//        make.size.mas_equalTo(CGSizeMake(300, 300));
-//        
-//    }];
-//    
-//    
-//    UIView *sv1 = [UIView new];
-//    sv1.backgroundColor = [UIColor redColor];
-//    [sv addSubview:sv1];
-//    [sv1 mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.edges.equalTo(sv).with.insets(UIEdgeInsetsMake(10, 10, 10, 10));
-//    }];
+    DongtaiViewController *dongtai = [DongtaiViewController new] ;
+//    dongtai.delegate = self ;
+    
+    FocusViewController *focus = [FocusViewController new];
+    
+    NSArray *viewControllers = @[@{@"全部动态":dongtai}, @{@"已关注":focus}, @{@"教练员列表":jiaolian}];
+    
+    YCSlideView * view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, 20 + 44, kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
+    [self.view addSubview:view];
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)setBackBottmAndTitle{
+    UIButton *backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backViewBtn.frame = CGRectMake(0, 0, 22, 17);
+    [backViewBtn setImage:[UIImage imageNamed:@"相机2"] forState:UIControlStateNormal];
+    [backViewBtn addTarget:self action: @selector(back)
+          forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
+    self.navigationItem.leftBarButtonItem = backItem ;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)setRightBottom {
+    UIButton *backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backViewBtn.frame = CGRectMake(0, 0, 17, 17);
+    [backViewBtn setImage:[UIImage imageNamed:@"搜索"] forState:UIControlStateNormal];
+    [backViewBtn addTarget:self action: @selector(goAction)
+          forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
+    self.navigationItem.rightBarButtonItem = backItem ;
 }
-*/
+
+-(void) getScrollIndex :(NSInteger) index {
+    
+}
+
+
+-(void)handleSingleTap{
+    
+}
 
 @end

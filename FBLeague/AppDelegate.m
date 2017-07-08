@@ -63,7 +63,7 @@
     LianmengViewController *uikitViewController = [[LianmengViewController alloc] init];
     uikitViewController.hidesBottomBarWhenPushed = NO;
     RTRootNavigationController *uikitNavController = [[RTRootNavigationController alloc] initWithRootViewController:uikitViewController];
-    uikitNavController.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"首页" image:[UIImageMake(@"首页") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"首页-副本") tag:0];
+    uikitNavController.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"动态" image:[UIImageMake(@"首页") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"首页-副本") tag:0];
     
     QuanziViewController *componentViewController = [[QuanziViewController alloc] init];
     componentViewController.hidesBottomBarWhenPushed = NO;

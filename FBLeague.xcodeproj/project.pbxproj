@@ -66,6 +66,10 @@
 		FDF3D4431F0B9DCC003CAF5A /* PersonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDF3D4421F0B9DCC003CAF5A /* PersonInfoViewController.m */; };
 		FDF6B0091F0A8F740074CB39 /* DSLLoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FDF6B0081F0A8F740074CB39 /* DSLLoginTextField.m */; };
 		FDFAE5E81F10C8C5008DF0BB /* ChooseSectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFAE5E71F10C8C5008DF0BB /* ChooseSectionViewController.m */; };
+		FDFAE5F01F10EE63008DF0BB /* JiaoLianViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFAE5EF1F10EE63008DF0BB /* JiaoLianViewController.m */; };
+		FDFAE5F31F10EE74008DF0BB /* DongtaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFAE5F21F10EE74008DF0BB /* DongtaiViewController.m */; };
+		FDFAE5F61F10EE82008DF0BB /* FocusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFAE5F51F10EE82008DF0BB /* FocusViewController.m */; };
+		FDFAE5F91F10F4F4008DF0BB /* YCSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFAE5F81F10F4F4008DF0BB /* YCSlideView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,6 +209,14 @@
 		FDF6B0081F0A8F740074CB39 /* DSLLoginTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLLoginTextField.m; sourceTree = "<group>"; };
 		FDFAE5E61F10C8C5008DF0BB /* ChooseSectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseSectionViewController.h; sourceTree = "<group>"; };
 		FDFAE5E71F10C8C5008DF0BB /* ChooseSectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseSectionViewController.m; sourceTree = "<group>"; };
+		FDFAE5EE1F10EE63008DF0BB /* JiaoLianViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiaoLianViewController.h; sourceTree = "<group>"; };
+		FDFAE5EF1F10EE63008DF0BB /* JiaoLianViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiaoLianViewController.m; sourceTree = "<group>"; };
+		FDFAE5F11F10EE74008DF0BB /* DongtaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DongtaiViewController.h; sourceTree = "<group>"; };
+		FDFAE5F21F10EE74008DF0BB /* DongtaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DongtaiViewController.m; sourceTree = "<group>"; };
+		FDFAE5F41F10EE82008DF0BB /* FocusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FocusViewController.h; sourceTree = "<group>"; };
+		FDFAE5F51F10EE82008DF0BB /* FocusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FocusViewController.m; sourceTree = "<group>"; };
+		FDFAE5F71F10F4F4008DF0BB /* YCSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YCSlideView.h; sourceTree = "<group>"; };
+		FDFAE5F81F10F4F4008DF0BB /* YCSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YCSlideView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -559,6 +571,7 @@
 		FDAA38271DD2BDF90038658F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FDFAE5E91F10E1FC008DF0BB /* shouye */,
 				FDA8EE561F07F1FC00F3A01A /* login */,
 				FDAA38281DD2BE1F0038658F /* LianmengViewController.h */,
 				FDAA38291DD2BE1F0038658F /* LianmengViewController.m */,
@@ -575,6 +588,7 @@
 		FDAA38341DD2BF3D0038658F /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				FDFAE5EA1F10ECEA008DF0BB /* YCSlideView */,
 				FDF3D43A1F0B97FC003CAF5A /* verifycode */,
 				FDF6B0061F0A8F740074CB39 /* loginTextField */,
 				FD979CB91F0945B900F5BFBB /* KeyBoard */,
@@ -661,6 +675,28 @@
 				FDF6B0081F0A8F740074CB39 /* DSLLoginTextField.m */,
 			);
 			path = loginTextField;
+			sourceTree = "<group>";
+		};
+		FDFAE5E91F10E1FC008DF0BB /* shouye */ = {
+			isa = PBXGroup;
+			children = (
+				FDFAE5EE1F10EE63008DF0BB /* JiaoLianViewController.h */,
+				FDFAE5EF1F10EE63008DF0BB /* JiaoLianViewController.m */,
+				FDFAE5F11F10EE74008DF0BB /* DongtaiViewController.h */,
+				FDFAE5F21F10EE74008DF0BB /* DongtaiViewController.m */,
+				FDFAE5F41F10EE82008DF0BB /* FocusViewController.h */,
+				FDFAE5F51F10EE82008DF0BB /* FocusViewController.m */,
+			);
+			name = shouye;
+			sourceTree = "<group>";
+		};
+		FDFAE5EA1F10ECEA008DF0BB /* YCSlideView */ = {
+			isa = PBXGroup;
+			children = (
+				FDFAE5F71F10F4F4008DF0BB /* YCSlideView.h */,
+				FDFAE5F81F10F4F4008DF0BB /* YCSlideView.m */,
+			);
+			path = YCSlideView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -861,10 +897,12 @@
 				FDAA38311DD2BE1F0038658F /* QuanziViewController.m in Sources */,
 				FDAA38211DD2BDA40038658F /* UIView+Addition.m in Sources */,
 				FDAA38221DD2BDA40038658F /* UIView+Common.m in Sources */,
+				FDFAE5F01F10EE63008DF0BB /* JiaoLianViewController.m in Sources */,
 				FDAA38161DD2BDA40038658F /* ObjcRuntime.m in Sources */,
 				FDAA381D1DD2BDA40038658F /* UIColor+Expanded.m in Sources */,
 				FD1F2C681F0490EC00063765 /* QDCommonTableViewController.m in Sources */,
 				FDAA38191DD2BDA40038658F /* NSObject+Common.m in Sources */,
+				FDFAE5F91F10F4F4008DF0BB /* YCSlideView.m in Sources */,
 				FD1F2C661F0490EC00063765 /* QDCommonGroupListViewController.m in Sources */,
 				FDA572AB1F035A780072DF95 /* MBProgressHUD+Add.m in Sources */,
 				FDAA38321DD2BE1F0038658F /* JulebuViewController.m in Sources */,
@@ -889,6 +927,7 @@
 				FDAA37981DD2BCF80038658F /* main.m in Sources */,
 				FD1F2C671F0490EC00063765 /* QDCommonListViewController.m in Sources */,
 				FD1F2C6A1F0490EC00063765 /* QDNavigationController.m in Sources */,
+				FDFAE5F31F10EE74008DF0BB /* DongtaiViewController.m in Sources */,
 				FD1F2C651F0490EC00063765 /* QDCommonGridViewController.m in Sources */,
 				FDFAE5E81F10C8C5008DF0BB /* ChooseSectionViewController.m in Sources */,
 				FDAA38201DD2BDA40038658F /* UILabel+Common.m in Sources */,
@@ -910,6 +949,7 @@
 				FDD24CC21F0BECF900DA16FC /* ChooseAreaViewController.m in Sources */,
 				FD1F2C531F0490DF00063765 /* QDCommonUI.m in Sources */,
 				FDD24CC91F0BEE1900DA16FC /* ProvinceVo.m in Sources */,
+				FDFAE5F61F10EE82008DF0BB /* FocusViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
