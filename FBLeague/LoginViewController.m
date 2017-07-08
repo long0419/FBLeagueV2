@@ -8,8 +8,13 @@
 
 #import "LoginViewController.h"
 #import "DSLLoginTextField.h"
+#import "UserDataVo.h"
+#import "RegisterViewController.h"
 
-@interface LoginViewController ()
+@interface LoginViewController (){
+    DSLLoginTextField *tf ;
+    DSLLoginTextField *psw ;
+}
 
 @end
 
@@ -48,37 +53,42 @@
     }];
     
     
-    DSLLoginTextField *tf=[[DSLLoginTextField alloc]init];
+    tf=[[DSLLoginTextField alloc]init];
     tf.clearButtonMode=UITextFieldViewModeWhileEditing;
     tf.placeholderColor=[UIColor colorWithHexString:@"cdcdcd"];
     tf.font=[UIFont systemFontOfSize:14];
     tf.placeholder=@"输入注册手机号";
+    tf.delegate = self ;
     tf.maxTextLength= 11;
+    tf.delegate = self ;
+
     tf.textAlignment = NSTextAlignmentCenter ;
     [self.view addSubview:tf];
     [tf mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(bgImg.mas_bottom).with.offset(45) ;
         make.centerX.mas_equalTo(self.view);
-        make.left.mas_equalTo(30) ;
-        make.height.equalTo(@40);
+        make.left.mas_equalTo(SYRealValue(30)) ;
+        make.height.mas_equalTo(SYRealValue(40));
         make.width.mas_equalTo(self.view.width - 60);
     }];
     
-    DSLLoginTextField *psw=[[DSLLoginTextField alloc]init];
+    psw=[[DSLLoginTextField alloc]init];
     psw.clearButtonMode=UITextFieldViewModeWhileEditing;
     psw.placeholderColor=[UIColor colorWithHexString:@"cdcdcd"];
     psw.font=[UIFont systemFontOfSize:14];
     psw.placeholder=@"输入密码";
     psw.maxTextLength= 11;
+    psw.delegate = self ;
     psw.textAlignment = NSTextAlignmentCenter ;
     psw.secureTextEntry = YES;
+    psw.keyboardType = UIKeyboardTypeNumberPad | UIKeyboardTypeAlphabet ;
     psw.returnKeyType = UIReturnKeyGo ;
     [self.view addSubview:psw];
     [psw mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(tf.mas_bottom).with.offset(20) ;
         make.centerX.mas_equalTo(self.view);
-        make.left.mas_equalTo(30) ;
-        make.height.equalTo(@40);
+        make.left.mas_equalTo(SYRealValue(30)) ;
+        make.height.mas_equalTo(SYRealValue(40));
         make.width.mas_equalTo(self.view.width - 60);
     }];
     
@@ -103,15 +113,15 @@
     [button setTitleColor:UIColorWhite forState:UIControlStateNormal];
     button.backgroundColor = [UIColor blackColor];
     button.highlightedBackgroundColor = [UIColor colorWithHexString:@"5a70d6"];    button.layer.cornerRadius = 4;
+    [button addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"登录" forState:UIControlStateNormal];
     [self.view addSubview:button];
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(psw.mas_bottom).with.offset(35);
         make.centerX.mas_equalTo(self.view);
-        make.left.mas_equalTo(30) ;
-        make.height.equalTo(@40);
-        make.width.mas_equalTo(self.view.width - 60);
-
+        make.left.mas_equalTo(SYRealValue(30)) ;
+        make.height.mas_equalTo(SYRealValue(40));
+        make.width.mas_equalTo((self.view.width - 60));
     }];
     
     CGSize useText = [NSString getStringContentSizeWithFontSize:12 andContent:@"使用第三方登录"];
@@ -126,7 +136,7 @@
         make.width.mas_equalTo(useText.width+2);
         make.height.mas_equalTo(useText.height);
         make.centerX.mas_equalTo(self.view) ;
-        make.top.mas_equalTo(button.mas_bottom).with.offset(170/2);
+        make.top.mas_equalTo(button.mas_bottom).with.offset(SYRealValue(170/2));
     }];
     
     UIView *line1 = [[UIView alloc] init] ;
@@ -141,7 +151,7 @@
         make.left.mas_equalTo(30);
         make.right.mas_equalTo(useBtn.mas_left).with.offset(-25) ;
         make.top.mas_equalTo(useBtn.mas_top).with.offset(6);
-        make.width.mas_equalTo(useBtn.left - 25 - 30);
+        make.width.mas_equalTo(SYRealValue(useBtn.left - 25 - 30));
         make.height.mas_equalTo(1);
     }];
     
@@ -149,47 +159,47 @@
         make.left.mas_equalTo(useBtn.mas_right).with.offset(25);
         make.right.mas_equalTo(-30) ;
         make.top.mas_equalTo(useBtn.mas_top).with.offset(6);
-        make.width.mas_equalTo(useBtn.left - 25 - 30);
+        make.width.mas_equalTo(SYRealValue(useBtn.left - 25 - 30));
         make.height.mas_equalTo(1);
     }];
 
     
     UIView *qqView = [[UIView alloc] init];
     qqView.layer.borderWidth = 1;
-    qqView.layer.cornerRadius = 128/4 ;
+    qqView.layer.cornerRadius = SYRealValue(128/4) ;
     qqView.layer.borderColor = [[UIColor blackColor] CGColor];
     [self.view addSubview:qqView];
     
     UIView *sinaView = [[UIView alloc] init];
     sinaView.layer.borderWidth = 1;
-    sinaView.layer.cornerRadius = 128/4 ;
+    sinaView.layer.cornerRadius = SYRealValue(128/4) ;
     sinaView.layer.borderColor = [[UIColor blackColor] CGColor];
     [self.view addSubview:sinaView];
     
     UIView *wxView = [[UIView alloc] init];
     wxView.layer.borderWidth = 1;
-    wxView.layer.cornerRadius = 128/4 ;
+    wxView.layer.cornerRadius = SYRealValue(128/4) ;
     wxView.layer.borderColor = [[UIColor blackColor] CGColor];
     [self.view addSubview:wxView];
     
     [qqView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(30);
-        make.width.mas_equalTo(128/2);
-        make.height.mas_equalTo(128/2);
+        make.width.mas_equalTo(SYRealValue(128/2));
+        make.height.mas_equalTo(SYRealValue(128/2));
         make.bottom.mas_equalTo(-88/2);
     }];
     
     [sinaView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(128/2);
-        make.height.mas_equalTo(128/2);
+        make.width.mas_equalTo(SYRealValue(128/2));
+        make.height.mas_equalTo(SYRealValue(128/2));
         make.centerX.mas_equalTo(self.view);
         make.bottom.mas_equalTo(-88/2);
     }];
     
     [wxView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-30);
-        make.width.mas_equalTo(128/2);
-        make.height.mas_equalTo(128/2);
+        make.width.mas_equalTo(SYRealValue(128/2));
+        make.height.mas_equalTo(SYRealValue(128/2));
         make.bottom.mas_equalTo(-88/2);
     }];
     
@@ -221,12 +231,68 @@
 }
 
 -(void)forget{
-    
+    RegisterViewController *reg = [RegisterViewController new];
+    reg.from = @"2" ;
+    [self.navigationController pushViewController:reg animated:YES];
 }
 
 -(void)loginAction{
+    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
+    if ([@"" isEqualToString:tf.text]|| nil == tf.text) {
+        self.HUD.mode = MBProgressHUDModeText;
+        self.HUD.removeFromSuperViewOnHide = YES;
+        self.HUD.labelText = @"请输入手机号";
+        [self.HUD hide:YES afterDelay:3];
+        return ;
+    }
+    
+    if ([@"" isEqualToString:psw.text] || nil == psw.text) {
+        self.HUD.mode = MBProgressHUDModeText;
+        self.HUD.removeFromSuperViewOnHide = YES;
+        self.HUD.labelText = @"请输入密码";
+        [self.HUD hide:YES afterDelay:3];
+        return ;
+    }
+    
+    [self loginRequest:tf.text withPws:psw.text];
+
 }
+
+-(void)loginRequest :(NSString *)name withPws :(NSString *) password{
+    APIClient *client = [APIClient sharedJsonClient];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:name , @"mobile" ,password, @"password" , nil];
+    [client requestJsonDataWithPath:login withParams:params withMethodType:Post andBlock:^(id data, NSError *error) {
+        if([data[@"code"] isEqualToString:@"0000"]){
+            
+            UserDataVo *user = [UserDataVo new];
+            user.rongyun_token = data[@"rongyun_token"] ;
+            user.token = data[@"token"] ;
+
+            user.pwd = data[@"user"][@"pwd"] ;
+            user.phone = data[@"user"][@"phone"];
+            user.role = data[@"user"][@"role"];
+            user.realname = data[@"user"][@"realname"];
+            user.level = data[@"user"][@"level"];
+            user.club = data[@"user"][@"club"];
+            user.headpicurl = data[@"user"][@"headpicurl"];
+            user.hasAuth = data[@"hasAuth"] ;
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:user];
+            
+            UserDefaultSet(@"userData" , data);
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"verifyLoginStatus" object:self];
+            
+        }else{
+            self.HUD.mode = MBProgressHUDModeText;
+            self.HUD.removeFromSuperViewOnHide = YES;
+            self.HUD.labelText = data[@"message"];
+            [self.HUD hide:YES afterDelay:3];
+        }
+        
+        [self closeProgressView];
+    }];
+}
+
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -237,6 +303,22 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder] ;
+    return true;
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+    
+}
 
 
 @end

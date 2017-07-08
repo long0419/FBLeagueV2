@@ -20,6 +20,7 @@
 		FD1F2C6A1F0490EC00063765 /* QDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C621F0490EC00063765 /* QDNavigationController.m */; };
 		FD1F2C6B1F0490EC00063765 /* QDTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C641F0490EC00063765 /* QDTabBarViewController.m */; };
 		FD1F2C6E1F04B91700063765 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD1F2C6D1F04B91700063765 /* LaunchScreen.xib */; };
+		FD76CB3E1F0B87AE0047C0FE /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76CB391F0B87AE0047C0FE /* RegisterViewController.m */; };
 		FD979CC51F0945B900F5BFBB /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = FD979CBE1F0945B900F5BFBB /* UIResponder+FirstResponder.m */; };
 		FD979CC61F0945B900F5BFBB /* WPAutoSpringTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD979CC41F0945B900F5BFBB /* WPAutoSpringTextViewController.m */; };
 		FD979CC91F09473700F5BFBB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD979CC81F09473700F5BFBB /* LoginViewController.m */; };
@@ -56,7 +57,15 @@
 		FDAA38331DD2BE1F0038658F /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA382F1DD2BE1F0038658F /* MeViewController.m */; };
 		FDAA38791DD2BF3D0038658F /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA384A1DD2BF3D0038658F /* APIClient.m */; };
 		FDAA387A1DD2BF3D0038658F /* APIClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA384C1DD2BF3D0038658F /* APIClientManager.m */; };
+		FDD24CC21F0BECF900DA16FC /* ChooseAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD24CBF1F0BECF900DA16FC /* ChooseAreaViewController.m */; };
+		FDD24CC31F0BECF900DA16FC /* ChooseCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD24CC11F0BECF900DA16FC /* ChooseCityViewController.m */; };
+		FDD24CC61F0BEDF800DA16FC /* CityVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD24CC51F0BEDF800DA16FC /* CityVo.m */; };
+		FDD24CC91F0BEE1900DA16FC /* ProvinceVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD24CC81F0BEE1900DA16FC /* ProvinceVo.m */; };
+		FDF3D43D1F0B981D003CAF5A /* ZLVerifyCodeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FDF3D43C1F0B981D003CAF5A /* ZLVerifyCodeButton.m */; };
+		FDF3D4401F0B9AF0003CAF5A /* VerifyPswViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDF3D43F1F0B9AF0003CAF5A /* VerifyPswViewController.m */; };
+		FDF3D4431F0B9DCC003CAF5A /* PersonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDF3D4421F0B9DCC003CAF5A /* PersonInfoViewController.m */; };
 		FDF6B0091F0A8F740074CB39 /* DSLLoginTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FDF6B0081F0A8F740074CB39 /* DSLLoginTextField.m */; };
+		FDFAE5E81F10C8C5008DF0BB /* ChooseSectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDFAE5E71F10C8C5008DF0BB /* ChooseSectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +112,8 @@
 		FD1F2C631F0490EC00063765 /* QDTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDTabBarViewController.h; sourceTree = "<group>"; };
 		FD1F2C641F0490EC00063765 /* QDTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDTabBarViewController.m; sourceTree = "<group>"; };
 		FD1F2C6D1F04B91700063765 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		FD76CB381F0B87AE0047C0FE /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		FD76CB391F0B87AE0047C0FE /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		FD979CBD1F0945B900F5BFBB /* UIResponder+FirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+FirstResponder.h"; sourceTree = "<group>"; };
 		FD979CBE1F0945B900F5BFBB /* UIResponder+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+FirstResponder.m"; sourceTree = "<group>"; };
 		FD979CC31F0945B900F5BFBB /* WPAutoSpringTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAutoSpringTextViewController.h; sourceTree = "<group>"; };
@@ -175,9 +186,25 @@
 		FDAA384A1DD2BF3D0038658F /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
 		FDAA384B1DD2BF3D0038658F /* APIClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClientManager.h; sourceTree = "<group>"; };
 		FDAA384C1DD2BF3D0038658F /* APIClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClientManager.m; sourceTree = "<group>"; };
+		FDD24CBE1F0BECF900DA16FC /* ChooseAreaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAreaViewController.h; sourceTree = "<group>"; };
+		FDD24CBF1F0BECF900DA16FC /* ChooseAreaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAreaViewController.m; sourceTree = "<group>"; };
+		FDD24CC01F0BECF900DA16FC /* ChooseCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCityViewController.h; sourceTree = "<group>"; };
+		FDD24CC11F0BECF900DA16FC /* ChooseCityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCityViewController.m; sourceTree = "<group>"; };
+		FDD24CC41F0BEDF800DA16FC /* CityVo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityVo.h; sourceTree = "<group>"; };
+		FDD24CC51F0BEDF800DA16FC /* CityVo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityVo.m; sourceTree = "<group>"; };
+		FDD24CC71F0BEE1900DA16FC /* ProvinceVo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProvinceVo.h; sourceTree = "<group>"; };
+		FDD24CC81F0BEE1900DA16FC /* ProvinceVo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProvinceVo.m; sourceTree = "<group>"; };
+		FDF3D43B1F0B981D003CAF5A /* ZLVerifyCodeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLVerifyCodeButton.h; sourceTree = "<group>"; };
+		FDF3D43C1F0B981D003CAF5A /* ZLVerifyCodeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLVerifyCodeButton.m; sourceTree = "<group>"; };
+		FDF3D43E1F0B9AF0003CAF5A /* VerifyPswViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyPswViewController.h; sourceTree = "<group>"; };
+		FDF3D43F1F0B9AF0003CAF5A /* VerifyPswViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyPswViewController.m; sourceTree = "<group>"; };
+		FDF3D4411F0B9DCC003CAF5A /* PersonInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInfoViewController.h; sourceTree = "<group>"; };
+		FDF3D4421F0B9DCC003CAF5A /* PersonInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInfoViewController.m; sourceTree = "<group>"; };
 		FDF65E2B1DD374780008386D /* APIUrl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIUrl.h; sourceTree = "<group>"; };
 		FDF6B0071F0A8F740074CB39 /* DSLLoginTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLLoginTextField.h; sourceTree = "<group>"; };
 		FDF6B0081F0A8F740074CB39 /* DSLLoginTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLLoginTextField.m; sourceTree = "<group>"; };
+		FDFAE5E61F10C8C5008DF0BB /* ChooseSectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseSectionViewController.h; sourceTree = "<group>"; };
+		FDFAE5E71F10C8C5008DF0BB /* ChooseSectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseSectionViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,10 +373,22 @@
 		FDA8EE561F07F1FC00F3A01A /* login */ = {
 			isa = PBXGroup;
 			children = (
+				FDFAE5E61F10C8C5008DF0BB /* ChooseSectionViewController.h */,
+				FDFAE5E71F10C8C5008DF0BB /* ChooseSectionViewController.m */,
+				FDD24CBE1F0BECF900DA16FC /* ChooseAreaViewController.h */,
+				FDD24CBF1F0BECF900DA16FC /* ChooseAreaViewController.m */,
+				FDD24CC01F0BECF900DA16FC /* ChooseCityViewController.h */,
+				FDD24CC11F0BECF900DA16FC /* ChooseCityViewController.m */,
+				FD76CB381F0B87AE0047C0FE /* RegisterViewController.h */,
+				FD76CB391F0B87AE0047C0FE /* RegisterViewController.m */,
 				FDA8EE571F07F21B00F3A01A /* FirstLoginViewController.h */,
 				FDA8EE581F07F21B00F3A01A /* FirstLoginViewController.m */,
 				FD979CC71F09473700F5BFBB /* LoginViewController.h */,
 				FD979CC81F09473700F5BFBB /* LoginViewController.m */,
+				FDF3D43E1F0B9AF0003CAF5A /* VerifyPswViewController.h */,
+				FDF3D43F1F0B9AF0003CAF5A /* VerifyPswViewController.m */,
+				FDF3D4411F0B9DCC003CAF5A /* PersonInfoViewController.h */,
+				FDF3D4421F0B9DCC003CAF5A /* PersonInfoViewController.m */,
 			);
 			name = login;
 			sourceTree = "<group>";
@@ -357,6 +396,10 @@
 		FDA8EE5A1F07F39E00F3A01A /* model */ = {
 			isa = PBXGroup;
 			children = (
+				FDD24CC71F0BEE1900DA16FC /* ProvinceVo.h */,
+				FDD24CC81F0BEE1900DA16FC /* ProvinceVo.m */,
+				FDD24CC41F0BEDF800DA16FC /* CityVo.h */,
+				FDD24CC51F0BEDF800DA16FC /* CityVo.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -532,6 +575,7 @@
 		FDAA38341DD2BF3D0038658F /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				FDF3D43A1F0B97FC003CAF5A /* verifycode */,
 				FDF6B0061F0A8F740074CB39 /* loginTextField */,
 				FD979CB91F0945B900F5BFBB /* KeyBoard */,
 				FD1F2C491F048DA600063765 /* QMUIConfigurationTemplate */,
@@ -599,6 +643,15 @@
 			children = (
 			);
 			path = SVPTRView;
+			sourceTree = "<group>";
+		};
+		FDF3D43A1F0B97FC003CAF5A /* verifycode */ = {
+			isa = PBXGroup;
+			children = (
+				FDF3D43B1F0B981D003CAF5A /* ZLVerifyCodeButton.h */,
+				FDF3D43C1F0B981D003CAF5A /* ZLVerifyCodeButton.m */,
+			);
+			name = verifycode;
 			sourceTree = "<group>";
 		};
 		FDF6B0061F0A8F740074CB39 /* loginTextField */ = {
@@ -816,6 +869,7 @@
 				FDA572AB1F035A780072DF95 /* MBProgressHUD+Add.m in Sources */,
 				FDAA38321DD2BE1F0038658F /* JulebuViewController.m in Sources */,
 				FD1F2C551F0490DF00063765 /* UIImageEffects.m in Sources */,
+				FD76CB3E1F0B87AE0047C0FE /* RegisterViewController.m in Sources */,
 				FDAA381E1DD2BDA40038658F /* UIImage+Common.m in Sources */,
 				FDAA381C1DD2BDA40038658F /* UIButton+Block.m in Sources */,
 				FDAA37CD1DD2BD690038658F /* BaseViewController.m in Sources */,
@@ -829,25 +883,33 @@
 				FDA8EE591F07F21B00F3A01A /* FirstLoginViewController.m in Sources */,
 				FDA572AC1F035A780072DF95 /* README.mdown in Sources */,
 				FDAA379B1DD2BCF80038658F /* AppDelegate.m in Sources */,
+				FDD24CC61F0BEDF800DA16FC /* CityVo.m in Sources */,
 				FDAA381F1DD2BDA40038658F /* UIImage+SCImage.m in Sources */,
 				FD979CC61F0945B900F5BFBB /* WPAutoSpringTextViewController.m in Sources */,
 				FDAA37981DD2BCF80038658F /* main.m in Sources */,
 				FD1F2C671F0490EC00063765 /* QDCommonListViewController.m in Sources */,
 				FD1F2C6A1F0490EC00063765 /* QDNavigationController.m in Sources */,
 				FD1F2C651F0490EC00063765 /* QDCommonGridViewController.m in Sources */,
+				FDFAE5E81F10C8C5008DF0BB /* ChooseSectionViewController.m in Sources */,
 				FDAA38201DD2BDA40038658F /* UILabel+Common.m in Sources */,
+				FDF3D4401F0B9AF0003CAF5A /* VerifyPswViewController.m in Sources */,
 				FDAA387A1DD2BF3D0038658F /* APIClientManager.m in Sources */,
 				FDAA38171DD2BDA40038658F /* CommonFunc.m in Sources */,
 				FD979CC91F09473700F5BFBB /* LoginViewController.m in Sources */,
+				FDF3D4431F0B9DCC003CAF5A /* PersonInfoViewController.m in Sources */,
 				FDA1166D1F01FC67007F253C /* README.md in Sources */,
 				FD1F2C4C1F048DA600063765 /* QMUIConfigurationTemplate.m in Sources */,
 				FD1F2C6B1F0490EC00063765 /* QDTabBarViewController.m in Sources */,
 				FDAA38301DD2BE1F0038658F /* LianmengViewController.m in Sources */,
 				FDAA38791DD2BF3D0038658F /* APIClient.m in Sources */,
+				FDD24CC31F0BECF900DA16FC /* ChooseCityViewController.m in Sources */,
 				FDA8EE5D1F07F3B800F3A01A /* UserDataVo.m in Sources */,
+				FDF3D43D1F0B981D003CAF5A /* ZLVerifyCodeButton.m in Sources */,
 				FDAA38331DD2BE1F0038658F /* MeViewController.m in Sources */,
 				FDAA381B1DD2BDA40038658F /* UIBarButtonItem+Tinted.m in Sources */,
+				FDD24CC21F0BECF900DA16FC /* ChooseAreaViewController.m in Sources */,
 				FD1F2C531F0490DF00063765 /* QDCommonUI.m in Sources */,
+				FDD24CC91F0BEE1900DA16FC /* ProvinceVo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

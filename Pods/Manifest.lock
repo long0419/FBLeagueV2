@@ -23,12 +23,17 @@ PODS:
   - CocoaPicker (1.1)
   - FDFullscreenPopGesture (1.1)
   - JSONKit-NoWarning (1.2)
+  - JYSlideSegmentController (1.3.5)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - QMUIKit (1.7.2)
+  - RadioButton (1.0)
   - RTRootNavigationController (0.5.26):
     - RTRootNavigationController/Core (= 0.5.26)
   - RTRootNavigationController/Core (0.5.26)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
   - SVPullToRefresh_Bell (1.0.1)
   - TPKeyboardAvoiding (1.3.1)
   - YUChineseSorting (1.0.2)
@@ -38,10 +43,13 @@ DEPENDENCIES:
   - CocoaPicker
   - FDFullscreenPopGesture
   - JSONKit-NoWarning
+  - JYSlideSegmentController
   - Masonry
   - MBProgressHUD
   - QMUIKit
+  - RadioButton
   - RTRootNavigationController
+  - SDWebImage
   - SVPullToRefresh_Bell
   - TPKeyboardAvoiding
   - YUChineseSorting
@@ -51,14 +59,17 @@ SPEC CHECKSUMS:
   CocoaPicker: 0d898140a152c01585322586b97868496c4f097b
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   JSONKit-NoWarning: 3d27e6f9e6846ecf741e8c64dcadd7d5aa7193cb
+  JYSlideSegmentController: 4245aaa0d2a31b143a0ba21c534a8b6b4f2f268c
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   QMUIKit: e26a62bf4d57e8e9176a182057d787fefa3d72e4
+  RadioButton: 7ef053baf6ff0e7f9e777016c28e9ba4e330edba
   RTRootNavigationController: 153e538439fa20faec706019b04375f6c6fabeb6
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   SVPullToRefresh_Bell: f9460c49e97e5d7dd938c9bac3628d17d3a51de9
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
   YUChineseSorting: 46bbd4fa0344e21b169a537bb17aafec0980c560
 
-PODFILE CHECKSUM: 2807f802b805833773f6e88ea0f6b4ac2783504f
+PODFILE CHECKSUM: ec6950eb5967bf8851d762ba1609ddb770a44d69
 
 COCOAPODS: 1.3.0.beta.2

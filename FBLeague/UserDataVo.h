@@ -51,6 +51,9 @@
 
 
 @property (nonatomic , strong) NSString *hasAuth ;
+@property (nonatomic , strong) NSString *token ;
+@property (nonatomic , strong) NSString *rongyun_token ;
+
 
 
 

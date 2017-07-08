@@ -24,19 +24,16 @@
     kouList = [[NSMutableArray alloc] init] ;
 
     self.title = @"选择地区" ;
-    self.view.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"] ;
-
-    CGSize psdSize = [NSString getStringContentSizeWithFontSize:13 andContent:@"全部"] ;
-    UILabel *psdname = [[UILabel alloc] initWithFrame:CGRectMake(15 , 10 , psdSize.width, psdSize.height)] ;
-    psdname.text = @"全部" ;
-    psdname.font = [UIFont systemFontOfSize:13] ;
-    psdname.textColor = [UIColor colorWithHexString:@"999999"] ;
-    [self.view addSubview:psdname];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
     
-    _goodTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, psdname.bottom + 10 , kScreen_Width, kScreen_Height - 20 - 44 - psdname.bottom - 10)];
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor], UITextAttributeTextColor,nil];
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    [self setBackBottmAndTitle];
+
+    
+    _goodTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0 , kScreen_Width, kScreen_Height)];
     _goodTableView.delegate = self ;
     _goodTableView.dataSource = self;
-//    _goodTableView.scrollEnabled = NO ;
     _goodTableView.backgroundColor = [UIColor clearColor];
     _goodTableView.separatorStyle = NO ;
     [self.view addSubview:_goodTableView];

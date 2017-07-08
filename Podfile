@@ -13,4 +13,8 @@ target 'FBLeague' do
 	pod 'MBProgressHUD'
 	pod 'QMUIKit'
 	pod "RTRootNavigationController"
+	pod 'RadioButton'
+	pod "JYSlideSegmentController"
+	pod 'SDWebImage'
 end
+

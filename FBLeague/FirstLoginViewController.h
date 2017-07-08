@@ -7,7 +7,7 @@
 //
 
 #import <QMUIKit/QMUIKit.h>
-
+#import "RegisterViewController.h"
 @interface FirstLoginViewController : QMUICommonViewController
 
 @end

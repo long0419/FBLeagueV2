@@ -54,8 +54,8 @@
     right.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
     [right setImage:UIImageMake(@"注册") forState:UIControlStateNormal];
     right.titleLabel.font = UIFontMake(11);
+    [right addTarget:self action:@selector(registerAction) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:right];
-    
     
     [bg mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.view);
@@ -64,22 +64,22 @@
     [imagePositionButton1 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-16);
         make.top.mas_equalTo(76/2);
-        make.width.mas_equalTo(100);
-        make.height.mas_equalTo(35);
+        make.width.mas_equalTo(SYRealValue(100));
+        make.height.mas_equalTo(SYRealValue(35));
     }];
     
     [left mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(30);
         make.bottom.mas_equalTo(-82/2);
-        make.height.mas_equalTo(30);
-        make.width.mas_equalTo(105);
+        make.height.mas_equalTo(SYRealValue(30));
+        make.width.mas_equalTo(SYRealValue(105));
     }];
     
     [right mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-30);
         make.bottom.mas_equalTo(-82/2);
-        make.height.mas_equalTo(30);
-        make.width.mas_equalTo(105);
+        make.height.mas_equalTo(SYRealValue(30));
+        make.width.mas_equalTo(SYRealValue(105));
     }] ;
 
     
@@ -99,4 +99,11 @@
     LoginViewController *lvc = [[LoginViewController alloc] init];
     [self.navigationController pushViewController:lvc animated:YES];
 }
+
+-(void)registerAction{
+    RegisterViewController *rvc = [[RegisterViewController alloc] init];
+    rvc.from = @"1" ;
+    [self.navigationController pushViewController:rvc animated:YES];
+}
+
 @end

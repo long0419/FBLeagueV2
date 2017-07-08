@@ -17,7 +17,6 @@
 #import "QDTabBarViewController.h"
 #import "QDNavigationController.h"
 #import "FirstLoginViewController.h"
-#import "RTRootNavigationController.h"
 
 @interface AppDelegate ()
 

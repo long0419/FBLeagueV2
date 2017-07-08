@@ -9,7 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "WPAutoSpringTextViewController.h"
-@interface RegisterViewController : WPAutoSpringTextViewController<UITextFieldDelegate>
+#import "ZLVerifyCodeButton.h"
+
+@interface RegisterViewController : BaseViewController <UITextFieldDelegate , UIImagePickerControllerDelegate , UIActionSheetDelegate>
+
 
 @property (nonatomic , strong) NSString *phoneNum ;
 @property (nonatomic , strong) NSString *nickname ;

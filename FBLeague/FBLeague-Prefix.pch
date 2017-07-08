@@ -29,6 +29,7 @@
 #define SCREEN_SCALE                    [[UIScreen mainScreen] bounds].size.width/320.0
 #define SystemFontOfSize(s)             [UIFont systemFontOfSize:(s*RATE_6_TO_6P)]
 #define SystemBoldFontOfSize(s)         [UIFont boldSystemFontOfSize:(s*RATE_6_TO_6P)]
+#define SYRealValue(value) ((value)/414.0f*[UIScreen mainScreen].bounds.size.width)
 
 
 #define DEFAULT_SEPERATOR_BLOCK_HEGHT   20
@@ -87,5 +88,7 @@
 #import "QDCommonUI.h"
 #import <QMUIKit/QMUIKit.h>
 #import <Masonry.h>
+#import "RTRootNavigationController.h"
+#import "UIImageView+WebCache.h"
 
 #endif /* CarManager_Prefix_pch */

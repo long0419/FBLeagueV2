@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "CityVo.h"
-#import "CreateClueViewController.h"
+#import "ChooseSectionViewController.h"
+
 @interface ChooseCityViewController : BaseViewController<UIAlertViewDelegate,UITableViewDelegate , UITableViewDataSource>
 
 @property (nonatomic , strong) NSString *code ;

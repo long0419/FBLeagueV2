@@ -8,7 +8,7 @@
 
 #import "ChooseCityViewController.h"
 #import "ProvinceVo.h"
-#import "VerifyCodeView2ViewController.h"
+#import "PersonInfoViewController.h"
 
 @interface ChooseCityViewController (){
     NSMutableArray *kouList ;
@@ -28,22 +28,18 @@
     kouList = [[NSMutableArray alloc] init] ;
     
     self.title = @"选择城市" ;
-    self.view.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"] ;
+    self.view.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
     
-    CGSize psdSize = [NSString getStringContentSizeWithFontSize:13 andContent:@"全部"] ;
-    UILabel *psdname = [[UILabel alloc] initWithFrame:CGRectMake(15 , 10 , psdSize.width, psdSize.height)] ;
-    psdname.text = @"全部" ;
-    psdname.font = [UIFont systemFontOfSize:13] ;
-    psdname.textColor = [UIColor colorWithHexString:@"999999"] ;
-    [self.view addSubview:psdname];
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor], UITextAttributeTextColor,nil];
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    [self setBackBottmAndTitle];
+    
     
     [self setRightBottom];
 
-    
-    _goodTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, psdname.bottom + 10 , kScreen_Width, kScreen_Height - 20 - 44 - psdname.bottom - 10)];
+    _goodTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0 , kScreen_Width, kScreen_Height)];
     _goodTableView.delegate = self ;
     _goodTableView.dataSource = self;
-    //    _goodTableView.scrollEnabled = NO ;
     _goodTableView.backgroundColor = [UIColor clearColor];
     _goodTableView.separatorStyle = NO ;
     [self.view addSubview:_goodTableView];
@@ -59,7 +55,7 @@
     [sender setTitle:@"确定" forState:UIControlStateNormal];
     sender.titleLabel.font = [UIFont systemFontOfSize: 15];
     sender.titleLabel.alpha = 1 ;
-    [sender setTitleColor:[UIColor colorWithHexString:@"ffffff"]forState:UIControlStateNormal];
+    [sender setTitleColor:[UIColor colorWithHexString:@"000000"]forState:UIControlStateNormal];
     [sender addTarget:self action: @selector(send)
      forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:sender];
@@ -67,30 +63,21 @@
 }
 
 -(void)send{
-    if (_isfrom) {
-        CreateClueViewController *club = [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-3];
-        club.areaStr = chooseProAndCity ;
-        [self.navigationController popToViewController:club animated:true];
-    }else{
-        VerifyCodeView2ViewController *verifyCode2 =
-        [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count- 3];
-        verifyCode2.areaStr = chooseProAndCity ;
-        verifyCode2.areaCodeStr = proCityCode ;
-        [self.navigationController popToViewController:verifyCode2 animated:YES];
-    }
-    
-   
-    
+    RTContainerController *verifyCode2 =
+    [self.rt_navigationController.viewControllers objectAtIndex:self.rt_navigationController.viewControllers.count - 3];
+    PersonInfoViewController *info = verifyCode2.contentViewController ;
+    info.areaStr = chooseProAndCity ;
+    info.areaCodeStr = proCityCode ;
+    [self.rt_navigationController popToViewController:info animated:YES];
 }
 
 -(void)getNeedDatas{
     self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     APIClient *client = [APIClient sharedJsonClient];
-//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_code , @"provinceCode" , nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_code , @"provinceCode" , nil];
     
-    NSString *url = [NSString stringWithFormat:@"%@?provinceCode=%@" , getCities , _code] ;
-    [client requestJsonDataWithPath:url withParams:nil withMethodType:Post andBlock:^(id data, NSError *error) {
+    [client requestJsonDataWithPath:getCities withParams:params withMethodType:Post andBlock:^(id data, NSError *error) {
         if([data[@"code"] isEqualToString:@"0000"]){
             NSDictionary *list = data[@"cities"];
             CityVo *model = nil ;
