@@ -77,10 +77,9 @@
 -(void)getNeedDatas{
     self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    APIClient *client = [APIClient sharedJsonClient];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_code , @"cityCode" , nil];
     
-    [client requestJsonDataWithPath:getAreas withParams:params withMethodType:Post andBlock:^(id data, NSError *error) {
+    [PPNetworkHelper POST:getAreas parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
             NSDictionary *list = data[@"cities"];
             CityVo *model = nil ;
@@ -103,7 +102,10 @@
             self.HUD.labelText = @"系统错误";
             [self.HUD hide:YES afterDelay:3];
         }
+    } failure:^(NSError *error) {
+        
     }];
+    
     [self closeProgressView];
     
 }

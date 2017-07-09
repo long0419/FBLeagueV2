@@ -260,23 +260,24 @@
 }
 
 -(void)loginRequest :(NSString *)name withPws :(NSString *) password{
-    APIClient *client = [APIClient sharedJsonClient];
+
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:name , @"mobile" ,password, @"password" , nil];
-    [client requestJsonDataWithPath:login withParams:params withMethodType:Post andBlock:^(id data, NSError *error) {
-        if([data[@"code"] isEqualToString:@"0000"]){
+    
+    [PPNetworkHelper POST:login parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
             
             UserDataVo *user = [UserDataVo new];
-            user.rongyun_token = data[@"rongyun_token"] ;
-            user.token = data[@"token"] ;
-
-            user.pwd = data[@"user"][@"pwd"] ;
-            user.phone = data[@"user"][@"phone"];
-            user.role = data[@"user"][@"role"];
-            user.realname = data[@"user"][@"realname"];
-            user.level = data[@"user"][@"level"];
-            user.club = data[@"user"][@"club"];
-            user.headpicurl = data[@"user"][@"headpicurl"];
-            user.hasAuth = data[@"hasAuth"] ;
+            user.rongyun_token = object[@"rongyun_token"] ;
+            user.token = object[@"token"] ;
+            
+            user.pwd = object[@"user"][@"pwd"] ;
+            user.phone = object[@"user"][@"phone"];
+            user.role = object[@"user"][@"role"];
+            user.realname = object[@"user"][@"realname"];
+            user.level = object[@"user"][@"level"];
+            user.club = object[@"user"][@"club"];
+            user.headpicurl = object[@"user"][@"headpicurl"];
+            user.hasAuth = object[@"hasAuth"] ;
             NSData *data = [NSKeyedArchiver archivedDataWithRootObject:user];
             
             UserDefaultSet(@"userData" , data);
@@ -285,12 +286,15 @@
         }else{
             self.HUD.mode = MBProgressHUDModeText;
             self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = data[@"message"];
+            self.HUD.labelText = object[@"message"];
             [self.HUD hide:YES afterDelay:3];
         }
         
         [self closeProgressView];
+    } failure:^(NSError *error) {
+        
     }];
+    
 }
 
 

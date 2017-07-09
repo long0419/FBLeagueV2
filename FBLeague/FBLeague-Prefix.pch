@@ -78,9 +78,9 @@
 #define JPUSHKEY @"e3058930fdab0cd794d33d1c"
 #define WXAPPID  @"wx52a26c285729e9c5"
 #define AppSecret @"4fdb48acfa4b45bbbb24064b253cb7e6"
+#define apikey  @"82428a4618b6aa313be6914d727cb9b7"
 
 #import "UIColor+Expanded.h"
-#import "APIClient.h"
 #import "NSString+Common.h"
 #import "UIColor+Expanded.h"
 #import "UIView+Addition.h"
@@ -90,5 +90,6 @@
 #import <Masonry.h>
 #import "RTRootNavigationController.h"
 #import "UIImageView+WebCache.h"
+#import "PPNetworkHelper.h"
 
 #endif /* CarManager_Prefix_pch */

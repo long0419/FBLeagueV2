@@ -155,7 +155,6 @@
 
 -(void)codeBtnVerification{
     self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    APIClient *client = [APIClient sharedJsonClient];
     
     if ([@"" isEqualToString:tf.text]|| nil == tf.text) {
         self.HUD.mode = MBProgressHUDModeText;
@@ -168,14 +167,19 @@
     [codeBtn timeFailBeginFrom:60];  // 倒计时60s
     valiCode = [NSString getAuthcode];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:tf.text , @"phone" , valiCode , @"valiCode" , nil];
-    [client requestJsonDataWithPath:sms withParams:params withMethodType:Post andBlock:^(id data, NSError *error) {
+    
+    [PPNetworkHelper POST:sms parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
             [button setUserInteractionEnabled:YES];
             [self closeProgressView];
         }else if ([data[@"code"] isEqualToString:@"1"]) {
             [codeBtn timeFailBeginFrom:1];
         }
+
+    } failure:^(NSError *error) {
+        
     }];
+    
 }
 
 

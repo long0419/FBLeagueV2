@@ -274,7 +274,6 @@
         return ;
     }
 
-    APIClient *client = [APIClient sharedJsonClient];
     NSArray *areas = [_areaCodeStr componentsSeparatedByString:@" "];
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -288,7 +287,7 @@
                             @"10001" , @"areacode" ,
                             url , @"headpicurl" , nil];
     
-    [client requestJsonDataWithPath:registerUser withParams:params withMethodType:Post andBlock:^(id data, NSError *error) {
+    [PPNetworkHelper POST:registerUser parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
             UserDataVo *uvo = [UserDataVo new];
             uvo.nickname = tf.text ;
@@ -297,13 +296,14 @@
             NSData *data = [NSKeyedArchiver archivedDataWithRootObject:uvo];
             UserDefaultSet(@"userData" , data);
             [[NSNotificationCenter defaultCenter] postNotificationName:@"verifyLoginStatus" object:self];
-            
-            [self closeProgressView];
         }
         
         [self closeProgressView];
+        
+    } failure:^(NSError *error) {
+        
     }];
-
+        
 }
 
 -(void) onRadioButtonValueChanged:(RadioButton*)sender
@@ -393,15 +393,18 @@
     NSData *datas = UIImageJPEGRepresentation(image, 0.4);
     NSString *_encodedImageStr = [datas base64Encoding];
     
-    APIClient *client = [APIClient sharedJsonClient];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_encodedImageStr , @"base64file" , nil];
-    [client requestJsonDataWithPath:uploadPic withParams:params withMethodType:Post andBlock:^(id data, NSError *error) {
+    
+    [PPNetworkHelper POST:uploadPic parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
             url = data[@"URL"] ;
             [bgImg  sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil];
         }
         [self closeProgressView];
+    } failure:^(NSError *error) {
+        
     }];
+    
 }
 
 

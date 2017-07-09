@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DFTimelineView.h"
 
-@interface DongtaiViewController : UIViewController
+@interface DongtaiViewController : DFTimeLineViewController
 
 @end

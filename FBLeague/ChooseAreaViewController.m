@@ -45,9 +45,7 @@
 -(void)getNeedDatas{
     self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    APIClient *client = [APIClient sharedJsonClient];
-
-    [client requestJsonDataWithPath:getProvinces withParams:nil withMethodType:Post andBlock:^(id data, NSError *error) {
+    [PPNetworkHelper POST:getProvinces parameters:nil success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
             NSDictionary *list = data[@"provinces"];
             ProvinceVo *model = nil ;
@@ -56,13 +54,10 @@
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
                     model = [ProvinceVo new];
-//                    if (![dic[@"name"] isEqualToString:@""]) {
-                        model.code = [NSString stringWithFormat:@"%@" , dic[@"code"]] ;
-                        model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]] ;
-                        model.pid = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
-                        [kouList addObject:model];
-
-//                    }
+                    model.code = [NSString stringWithFormat:@"%@" , dic[@"code"]] ;
+                    model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]] ;
+                    model.pid = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
+                    [kouList addObject:model];
                 }
             }
             [_goodTableView reloadData];
@@ -72,7 +67,11 @@
             self.HUD.labelText = @"系统错误";
             [self.HUD hide:YES afterDelay:3];
         }
+    } failure:^(NSError *error) {
+        
     }];
+    
+ 
     [self closeProgressView];
 
 }

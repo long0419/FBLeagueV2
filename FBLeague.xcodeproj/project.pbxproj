@@ -55,8 +55,6 @@
 		FDAA38311DD2BE1F0038658F /* QuanziViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA382B1DD2BE1F0038658F /* QuanziViewController.m */; };
 		FDAA38321DD2BE1F0038658F /* JulebuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA382D1DD2BE1F0038658F /* JulebuViewController.m */; };
 		FDAA38331DD2BE1F0038658F /* MeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA382F1DD2BE1F0038658F /* MeViewController.m */; };
-		FDAA38791DD2BF3D0038658F /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA384A1DD2BF3D0038658F /* APIClient.m */; };
-		FDAA387A1DD2BF3D0038658F /* APIClientManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA384C1DD2BF3D0038658F /* APIClientManager.m */; };
 		FDD24CC21F0BECF900DA16FC /* ChooseAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD24CBF1F0BECF900DA16FC /* ChooseAreaViewController.m */; };
 		FDD24CC31F0BECF900DA16FC /* ChooseCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD24CC11F0BECF900DA16FC /* ChooseCityViewController.m */; };
 		FDD24CC61F0BEDF800DA16FC /* CityVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD24CC51F0BEDF800DA16FC /* CityVo.m */; };
@@ -186,10 +184,6 @@
 		FDAA382D1DD2BE1F0038658F /* JulebuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JulebuViewController.m; sourceTree = "<group>"; };
 		FDAA382E1DD2BE1F0038658F /* MeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeViewController.h; sourceTree = "<group>"; };
 		FDAA382F1DD2BE1F0038658F /* MeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeViewController.m; sourceTree = "<group>"; };
-		FDAA38491DD2BF3D0038658F /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
-		FDAA384A1DD2BF3D0038658F /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
-		FDAA384B1DD2BF3D0038658F /* APIClientManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClientManager.h; sourceTree = "<group>"; };
-		FDAA384C1DD2BF3D0038658F /* APIClientManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClientManager.m; sourceTree = "<group>"; };
 		FDD24CBE1F0BECF900DA16FC /* ChooseAreaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAreaViewController.h; sourceTree = "<group>"; };
 		FDD24CBF1F0BECF900DA16FC /* ChooseAreaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAreaViewController.m; sourceTree = "<group>"; };
 		FDD24CC01F0BECF900DA16FC /* ChooseCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCityViewController.h; sourceTree = "<group>"; };
@@ -595,22 +589,10 @@
 				FD1F2C491F048DA600063765 /* QMUIConfigurationTemplate */,
 				FDA116671F01FC67007F253C /* GTMBase64-master */,
 				FDA572A51F035A780072DF95 /* MBProgressHUD */,
-				FDAA38481DD2BF3D0038658F /* Manager */,
 				FDAA38621DD2BF3D0038658F /* QHNavSliderMenuView */,
 				FDAA386F1DD2BF3D0038658F /* SVPTRView */,
 			);
 			path = Vendors;
-			sourceTree = "<group>";
-		};
-		FDAA38481DD2BF3D0038658F /* Manager */ = {
-			isa = PBXGroup;
-			children = (
-				FDAA38491DD2BF3D0038658F /* APIClient.h */,
-				FDAA384A1DD2BF3D0038658F /* APIClient.m */,
-				FDAA384B1DD2BF3D0038658F /* APIClientManager.h */,
-				FDAA384C1DD2BF3D0038658F /* APIClientManager.m */,
-			);
-			path = Manager;
 			sourceTree = "<group>";
 		};
 		FDAA38621DD2BF3D0038658F /* QHNavSliderMenuView */ = {
@@ -842,8 +824,42 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-FBLeague/Pods-FBLeague-resources.sh",
+				"${PODS_ROOT}/DFCommon/DFCommon/DFCommon/Resource/back-arrow@2x.png",
+				"${PODS_ROOT}/DFCommon/DFCommon/DFCommon/Resource/back-arrow@3x.png",
+				"${PODS_ROOT}/DFCommon/DFCommon/DFCommon/Resource/check_success@2x.png",
+				"${PODS_ROOT}/DFCommon/DFCommon/DFCommon/Resource/check_success@3x.png",
+				"${PODS_ROOT}/DFCommon/DFCommon/DFCommon/Resource/Expression.plist",
+				"${PODS_ROOT}/DFCommon/DFCommon/DFCommon/Resource/fail@2x.png",
+				"${PODS_ROOT}/DFCommon/DFCommon/DFCommon/Resource/fail@3x.png",
+				"${PODS_ROOT}/DFCommon/DFCommon/DFCommon/Resource/press_btn_green@2x.png",
+				"${PODS_ROOT}/DFCommon/DFCommon/DFCommon/Resource/press_btn_green@3x.png",
+				"${PODS_ROOT}/DFCommon/DFCommon/DFCommon/Resource/refresh@2x.png",
+				"${PODS_ROOT}/DFCommon/DFCommon/DFCommon/Resource/refresh@3x.png",
+				"${PODS_ROOT}/DFCommon/DFCommon/DFCommon/Resource/success@2x.png",
+				"${PODS_ROOT}/DFCommon/DFCommon/DFCommon/Resource/success@3x.png",
+				"${PODS_ROOT}/DFCommon/DFCommon/DFCommon/Resource/ClippedExpression.bundle",
+				"${PODS_ROOT}/DFTimelineView/DFTimelineView/DFTimelineView/Resource/AlbumAddBtn@2x.png",
+				"${PODS_ROOT}/DFTimelineView/DFTimelineView/DFTimelineView/Resource/AlbumComment@2x.png",
+				"${PODS_ROOT}/DFTimelineView/DFTimelineView/DFTimelineView/Resource/AlbumComment@3x.png",
+				"${PODS_ROOT}/DFTimelineView/DFTimelineView/DFTimelineView/Resource/AlbumLike@2x.png",
+				"${PODS_ROOT}/DFTimelineView/DFTimelineView/DFTimelineView/Resource/AlbumLike@3x.png",
+				"${PODS_ROOT}/DFTimelineView/DFTimelineView/DFTimelineView/Resource/AlbumOperateMore@2x.png",
+				"${PODS_ROOT}/DFTimelineView/DFTimelineView/DFTimelineView/Resource/AlbumOperateMore@3x.png",
+				"${PODS_ROOT}/DFTimelineView/DFTimelineView/DFTimelineView/Resource/AlbumOperateMoreHL@2x.png",
+				"${PODS_ROOT}/DFTimelineView/DFTimelineView/DFTimelineView/Resource/AlbumOperateMoreHL@3x.png",
+				"${PODS_ROOT}/DFTimelineView/DFTimelineView/DFTimelineView/Resource/AlbumOperateMoreViewBkg@2x.png",
+				"${PODS_ROOT}/DFTimelineView/DFTimelineView/DFTimelineView/Resource/Camera@2x.png",
+				"${PODS_ROOT}/DFTimelineView/DFTimelineView/DFTimelineView/Resource/Camera@3x.png",
+				"${PODS_ROOT}/DFTimelineView/DFTimelineView/DFTimelineView/Resource/Like@2x.png",
+				"${PODS_ROOT}/DFTimelineView/DFTimelineView/DFTimelineView/Resource/Like@3x.png",
+				"${PODS_ROOT}/DFTimelineView/DFTimelineView/DFTimelineView/Resource/LikeCmtBg@2x.png",
+				"${PODS_ROOT}/DFTimelineView/DFTimelineView/DFTimelineView/Resource/LikeCmtBg@3x.png",
+				"${PODS_ROOT}/MJPhotoBrowser/MJPhotoBrowser/MJPhotoBrowser/MJPhotoBrowser.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/QMUIKit/QMUIKit/UIResources/QMUIResources.bundle",
 				"${PODS_ROOT}/QMUIKit/QMUIKit/UIResources/QMUI_QQEmotion.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
@@ -932,7 +948,6 @@
 				FDFAE5E81F10C8C5008DF0BB /* ChooseSectionViewController.m in Sources */,
 				FDAA38201DD2BDA40038658F /* UILabel+Common.m in Sources */,
 				FDF3D4401F0B9AF0003CAF5A /* VerifyPswViewController.m in Sources */,
-				FDAA387A1DD2BF3D0038658F /* APIClientManager.m in Sources */,
 				FDAA38171DD2BDA40038658F /* CommonFunc.m in Sources */,
 				FD979CC91F09473700F5BFBB /* LoginViewController.m in Sources */,
 				FDF3D4431F0B9DCC003CAF5A /* PersonInfoViewController.m in Sources */,
@@ -940,7 +955,6 @@
 				FD1F2C4C1F048DA600063765 /* QMUIConfigurationTemplate.m in Sources */,
 				FD1F2C6B1F0490EC00063765 /* QDTabBarViewController.m in Sources */,
 				FDAA38301DD2BE1F0038658F /* LianmengViewController.m in Sources */,
-				FDAA38791DD2BF3D0038658F /* APIClient.m in Sources */,
 				FDD24CC31F0BECF900DA16FC /* ChooseCityViewController.m in Sources */,
 				FDA8EE5D1F07F3B800F3A01A /* UserDataVo.m in Sources */,
 				FDF3D43D1F0B981D003CAF5A /* ZLVerifyCodeButton.m in Sources */,
