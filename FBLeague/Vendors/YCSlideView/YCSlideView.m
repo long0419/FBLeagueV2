@@ -119,7 +119,7 @@
     
 }
  
-        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,KTopViewHight - 1 , kWindowWidth, .5)];
+        UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0,KTopViewHight - 1 , kWindowWidth, .3)];
     
         lineView.backgroundColor =[UIColor colorWithHexString:@"a7a7a7"];
     
