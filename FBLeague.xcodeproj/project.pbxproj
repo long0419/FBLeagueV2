@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		946F75D7C259E490C6FE67F2 /* libPods-FBLeague.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D654840A8FAB860BDF22C51 /* libPods-FBLeague.a */; };
 		FD1F2C4C1F048DA600063765 /* QMUIConfigurationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C4B1F048DA600063765 /* QMUIConfigurationTemplate.m */; };
 		FD1F2C531F0490DF00063765 /* QDCommonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C4E1F0490DF00063765 /* QDCommonUI.m */; };
 		FD1F2C541F0490DF00063765 /* QDUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C501F0490DF00063765 /* QDUIHelper.m */; };
@@ -20,6 +19,7 @@
 		FD1F2C6A1F0490EC00063765 /* QDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C621F0490EC00063765 /* QDNavigationController.m */; };
 		FD1F2C6B1F0490EC00063765 /* QDTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C641F0490EC00063765 /* QDTabBarViewController.m */; };
 		FD1F2C6E1F04B91700063765 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD1F2C6D1F04B91700063765 /* LaunchScreen.xib */; };
+		FD20D7B81F12731000DDDA86 /* libPods-FBLeague.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D654840A8FAB860BDF22C51 /* libPods-FBLeague.a */; };
 		FD76CB3E1F0B87AE0047C0FE /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76CB391F0B87AE0047C0FE /* RegisterViewController.m */; };
 		FD979CC51F0945B900F5BFBB /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = FD979CBE1F0945B900F5BFBB /* UIResponder+FirstResponder.m */; };
 		FD979CC61F0945B900F5BFBB /* WPAutoSpringTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD979CC41F0945B900F5BFBB /* WPAutoSpringTextViewController.m */; };
@@ -28,7 +28,6 @@
 		FDA1166D1F01FC67007F253C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FDA1166B1F01FC67007F253C /* README.md */; };
 		FDA572AA1F035A780072DF95 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FDA572A61F035A780072DF95 /* LICENSE */; };
 		FDA572AB1F035A780072DF95 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA572A81F035A780072DF95 /* MBProgressHUD+Add.m */; };
-		FDA572AC1F035A780072DF95 /* README.mdown in Sources */ = {isa = PBXBuildFile; fileRef = FDA572A91F035A780072DF95 /* README.mdown */; };
 		FDA8EE591F07F21B00F3A01A /* FirstLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA8EE581F07F21B00F3A01A /* FirstLoginViewController.m */; };
 		FDA8EE5D1F07F3B800F3A01A /* UserDataVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA8EE5C1F07F3B800F3A01A /* UserDataVo.m */; };
 		FDAA37981DD2BCF80038658F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37971DD2BCF80038658F /* main.m */; };
@@ -218,7 +217,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				946F75D7C259E490C6FE67F2 /* libPods-FBLeague.a in Frameworks */,
+				FD20D7B81F12731000DDDA86 /* libPods-FBLeague.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,12 +750,12 @@
 				TargetAttributes = {
 					FDAA37921DD2BCF80038658F = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 4572KNR484;
+						DevelopmentTeam = XYUANU952P;
 						ProvisioningStyle = Automatic;
 					};
 					FDAA37AB1DD2BCF90038658F = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 4572KNR484;
+						DevelopmentTeam = XYUANU952P;
 						ProvisioningStyle = Automatic;
 						TestTargetID = FDAA37921DD2BCF80038658F;
 					};
@@ -935,7 +934,6 @@
 				FD1F2C691F0490EC00063765 /* QDCommonViewController.m in Sources */,
 				FDAA38181DD2BDA40038658F /* MWLocalDataTool.m in Sources */,
 				FDA8EE591F07F21B00F3A01A /* FirstLoginViewController.m in Sources */,
-				FDA572AC1F035A780072DF95 /* README.mdown in Sources */,
 				FDAA379B1DD2BCF80038658F /* AppDelegate.m in Sources */,
 				FDD24CC61F0BEDF800DA16FC /* CityVo.m in Sources */,
 				FDAA381F1DD2BDA40038658F /* UIImage+SCImage.m in Sources */,
@@ -1105,7 +1103,8 @@
 			baseConfigurationReference = 93675E447FFAF16F47BF4878 /* Pods-FBLeague.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4572KNR484;
+				DEVELOPMENT_TEAM = XYUANU952P;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/FBLeague/FBLeague-Prefix.pch";
 				INFOPLIST_FILE = FBLeague/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1114,6 +1113,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/FBLeague/Vendors/JPush",
 				);
+				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FBLeague;
 				PRODUCT_NAME = "咖盟";
 			};
@@ -1124,7 +1124,8 @@
 			baseConfigurationReference = 32620ACCF1BDE2BDA488716C /* Pods-FBLeague.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 4572KNR484;
+				DEVELOPMENT_TEAM = XYUANU952P;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/FBLeague/FBLeague-Prefix.pch";
 				INFOPLIST_FILE = FBLeague/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1133,6 +1134,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/FBLeague/Vendors/JPush",
 				);
+				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FBLeague;
 				PRODUCT_NAME = "咖盟";
 			};
@@ -1141,26 +1143,24 @@
 		FDAA37C41DD2BCF90038658F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 4572KNR484;
+				DEVELOPMENT_TEAM = XYUANU952P;
 				INFOPLIST_FILE = FBLeagueTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FBLeagueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FBLeague.app/FBLeague";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/咖盟.app/咖盟";
 			};
 			name = Debug;
 		};
 		FDAA37C51DD2BCF90038658F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 4572KNR484;
+				DEVELOPMENT_TEAM = XYUANU952P;
 				INFOPLIST_FILE = FBLeagueTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FBLeagueTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FBLeague.app/FBLeague";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/咖盟.app/咖盟";
 			};
 			name = Release;
 		};

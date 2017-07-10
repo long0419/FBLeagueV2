@@ -66,7 +66,7 @@
     
     [self initTableView];
     
-    [self initHeader];
+//    [self initHeader];
     
     [self initFooter];
     
@@ -76,7 +76,7 @@
 
 -(void) initTableView
 {
-    _tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 20 - 44 - 98/2) style:UITableViewStylePlain];
     //_tableView.backgroundColor = [UIColor darkGrayColor];
     _tableView.delegate = self;
     _tableView.dataSource = self;
