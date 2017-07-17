@@ -25,10 +25,9 @@
     [self setRightBottom];
     
     JiaoLianViewController *jiaolian = [JiaoLianViewController new] ;
-//    jiaolian.delegate = self ;
     
     DongtaiViewController *dongtai = [DongtaiViewController new] ;
-//    dongtai.delegate = self ;
+    dongtai.delegate =self  ;
     
     FocusViewController *focus = [FocusViewController new];
     
@@ -43,11 +42,65 @@
     UIButton *backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backViewBtn.frame = CGRectMake(0, 0, 22, 17);
     [backViewBtn setImage:[UIImage imageNamed:@"相机2"] forState:UIControlStateNormal];
-    [backViewBtn addTarget:self action: @selector(back)
+    [backViewBtn addTarget:self action: @selector(sendfc:)
           forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
     self.navigationItem.leftBarButtonItem = backItem ;
 }
+
+-(void) sendfc : (id) sender{
+    MMPopupItemHandler block = ^(NSInteger index){
+        switch (index) {
+//            case 0:
+//                [self captureViedo];
+//                break;
+            case 0:
+                [self takePhoto];
+                break;
+            case 1:
+                [self pickFromAlbum];
+                break;
+            default:
+                break;
+        }
+    };
+    
+    NSArray *items = @[
+//                       MMItemMake(@"小视频", MMItemTypeNormal, block),
+                       MMItemMake(@"拍照", MMItemTypeNormal, block),
+                       MMItemMake(@"从相册选取", MMItemTypeNormal, block)];
+    
+    MMSheetView *sheetView = [[MMSheetView alloc] initWithTitle:@"" items:items];
+    
+    [sheetView show];
+
+}
+
+//-(void) captureViedo
+//{
+//    DFVideoCaptureController *controller = [[DFVideoCaptureController alloc] init];
+//    controller.delegate = self;
+//    [self presentViewController:controller animated:YES completion:^{
+//        
+//    }];
+//    
+//}
+
+-(void) takePhoto
+{
+    _pickerController = [[UIImagePickerController alloc] init];
+    _pickerController.delegate = self;
+    _pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:_pickerController animated:YES completion:nil];
+}
+
+-(void) pickFromAlbum
+{
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:9 delegate:self];
+    imagePickerVc.allowPickingVideo = NO;
+    [self presentViewController:imagePickerVc animated:YES completion:nil];
+}
+
 
 - (void)setRightBottom {
     UIButton *backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -59,13 +112,61 @@
     self.navigationItem.rightBarButtonItem = backItem ;
 }
 
--(void) getScrollIndex :(NSInteger) index {
-    
+-(void)goAction{
+//    SearchJiaoLianViewController *search = [SearchJiaoLianViewController new] ;
+//    [self.navigationController pushViewController:search animated:YES];
 }
 
+-(void) getScrollIndex :(NSInteger) index {
+ 
+    
+}
 
 -(void)handleSingleTap{
     
 }
+
+
+#pragma mark - TZImagePickerControllerDelegate
+
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto {
+    NSLog(@"%@", photos);
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        DFImagesSendViewController *controller = [[DFImagesSendViewController alloc] initWithImages:photos];
+        controller.delegate = self;
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+        [self presentViewController:navController animated:YES completion:nil];
+    });
+    
+}
+
+- (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto infos:(NSArray<NSDictionary *> *)infos {
+    
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [_pickerController dismissViewControllerAnimated:YES completion:nil];
+    
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    
+    DFImagesSendViewController *controller = [[DFImagesSendViewController alloc] initWithImages:@[image]];
+    controller.delegate = self;
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self presentViewController:navController animated:YES completion:nil];
+    
+    
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [_pickerController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 
 @end

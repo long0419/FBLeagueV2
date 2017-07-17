@@ -79,6 +79,7 @@
 #define WXAPPID  @"wx52a26c285729e9c5"
 #define AppSecret @"4fdb48acfa4b45bbbb24064b253cb7e6"
 #define apikey  @"82428a4618b6aa313be6914d727cb9b7"
+#define InputViewObserveKeyPath @"inputViewOffsetY"
 
 #import "UIColor+Expanded.h"
 #import "NSString+Common.h"

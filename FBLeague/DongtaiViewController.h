@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "DFTimelineView.h"
+#import "LianmengViewController.h"
+#import "DFImagesSendViewController.h"
+#import "MMSheetView.h"
+#import "TZImagePickerController.h"
+#import "JiaoLianViewController.h"
 
 @interface DongtaiViewController : DFTimeLineViewController
+
+@property (nonatomic , strong) id<goToJiaoLianDetail> delegate ;
 
 @end

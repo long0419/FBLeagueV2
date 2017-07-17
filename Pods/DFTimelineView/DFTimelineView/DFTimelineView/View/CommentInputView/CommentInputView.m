@@ -7,7 +7,7 @@
 //
 
 #import "CommentInputView.h"
-
+#import "UIColor+QMUI.h"
 #define InputViewPadding 8
 #define InputSendButtonWidth 60
 
@@ -107,9 +107,9 @@
         height = InputViewHeight - 2*InputViewPadding;
         
         _sendButton = [[UIButton alloc] initWithFrame:CGRectMake(x, y, width, height)];
-        _sendButton.layer.cornerRadius = 15;
+        _sendButton.layer.cornerRadius = 3;
         _sendButton.clipsToBounds = YES;
-        _sendButton.backgroundColor = SendButtonColor;
+        _sendButton.backgroundColor = [UIColor qmui_colorWithHexString:@"a7a7a7"];
         [_sendButton setTitle:@"发送" forState:UIControlStateNormal];
         [_sendButton addTarget:self action:@selector(onInputSendButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [_inputView addSubview:_sendButton];
@@ -122,16 +122,20 @@
         width = CGRectGetMinX(_sendButton.frame)-2*InputViewPadding;
         
         
-        _inputTextView = [[UITextField alloc] initWithFrame:CGRectMake(x, y, width, height)];
+        _inputTextView = [[UITextField alloc] initWithFrame:CGRectMake(x , y, width, height)];
         [_inputView addSubview:_inputTextView];
-        
         _inputTextView.keyboardType = UIKeyboardTypeDefault;
         _inputTextView.returnKeyType = UIReturnKeySend;
         _inputTextView.layer.borderWidth = 0.5;
-        _inputTextView.layer.cornerRadius = 15;
-        _inputTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        _inputTextView.layer.cornerRadius = 3;
+        _inputTextView.layer.borderColor = [UIColor qmui_colorWithHexString:@"cdcdcd"].CGColor;
+        //让光标右移
+        UILabel * leftView = [[UILabel alloc] initWithFrame:CGRectMake(10,0,7,26)];
+        leftView.backgroundColor = [UIColor clearColor];
+        _inputTextView.leftView = leftView;
+        _inputTextView.leftViewMode = UITextFieldViewModeAlways;
+        _inputTextView.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         _inputTextView.font = [UIFont systemFontOfSize:15];
-        
         _inputTextView.delegate = self;
     }
     
@@ -153,12 +157,7 @@
     
 }
 
-
-
-
-
 #pragma mark - Notification
-
 -(void) addNotify
 
 {
@@ -184,8 +183,7 @@
     _keyboardAnimationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     _keyboardAnimationCurve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
     
-    [self changeInputViewOffsetY:(frame.origin.y - InputViewHeight) ];
-    
+    [self changeInputViewOffsetY:(frame.size.height - InputViewHeight) ];
 }
 
 
@@ -197,7 +195,6 @@
     [self addObserver:self forKeyPath:InputViewObserveKeyPath options:NSKeyValueObservingOptionNew context:nil];
 }
 
-
 -(void) removeObserver
 {
     [self removeObserver:self forKeyPath:InputViewObserveKeyPath];
@@ -207,7 +204,6 @@
 {
     if ([keyPath isEqualToString:InputViewObserveKeyPath]) {
         CGFloat newOffsetY = [[change valueForKey:NSKeyValueChangeNewKey] floatValue];
-        
         [self changeInputViewPosition:newOffsetY];
     }
     
@@ -295,7 +291,6 @@
     [_inputTextView resignFirstResponder];
     _inputTextView.placeholder = @"";
     _inputView.hidden = YES;
-    
     CGFloat offsetY = CGRectGetHeight(self.frame) - InputViewHeight ;
     [self changeInputViewPosition:offsetY];
 }

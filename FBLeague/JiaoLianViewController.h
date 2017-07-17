@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol goToJiaoLianDetail <NSObject>
+
+-(void) gotoDetail : (NSString *)phone ;
+
+@end
+
 @interface JiaoLianViewController : UIViewController
+
+@property(nonatomic,strong)id<goToJiaoLianDetail> delegate;
 
 @end

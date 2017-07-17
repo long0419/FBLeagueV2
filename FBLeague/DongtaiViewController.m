@@ -8,17 +8,27 @@
 
 #import "DongtaiViewController.h"
 
-@interface DongtaiViewController ()
+
+@interface DongtaiViewController (){
+    DongtaiViewController *dongtai ;
+}
 
 @end
 
 @implementation DongtaiViewController
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     [self initData];
-
 }
 
 -(void) initData
@@ -262,9 +272,6 @@
 
 
 
-
-
-
 -(void) refresh
 {
     //下来刷新
@@ -378,7 +385,7 @@
     
     //接着上传图片 和 请求服务器接口
     //请求完成之后 刷新整个界面
-    
 }
+
 
 @end

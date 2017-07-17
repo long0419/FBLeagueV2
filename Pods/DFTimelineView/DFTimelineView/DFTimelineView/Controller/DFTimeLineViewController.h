@@ -37,4 +37,7 @@
 //发送视频消息
 -(void)onSendVideo:(NSString *)text videoPath:(NSString *)videoPath screenShot:(UIImage *) screenShot;
 
+
+- (void) sendFC ;
+
 @end

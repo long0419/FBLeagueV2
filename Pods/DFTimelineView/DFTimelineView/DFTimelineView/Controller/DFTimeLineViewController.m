@@ -79,42 +79,21 @@
     
     [self initCommentInputView];
     
+    [_commentInputView addNotify];
+    
+    [_commentInputView addObserver];
 }
-
-
-
-
-
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    
-    [_commentInputView addNotify];
-    
-    [_commentInputView addObserver];
-    
 }
 
--(void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    
+
+-(void)dealloc{
     [_commentInputView removeNotify];
-    
     [_commentInputView removeObserver];
 }
-
-
-
-
-
-
-
-
-
-
 
 -(void) initCommentInputView
 {
@@ -132,10 +111,7 @@
     
 }
 
-
 #pragma mark - BarButtonItem
-
-
 -(UIBarButtonItem *)rightBarButtonItem
 {
     UIBarButtonItem *item = [UIBarButtonItem icon:@"Camera" selector:@selector(onClickCamera:) target:self];
