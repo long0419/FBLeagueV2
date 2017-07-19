@@ -49,7 +49,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        
+        [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+
         _keyboardAnimationDuration = 0.25;
         _keyboardAnimationCurve = 7;
         
@@ -162,6 +163,8 @@
 
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboradShow:) name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onKeyboradHide) name:UIKeyboardWillHideNotification object:nil];
 }
 
 
@@ -180,13 +183,21 @@
 {
     NSDictionary *info = notify.userInfo;
     CGRect frame = [[info objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    NSLog(@"height %f" , frame.size.height) ;
+    CGFloat height = frame.size.height ;
     _keyboardAnimationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
     _keyboardAnimationCurve = [[info objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
+    NSInteger tmpHeight = 0 ;
+    if (height > 280) {
+        tmpHeight = 50 ;
+    }
     
-    [self changeInputViewOffsetY:(frame.size.height - InputViewHeight) ];
+    [self changeInputViewOffsetY:(frame.size.height - tmpHeight)];
 }
 
-
+-(void)onKeyboradHide {
+    [self hideInputView] ;
+}
 
 #pragma mark - Observer
 
@@ -284,8 +295,6 @@
 
 -(void) hideInputView
 {
-    
-    
     self.hidden = YES;
     
     [_inputTextView resignFirstResponder];
@@ -296,11 +305,8 @@
 }
 
 
-
-
 -(void)show
 {
-    
     _inputView.hidden = NO;
     [_inputTextView becomeFirstResponder];
 }

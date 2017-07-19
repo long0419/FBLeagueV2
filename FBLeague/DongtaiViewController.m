@@ -222,9 +222,6 @@
     commentItem3_1.text = @"神探是我";
     [textImageItem3.comments addObject:commentItem3_1];
     
-    
-    
-    
     [self addItem:textImageItem3];
     
     
