@@ -89,7 +89,9 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     
-    UserDataVo *vo = [[MWLocalDataTool shareInstance] readNSUserDefaultsWithKey:@"userData"];
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *vo = [cache objectForKey:@"userData"];
+    
     if (vo) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"verifyLoginStatus" object:self];
     }

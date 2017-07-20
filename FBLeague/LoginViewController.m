@@ -10,6 +10,7 @@
 #import "DSLLoginTextField.h"
 #import "UserDataVo.h"
 #import "RegisterViewController.h"
+#import "CommonFunc.h"
 
 @interface LoginViewController (){
     DSLLoginTextField *tf ;
@@ -81,7 +82,7 @@
     psw.delegate = self ;
     psw.textAlignment = NSTextAlignmentCenter ;
     psw.secureTextEntry = YES;
-    psw.keyboardType = UIKeyboardTypeNumberPad | UIKeyboardTypeAlphabet ;
+//    psw.keyboardType = UIKeyboardTypeNumberPad | UIKeyboardTypeAlphabet ;
     psw.returnKeyType = UIReturnKeyGo ;
     [self.view addSubview:psw];
     [psw mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -277,10 +278,14 @@
             user.level = object[@"user"][@"level"];
             user.club = object[@"user"][@"club"];
             user.headpicurl = object[@"user"][@"headpicurl"];
-            user.hasAuth = object[@"hasAuth"] ;
-            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:user];
-            
-            UserDefaultSet(@"userData" , data);
+            user.hasAuth = object[@"user"][@"hasAuth"] ;
+            user.hasfocus = object[@"user"][@"hasfocus"] ;
+            user.nickname = [CommonFunc textFromBase64String:object[@"user"][@"nickname"]] ;
+
+            YYCache *cache = [YYCache cacheWithName:@"FB"];
+            [cache removeAllObjects];
+            [cache setObject:user forKey:@"userData"];
+
             [[NSNotificationCenter defaultCenter] postNotificationName:@"verifyLoginStatus" object:self];
             
         }else{

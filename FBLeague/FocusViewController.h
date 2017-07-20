@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SVPullToRefresh.h"
+#import "BaseViewController.h"
+#import "CoachChooseTableViewCell.h"
+#import "BaseTableViewController.h"
+#import "JiaoLianViewController.h"
 
-@interface FocusViewController : UIViewController
+@interface FocusViewController : BaseViewController<UIAlertViewDelegate,UITableViewDelegate , UITableViewDataSource , focusAction>
+
+@property  (nonatomic , strong) UITableView *coachTableView;
+
+@property(nonatomic,strong)NSMutableArray *indexArray;
+
+@property(nonatomic,strong)id<goToJiaoLianDetail> delegate;
+
 
 @end

@@ -14,7 +14,7 @@
 
 @property (nonatomic, assign) CGFloat cellHeight;
 
-@property (nonatomic, assign) NSUInteger userId;
+@property (nonatomic, assign) NSInteger userId;
 @property (nonatomic, strong) NSString *userNick;
 @property (nonatomic, strong) NSString *userAvatar;
 

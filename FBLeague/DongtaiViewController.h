@@ -12,10 +12,9 @@
 #import "DFImagesSendViewController.h"
 #import "MMSheetView.h"
 #import "TZImagePickerController.h"
-#import "JiaoLianViewController.h"
 
 @interface DongtaiViewController : DFTimeLineViewController
 
-@property (nonatomic , strong) id<goToJiaoLianDetail> delegate ;
+- (void) onFCTextImage:(NSString *) text images:(NSArray *)images ;
 
 @end

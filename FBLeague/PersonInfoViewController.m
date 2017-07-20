@@ -10,6 +10,7 @@
 #import "DSLLoginTextField.h"
 #import "RadioButton.h"
 #import "UserDataVo.h"
+#import "CommonFunc.h"
 
 @interface PersonInfoViewController (){
     UIImageView *bgImg ;
@@ -58,6 +59,8 @@
     [self.view addSubview:bgImg];
     [bgImg mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(bgView);
+        make.width.mas_equalTo(156/2);
+        make.height.mas_equalTo(156/2);
     }];
 
     QMUILabel *label1 = [[QMUILabel alloc] init];
@@ -77,6 +80,7 @@
     tf.font=[UIFont systemFontOfSize:14];
     tf.placeholder=@"昵称";
     tf.maxTextLength= 11;
+    tf.returnKeyType = UIReturnKeyGo ;
     tf.textAlignment = NSTextAlignmentCenter ;
     [self.view addSubview:tf];
     [tf mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -92,9 +96,9 @@
     psw.placeholderColor=[UIColor colorWithHexString:@"cdcdcd"];
     psw.font=[UIFont systemFontOfSize:14];
     psw.placeholder=@"选择地区";
-    psw.delegate = self ;
     psw.maxTextLength= 11;
     psw.delegate = self ;
+    psw.tag = 10 ;
     psw.textAlignment = NSTextAlignmentCenter ;
     [self.view addSubview:psw];
     [psw mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -231,7 +235,8 @@
     button.titleLabel.font = UIFontBoldMake(37/2);
     [button setTitleColor:UIColorWhite forState:UIControlStateNormal];
     button.backgroundColor = [UIColor blackColor];
-    button.highlightedBackgroundColor = [UIColor colorWithHexString:@"5a70d6"];    button.layer.cornerRadius = 4;
+    button.highlightedBackgroundColor = [UIColor colorWithHexString:@"5a70d6"];
+    button.layer.cornerRadius = 4;
     [button setTitle:@"完成注册" forState:UIControlStateNormal];
     [button addTarget:self action:@selector(finish) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
@@ -250,9 +255,10 @@
 {
     [textField resignFirstResponder];
     
-    ChooseAreaViewController *area = [[ChooseAreaViewController alloc] init];
-    [self.navigationController pushViewController:area animated:YES];
-    
+    if(textField.tag == 10){
+        ChooseAreaViewController *area = [[ChooseAreaViewController alloc] init];
+        [self.navigationController pushViewController:area animated:YES];
+    }
 }
 
 -(void)finish{
@@ -273,13 +279,15 @@
         [self.HUD hide:YES afterDelay:3];
         return ;
     }
-
+    
+    NSString *nickname = [CommonFunc base64StringFromText:tf.text];
+    
     NSArray *areas = [_areaCodeStr componentsSeparatedByString:@" "];
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             _phoneNum , @"phone" ,
                             _psw , @"pwd",
-                            tf.text , @"realname",
+                            nickname , @"nickname",
                             role , @"role" ,
                             sex , @"sex" ,
                             [areas objectAtIndex:0] , @"provincecode" ,
@@ -293,15 +301,39 @@
             uvo.nickname = tf.text ;
             uvo.phone = _phoneNum ;
             uvo.pwd = _psw ;
-            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:uvo];
-            UserDefaultSet(@"userData" , data);
+            
+            uvo.rongyun_token = data[@"rongyun_token"] ;
+            uvo.token = data[@"token"] ;
+            uvo.pwd = data[@"user"][@"pwd"] ;
+            uvo.phone = data[@"user"][@"phone"];
+            uvo.role = data[@"user"][@"role"];
+            uvo.realname = data[@"user"][@"realname"];
+            uvo.level = data[@"user"][@"level"];
+            uvo.club = data[@"user"][@"club"];
+            uvo.headpicurl = data[@"user"][@"headpicurl"];
+            uvo.hasAuth = data[@"user"][@"hasAuth"] ;
+            uvo.hasfocus = data[@"user"][@"hasfocus"] ;
+            
+            YYCache *cache = [YYCache cacheWithName:@"FB"];
+            [cache setObject:uvo forKey:@"userData"];
+            
             [[NSNotificationCenter defaultCenter] postNotificationName:@"verifyLoginStatus" object:self];
+
+            [self closeProgressView];
+
+        }else if([data[@"code"] isEqualToString:@"0002"]){
+            self.HUD.mode = MBProgressHUDModeText;
+            self.HUD.removeFromSuperViewOnHide = YES;
+            self.HUD.labelText = @"当前用户已经注册,返回登录界面登录";
+            [self.HUD hide:YES afterDelay:6];
+            
+            [NSThread sleepForTimeInterval:6];
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
         }
         
-        [self closeProgressView];
-        
     } failure:^(NSError *error) {
-        
+        NSLog(@"%@" , error) ;
     }];
         
 }

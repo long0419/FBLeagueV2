@@ -21,7 +21,7 @@
 
 @implementation PPNetworkHelper
 
-static BOOL _isOpenLog;   // 是否已开启日志打印
+static BOOL _isOpenLog = true;   // 是否已开启日志打印
 static NSMutableArray *_allSessionTask;
 static AFHTTPSessionManager *_sessionManager;
 

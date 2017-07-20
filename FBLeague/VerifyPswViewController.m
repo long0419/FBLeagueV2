@@ -122,9 +122,11 @@
                 UserDataVo *uvo = [UserDataVo new];
                 uvo.nickname = tf.text ;
                 uvo.phone = _phoneNum ;
-                //                uvo.pwd = _psw ;
-                NSData *data = [NSKeyedArchiver archivedDataWithRootObject:uvo];
-                UserDefaultSet(@"userData" , data);
+//                uvo.pwd = _psw ;
+                
+                YYCache *cache = [YYCache cacheWithName:@"FB"];
+                [cache setObject:uvo forKey:@"userData"];
+
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"verifyLoginStatus" object:self];
                 
                 [self closeProgressView];

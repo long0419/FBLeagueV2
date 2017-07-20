@@ -262,10 +262,10 @@
 -(void) insertItem:(DFBaseLineItem *) item index:(NSUInteger)index
 {
     [self genLikeAttrString:item];
+    
     [self genCommentAttrString:item];
     
     [_items insertObject:item atIndex:index];
-    
     
     [_itemDic setObject:item forKey:[NSNumber numberWithLongLong:item.itemId]];
     

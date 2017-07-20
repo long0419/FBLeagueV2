@@ -1,23 +1,23 @@
 //
-//  BaseViewController.m
-//  CarManager
+//  BaseTableViewController.m
+//  FBLeague
 //
-//  Created by JinXin on 15/12/9.
-//  Copyright © 2015年 droidgle. All rights reserved.
+//  Created by long-laptop on 2017/1/20.
+//  Copyright © 2017年 long-laptop. All rights reserved.
 //
 
-#import "BaseViewController.h"
-#import "GTMBase64.h"
-@interface BaseViewController ()
+#import "BaseTableViewController.h"
+
+@interface BaseTableViewController ()
 
 @end
 
-@implementation BaseViewController
+@implementation BaseTableViewController
 @synthesize HUD;
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-        
+    
     [self refreshStatusBar];
     
 }
@@ -30,7 +30,7 @@
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithHexString:@"ffffff"],NSForegroundColorAttributeName ,[UIFont systemFontOfSize:18] ,NSFontAttributeName ,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     self.view.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
-
+    
     // HUD View
     UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
     HUD = [[MBProgressHUD alloc] initWithWindow:window];
@@ -81,7 +81,7 @@
 -(void)setBackBottmAndTitle{
     UIButton *backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backViewBtn.frame = CGRectMake(0, 0, 17, 17);
-    [backViewBtn setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+    [backViewBtn setImage:[UIImage imageNamed:@"back2"] forState:UIControlStateNormal];
     [backViewBtn addTarget:self action: @selector(back)
           forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
@@ -101,18 +101,31 @@
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
     self.navigationItem.leftBarButtonItem = backItem ;
     
+    //    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] init];
+    //    backItem.title = @"取消";
+    //    self.navigationItem.backBarButtonItem = backItem;
 }
 
 -(void) back{
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+//- (void) showTabBottom {
+//    [[self rdv_tabBarController] setTabBarHidden:NO animated:NO];
+//}
+//
+//- (void) hideTabBottom {
+//    [[self rdv_tabBarController] setTabBarHidden:YES animated:NO];
+//}
+
 - (void) forbiddenGesture {
     self.fd_interactivePopDisabled = YES ;
+    
 }
 
 - (void) goGesture {
     self.fd_interactivePopDisabled = NO ;
+    
 }
 
 #pragma mark- UIGestureRecognizerDelegate
@@ -120,13 +133,27 @@
     return YES;
 }
 
-- (void) showTabBottom {
-    self.tabBarController.tabBar.hidden=NO;
+- (void)configureClearNavBar{
+    
+    if (kHigher_iOS_6_1) {
+        
+        self.automaticallyAdjustsScrollViewInsets = NO;
+        
+        // 透明状态栏的延伸
+        
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        
+        self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
+        
+        [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+        
+    }else{
+        
+        [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+        
+    }
+    
+    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
+    
 }
-
-- (void) hideTabBottom {
-    self.tabBarController.tabBar.hidden=YES;
-}
-
-
 @end

@@ -8,9 +8,9 @@
 
 #import "DongtaiViewController.h"
 
-
 @interface DongtaiViewController (){
     DongtaiViewController *dongtai ;
+    NSString *picUrl ;
 }
 
 @end
@@ -29,6 +29,7 @@
     [super viewDidLoad];
     
     [self initData];
+    
 }
 
 -(void) initData
@@ -128,103 +129,6 @@
     [self addItem:textImageItem];
     
     
-    DFTextImageLineItem *textImageItem2 = [[DFTextImageLineItem alloc] init];
-    textImageItem2.itemId = 2;
-    textImageItem2.userId = 10088;
-    textImageItem2.userAvatar = @"http://file-cdn.datafans.net/avatar/2.jpg";
-    textImageItem2.userNick = @"奥巴马";
-    textImageItem2.title = @"发表了";
-    textImageItem2.text = @"京东JD.COM-专业的综合网上购物商城，销售超数万品牌、4020万种商品，http://jd.com 囊括家电、手机、电脑、服装、图书、母婴、个护、食品、旅游等13大品类。秉承客户为先的理念，京东所售商品为正品行货、全国联保、机打发票。@刘强东";
-    
-    NSMutableArray *srcImages2 = [NSMutableArray array];
-    [srcImages2 addObject:@"http://file-cdn.datafans.net/temp/20.jpg"];
-    [srcImages2 addObject:@"http://file-cdn.datafans.net/temp/21.jpg"];
-    [srcImages2 addObject:@"http://file-cdn.datafans.net/temp/22.jpg"];
-    [srcImages2 addObject:@"http://file-cdn.datafans.net/temp/23.jpg"];
-    textImageItem2.srcImages = srcImages2;
-    
-    
-    NSMutableArray *thumbImages2 = [NSMutableArray array];
-    [thumbImages2 addObject:@"http://file-cdn.datafans.net/temp/20.jpg_160x160.jpeg"];
-    [thumbImages2 addObject:@"http://file-cdn.datafans.net/temp/21.jpg_160x160.jpeg"];
-    [thumbImages2 addObject:@"http://file-cdn.datafans.net/temp/22.jpg_160x160.jpeg"];
-    [thumbImages2 addObject:@"http://file-cdn.datafans.net/temp/23.jpg_160x160.jpeg"];
-    textImageItem2.thumbImages = thumbImages2;
-    
-    
-    NSMutableArray *thumbPreviewImages2 = [NSMutableArray array];
-    [thumbPreviewImages2 addObject:@"http://file-cdn.datafans.net/temp/20.jpg_600x600.jpeg"];
-    [thumbPreviewImages2 addObject:@"http://file-cdn.datafans.net/temp/21.jpg_600x600.jpeg"];
-    [thumbPreviewImages2 addObject:@"http://file-cdn.datafans.net/temp/22.jpg_600x600.jpeg"];
-    [thumbPreviewImages2 addObject:@"http://file-cdn.datafans.net/temp/23.jpg_600x600.jpeg"];
-//    textImageItem2.thumbPreviewImages = thumbPreviewImages2;
-    
-    DFLineLikeItem *likeItem2_1 = [[DFLineLikeItem alloc] init];
-    likeItem2_1.userId = 10086;
-    likeItem2_1.userNick = @"Allen";
-    [textImageItem2.likes addObject:likeItem2_1];
-    
-    
-    DFLineCommentItem *commentItem2_1 = [[DFLineCommentItem alloc] init];
-    commentItem2_1.commentId = 18789;
-    commentItem2_1.userId = 10088;
-    commentItem2_1.userNick = @"奥巴马";
-    commentItem2_1.text = @"欢迎来到美利坚";
-    commentItem2_1.replyUserId = 10086;
-    commentItem2_1.replyUserNick = @"习大大";
-    [textImageItem2.comments addObject:commentItem2_1];
-    
-    DFLineCommentItem *commentItem2_2 = [[DFLineCommentItem alloc] init];
-    commentItem2_2.commentId = 234657;
-    commentItem2_2.userId = 10010;
-    commentItem2_2.userNick = @"神雕侠侣";
-    commentItem2_2.text = @"大家好";
-    [textImageItem2.comments addObject:commentItem2_2];
-    
-    
-    [self addItem:textImageItem2];
-    
-    
-    
-    
-    DFTextImageLineItem *textImageItem3 = [[DFTextImageLineItem alloc] init];
-    textImageItem3.itemId = 3;
-    textImageItem3.userId = 10088;
-    textImageItem3.userAvatar = @"http://file-cdn.datafans.net/avatar/2.jpg";
-    textImageItem3.userNick = @"奥巴马";
-    textImageItem3.title = @"发表了";
-    textImageItem3.text = @"京东JD.COM-专业的综合网上购物商城";
-    
-    NSMutableArray *srcImages3 = [NSMutableArray array];
-    [srcImages3 addObject:@"http://file-cdn.datafans.net/temp/21.jpg"];
-    textImageItem3.srcImages = srcImages3;
-    
-    
-    NSMutableArray *thumbImages3 = [NSMutableArray array];
-    [thumbImages3 addObject:@"http://file-cdn.datafans.net/temp/21.jpg_640x420.jpeg"];
-    textImageItem3.thumbImages = thumbImages3;
-    
-    
-    NSMutableArray *thumbPreviewImages3 = [NSMutableArray array];
-    [thumbPreviewImages3 addObject:@"http://file-cdn.datafans.net/temp/21.jpg_600x600.jpeg"];
-//    textImageItem3.thumbPreviewImages = thumbPreviewImages3;
-    
-    
-    textImageItem3.width = 640;
-    textImageItem3.height = 360;
-    
-    textImageItem3.location = @"广州信息港";
-    
-    DFLineCommentItem *commentItem3_1 = [[DFLineCommentItem alloc] init];
-    commentItem3_1.commentId = 78718789;
-    commentItem3_1.userId = 10010;
-    commentItem3_1.userNick = @"狄仁杰";
-    commentItem3_1.text = @"神探是我";
-    [textImageItem3.comments addObject:commentItem3_1];
-    
-    [self addItem:textImageItem3];
-    
-    
 }
 
 
@@ -250,6 +154,9 @@
     likeItem.userId = 10092;
     likeItem.userNick = @"琅琊榜";
     [self addLikeItem:likeItem itemId:itemId];
+    
+    
+    
     
 }
 
@@ -315,10 +222,7 @@
         textImageItem.width = 640;
         textImageItem.height = 360;
         
-        
-        
-        
-        textImageItem.location = @"广州信息港";
+        //        textImageItem.location = @"广州信息港";
         [self addItem:textImageItem];
         
         [self endLoadMore];
@@ -327,17 +231,21 @@
 
 
 
-//选择照片后得到数据
--(void)onSendTextImage:(NSString *)text images:(NSArray *)images
-{
+#pragma mark - 发送图文消息
+- (void) onFCTextImage:(NSString *) text images:(NSArray *)images{
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *uvo = [cache objectForKey:@"userData"];
+
     DFTextImageLineItem *textImageItem = [[DFTextImageLineItem alloc] init];
     textImageItem.itemId = 10000000; //随便设置一个 待服务器生成
-    textImageItem.userId = 10018;
-    textImageItem.userAvatar = @"http://file-cdn.datafans.net/avatar/1.jpeg";
-    textImageItem.userNick = @"富二代";
-    textImageItem.title = @"发表了";
-    textImageItem.text = text;
+    textImageItem.userId = uvo.phone ;
     
+    NSString *nickname = uvo.nickname ;
+    textImageItem.userAvatar = uvo.headpicurl;
+    textImageItem.userNick = nickname ;
+    textImageItem.title = @"";
+    textImageItem.text = text;
+    textImageItem.ts = [[NSDate date] timeIntervalSince1970]*1000;
     
     NSMutableArray *srcImages = [NSMutableArray array];
     textImageItem.srcImages = srcImages; //大图 可以是本地路径 也可以是网络地址 会自动判断
@@ -345,44 +253,49 @@
     NSMutableArray *thumbImages = [NSMutableArray array];
     textImageItem.thumbImages = thumbImages; //小图 可以是本地路径 也可以是网络地址 会自动判断
     
-    
     for (id img in images) {
         [srcImages addObject:img];
         [thumbImages addObject:img];
     }
-    
-    textImageItem.location = @"广州信息港";
+//    textImageItem.location = @"广州信息港";
     [self addItemTop:textImageItem];
     
-    
+    NSMutableArray *picUrls = [NSMutableArray array];
     //接着上传图片 和 请求服务器接口
-    //请求完成之后 刷新整个界面
+    for (id image in images){
+        NSData *datas = UIImageJPEGRepresentation(image, 0.4);
+        NSString *_encodedImageStr = [datas base64Encoding];
+        [picUrls addObject:_encodedImageStr];
+    }
     
+    if ([srcImages count]>0) {
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:picUrls , @"files" , nil];
+        [PPNetworkHelper POST:uploadPics parameters:params success:^(id object) {
+            if([object[@"code"] isEqualToString:@"0000"]){
+                NSString *url = object[@"URL"] ;
+                
+                //            params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone" , text , @"contents" ,uvo.phone ,@"token" , picUrl ,  @"picurl" , nil];
+                //                [PPNetworkHelper POST:apisave parameters:params success:^(id object) {
+                //                    if([object[@"code"] isEqualToString:@"0000"]){
+                //
+                //
+                //                    }
+                //                } failure:^(NSError *error) {
+                //                }];
+                
+            }
+        } failure:^(NSError *error) {
+        }];
+
+    }else{
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone" , text , @"contents" ,uvo.phone ,@"token" , nil];
+        [PPNetworkHelper POST:apisave parameters:params success:^(id object) {
+            if([object[@"code"] isEqualToString:@"0000"]){
+                
+            }
+        } failure:^(NSError *error) {
+        }];
+    }
+
 }
-
-
-//发送视频 目前没有实现填写文字
--(void)onSendVideo:(NSString *)text videoPath:(NSString *)videoPath screenShot:(UIImage *)screenShot
-{
-    DFVideoLineItem *videoItem = [[DFVideoLineItem alloc] init];
-    videoItem.itemId = 10000000; //随便设置一个 待服务器生成
-    videoItem.userId = 10018;
-    videoItem.userAvatar = @"http://file-cdn.datafans.net/avatar/1.jpeg";
-    videoItem.userNick = @"富二代";
-    videoItem.title = @"发表了";
-    videoItem.text = @"新年过节 哈哈"; //这里需要present一个界面 用户填入文字后再发送 场景和发图片一样
-    videoItem.location = @"广州";
-    
-    videoItem.localVideoPath = videoPath;
-    videoItem.videoUrl = @""; //网络路径
-    videoItem.thumbUrl = @"";
-    videoItem.thumbImage = screenShot; //如果thumbImage存在 优先使用thumbImage
-    
-    [self addItemTop:videoItem];
-    
-    //接着上传图片 和 请求服务器接口
-    //请求完成之后 刷新整个界面
-}
-
-
 @end

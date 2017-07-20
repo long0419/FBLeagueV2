@@ -11,25 +11,37 @@
 #import "FocusViewController.h"
 #import "JiaoLianViewController.h"
 #import "DongtaiViewController.h"
+#import "UserDataVo.h"
+#import "CommonFunc.h"
+#import "SearchJiaoLianViewController.h"
 
-@interface LianmengViewController ()
+@interface LianmengViewController (){
+    DongtaiViewController *dongtai ;
+    FocusViewController *focus ;
+    JiaoLianViewController *jiaolian ;
+}
 
 @end
 
 @implementation LianmengViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+}
+
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     self.title = @"动态" ;
     [self setBackBottmAndTitle];
     [self setRightBottom];
     
-    JiaoLianViewController *jiaolian = [JiaoLianViewController new] ;
+    dongtai = [DongtaiViewController new] ;
     
-    DongtaiViewController *dongtai = [DongtaiViewController new] ;
-    dongtai.delegate =self  ;
+    focus = [FocusViewController new];
     
-    FocusViewController *focus = [FocusViewController new];
+    jiaolian = [JiaoLianViewController new] ;
+    jiaolian.delegate = self ;
+
     
     NSArray *viewControllers = @[@{@"全部动态":dongtai}, @{@"已关注":focus}, @{@"教练员列表":jiaolian}];
     
@@ -76,16 +88,6 @@
 
 }
 
-//-(void) captureViedo
-//{
-//    DFVideoCaptureController *controller = [[DFVideoCaptureController alloc] init];
-//    controller.delegate = self;
-//    [self presentViewController:controller animated:YES completion:^{
-//        
-//    }];
-//    
-//}
-
 -(void) takePhoto
 {
     _pickerController = [[UIImagePickerController alloc] init];
@@ -113,8 +115,9 @@
 }
 
 -(void)goAction{
-//    SearchJiaoLianViewController *search = [SearchJiaoLianViewController new] ;
-//    [self.navigationController pushViewController:search animated:YES];
+    self.hidesBottomBarWhenPushed=YES;
+    SearchJiaoLianViewController *search = [SearchJiaoLianViewController new] ;
+    [self.navigationController pushViewController:search animated:YES];
 }
 
 -(void) getScrollIndex :(NSInteger) index {
@@ -143,7 +146,6 @@
 }
 
 - (void)imagePickerController:(TZImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto infos:(NSArray<NSDictionary *> *)infos {
-    
 }
 
 #pragma mark - UIImagePickerControllerDelegate
@@ -159,12 +161,16 @@
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
     [self presentViewController:navController animated:YES completion:nil];
     
-    
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [_pickerController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - 发送朋友圈结果
+-(void) onSendTextImage:(NSString *) text images:(NSArray *)images{
+    [dongtai onFCTextImage:text images:images];
 }
 
 

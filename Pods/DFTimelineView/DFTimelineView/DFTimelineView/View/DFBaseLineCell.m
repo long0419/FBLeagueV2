@@ -210,8 +210,11 @@
 {
     self.item = item;
     
-    
-    [_userAvatarView sd_setImageWithURL:[NSURL URLWithString:item.userAvatar]];
+    if ([NSNull null] == item.userAvatar || [@"" isEqualToString:item.userAvatar]) {
+        [_userAvatarView setImage:[UIImage imageNamed:@"head"]];
+    }else{
+        [_userAvatarView sd_setImageWithURL:[NSURL URLWithString:item.userAvatar]];
+    }
     
     NSAttributedString *userNick  = [[NSAttributedString alloc] initWithString:item.userNick];
     

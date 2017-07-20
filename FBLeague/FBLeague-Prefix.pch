@@ -47,8 +47,8 @@
 #define DEVICE_IS_IPHONE6               ([[UIScreen mainScreen] bounds].size.height == 667)
 #define DEVICE_IS_IPHONE6Plus           ([[UIScreen mainScreen] bounds].size.height == 736)
 
-#define UserDefaultGet(s)               [[NSUserDefaults standardUserDefaults] objectForKey:s]
-#define UserDefaultSet(k,v)             [[NSUserDefaults standardUserDefaults] setObject:v forKey:k];
+//#define UserDefaultGet(s)               [[NSUserDefaults standardUserDefaults] objectForKey:s]
+//#define UserDefaultSet(k,v)             [[NSUserDefaults standardUserDefaults] setObject:v forKey:k];
 
 //常用变量
 #define DebugLog(s, ...) NSLog(@"%s(%d): %@", __FUNCTION__, __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
@@ -92,5 +92,8 @@
 #import "RTRootNavigationController.h"
 #import "UIImageView+WebCache.h"
 #import "PPNetworkHelper.h"
+#import "APIUrl.h"
+#import "UserDataVo.h"
+#import <YYCache/YYCache.h>
 
 #endif /* CarManager_Prefix_pch */

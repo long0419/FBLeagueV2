@@ -166,6 +166,7 @@
     
     [codeBtn timeFailBeginFrom:60];  // 倒计时60s
     valiCode = [NSString getAuthcode];
+    NSLog(@"valiCode : %@" , valiCode) ;
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:tf.text , @"phone" , valiCode , @"valiCode" , nil];
     
     [PPNetworkHelper POST:sms parameters:params success:^(id data) {
