@@ -15,5 +15,11 @@ target 'FBLeague' do
 	pod 'DFTimelineView'
 	pod 'PPNetworkHelper'
 	pod 'YYCache'
+	pod 'SCLAlertView-Objective-C'
+	pod 'TYMProgressBarView'
+	pod 'RongCloudIM/IMLib'
+    pod 'RongCloudIM/IMKit'
+	pod 'BFPaperCheckbox'
+
 end
 

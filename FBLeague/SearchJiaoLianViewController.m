@@ -11,6 +11,8 @@
 #import "MBProgressHUD.h"
 #import "CoachVo.h"
 #import "CoachChooseTableViewCell.h"
+#import "SearchClubViewController.h"
+#import "SearchCoachViewController.h"
 #import "YCSlideView.h"
 
 @interface SearchJiaoLianViewController (){
@@ -43,13 +45,6 @@
     
     //设置顶部搜索
     [self setHeader];
- 
-    self.soTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 44 + 30 , kScreen_Width, kScreen_Height - (20+44) )];
-    _soTableView.delegate = self ;
-    _soTableView.dataSource = self;
-    _soTableView.backgroundColor = [UIColor clearColor];
-    _soTableView.separatorStyle = NO ;
-    [self.view addSubview:_soTableView];
     
 }
 
@@ -111,6 +106,14 @@
     [searchBar addSubview:srecord];
  
 
+    
+    SearchClubViewController *club = [SearchClubViewController new];
+    SearchCoachViewController *coach = [SearchCoachViewController new];
+    
+    NSArray *viewControllers = @[@{@"俱乐部":club}, @{@"教练员":coach}];
+    
+    view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, headerBar.bottom , kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
+    [self.view addSubview:view];
 }
 
 -(void)search {
@@ -127,7 +130,7 @@
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , soText , @"cityOrArea" , nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , soText , @"queryName" , nil];
     
     [PPNetworkHelper POST:getCoaches parameters:params success:^(id object) {
         
@@ -170,53 +173,11 @@
     } failure:^(NSError *error) {
         
     }];
-    
-//    [self closeProgressView];
-    
-    
 }
 
 -(void)back{
     [self.navigationController popViewControllerAnimated:YES];
 }
-
-#pragma mark 返回分组数
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1 ;
-}
-
-#pragma mark 返回每组行数
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [kouList count];
-}
-
-#pragma mark返回每行的单元格
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *Categorys = @"Categorys";
-    
-    CoachChooseTableViewCell *cell = [[CoachChooseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Categorys];
-    if (kouList.count > 0){
-        CoachVo *vo = [kouList objectAtIndex:indexPath.row];
-        [cell setPhoneContactCellByImageName:vo.headerUrl andWithName:vo.name andWithPhoneNum:vo.cityName andWithChoose:vo.hasFocus andWithindex:indexPath.section];
-    }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone ;
-    return cell ;
-}
-
-#pragma mark - 代理方法
-#pragma mark 重新设置单元格高度
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 70 ;
-}
-
-#pragma mark 点击行
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
-    CoachVo *vo = [kouList objectAtIndex:indexPath.section];
-
-}
-
 
 
 #pragma mark textarea

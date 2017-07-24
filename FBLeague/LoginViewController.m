@@ -283,7 +283,6 @@
             user.nickname = [CommonFunc textFromBase64String:object[@"user"][@"nickname"]] ;
 
             YYCache *cache = [YYCache cacheWithName:@"FB"];
-            [cache removeAllObjects];
             [cache setObject:user forKey:@"userData"];
 
             [[NSNotificationCenter defaultCenter] postNotificationName:@"verifyLoginStatus" object:self];

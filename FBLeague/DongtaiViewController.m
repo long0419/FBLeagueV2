@@ -28,8 +28,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self getFCDataByPage : @"1"];
+    
     [self initData];
     
+}
+
+-(void)getFCDataByPage :(NSString *) page {
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *uvo = [cache objectForKey:@"userData"];
+
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone" ,uvo.phone ,@"token" , nil];
+    [PPNetworkHelper POST:apilist parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+            
+        }
+    } failure:^(NSError *error) {
+    }];
+
 }
 
 -(void) initData
@@ -268,21 +284,19 @@
         [picUrls addObject:_encodedImageStr];
     }
     
+    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     if ([srcImages count]>0) {
         NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:picUrls , @"files" , nil];
         [PPNetworkHelper POST:uploadPics parameters:params success:^(id object) {
             if([object[@"code"] isEqualToString:@"0000"]){
-                NSString *url = object[@"URL"] ;
+                NSArray *urls = object[@"URLS"] ;
                 
-                //            params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone" , text , @"contents" ,uvo.phone ,@"token" , picUrl ,  @"picurl" , nil];
-                //                [PPNetworkHelper POST:apisave parameters:params success:^(id object) {
-                //                    if([object[@"code"] isEqualToString:@"0000"]){
-                //
-                //
-                //                    }
-                //                } failure:^(NSError *error) {
-                //                }];
-                
+                NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone" , text , @"contents" ,uvo.phone ,@"token" , urls ,  @"picurl" , nil];
+                [PPNetworkHelper POST:apisave parameters:params success:^(id object){                                               if([object[@"code"] isEqualToString:@"0000"]){
+                    
+                    }
+                } failure:^(NSError *error) {
+                }];
             }
         } failure:^(NSError *error) {
         }];

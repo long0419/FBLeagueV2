@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "CoachChooseTableViewCell.h"
+#import "CreateClubViewController.h"
+#import "DongtaiViewController.h"
+#import "MemberViewController.h"
+#import "SaiChengViewController.h"
 
-@interface JulebuViewController : BaseViewController
+@interface JulebuViewController : QMUICommonViewController <UIAlertViewDelegate,UITableViewDelegate , UITableViewDataSource>
+
+@property (nonatomic , strong) UITableView *soTableView;
 
 @end

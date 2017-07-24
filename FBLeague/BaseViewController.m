@@ -79,9 +79,10 @@
 }
 
 -(void)setBackBottmAndTitle{
+    
     UIButton *backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backViewBtn.frame = CGRectMake(0, 0, 17, 17);
-    [backViewBtn setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+    [backViewBtn setImage:[UIImage imageNamed:@"back2"] forState:UIControlStateNormal];
     [backViewBtn addTarget:self action: @selector(back)
           forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];

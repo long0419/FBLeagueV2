@@ -34,5 +34,14 @@
 #define focusPerson [NSString stringWithFormat:@"%@/%@",API,@"fans/apisave"]
 #define getCoaches [NSString stringWithFormat:@"%@/%@",API,@"user/listCoaches"]
 
+/*******俱乐部********/
+#define listClubs [NSString stringWithFormat:@"%@/%@",API,@"club/listClubs"]
+
+/*******保证金********/
+#define getDepositProtocol [NSString stringWithFormat:@"%@/%@",API,@"ht/user/getDepositProtocol"]
+#define getCoachProtocol [NSString stringWithFormat:@"%@/%@",API,@"ht/user/getCoachProtocol"]
+#define isAuth [NSString stringWithFormat:@"%@/%@",API,@"ht/user/isAuth"]
+
+
 
 #endif /* APIUrl_h */

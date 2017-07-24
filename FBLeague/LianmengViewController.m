@@ -118,6 +118,8 @@
     self.hidesBottomBarWhenPushed=YES;
     SearchJiaoLianViewController *search = [SearchJiaoLianViewController new] ;
     [self.navigationController pushViewController:search animated:YES];
+    self.hidesBottomBarWhenPushed=NO;
+
 }
 
 -(void) getScrollIndex :(NSInteger) index {

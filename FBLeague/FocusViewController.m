@@ -63,7 +63,7 @@
     self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" ,
-                            uvo.phone , @"phone"  , @"d3e61391-ba6e-45b0-9e78-dc552f3d1fd8" , @"token" , nil];
+                            uvo.phone , @"phone"  , uvo.phone , @"token" , nil];
     
     [PPNetworkHelper POST:getCoaches parameters:params success:^(id object) {
         

@@ -12,6 +12,7 @@
 #import "ChineseString.h"
 #import "pinyin.h"
 #import "SVPullToRefresh.h"
+#import "CommonFunc.h"
 
 @interface JiaoLianViewController (){
     NSString *pageNO ;
@@ -69,23 +70,24 @@
     [PPNetworkHelper POST:getCoaches parameters:params success:^(id object) {
         
         if([object[@"code"] isEqualToString:@"0000"]){
-            NSDictionary *list = object[@"list"];
+            NSDictionary *list = object[@"page"][@"list"];
             CoachVo *model = nil ;
             [coachList removeAllObjects];
             
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
                     model = [CoachVo new];
-                    model.cityName = [NSString stringWithFormat:@"%@" , dic[@"cityName"]] ;
+                    model.cityName = [NSString stringWithFormat:@"%@" , dic[@"cityname"]] ;
+                    model.headerUrl = [NSString stringWithFormat:@"%@" , dic[@"headpicurl"]] ;
                     model.firstLetter = [NSString stringWithFormat:@"%@" ,dic[@"firstLetter"]] ;
-                    model.hasFocus = [NSString stringWithFormat:@"%@" ,dic[@"hasFocus"]] ;
+                    model.hasFocus = [NSString stringWithFormat:@"%@" ,dic[@"hasfocus"]] ;
                     model.level = [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
-                    model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]]  ;
+                    model.name = [CommonFunc textFromBase64String:[NSString stringWithFormat:@"%@" ,dic[@"nickname"]]] ;
                     model.phone =  [NSString stringWithFormat:@"%@" ,dic[@"phone"]]  ;
                     [coachList addObject:model];
                 }
                 
-                [self processCoachData];
+//                [self processCoachData];
                 
                 [_coachTableView reloadData];
             }
@@ -151,7 +153,8 @@
     CoachVo *vo = [coachList objectAtIndex:view.tag];
     self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone , @"fanPhone" , vo.phone , @"famousPhone" , @"1", @"famousType", nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone , @"fanphone" , vo.phone , @"famousphone" , @"1", @"famoustype", uvo.phone , @"token" , nil];
+    
     [PPNetworkHelper POST:focusPerson parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
             view.backgroundColor = [UIColor colorWithHexString:@"2eb66a"];
@@ -197,36 +200,26 @@
     
 }
 
--(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-    return self.indexArray;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSString *key = [self.indexArray objectAtIndex:section];
-    return key;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 20 ;
 }
 
--(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
-
-{
-    
-    view.tintColor = [UIColor whiteColor];
-    
-    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    
-    header.contentView.backgroundColor= [UIColor colorWithHexString:@"f6f6f6"];
-    
-    header.textLabel.textAlignment=NSTextAlignmentLeft;
-    
-    header.textLabel.font = [UIFont systemFontOfSize:13];
-    
-    [header.textLabel setTextColor:[UIColor colorWithHexString:@"333333"]];
-}
+//-(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+//
+//{
+//    
+//    view.tintColor = [UIColor whiteColor];
+//    
+//    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+//    
+//    header.contentView.backgroundColor= [UIColor colorWithHexString:@"f6f6f6"];
+//    
+//    header.textLabel.textAlignment=NSTextAlignmentLeft;
+//    
+//    header.textLabel.font = [UIFont systemFontOfSize:13];
+//    
+//    [header.textLabel setTextColor:[UIColor colorWithHexString:@"333333"]];
+//}
 
 
 @end

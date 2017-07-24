@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-@interface MeViewController : BaseViewController
+@interface MeViewController : BaseViewController<UIAlertViewDelegate , UIApplicationDelegate , UIImagePickerControllerDelegate , UINavigationControllerDelegate , UIActionSheetDelegate ,UITableViewDelegate , UITableViewDataSource>
 
 @end
