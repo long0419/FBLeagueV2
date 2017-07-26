@@ -12,6 +12,9 @@
 #import "DFImagesSendViewController.h"
 #import "MMSheetView.h"
 #import "TZImagePickerController.h"
+#import "DongtaiVo.h"
+#import "CommentVo.h"
+#import "CommonFunc.h"
 
 @interface DongtaiViewController : DFTimeLineViewController
 

@@ -184,8 +184,6 @@
     [bg addSubview:line];
 }
 
-
-
 -(void) setPhoneContactCellByImageName :(NSString *) imageName andWithName :(NSString *) name andWithPhoneNum : (NSString *) num andWithChoose :(NSString *) use andWithindex :(NSInteger) indexPath{
     
     UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, 70)];
@@ -265,15 +263,11 @@
 
 }
 
--(void) setPhoneContactCellByImageName :(NSString *) imageName andWithName :(NSString *) name andWithFans : (NSString *) fan andWithChoose :(NSString *) use andWithindex :(NSInteger) indexPath andWithHint :(NSString *) hint{
+-(void) setPhoneContactCellByImageName2 :(NSString *) imageName andWithName :(NSString *) name andWithPhoneNum : (NSString *) num andWithChoose :(NSString *) use andWithindex :(NSInteger) indexPath {
     
-    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, 70 + 8)];
+    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, 70)];
     bg.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:bg];
-    
-    UIView *bg1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, 8)];
-    bg1.backgroundColor = [UIColor colorWithHexString:@"f5f6f7"];
-    [bg addSubview:bg1];
     
     UIImageView *imageView = [[UIImageView alloc] init];
     imageView.size = CGSizeMake(72/2, 72/2) ;
@@ -281,23 +275,17 @@
     imageView.layer.cornerRadius = 72 / 4 ;
     imageView.layer.masksToBounds = YES;
     UIImage *image = nil ;
-    if ([imageName isEqual:[NSNull null]] || [imageName isEqualToString:@""]) {
+    if ([imageName isEqual:[NSNull null]] || [imageName isEqualToString:@""]
+        || [imageName isEqualToString:@"<null>"]) {
         imageName = @"defaulthead" ;
         image = [UIImage imageNamed:imageName];
         [imageView setImage:image];
+        
     }else{
-//        NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageName]];
-//        image = [UIImage imageWithData:data];
         [imageView sd_setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:nil];
     }
     [bg addSubview:imageView];
     
-    name =  [CommonFunc textFromBase64String:name];
-    int len = [self unicodeLengthOfString:name];
-    if (len > 12) {
-        NSString *b = [name substringToIndex:12];
-        name = [NSString stringWithFormat:@"%@...",b];
-    }
     CGSize nameSize = [NSString getStringContentSizeWithFontSize:32/2 andContent:name];
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.right + 32/2 , imageView.top , nameSize.width, nameSize.height)];
     nameLabel.font = [UIFont systemFontOfSize:32/2];
@@ -305,57 +293,22 @@
     nameLabel.text = name;
     [bg addSubview:nameLabel];
     
-    UITapGestureRecognizer *labelTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelTap:)];
-    CGSize phoneSize = [NSString getStringContentSizeWithFontSize:11 andContent:[NSString stringWithFormat:@"粉丝 %@" , fan]];
+    
+    CGSize phoneSize = [NSString getStringContentSizeWithFontSize:11 andContent:num];
     UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.right + 32/2 , nameLabel.bottom + 6, phoneSize.width, phoneSize.height)];
     phoneLabel.font = [UIFont systemFontOfSize:11];
     phoneLabel.textColor = [UIColor colorWithHexString:@"999999"];
-    phoneLabel.text = [NSString stringWithFormat:@"粉丝 %@" , fan] ;
-    phoneLabel.userInteractionEnabled = YES;
-    phoneLabel.accessibilityHint = hint ;
-    [phoneLabel addGestureRecognizer:labelTap];//给label添加单击手势
+    phoneLabel.text = num ;
     [bg addSubview:phoneLabel];
     
-    UITapGestureRecognizer *singleTap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(focus:)];
-    UIView *focus = [[UIView alloc] initWithFrame:CGRectMake(bg.right - 20 - 134/2, 4 + (bg.height - 58/2)/2, 134/2, 58/2)] ;
-    [[focus layer]setCornerRadius:58/4];
-    focus.tag = indexPath ;
-    focus.accessibilityHint = [NSString stringWithFormat:@"%ld" , (long)indexPath] ;
-    UILabel *focusLabel = nil ;
-    if ([use isEqualToString:@"no"]) {
-        focus.backgroundColor = [UIColor whiteColor];
-        focus.layer.borderWidth = 1;
-        focus.layer.borderColor = [UIColor colorWithHexString:@"2eb66a"].CGColor ;
-        
-        CGSize focusSize = [NSString getStringContentSizeWithFontSize:14 andContent:@"未关注"];
-        focusLabel = [[UILabel alloc] initWithFrame:CGRectMake((focus.width - focusSize.width)/2 , (focus.height - focusSize.height)/2, focusSize.width, focusSize.height)];
-        focusLabel.font = [UIFont systemFontOfSize:14];
-        focusLabel.textColor = [UIColor colorWithHexString:@"2eb66a"];
-        focusLabel.text = @"未关注" ;
-        focusLabel.tag = 12 ;
-        focus.userInteractionEnabled = YES;
-        [focus addGestureRecognizer:singleTap4];
-    }else{
-        focus.backgroundColor = [UIColor colorWithHexString:@"2eb66a"];
-        
-        CGSize focusSize = [NSString getStringContentSizeWithFontSize:14 andContent:@"已关注"];
-        focusLabel = [[UILabel alloc] initWithFrame:CGRectMake((focus.width - focusSize.width)/2 , (focus.height - focusSize.height)/2, focusSize.width, focusSize.height)];
-        focusLabel.font = [UIFont systemFontOfSize:14];
-        focusLabel.textColor = [UIColor whiteColor];
-        focusLabel.text = @"已关注" ;
-        focusLabel.tag = 12 ;
-        
-        focus.userInteractionEnabled = NO ;
-        
-    }
-    [focus addSubview:focusLabel];
-    [bg addSubview:focus];
     
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake( 32 /2 , bg.bottom , kScreen_Width - 32 , .5)] ;
     line.backgroundColor = [UIColor colorWithHexString:@"dddddd"];
-//    [bg addSubview:line];
+    [bg addSubview:line];
     
 }
+
+
 
 -(NSUInteger) unicodeLengthOfString: (NSString *) text {
     NSUInteger asciiLength = 0;
@@ -369,107 +322,6 @@
     }
     return unicodeLength;
 }
-
--(void) setPhoneContactCellByImageName2 :(NSString *) imageName andWithName :(NSString *) name andWithFans : (NSString *) fan andWithChoose :(NSString *) use andWithindex :(NSInteger) indexPath andWithHint :(NSString *) hint{
-    
-    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, 70)];
-    bg.backgroundColor = [UIColor whiteColor];
-    [self.contentView addSubview:bg];
-    
-    UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.size = CGSizeMake(72/2, 72/2) ;
-    imageView.origin = CGPointMake(12 , (bg.height - 72/2)/2);
-    imageView.layer.cornerRadius = 72 / 4 ;
-    imageView.layer.masksToBounds = YES;
-    UIImage *image = nil ;
-    if ([imageName isEqual:[NSNull null]] || [imageName isEqualToString:@""]) {
-        imageName = @"defaulthead" ;
-        image = [UIImage imageNamed:imageName];
-        [imageView setImage:image];
-
-    }else{
-//        NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageName]];
-//        image = [UIImage imageWithData:data];
-        
-        [imageView sd_setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:nil];
-
-    }
-//    [imageView setImage:image];
-    [bg addSubview:imageView];
-    
-    name =  [CommonFunc textFromBase64String:name];
-    int len = [self unicodeLengthOfString:name];
-    if (len > 12) {
-        NSString *b = [name substringToIndex:12];
-        name = [NSString stringWithFormat:@"%@...",b];
-    }
-    CGSize nameSize = [NSString getStringContentSizeWithFontSize:32/2 andContent:name];
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.right + 32/2 , imageView.top , nameSize.width, nameSize.height)];
-    nameLabel.font = [UIFont systemFontOfSize:32/2];
-    nameLabel.textColor = [UIColor colorWithHexString:@"333333"];
-    nameLabel.text = name;
-    [bg addSubview:nameLabel];
-    
-    UITapGestureRecognizer *labelTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelTap:)];
-    CGSize phoneSize = [NSString getStringContentSizeWithFontSize:11 andContent:[NSString stringWithFormat:@"%@" , fan]];
-    UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.right + 32/2 , nameLabel.bottom + 6, phoneSize.width, phoneSize.height)];
-    phoneLabel.font = [UIFont systemFontOfSize:11];
-    phoneLabel.textColor = [UIColor colorWithHexString:@"999999"];
-    phoneLabel.text = [NSString stringWithFormat:@"%@" , fan] ;
-    phoneLabel.userInteractionEnabled = YES;
-    phoneLabel.accessibilityHint = hint ;
-    [phoneLabel addGestureRecognizer:labelTap];//给label添加单击手势
-    [bg addSubview:phoneLabel];
-    
-    UITapGestureRecognizer *singleTap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(focus:)];
-    UIView *focus = [[UIView alloc] initWithFrame:CGRectMake(bg.right - 20 - 134/2, 4 + (bg.height - 58/2)/2, 134/2, 58/2)] ;
-    [[focus layer]setCornerRadius:58/4];
-    focus.tag = indexPath ;
-    focus.accessibilityHint = [NSString stringWithFormat:@"%ld" , (long)indexPath] ;
-    UILabel *focusLabel = nil ;
-    if ([use isEqualToString:@"no"]) {
-        focus.backgroundColor = [UIColor whiteColor];
-        focus.layer.borderWidth = 1;
-        focus.layer.borderColor = [UIColor colorWithHexString:@"2eb66a"].CGColor ;
-        
-        CGSize focusSize = [NSString getStringContentSizeWithFontSize:14 andContent:@"未关注"];
-        focusLabel = [[UILabel alloc] initWithFrame:CGRectMake((focus.width - focusSize.width)/2 , (focus.height - focusSize.height)/2, focusSize.width, focusSize.height)];
-        focusLabel.font = [UIFont systemFontOfSize:14];
-        focusLabel.textColor = [UIColor colorWithHexString:@"2eb66a"];
-        focusLabel.text = @"未关注" ;
-        focusLabel.tag = 12 ;
-        focus.userInteractionEnabled = YES;
-        [focus addGestureRecognizer:singleTap4];
-    }else{
-        focus.backgroundColor = [UIColor colorWithHexString:@"2eb66a"];
-        
-        CGSize focusSize = [NSString getStringContentSizeWithFontSize:14 andContent:@"已关注"];
-        focusLabel = [[UILabel alloc] initWithFrame:CGRectMake((focus.width - focusSize.width)/2 , (focus.height - focusSize.height)/2, focusSize.width, focusSize.height)];
-        focusLabel.font = [UIFont systemFontOfSize:14];
-        focusLabel.textColor = [UIColor whiteColor];
-        focusLabel.text = @"已关注" ;
-        focusLabel.tag = 12 ;
-        
-        focus.userInteractionEnabled = NO ;
-        
-    }
-    [focus addSubview:focusLabel];
-//    [bg addSubview:focus];
-
-    
-    
-    UIImageView *extend = [[UIImageView alloc]
-                           initWithImage:[UIImage imageNamed:@"extend"]];
-    extend.frame = CGRectMake(kScreen_Width - 12 - 7 , (bg.height - 14/2)/2, 14/2, 24/2);
-    [bg addSubview:extend];
-    
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(12 , bg.bottom , kScreen_Width - 24 , .5)] ;
-    line.backgroundColor = [UIColor colorWithHexString:@"dddddd"];
-    [bg addSubview:line];
-    
-}
-
-
 
 -(void)labelTap:(UITapGestureRecognizer *)recognizer{
     [self.delegate gofanlist : recognizer.view.accessibilityHint];

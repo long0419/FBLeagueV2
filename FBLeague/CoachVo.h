@@ -27,5 +27,6 @@
 @property (nonatomic , strong) NSString *headerUrl ;
 @property (nonatomic , strong) NSString *hasAuth ;
 @property (nonatomic , strong) NSString *clubId ;
+@property (nonatomic , strong) NSString *coachId ;
 
 @end

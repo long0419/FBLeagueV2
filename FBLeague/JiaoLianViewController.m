@@ -157,20 +157,18 @@
     
     [PPNetworkHelper POST:focusPerson parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
-            view.backgroundColor = [UIColor colorWithHexString:@"2eb66a"];
+            view.backgroundColor = [UIColor colorWithHexString:@"000000"];
             
             UILabel *focusLabel = [view viewWithTag:12];
             focusLabel.font = [UIFont systemFontOfSize:14];
             focusLabel.textColor = [UIColor whiteColor];
             focusLabel.text = @"已关注" ;
-            
             view.userInteractionEnabled = NO ;
             
             self.HUD.mode = MBProgressHUDModeText;
             self.HUD.removeFromSuperViewOnHide = YES;
             self.HUD.labelText = @"关注成功";
             [self.HUD hide:YES afterDelay:3];
-            
             
         }else {
             self.HUD.mode = MBProgressHUDModeText;

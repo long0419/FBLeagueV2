@@ -231,7 +231,6 @@
             }
             
             DFLineCommentItem *commentItem = [item.comments objectAtIndex:i];
-            
             label.hidden = NO;
             NSAttributedString *str = [item.commentStrArray objectAtIndex:i];
             label.attributedText = str ;
@@ -317,14 +316,13 @@
     NSLog(@"长按了Label");
 }
 
--(void)onClickOutsideLink:(long long)uniqueId
+-(void)onClickOutsideLink:(NSString *)uniqueId
 {
     NSLog(@"单击了Label: %lld", uniqueId);
     if (_delegate && [_delegate respondsToSelector:@selector(onClickComment:)]) {
         [_delegate onClickComment:uniqueId];
     }
 }
-
 
 +(CGFloat)getHeight:(DFBaseLineItem *)item maxWidth:(CGFloat)maxWidth
 {

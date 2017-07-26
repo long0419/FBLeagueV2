@@ -19,16 +19,9 @@
 
 @interface CoachChooseTableViewCell : UITableViewCell
 
--(void) setPhoneApplyCellByImageName :(NSString *) imageName andWithName :(NSString *) name andWithPhoneNum : (NSString *) num  andWithindex :(NSInteger) indexPath andWithRole :(NSString *)role andPosition : (NSString *) position ;
-
--(void) setPhoneContactCellByImageName :(NSString *) imageName andWithName :(NSString *) name andWithPhoneNum : (NSString *) num  andWithindex :(NSInteger) indexPath andWithRole :(NSString *)role andPosition : (NSString *) position ;
-
 -(void) setPhoneContactCellByImageName :(NSString *) imageName andWithName :(NSString *) name andWithPhoneNum : (NSString *) num andWithChoose :(NSString *) use andWithindex :(NSInteger) indexPath ;
 
--(void) setPhoneContactCellByImageName :(NSString *) imageName andWithName :(NSString *) name andWithFans : (NSString *) fan andWithChoose :(NSString *) use andWithindex :(NSInteger) indexPath  andWithHint :(NSString *) hint ;
-
--(void) setPhoneContactCellByImageName2 :(NSString *) imageName andWithName :(NSString *) name andWithFans : (NSString *) fan andWithChoose :(NSString *) use andWithindex :(NSInteger) indexPath  andWithHint :(NSString *) hint ;
-
+-(void) setPhoneContactCellByImageName2 :(NSString *) imageName andWithName :(NSString *) name andWithPhoneNum : (NSString *) num andWithChoose :(NSString *) use andWithindex :(NSInteger) indexPath ;
 
 @property (nonatomic , strong) id<focusAction> delegate ;
 

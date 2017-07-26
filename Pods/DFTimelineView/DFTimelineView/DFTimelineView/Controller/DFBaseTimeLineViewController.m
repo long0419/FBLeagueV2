@@ -24,7 +24,9 @@
 
 
 
-@interface DFBaseTimeLineViewController()
+@interface DFBaseTimeLineViewController(){
+    UIActivityIndicatorView *indicator ;
+}
 
 @property (nonatomic, strong) UIImageView *coverView;
 
@@ -76,7 +78,7 @@
 
 -(void) initTableView
 {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 20 - 44 - 98/2) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 20 - 44 - 98/2 - 36) style:UITableViewStylePlain];
     //_tableView.backgroundColor = [UIColor darkGrayColor];
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -179,7 +181,7 @@
     _footer.backgroundColor = [UIColor clearColor];
     _tableView.tableFooterView = _footer;
     
-    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
     indicator.center = CGPointMake(_footer.frame.size.width/2, 30);
     indicator.hidden = YES;
@@ -279,7 +281,7 @@
         y = frame.origin.y;
         _footer.frame = CGRectMake(x, y, width, height);
         _tableView.tableFooterView = _footer;
-        
+        [indicator stopAnimating];
         _isLoadingMore = NO;
         
     }];

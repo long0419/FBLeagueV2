@@ -107,13 +107,13 @@
  
 
     
-    SearchClubViewController *club = [SearchClubViewController new];
-    SearchCoachViewController *coach = [SearchCoachViewController new];
-    
-    NSArray *viewControllers = @[@{@"俱乐部":club}, @{@"教练员":coach}];
-    
-    view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, headerBar.bottom , kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
-    [self.view addSubview:view];
+//    SearchClubViewController *club = [SearchClubViewController new];
+//    SearchCoachViewController *coach = [SearchCoachViewController new];
+//    
+//    NSArray *viewControllers = @[@{@"俱乐部":club}, @{@"教练员":coach}];
+//    
+//    view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, headerBar.bottom , kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
+//    [self.view addSubview:view];
 }
 
 -(void)search {
@@ -130,7 +130,7 @@
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , soText , @"queryName" , nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , soText , @"queryName" , @"1" , @"page" , uvo.phone , @"token"  , nil];
     
     [PPNetworkHelper POST:getCoaches parameters:params success:^(id object) {
         
@@ -154,14 +154,6 @@
                 [_soTableView reloadData];
             }
             
-            
-            if ([kouList count] > 0) {
-                btn_filter.hidden = NO ;
-                btn_order.hidden = NO ;
-            }else{
-                btn_filter.hidden = YES ;
-                btn_order.hidden = YES ;
-            }
         }else {
 //            self.HUD.mode = MBProgressHUDModeText;
 //            self.HUD.removeFromSuperViewOnHide = YES;

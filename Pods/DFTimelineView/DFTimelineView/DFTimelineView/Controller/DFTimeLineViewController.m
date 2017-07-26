@@ -352,8 +352,7 @@
 }
 
 
--(void)onClickComment:(long long)commentId itemId:(long long)itemId
-{
+-(void)onClickComment:(NSString *)commentId itemId:(NSString *)itemId {
     
     _currentItemId = itemId;
     
@@ -380,10 +379,6 @@
     
 }
 
-
-
-
-
 -(void) genLikeAttrString:(DFBaseLineItem *) item
 {
     if (item.likes.count == 0) {
@@ -407,10 +402,9 @@
         NSUInteger position = 0;
         for (int i=0; i<likes.count;i++) {
             DFLineLikeItem *like = [likes objectAtIndex:i];
-            [attrStr addAttribute:NSLinkAttributeName value:[NSString stringWithFormat:@"%lu", (unsigned long)like.userId] range:NSMakeRange(position, like.userNick.length)];
+            [attrStr addAttribute:NSLinkAttributeName value:like.userId range:NSMakeRange(position, like.userNick.length)];
             position += like.userNick.length+2;
         }
-        
         item.likesStr = attrStr;
     }
     

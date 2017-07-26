@@ -21,7 +21,7 @@
 
 @property (nonatomic, assign) id<MLLinkClickLabelDelegate> clickDelegate;
 
-@property (nonatomic, assign) long long uniqueId;
+@property (nonatomic, assign) NSString *uniqueId;
 
 
 @end

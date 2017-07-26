@@ -9,7 +9,7 @@
 
 @interface DFLineLikeItem : NSObject
 
-@property (nonatomic, assign) NSUInteger userId;
+@property (nonatomic, strong) NSString *userId;
 
 @property (nonatomic, strong) NSString *userNick;
 

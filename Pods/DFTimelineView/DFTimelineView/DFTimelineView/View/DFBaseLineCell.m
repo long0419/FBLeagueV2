@@ -430,7 +430,7 @@
 
 }
 
--(void)onClickComment:(long long)commentId
+-(void)onClickComment:(NSString *)commentId
 {
     if (_delegate != nil && [_delegate respondsToSelector:@selector(onClickComment:itemId:)]) {
         [_delegate onClickComment:commentId itemId:self.item.itemId];

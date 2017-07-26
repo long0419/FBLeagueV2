@@ -25,10 +25,10 @@
 -(void) deleteItem:(long long) itemId;
 
 //赞
--(void) addLikeItem:(DFLineLikeItem *) likeItem itemId:(long long) itemId;
+-(void) addLikeItem:(DFLineLikeItem *) likeItem itemId:(NSString *) itemId;
 
 //评论
--(void) addCommentItem:(DFLineCommentItem *) commentItem itemId:(long long) itemId replyCommentId:(long long) replyCommentId;
+-(void) addCommentItem:(DFLineCommentItem *) commentItem itemId:(NSString *) itemId replyCommentId:(NSString *) replyCommentId;
 
 
 //发送图文

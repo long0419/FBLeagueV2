@@ -33,6 +33,7 @@
 /*******教练或球员相关********/
 #define focusPerson [NSString stringWithFormat:@"%@/%@",API,@"fans/apisave"]
 #define getCoaches [NSString stringWithFormat:@"%@/%@",API,@"user/listCoaches"]
+#define getAllFocus [NSString stringWithFormat:@"%@/%@",API,@"fans/getAllFocus"]
 
 /*******俱乐部********/
 #define listClubs [NSString stringWithFormat:@"%@/%@",API,@"club/listClubs"]

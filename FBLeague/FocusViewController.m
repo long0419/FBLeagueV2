@@ -65,24 +65,22 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" ,
                             uvo.phone , @"phone"  , uvo.phone , @"token" , nil];
     
-    [PPNetworkHelper POST:getCoaches parameters:params success:^(id object) {
+    [PPNetworkHelper POST:getAllFocus parameters:params success:^(id object) {
         
         if([object[@"code"] isEqualToString:@"0000"]){
-            NSDictionary *list = object[@"list"];
+            NSDictionary *list = object[@"page"][@"list"];
             CoachVo *model = nil ;
             [coachList removeAllObjects];
             
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
                     model = [CoachVo new];
-                    model.cityName = [NSString stringWithFormat:@"%@" , dic[@"cityName"]] ;
-                    model.firstLetter = [NSString stringWithFormat:@"%@" ,dic[@"firstLetter"]] ;
-                    model.hasFocus = [NSString stringWithFormat:@"%@" ,dic[@"hasFocus"]] ;
-                    model.level = [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
-                    model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]]  ;
+                    model.cityName = [NSString stringWithFormat:@"%@" , dic[@"famousphone"]] ;
+                    model.name = [CommonFunc textFromBase64String:[NSString stringWithFormat:@"%@" ,dic[@"famousname"]]];
                     model.phone =  [NSString stringWithFormat:@"%@" ,dic[@"phone"]]  ;
+                    model.headerUrl =  [NSString stringWithFormat:@"%@" ,dic[@"famouspicurl"]] ;
+                    model.coachId = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
                     [coachList addObject:model];
-                    
                 }
                 
                 [self processCoachData];
@@ -134,10 +132,8 @@
     if (coachList.count > 0){
         CoachVo *vo = [coachList objectAtIndex:indexPath.section];
         
-        [cell setPhoneContactCellByImageName:vo.headerUrl andWithName:vo.name andWithPhoneNum:vo.cityName andWithChoose:vo.hasFocus andWithindex:indexPath.section];
-        
+        [cell setPhoneContactCellByImageName2:vo.headerUrl andWithName:vo.name andWithPhoneNum:vo.cityName andWithChoose:vo.hasFocus andWithindex:indexPath.section];
         cell.delegate =  self ;
-        
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone ;
     return cell ;
@@ -197,35 +193,5 @@
     
 }
 
--(NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-    return self.indexArray;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSString *key = [self.indexArray objectAtIndex:section];
-    return key;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 20 ;
-}
-
--(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
-
-{
-    
-    view.tintColor = [UIColor whiteColor];
-    
-    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-    
-    header.contentView.backgroundColor= [UIColor colorWithHexString:@"f6f6f6"];
-    
-    header.textLabel.textAlignment=NSTextAlignmentLeft;
-    
-    header.textLabel.font = [UIFont systemFontOfSize:13];
-    
-    [header.textLabel setTextColor:[UIColor colorWithHexString:@"333333"]];
-}
 
 @end

@@ -26,13 +26,13 @@
 @protocol DFLineCellDelegate <NSObject>
 
 @optional
--(void) onLike:(long long) itemId;
+-(void) onLike:(NSString *) itemId;
 
--(void) onComment:(long long) itemId;
+-(void) onComment:(NSString *) itemId;
 
 -(void) onClickUser:(NSUInteger) userId;
 
--(void) onClickComment:(long long) commentId itemId:(long long) itemId;
+-(void) onClickComment:(NSString *) commentId itemId:(NSString *) itemId;
 
 
 @end

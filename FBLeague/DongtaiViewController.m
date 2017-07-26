@@ -11,6 +11,11 @@
 @interface DongtaiViewController (){
     DongtaiViewController *dongtai ;
     NSString *picUrl ;
+    NSMutableArray *kouList ;
+    NSString *pageNO ;
+    NSString *nextPageNo ;
+    NSString *currPage ;
+    BOOL isload ;
 }
 
 @end
@@ -28,152 +33,181 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self getFCDataByPage : @"1"];
+    kouList = [[NSMutableArray alloc] init] ;
     
-    [self initData];
+    pageNO = @"1" ;
+    isload = true ; //标识当前 第一次进来
+    
+    [self refresh];
     
 }
 
 -(void)getFCDataByPage :(NSString *) page {
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
+    
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" ,uvo.phone ,@"token" , nil];
+        [PPNetworkHelper POST:apilist parameters:params success:^(id object) {
+            if([object[@"code"] isEqualToString:@"0000"]){
+                
+                if ([object[@"page"] isEqual:[NSNull null]]) {
+                    return ;
+                }
+                NSDictionary *list = object[@"page"][@"list"];
+                currPage = [NSString stringWithFormat:@"%@" ,object[@"page"][@"currPage"]];
+                NSString *nextPage = object[@"page"][@"nextPage"];
+                
+                DongtaiVo *model = nil ;
+                CommentVo *cmv = nil ;
+                [kouList removeAllObjects];
+                if(![currPage isEqualToString :pageNO] || isload == true){
+                    if (![list isEqual:[NSNull null]]) {
+                        for (NSDictionary *dic in list) {
+                            model = [DongtaiVo new];
+                            model.contents = [NSString stringWithFormat:@"%@" ,dic[@"contents"]] ;
+                            model.headpicurl = [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]] ;
+                            model.picurl = [NSString stringWithFormat:@"%@" ,dic[@"picurl"]];
+                            model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]]  ;
+                            model.phone =  [NSString stringWithFormat:@"%@" ,dic[@"phone"]]  ;
+                            model.pubtime = [NSString stringWithFormat:@"%@" ,dic[@"pubtime"]] ;
+                            model.role = [NSString stringWithFormat:@"%@" ,dic[@"role"]]  ;
+                            model.did = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
+                            model.cityName = [NSString stringWithFormat:@"%@" ,dic[@"cityName"]] ;
+                            model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]] ;
+                            NSMutableArray *cmlist = [NSMutableArray new] ;
+                            for (NSDictionary *cm in dic[@"comments"]) {
+                                cmv = [CommentVo new];
+                                cmv.cid = cm[@"id"] ;
+                                cmv.name = cm[@"name"] ;
+                                cmv.phone = cm[@"phone"] ;
+                                cmv.picurl = cm[@"picurl"] ;
+                                cmv.headpicurl = cm[@"headpicurl"] ;
+                                cmv.targetname = cm[@"targetname"] ;
+                                cmv.themeid = cm[@"themeid"] ;
+                                cmv.targetphone = cm[@"targetphone"] ;
+                                cmv.role = cm[@"role"] ;
+                                cmv.contents = cm[@"contents"] ;
+                                cmv.clubid = cm[@"clubid"] ;
+                                cmv.commenttime = cm[@"commenttime"] ;
+                                [cmlist addObject:cmv];
+                            }
+                            model.comments = cmlist ;
+                            
+                            [kouList addObject:model];
+                            
+                        }
+                        if (currPage.longLongValue == nextPage.longLongValue) {
+                            pageNO =  currPage ;
+                        }else{
+                            pageNO =  nextPage ;
+                        }
+                        
+                        isload = false ;
+                        
+                        nextPageNo = nextPage ;
+                        
+                        [self initData];
+                    }
+                }
+                [self endLoadMore];
+                [self endRefresh];
+            }
+        } failure:^(NSError *error) {
+        }];
+    
+}
 
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone" ,uvo.phone ,@"token" , nil];
-    [PPNetworkHelper POST:apilist parameters:params success:^(id object) {
-        if([object[@"code"] isEqualToString:@"0000"]){
-            
+-(void) initData {
+    for(DongtaiVo *dt in kouList){
+        DFTextImageLineItem *textImageItem = [[DFTextImageLineItem alloc] init];
+        textImageItem.itemId = dt.did ;
+        textImageItem.userId = dt.phone ;
+        textImageItem.userAvatar = dt.headpicurl ;
+        textImageItem.userNick = [CommonFunc textFromBase64String:dt.name];
+        textImageItem.text = [CommonFunc textFromBase64String:dt.contents];
+        
+        NSMutableArray *images = nil ;
+        if(nil != dt.picurl){
+            images = [dt.picurl componentsSeparatedByString:@","];
+            textImageItem.srcImages = images;
+            textImageItem.thumbImages = images;
         }
+        textImageItem.ts = [[NSDate date] timeIntervalSince1970]*1000;
+        
+        DFLineLikeItem *likeItem = nil ;
+        DFLineCommentItem *commentItem = nil ;
+        if(nil != dt.comments && [dt.comments count]>0){
+            for(CommentVo *cvo in dt.comments){
+                if([cvo.headpicurl isEqualToString:@"praise"]){ //点赞
+                    DFLineLikeItem *likeItem1_1 = [[DFLineLikeItem alloc] init];
+                    likeItem1_1.userId = cvo.phone;
+                    likeItem1_1.userNick = [CommonFunc textFromBase64String:cvo.name];
+                    [textImageItem.likes addObject:likeItem1_1];
+                }else{
+                    DFLineCommentItem *commentItem1_1 = [[DFLineCommentItem alloc] init];
+                    commentItem1_1.commentId = cvo.cid;
+                    commentItem1_1.userId =  cvo.phone;
+                    commentItem1_1.userNick =  [CommonFunc textFromBase64String:cvo.name] ;
+                    commentItem1_1.text = [CommonFunc textFromBase64String:cvo.contents];
+                    [textImageItem.comments addObject:commentItem1_1];
+                }
+            }
+        }
+        
+        [self addItem:textImageItem];
+        
+    }
+}
+
+-(void)onCommentCreate:(NSString *)commentId text:(NSString *)text itemId:(NSString *) itemId
+{
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *uvo = [cache objectForKey:@"userData"];
+
+    DFLineCommentItem *commentItem = [[DFLineCommentItem alloc] init];
+    commentItem.commentId = [NSString stringWithFormat:@"%f" , [[NSDate date] timeIntervalSince1970]*1000];
+    commentItem.userId = uvo.phone;
+    commentItem.userNick = uvo.nickname ;
+    commentItem.text = text ;
+    
+    
+//    commentItem1_2.replyUserId = 10086;
+//    commentItem1_2.replyUserNick = @"习大大";
+    
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: itemId , @"themeid" , uvo.phone , @"phone" , [CommonFunc base64StringFromText:text] , @"contents" , uvo.phone , @"token",nil];
+    [PPNetworkHelper POST:apicmsave parameters:params success:^(id object) {
+        [self addCommentItem:commentItem itemId:itemId replyCommentId:commentId];
     } failure:^(NSError *error) {
     }];
-
 }
 
--(void) initData
+-(void)onLike:(NSString *)itemId
 {
-    DFTextImageLineItem *textImageItem = [[DFTextImageLineItem alloc] init];
-    textImageItem.itemId = 1;
-    textImageItem.userId = 10086;
-    textImageItem.userAvatar = @"http://file-cdn.datafans.net/avatar/1.jpeg";
-    textImageItem.userNick = @"Allen";
-    textImageItem.title = @"";
-    textImageItem.text = @"你是我的小苹果 小苹果 我爱你 就像老鼠爱大米 18680551720 [亲亲]";
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *uvo = [cache objectForKey:@"userData"];
     
-    NSMutableArray *srcImages = [NSMutableArray array];
-    [srcImages addObject:@"http://file-cdn.datafans.net/temp/11.jpg"];
-    [srcImages addObject:@"http://file-cdn.datafans.net/temp/12.jpg"];
-    [srcImages addObject:@"http://file-cdn.datafans.net/temp/13.jpg"];
-    [srcImages addObject:@"http://file-cdn.datafans.net/temp/14.jpg"];
-    [srcImages addObject:@"http://file-cdn.datafans.net/temp/15.jpg"];
-    [srcImages addObject:@"http://file-cdn.datafans.net/temp/16.jpg"];
-    [srcImages addObject:@"http://file-cdn.datafans.net/temp/17.jpg"];
-    [srcImages addObject:@"http://file-cdn.datafans.net/temp/18.jpg"];
-    [srcImages addObject:@"http://file-cdn.datafans.net/temp/19.jpg"];
+    //自己点赞屏蔽
+    BOOL isMe = false ;
+    for(DongtaiVo *dt in kouList){
+        if ([dt.did isEqualToString:itemId]) {
+            if ([dt.phone isEqualToString:uvo.phone]) {
+                isMe = true ;
+            }
+        }
+    }
     
-    
-    
-    textImageItem.srcImages = srcImages;
-    
-    
-    NSMutableArray *thumbImages = [NSMutableArray array];
-    [thumbImages addObject:@"http://file-cdn.datafans.net/temp/11.jpg_160x160.jpeg"];
-    [thumbImages addObject:@"http://file-cdn.datafans.net/temp/12.jpg_160x160.jpeg"];
-    [thumbImages addObject:@"http://file-cdn.datafans.net/temp/13.jpg_160x160.jpeg"];
-    [thumbImages addObject:@"http://file-cdn.datafans.net/temp/14.jpg_160x160.jpeg"];
-    [thumbImages addObject:@"http://file-cdn.datafans.net/temp/15.jpg_160x160.jpeg"];
-    [thumbImages addObject:@"http://file-cdn.datafans.net/temp/16.jpg_160x160.jpeg"];
-    [thumbImages addObject:@"http://file-cdn.datafans.net/temp/17.jpg_160x160.jpeg"];
-    [thumbImages addObject:@"http://file-cdn.datafans.net/temp/18.jpg_160x160.jpeg"];
-    [thumbImages addObject:@"http://file-cdn.datafans.net/temp/19.jpg_160x160.jpeg"];
-    textImageItem.thumbImages = thumbImages;
-    
-    
-    NSMutableArray *thumbPreviewImages = [NSMutableArray array];
-    [thumbPreviewImages addObject:@"http://file-cdn.datafans.net/temp/11.jpg_600x600.jpeg"];
-    [thumbPreviewImages addObject:@"http://file-cdn.datafans.net/temp/12.jpg_600x600.jpeg"];
-    [thumbPreviewImages addObject:@"http://file-cdn.datafans.net/temp/13.jpg_600x600.jpeg"];
-    [thumbPreviewImages addObject:@"http://file-cdn.datafans.net/temp/14.jpg_600x600.jpeg"];
-    [thumbPreviewImages addObject:@"http://file-cdn.datafans.net/temp/15.jpg_600x600.jpeg"];
-    [thumbPreviewImages addObject:@"http://file-cdn.datafans.net/temp/16.jpg_600x600.jpeg"];
-    [thumbPreviewImages addObject:@"http://file-cdn.datafans.net/temp/17.jpg_600x600.jpeg"];
-    [thumbPreviewImages addObject:@"http://file-cdn.datafans.net/temp/18.jpg_600x600.jpeg"];
-    [thumbPreviewImages addObject:@"http://file-cdn.datafans.net/temp/19.jpg_600x600.jpeg"];
-//    textImageItem.thumbPreviewImages = thumbPreviewImages;
-    
-    
-    textImageItem.location = @"中国 • 广州";
-    textImageItem.ts = [[NSDate date] timeIntervalSince1970]*1000;
-    
-    
-    DFLineLikeItem *likeItem1_1 = [[DFLineLikeItem alloc] init];
-    likeItem1_1.userId = 10086;
-    likeItem1_1.userNick = @"Allen";
-    [textImageItem.likes addObject:likeItem1_1];
-    
-    
-    DFLineLikeItem *likeItem1_2 = [[DFLineLikeItem alloc] init];
-    likeItem1_2.userId = 10088;
-    likeItem1_2.userNick = @"奥巴马";
-    [textImageItem.likes addObject:likeItem1_2];
-    
-    
-    
-    DFLineCommentItem *commentItem1_1 = [[DFLineCommentItem alloc] init];
-    commentItem1_1.commentId = 10001;
-    commentItem1_1.userId = 10086;
-    commentItem1_1.userNick = @"习大大";
-    commentItem1_1.text = @"精彩 大家鼓掌";
-    [textImageItem.comments addObject:commentItem1_1];
-    
-    
-    DFLineCommentItem *commentItem1_2 = [[DFLineCommentItem alloc] init];
-    commentItem1_2.commentId = 10002;
-    commentItem1_2.userId = 10088;
-    commentItem1_2.userNick = @"奥巴马";
-    commentItem1_2.text = @"欢迎来到美利坚";
-    commentItem1_2.replyUserId = 10086;
-    commentItem1_2.replyUserNick = @"习大大";
-    [textImageItem.comments addObject:commentItem1_2];
-    
-    
-    DFLineCommentItem *commentItem1_3 = [[DFLineCommentItem alloc] init];
-    commentItem1_3.commentId = 10003;
-    commentItem1_3.userId = 10010;
-    commentItem1_3.userNick = @"神雕侠侣";
-    commentItem1_3.text = @"呵呵";
-    [textImageItem.comments addObject:commentItem1_3];
-    
-    [self addItem:textImageItem];
-    
-    
-}
-
-
-
--(void)onCommentCreate:(long long)commentId text:(NSString *)text itemId:(long long) itemId
-{
-    DFLineCommentItem *commentItem = [[DFLineCommentItem alloc] init];
-    commentItem.commentId = [[NSDate date] timeIntervalSince1970];
-    commentItem.userId = 10098;
-    commentItem.userNick = @"金三胖";
-    commentItem.text = text;
-    [self addCommentItem:commentItem itemId:itemId replyCommentId:commentId];
-    
-}
-
-
--(void)onLike:(long long)itemId
-{
-    //点赞
-    NSLog(@"onLike: %lld", itemId);
-    
-    DFLineLikeItem *likeItem = [[DFLineLikeItem alloc] init];
-    likeItem.userId = 10092;
-    likeItem.userNick = @"琅琊榜";
-    [self addLikeItem:likeItem itemId:itemId];
-    
-    
-    
-    
+    if(!isMe){
+        DFLineLikeItem *likeItem = [[DFLineLikeItem alloc] init];
+        likeItem.userId = uvo.phone;
+        likeItem.userNick = uvo.nickname;
+        [self addLikeItem:likeItem itemId:itemId];
+        
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: itemId , @"themeid" , uvo.phone , @"phone" , @"praise" ,@"headpicurl", uvo.phone , @"token" , nil];
+        [PPNetworkHelper POST:apicmsave parameters:params success:^(id object) {
+        } failure:^(NSError *error) {
+        }];
+    }
 }
 
 
@@ -194,58 +228,17 @@
 
 -(void) refresh
 {
-    //下来刷新
-    //模拟网络请求
-    dispatch_time_t time=dispatch_time(DISPATCH_TIME_NOW, 2*NSEC_PER_SEC);
-    dispatch_after(time, dispatch_get_main_queue(), ^{
-        [self endRefresh];
-    });
+    [self getFCDataByPage:pageNO];
+    
 }
 
 
 
 -(void) loadMore
 {
-    //加载更多
-    //模拟网络请求
-    dispatch_time_t time=dispatch_time(DISPATCH_TIME_NOW, 1*NSEC_PER_SEC);
-    dispatch_after(time, dispatch_get_main_queue(), ^{
-        
-        DFTextImageLineItem *textImageItem = [[DFTextImageLineItem alloc] init];
-        textImageItem.itemId = 3;
-        textImageItem.userId = 10018;
-        textImageItem.userAvatar = @"http://file-cdn.datafans.net/avatar/1.jpeg";
-        textImageItem.userNick = @"富二代";
-        textImageItem.title = @"发表了";
-        textImageItem.text = @"你才是富二代";
-        
-        
-        NSMutableArray *srcImages3 = [NSMutableArray array];
-        [srcImages3 addObject:@"http://file-cdn.datafans.net/temp/11.jpg"];
-        textImageItem.srcImages = srcImages3;
-        
-        
-        NSMutableArray *thumbImages3 = [NSMutableArray array];
-        [thumbImages3 addObject:@"http://file-cdn.datafans.net/temp/11.jpg_640x420.jpeg"];
-        textImageItem.thumbImages = thumbImages3;
-        
-        
-        NSMutableArray *thumbPreviewImages3 = [NSMutableArray array];
-        [thumbPreviewImages3 addObject:@"http://file-cdn.datafans.net/temp/11.jpg_600x600.jpeg"];
-//        textImageItem.thumbPreviewImages = thumbPreviewImages3;
-        
-        
-        textImageItem.width = 640;
-        textImageItem.height = 360;
-        
-        //        textImageItem.location = @"广州信息港";
-        [self addItem:textImageItem];
-        
-        [self endLoadMore];
-    });
+    [self getFCDataByPage:pageNO];
+    
 }
-
-
 
 #pragma mark - 发送图文消息
 - (void) onFCTextImage:(NSString *) text images:(NSArray *)images{
@@ -253,7 +246,7 @@
     UserDataVo *uvo = [cache objectForKey:@"userData"];
 
     DFTextImageLineItem *textImageItem = [[DFTextImageLineItem alloc] init];
-    textImageItem.itemId = 10000000; //随便设置一个 待服务器生成
+    textImageItem.itemId = [NSString stringWithFormat:@"%f" , [[NSDate date] timeIntervalSince1970]*1000] ; //随便设置一个 待服务器生成
     textImageItem.userId = uvo.phone ;
     
     NSString *nickname = uvo.nickname ;
@@ -290,10 +283,14 @@
         [PPNetworkHelper POST:uploadPics parameters:params success:^(id object) {
             if([object[@"code"] isEqualToString:@"0000"]){
                 NSArray *urls = object[@"URLS"] ;
+                NSString *pl = [urls componentsJoinedByString:@","];
                 
-                NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone" , text , @"contents" ,uvo.phone ,@"token" , urls ,  @"picurl" , nil];
+                NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone" , [CommonFunc base64StringFromText:text] , @"contents" ,uvo.phone ,@"token" , pl ,  @"picurl" , nil];
                 [PPNetworkHelper POST:apisave parameters:params success:^(id object){                                               if([object[@"code"] isEqualToString:@"0000"]){
-                    
+                        HUD.mode = MBProgressHUDModeText;
+                        HUD.removeFromSuperViewOnHide = YES;
+                        HUD.labelText = @"发布成功";
+                        [HUD hide:YES afterDelay:2];
                     }
                 } failure:^(NSError *error) {
                 }];

@@ -10,11 +10,11 @@
 @interface DFBaseLineItem : NSObject
 
 //时间轴itemID 需要全局唯一 一般服务器下发
-@property (nonatomic, assign) long long itemId;
+@property (nonatomic, assign) NSString *itemId;
 
 @property (nonatomic, assign) CGFloat cellHeight;
 
-@property (nonatomic, assign) NSInteger userId;
+@property (nonatomic, assign) NSString *userId;
 @property (nonatomic, strong) NSString *userNick;
 @property (nonatomic, strong) NSString *userAvatar;
 
