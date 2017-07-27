@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-#import "SearchJiaoLianViewController.h"
 
-@interface SearchClubViewController : BaseViewController <UIAlertViewDelegate,UITableViewDelegate , UITableViewDataSource ,SearchContentByIndex>
+@interface SearchClubViewController : BaseViewController <UIAlertViewDelegate,UITableViewDelegate , UITableViewDataSource>
+
+@property (nonatomic , strong) UITableView *soTableView;
+@property (nonatomic , strong) NSMutableArray *soGoods ;
+
+-(void) searchClubByContent :(NSArray *) contents ;
 
 @end

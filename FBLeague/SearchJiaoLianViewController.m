@@ -25,6 +25,8 @@
     NSString *soText ;
     YCSlideView * view ;
     NSInteger scrollIndex ;
+    SearchClubViewController *club ;
+    SearchCoachViewController *coach ;
 }
 
 @end
@@ -106,9 +108,9 @@
     srecord.hidden = YES ;
     [searchBar addSubview:srecord];
  
-    SearchClubViewController *club = [SearchClubViewController new];
-    SearchCoachViewController *coach = [SearchCoachViewController new];
-    
+    club = [SearchClubViewController new];
+    coach = [SearchCoachViewController new];
+
     NSArray *viewControllers = @[@{@"俱乐部":club}, @{@"教练员":coach}];
     view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, headerBar.bottom , kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
     view.delegate = self ;
@@ -136,27 +138,27 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , soText , @"queryName" , @"1" , @"page" , uvo.phone , @"token"  , nil];
     [PPNetworkHelper POST:getCoaches parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
-            NSDictionary *list = object[@"coaches"];
+            NSDictionary *list = object[@"page"][@"list"];
             CoachVo *model = nil ;
             [kouList removeAllObjects];
             
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
                     model = [CoachVo new];
-                    model.cityName = [NSString stringWithFormat:@"%@" , dic[@"cityName"]] ;
-                    model.firstLetter = [NSString stringWithFormat:@"%@" ,dic[@"firstLetter"]] ;
-                    model.hasFocus = [NSString stringWithFormat:@"%@" ,dic[@"hasFocus"]] ;
+                    model.cityName = [NSString stringWithFormat:@"%@" , dic[@"cityname"]] ;
+                    model.firstLetter = [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]] ;
+                    model.hasFocus = [NSString stringWithFormat:@"%@" ,dic[@"hasfocus"]] ;
                     model.level = [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
-                    model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]]  ;
+                    model.name = [NSString stringWithFormat:@"%@" ,[CommonFunc textFromBase64String:dic[@"nickname"]]]  ;
                     model.phone =  [NSString stringWithFormat:@"%@" ,dic[@"phone"]]  ;
                     model.headerUrl =  [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]]  ;
                     [kouList addObject:model];
                 }
                 
                 if (scrollIndex == 0) {
-                    [self.delegate searchClubByContent:kouList];
+                    [club searchClubByContent:kouList];
                 }else{
-                    [self.delegate searchCoachByContent:kouList];
+                    [coach searchCoachByContent:kouList];
                 }
             }
         }
@@ -164,6 +166,7 @@
         
     }];
 }
+
 
 -(void)back{
     [self.navigationController popViewControllerAnimated:YES];

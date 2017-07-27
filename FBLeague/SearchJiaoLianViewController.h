@@ -10,15 +10,6 @@
 #import "BaseViewController.h"
 #import "YCSlideView.h"
 
-@protocol SearchContentByIndex <NSObject>
-
--(void) searchClubByContent :(NSArray *) contents  ;
-
--(void) searchCoachByContent :(NSArray *) contents  ;
-
-@end
-
-
 @interface SearchJiaoLianViewController : BaseViewController <
     UITableViewDataSource , UITableViewDelegate ,
     UITextFieldDelegate ,ScrollIndex>{
@@ -28,6 +19,5 @@
 @property (nonatomic , strong) UITableView *soTableView;
 @property (nonatomic , strong) NSString *titleName ;
 @property (nonatomic , strong) NSMutableArray *soGoods ;
-@property (nonatomic , strong) id<SearchContentByIndex> delegate ;
 
 @end

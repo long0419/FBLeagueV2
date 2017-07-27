@@ -10,6 +10,11 @@
 #import "BaseViewController.h"
 #import "SearchJiaoLianViewController.h"
 
-@interface SearchCoachViewController : BaseViewController <SearchContentByIndex>
+@interface SearchCoachViewController : BaseViewController <UIAlertViewDelegate,UITableViewDelegate , UITableViewDataSource>
+
+@property (nonatomic , strong) UITableView *soTableView;
+@property (nonatomic , strong) NSMutableArray *soGoods ;
+
+-(void) searchCoachByContent :(NSArray *) contents ;
 
 @end
