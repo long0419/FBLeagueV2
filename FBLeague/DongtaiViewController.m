@@ -12,6 +12,7 @@
     DongtaiViewController *dongtai ;
     NSString *picUrl ;
     NSMutableArray *kouList ;
+    NSMutableArray *tmpList ;
     NSString *pageNO ;
     NSString *nextPageNo ;
     NSString *currPage ;
@@ -34,7 +35,7 @@
     [super viewDidLoad];
     
     kouList = [[NSMutableArray alloc] init] ;
-    
+    tmpList = [[NSMutableArray alloc] init];
     pageNO = @"1" ;
     isload = true ; //标识当前 第一次进来
     
@@ -114,6 +115,68 @@
             }
         } failure:^(NSError *error) {
         }];
+}
+
+-(void) processData :(NSString *) phone andWithName :(NSString *) name andWithText :(NSString *)text andWithItemId :(NSString *) itemId andWithCommentId :(NSString *) commentId{
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *uvo = [cache objectForKey:@"userData"];
+    [tmpList removeAllObjects];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: pageNO, @"page" ,uvo.phone ,@"token" , nil];
+    [PPNetworkHelper POST:listTheme parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+                
+            NSDictionary *list = object[@"page"][@"list"];
+            DongtaiVo *model = nil ;
+            CommentVo *cmv = nil ;
+            if (![list isEqual:[NSNull null]]) {
+                for (NSDictionary *dic in list) {
+                    model = [DongtaiVo new];
+                    model.did = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
+                    NSMutableArray *cmlist = [NSMutableArray new] ;
+                    for (NSDictionary *cm in dic[@"comments"]) {
+                            cmv = [CommentVo new];
+                            cmv.cid = cm[@"id"] ;
+                            cmv.name = cm[@"name"] ;
+                            cmv.phone = cm[@"phone"] ;
+                            cmv.picurl = cm[@"picurl"] ;
+                            cmv.headpicurl = cm[@"headpicurl"] ;
+                            cmv.targetname = cm[@"targetname"] ;
+                            cmv.themeid = cm[@"themeid"] ;
+                            cmv.targetphone = cm[@"targetphone"] ;
+                            cmv.role = cm[@"role"] ;
+                            cmv.contents = cm[@"contents"] ;
+                            cmv.clubid = cm[@"clubid"] ;
+                            cmv.commenttime = cm[@"commenttime"] ;
+                            [cmlist addObject:cmv];
+                    }
+                    model.comments = cmlist ;
+                    [tmpList addObject:model];
+                }
+                
+                DFLineCommentItem *commentItem = [[DFLineCommentItem alloc] init];
+                commentItem.userId = uvo.phone;
+                commentItem.userNick = uvo.nickname ;
+                commentItem.text = text ;
+                
+                for(DongtaiVo *dong in tmpList){
+                    for(CommentVo *vo in dong.comments){
+                        if([vo.cid isEqualToString:commentId]){
+                            commentItem.replyUserId = vo.phone;
+                            commentItem.replyUserNick = vo.name ;
+                            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: itemId , @"themeid" , uvo.phone , @"phone" , [CommonFunc base64StringFromText:text] , @"contents" ,vo.name , @"targetname" ,vo.phone ,@"targetphone", uvo.phone , @"token",nil];
+                            [PPNetworkHelper POST:apicmsave parameters:params success:^(id object) {
+                                commentItem.commentId = object[@"id"] ;
+                                [self addCommentItem:commentItem itemId:itemId replyCommentId:commentId];
+                            } failure:^(NSError *error) {
+                            }];
+                        }
+                    }
+                }
+            }
+        }
+    } failure:^(NSError *error) {
+    }];
     
 }
 
@@ -149,11 +212,16 @@
                     commentItem1_1.userId =  cvo.phone;
                     commentItem1_1.userNick =  [CommonFunc textFromBase64String:cvo.name] ;
                     commentItem1_1.text = [CommonFunc textFromBase64String:cvo.contents];
+                    
+                    if(![cvo.targetname isEqual:[NSNull null]]) {
+                        commentItem1_1.replyUserId = cvo.phone;
+                        commentItem1_1.replyUserNick = [CommonFunc textFromBase64String:cvo.name] ;
+
+                    }
                     [textImageItem.comments addObject:commentItem1_1];
                 }
             }
         }
-        
         [self addItem:textImageItem];
         
     }
@@ -164,22 +232,22 @@
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
 
-    DFLineCommentItem *commentItem = [[DFLineCommentItem alloc] init];
-    commentItem.commentId = [NSString stringWithFormat:@"%f" , [[NSDate date] timeIntervalSince1970]*1000];
-    commentItem.userId = uvo.phone;
-    commentItem.userNick = uvo.nickname ;
-    commentItem.text = text ;
-    
-    
-//    commentItem1_2.replyUserId = 10086;
-//    commentItem1_2.replyUserNick = @"习大大";
-    
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: itemId , @"themeid" , uvo.phone , @"phone" , [CommonFunc base64StringFromText:text] , @"contents" , uvo.phone , @"token",nil];
-    [PPNetworkHelper POST:apicmsave parameters:params success:^(id object) {
-        [self addCommentItem:commentItem itemId:itemId replyCommentId:commentId];
-    } failure:^(NSError *error) {
-    }];
+    if (commentId == nil) { //直接点击评论
+        DFLineCommentItem *commentItem = [[DFLineCommentItem alloc] init];
+        commentItem.userId = uvo.phone;
+        commentItem.userNick = uvo.nickname ;
+        commentItem.text = text ;
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: itemId , @"themeid" , uvo.phone , @"phone" , [CommonFunc base64StringFromText:text] , @"contents" , uvo.phone , @"token",nil];
+        [PPNetworkHelper POST:apicmsave parameters:params success:^(id object) {
+            commentItem.commentId = object[@"id"] ;
+            [self addCommentItem:commentItem itemId:itemId replyCommentId:commentId];
+        } failure:^(NSError *error) {
+        }];
+    }else{ //点击别人的评论
+        //通过当前commentId 去找相应的评论人
+        [self processData :uvo.phone andWithName:uvo.nickname andWithText:text andWithItemId:itemId andWithCommentId:commentId];
+        
+    }
 }
 
 -(void)onLike:(NSString *)itemId

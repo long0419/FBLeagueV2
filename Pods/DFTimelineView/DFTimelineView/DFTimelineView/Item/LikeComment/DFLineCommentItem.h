@@ -15,7 +15,7 @@
 
 @property (nonatomic, strong) NSString *userNick;
 
-@property (nonatomic, assign) NSUInteger replyUserId;
+@property (nonatomic, strong) NSString *replyUserId;
 
 @property (nonatomic, strong) NSString *replyUserNick;
 

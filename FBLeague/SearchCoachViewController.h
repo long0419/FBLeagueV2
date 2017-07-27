@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
+#import "SearchJiaoLianViewController.h"
 
-@interface SearchCoachViewController : UIViewController
+@interface SearchCoachViewController : BaseViewController <SearchContentByIndex>
 
 @end

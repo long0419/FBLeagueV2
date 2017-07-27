@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
+#import "SearchJiaoLianViewController.h"
 
-@interface SearchClubViewController : UIViewController
+@interface SearchClubViewController : BaseViewController <UIAlertViewDelegate,UITableViewDelegate , UITableViewDataSource ,SearchContentByIndex>
 
 @end

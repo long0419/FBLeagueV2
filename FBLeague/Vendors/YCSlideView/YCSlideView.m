@@ -192,7 +192,8 @@
         
     }
     
-    
+    [self.delegate getScrollIndex:pageNum];
+
 }
 
 -(void) tabButton: (id) sender{

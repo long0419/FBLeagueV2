@@ -24,6 +24,7 @@
     NSMutableArray *kouList ;
     NSString *soText ;
     YCSlideView * view ;
+    NSInteger scrollIndex ;
 }
 
 @end
@@ -105,15 +106,17 @@
     srecord.hidden = YES ;
     [searchBar addSubview:srecord];
  
-
+    SearchClubViewController *club = [SearchClubViewController new];
+    SearchCoachViewController *coach = [SearchCoachViewController new];
     
-//    SearchClubViewController *club = [SearchClubViewController new];
-//    SearchCoachViewController *coach = [SearchCoachViewController new];
-//    
-//    NSArray *viewControllers = @[@{@"俱乐部":club}, @{@"教练员":coach}];
-//    
-//    view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, headerBar.bottom , kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
-//    [self.view addSubview:view];
+    NSArray *viewControllers = @[@{@"俱乐部":club}, @{@"教练员":coach}];
+    view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, headerBar.bottom , kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
+    view.delegate = self ;
+    [self.view addSubview:view];
+}
+
+-(void) getScrollIndex :(NSInteger) index {
+    scrollIndex = index ;
 }
 
 -(void)search {
@@ -131,9 +134,7 @@
     UserDataVo *uvo = [cache objectForKey:@"userData"];
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , soText , @"queryName" , @"1" , @"page" , uvo.phone , @"token"  , nil];
-    
     [PPNetworkHelper POST:getCoaches parameters:params success:^(id object) {
-        
         if([object[@"code"] isEqualToString:@"0000"]){
             NSDictionary *list = object[@"coaches"];
             CoachVo *model = nil ;
@@ -151,17 +152,14 @@
                     model.headerUrl =  [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]]  ;
                     [kouList addObject:model];
                 }
-                [_soTableView reloadData];
+                
+                if (scrollIndex == 0) {
+                    [self.delegate searchClubByContent:kouList];
+                }else{
+                    [self.delegate searchCoachByContent:kouList];
+                }
             }
-            
-        }else {
-//            self.HUD.mode = MBProgressHUDModeText;
-//            self.HUD.removeFromSuperViewOnHide = YES;
-//            self.HUD.labelText = @"系统错误";
-//            [self.HUD hide:YES afterDelay:3];
         }
-
-        
     } failure:^(NSError *error) {
         
     }];

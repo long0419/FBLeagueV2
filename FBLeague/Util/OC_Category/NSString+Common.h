@@ -45,4 +45,7 @@
 
 - (NSString *)stringByTrimmingLeftCharactersInSet:(NSCharacterSet *)characterSet;
 - (NSString *)stringByTrimmingRightCharactersInSet:(NSCharacterSet *)characterSet;
++ (NSString *)convertToJsonData:(NSDictionary *)dict ;
++ (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString ;
+
 @end

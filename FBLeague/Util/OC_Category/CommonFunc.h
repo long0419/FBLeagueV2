@@ -33,4 +33,10 @@
  ******************************************************************************/
 + (NSString *)textFromBase64String:(NSString *)base64;
 
+//字典转data
++(NSData *)returnDataWithDictionary:(NSDictionary *)dict ;
+
+//路径文件转dictonary
++(NSDictionary *)returnDictionaryWithDataPath:(NSString *)path ;
+
 @end

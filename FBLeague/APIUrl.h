@@ -29,6 +29,7 @@
 #define apilist [NSString stringWithFormat:@"%@/%@",API,@"theme/apilist"]
 #define setPraise [NSString stringWithFormat:@"%@/%@",API,@"theme/setPraise"]
 #define apicmsave [NSString stringWithFormat:@"%@/%@",API,@"comment/apisave"]
+#define listTheme [NSString stringWithFormat:@"%@/%@",API,@"theme/listTheme"]
 
 /*******教练或球员相关********/
 #define focusPerson [NSString stringWithFormat:@"%@/%@",API,@"fans/apisave"]
