@@ -192,8 +192,15 @@
         NSMutableArray *images = nil ;
         if(nil != dt.picurl){
             images = [dt.picurl componentsSeparatedByString:@","];
-            textImageItem.srcImages = images;
-            textImageItem.thumbImages = images;
+            if([images count] == 1){
+                NSMutableArray *tmp = [[NSMutableArray alloc] initWithArray:images];
+                [tmp addObject:@"http://www.baidu.com"];
+                textImageItem.srcImages = tmp;
+                textImageItem.thumbImages = tmp;
+            }else{
+                textImageItem.srcImages = images;
+                textImageItem.thumbImages = images;
+            }
         }
         textImageItem.ts = [[NSDate date] timeIntervalSince1970]*1000;
         
@@ -334,7 +341,6 @@
         [srcImages addObject:img];
         [thumbImages addObject:img];
     }
-//    textImageItem.location = @"广州信息港";
     [self addItemTop:textImageItem];
     
     NSMutableArray *picUrls = [NSMutableArray array];

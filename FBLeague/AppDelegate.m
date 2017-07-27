@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import <QMUIKit/QMUIKit.h>
 #import "QMUIConfigurationTemplate.h"
-#import "QuanziViewController.h"
+#import "LianSaiViewController.h"
 #import "LianmengViewController.h"
 #import "JulebuViewController.h"
 #import "MeViewController.h"
@@ -65,7 +65,7 @@
     RTRootNavigationController *uikitNavController = [[RTRootNavigationController alloc] initWithRootViewController:uikitViewController];
     uikitNavController.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"动态" image:[UIImageMake(@"首页") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"首页-副本") tag:0];
     
-    QuanziViewController *componentViewController = [[QuanziViewController alloc] init];
+    LianSaiViewController *componentViewController = [[LianSaiViewController alloc] init];
     componentViewController.hidesBottomBarWhenPushed = NO;
     RTRootNavigationController *componentNavController = [[RTRootNavigationController alloc] initWithRootViewController:componentViewController];
     componentNavController.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"联赛" image:[UIImageMake(@"联赛") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"联赛") tag:1];
