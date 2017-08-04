@@ -18,13 +18,6 @@
 @property (nonatomic , strong) UITableView *tableView ;
 @property (nonatomic , strong) NSString *total ;
 @property (nonatomic , strong) NSString *role ;
-
-//@property (nonatomic , strong) NSString *dribbling ;
-//@property (nonatomic , strong) NSString *speed ;
-//@property (nonatomic , strong) NSString *strength ;
-//@property (nonatomic , strong) NSString *counterattack ;
-//@property (nonatomic , strong) NSString *defend ;
-//@property (nonatomic , strong) NSString *pass ;
 @property (nonatomic , strong) UserDataVo *vo ;
 
 @end

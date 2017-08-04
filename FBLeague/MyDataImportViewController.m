@@ -9,6 +9,7 @@
 #import "MyDataImportViewController.h"
 #import "JHRadarChart.h"
 #import "MeView.h"
+#import "CoachVo.h"
 
 @interface MyDataImportViewController (){
     JHRadarChart *radarChart ;
@@ -18,6 +19,7 @@
     UIView *cellView ;
     UILabel *currentData ;
     UITextField *currentTF ;
+    NSMutableArray *ktouList ;
 }
 
 @end
@@ -44,8 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"我的数据" ;
-    self.view.backgroundColor = [UIColor colorWithHexString:@"f5f6f7"];
-    
+    ktouList = [[NSMutableArray alloc] init];
     [self setBackBottmAndTitle];
     
     [self setRightBottom];
@@ -114,15 +115,15 @@
     radarChart.layerCount = 5;
     radarChart.tag = 11 ;
     
-    if ([_skill isEqualToString:@"0"] &&[_control isEqualToString:@"0"] &&[_counterattack isEqualToString:@"0"]
-        &&[_stronghand isEqualToString:@"0"] && [_compete isEqualToString:@"0"] && [_stimulate isEqualToString:@"0"]) {
-        _skill = @"60" ;
-        _control = @"60" ;
-        _counterattack = @"60" ;
-        _stronghand = @"60" ;
-        _compete = @"60" ;
-        _stimulate = @"60" ;
-    }
+//    if ([_skill isEqualToString:@"0"] &&[_control isEqualToString:@"0"] &&[_counterattack isEqualToString:@"0"]
+//        &&[_stronghand isEqualToString:@"0"] && [_compete isEqualToString:@"0"] && [_stimulate isEqualToString:@"0"]) {
+//        _skill = @"60" ;
+//        _control = @"60" ;
+//        _counterattack = @"60" ;
+//        _stronghand = @"60" ;
+//        _compete = @"60" ;
+//        _stimulate = @"60" ;
+//    }
     
     radarChart.valueDataArray = @[@[_skill , _control , _stronghand , _counterattack , _compete, _stimulate]];
 
@@ -134,52 +135,48 @@
 
 
 -(void)getUserInfo{
-    
-    _skill = @"60" ;
-    _control = @"60" ;
-    _counterattack = @"60" ;
-    _stronghand = @"60" ;
-    _compete = @"60" ;
-    _stimulate = @"60" ;
 
-    
     self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-//    APIClient *client = [APIClient sharedJsonClient];
-//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _phone ,  @"phone" , _coachPhone ,@"coachPhone", nil];
-//    [client requestJsonDataWithPath:getCoachDetail withParams:params withMethodType:Post andBlock:^(id data, NSError *error) {
-//        if([data[@"code"] isEqualToString:@"0000"]){
-//
-//            _skill = [NSString stringWithFormat:@"%@" , data[@"coach"][@"skill"]]  ;
-//            _control =  [NSString stringWithFormat:@"%@" , data[@"coach"][@"control"]] ;
-//            _counterattack = [NSString stringWithFormat:@"%@" , data[@"coach"][@"counterattack"]];
-//            _stronghand = [NSString stringWithFormat:@"%@" , data[@"coach"][@"strongHand"] ];
-//            _compete = [NSString stringWithFormat:@"%@" , data[@"coach"][@"compete"] ];
-//            _stimulate = [NSString stringWithFormat:@"%@" , data[@"coach"][@"stimulate"] ];
-//            _limitSkill = [NSString stringWithFormat:@"%@" , data[@"coach"][@"limitSkill"] ];
-//            _count = [NSString stringWithFormat:@"%@" , data[@"coach"][@"count"] ];
-//
-//            _total = _limitSkill ;
-//            
-//            table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0 , kScreen_Width, kScreen_Height)];
-//            table.separatorStyle = NO;
-//            table.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
-//            table.delegate = self ;
-//            table.dataSource = self;
-//            [self.view addSubview:table];
-//
-//            
-//            [self radarContent];
-//            [self dataImport];
-//
-//        }else {
-//            self.HUD.mode = MBProgressHUDModeText;
-//            self.HUD.removeFromSuperViewOnHide = YES;
-//            self.HUD.labelText = @"系统错误";
-//            [self.HUD hide:YES afterDelay:3];
-//        }
-//    }];
-//    [self closeProgressView];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _phone ,  @"phone" , _phone , @"token" , nil];
+    [PPNetworkHelper POST:getCBDetail parameters:params success:^(id data) {
+        
+        if([data[@"code"] isEqualToString:@"0000"]){
+            
+                        _skill = [NSString stringWithFormat:@"%@" , data[@"user"][@"skill"]]  ;
+                        _control =  [NSString stringWithFormat:@"%@" , data[@"user"][@"control"]] ;
+                        _counterattack = [NSString stringWithFormat:@"%@" , data[@"user"][@"counterattack"]];
+                        _stronghand = [NSString stringWithFormat:@"%@" , data[@"user"][@"strongHand"] ];
+                        _compete = [NSString stringWithFormat:@"%@" , data[@"user"][@"compete"] ];
+                        _stimulate = [NSString stringWithFormat:@"%@" , data[@"user"][@"stimulate"] ];
+                        _limitSkill = [NSString stringWithFormat:@"%@" , data[@"user"][@"limitSkill"] ];
+                        _count = [NSString stringWithFormat:@"%@" , data[@"user"][@"count"] ];
+            
+                        _total = _limitSkill ;
+            
+                        table = [[UITableView alloc] initWithFrame:CGRectMake(0, 0 , kScreen_Width, kScreen_Height)];
+                        table.separatorStyle = NO;
+                        table.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
+                        table.delegate = self ;
+                        table.dataSource = self;
+                        [self.view addSubview:table];
+            
+            
+                        [self radarContent];
+                        [self dataImport];
+            
+                    }else {
+                        self.HUD.mode = MBProgressHUDModeText;
+                        self.HUD.removeFromSuperViewOnHide = YES;
+                        self.HUD.labelText = @"系统错误";
+                        [self.HUD hide:YES afterDelay:3];
+                    }
+        
+    } failure:^(NSError *error) {
+        
+    }];
+
+    [self closeProgressView];
 }
 
 
@@ -198,29 +195,31 @@
     }
     
     self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    APIClient *client = [APIClient sharedJsonClient];
-//    UserDataVo *uvo = [NSKeyedUnarchiver unarchiveObjectWithData: UserDefaultGet(@"userData")];
-//    
-//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"1" , @"type"  , uvo.phone ,  @"phone" ,
-//        _skill , @"skill" , _control ,@"control",
-//        _counterattack , @"counterattack" ,
-//        _stronghand ,@"stronghand" ,
-//        _compete ,@"compete" ,
-//        _stimulate ,@"stimulate", nil];
-//    [client requestJsonDataWithPath:setSkill withParams:params withMethodType:Post andBlock:^(id data, NSError *error) {
-//        if([data[@"code"] isEqualToString:@"0000"]){
-//            self.HUD.mode = MBProgressHUDModeText;
-//            self.HUD.removeFromSuperViewOnHide = YES;
-//            self.HUD.labelText = @"设置成功";
-//            [self.HUD hide:YES afterDelay:3];
-//            [self.navigationController popViewControllerAnimated:YES];
-//        }else {
-//            self.HUD.mode = MBProgressHUDModeText;
-//            self.HUD.removeFromSuperViewOnHide = YES;
-//            self.HUD.labelText = @"系统错误";
-//            [self.HUD hide:YES afterDelay:3];
-//        }
-//    }];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"1" , @"type"  , _phone ,  @"phone" ,
+            _skill , @"skill" , _control ,@"control",
+            _counterattack , @"counterattack" ,
+            _stronghand ,@"stronghand" ,
+            _compete ,@"compete" ,
+            _stimulate ,@"stimulate", _phone ,@"token" ,nil];
+
+    [PPNetworkHelper POST:setSkill parameters:params success:^(id data) {
+                if([data[@"code"] isEqualToString:@"0000"]){
+                    self.HUD.mode = MBProgressHUDModeText;
+                    self.HUD.removeFromSuperViewOnHide = YES;
+                    self.HUD.labelText = @"设置成功";
+                    [self.HUD hide:YES afterDelay:3];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }else {
+                    self.HUD.mode = MBProgressHUDModeText;
+                    self.HUD.removeFromSuperViewOnHide = YES;
+                    self.HUD.labelText = @"系统错误";
+                    [self.HUD hide:YES afterDelay:3];
+                }
+
+    }failure:^(NSError *error) {
+        
+    }];
     
 }
 

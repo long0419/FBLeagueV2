@@ -29,6 +29,7 @@
 		FD352FC81F1FA3DB00EA2A60 /* CoachChooseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FD352FC71F1FA3DB00EA2A60 /* CoachChooseTableViewCell.m */; };
 		FD352FCE1F1FA43F00EA2A60 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD352FCD1F1FA43F00EA2A60 /* BaseTableViewController.m */; };
 		FD352FD11F1FA4AA00EA2A60 /* CoachVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD352FD01F1FA4AA00EA2A60 /* CoachVo.m */; };
+		FD396B2F1F343EEE00265CF7 /* AddZhanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD396B2E1F343EEE00265CF7 /* AddZhanViewController.m */; };
 		FD71DD741F21D5E0006242B4 /* ReadDetailContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD71DD731F21D5E0006242B4 /* ReadDetailContentViewController.m */; };
 		FD75D22E1F23518800306F77 /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D22D1F23518800306F77 /* NullSafe.m */; };
 		FD75D2321F25835200306F77 /* MemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D2311F25835200306F77 /* MemberViewController.m */; };
@@ -38,6 +39,7 @@
 		FD75D2401F26486200306F77 /* DongtaiVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D23F1F26486200306F77 /* DongtaiVo.m */; };
 		FD75D2431F26491C00306F77 /* CommentVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D2421F26491C00306F77 /* CommentVo.m */; };
 		FD76CB3E1F0B87AE0047C0FE /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76CB391F0B87AE0047C0FE /* RegisterViewController.m */; };
+		FD8F08F41F3418B60067AF4C /* MyQiuYuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8F08F31F3418B60067AF4C /* MyQiuYuanViewController.m */; };
 		FD979CC91F09473700F5BFBB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD979CC81F09473700F5BFBB /* LoginViewController.m */; };
 		FDA1166C1F01FC67007F253C /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA116691F01FC67007F253C /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FDA1166D1F01FC67007F253C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FDA1166B1F01FC67007F253C /* README.md */; };
@@ -157,6 +159,8 @@
 		FD352FCD1F1FA43F00EA2A60 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		FD352FCF1F1FA4AA00EA2A60 /* CoachVo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoachVo.h; sourceTree = "<group>"; };
 		FD352FD01F1FA4AA00EA2A60 /* CoachVo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoachVo.m; sourceTree = "<group>"; };
+		FD396B2D1F343EEE00265CF7 /* AddZhanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddZhanViewController.h; sourceTree = "<group>"; };
+		FD396B2E1F343EEE00265CF7 /* AddZhanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddZhanViewController.m; sourceTree = "<group>"; };
 		FD71DD721F21D5E0006242B4 /* ReadDetailContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadDetailContentViewController.h; sourceTree = "<group>"; };
 		FD71DD731F21D5E0006242B4 /* ReadDetailContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadDetailContentViewController.m; sourceTree = "<group>"; };
 		FD75D22D1F23518800306F77 /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 		FD75D2421F26491C00306F77 /* CommentVo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentVo.m; sourceTree = "<group>"; };
 		FD76CB381F0B87AE0047C0FE /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		FD76CB391F0B87AE0047C0FE /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		FD8F08F21F3418B60067AF4C /* MyQiuYuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyQiuYuanViewController.h; sourceTree = "<group>"; };
+		FD8F08F31F3418B60067AF4C /* MyQiuYuanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyQiuYuanViewController.m; sourceTree = "<group>"; };
 		FD979CC71F09473700F5BFBB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		FD979CC81F09473700F5BFBB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		FDA062371DD2CD2D00CEBAA0 /* FBLeague-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FBLeague-Prefix.pch"; sourceTree = "<group>"; };
@@ -722,6 +728,10 @@
 		FDC497A11F29AB1F002E7105 /* me */ = {
 			isa = PBXGroup;
 			children = (
+				FD396B2D1F343EEE00265CF7 /* AddZhanViewController.h */,
+				FD396B2E1F343EEE00265CF7 /* AddZhanViewController.m */,
+				FD8F08F21F3418B60067AF4C /* MyQiuYuanViewController.h */,
+				FD8F08F31F3418B60067AF4C /* MyQiuYuanViewController.m */,
 				FD265AA11F29E16900F92316 /* MyJiaoLianDataViewController.h */,
 				FD265AA21F29E16900F92316 /* MyJiaoLianDataViewController.m */,
 				FDC497A21F29AE5D002E7105 /* MyDataImportViewController.h */,
@@ -1109,6 +1119,7 @@
 				FD71DD741F21D5E0006242B4 /* ReadDetailContentViewController.m in Sources */,
 				FDAA38181DD2BDA40038658F /* MWLocalDataTool.m in Sources */,
 				FD265A9E1F29E0BF00F92316 /* UIResponder+FirstResponder.m in Sources */,
+				FD396B2F1F343EEE00265CF7 /* AddZhanViewController.m in Sources */,
 				FDA8EE591F07F21B00F3A01A /* FirstLoginViewController.m in Sources */,
 				FDAA379B1DD2BCF80038658F /* AppDelegate.m in Sources */,
 				FDD24CC61F0BEDF800DA16FC /* CityVo.m in Sources */,
@@ -1117,6 +1128,7 @@
 				FDC4994B1F29AF9B002E7105 /* JHChart.m in Sources */,
 				FDAA37981DD2BCF80038658F /* main.m in Sources */,
 				FD1F2C671F0490EC00063765 /* QDCommonListViewController.m in Sources */,
+				FD8F08F41F3418B60067AF4C /* MyQiuYuanViewController.m in Sources */,
 				FD1F2C6A1F0490EC00063765 /* QDNavigationController.m in Sources */,
 				FDFAE5F31F10EE74008DF0BB /* DongtaiViewController.m in Sources */,
 				FD1F2C651F0490EC00063765 /* QDCommonGridViewController.m in Sources */,

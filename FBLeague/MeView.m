@@ -88,9 +88,9 @@
     self.backgroundColor = [UIColor whiteColor];
     self.size = CGSizeMake(kScreen_Width, 98/2);
     
-    CGSize titleSize = [NSString getStringContentSizeWithFontSize:32/2 andContent:title];
+    CGSize titleSize = [NSString getStringContentSizeWithFontSize:15 andContent:title];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(12 , (110/2   - titleSize.height)/2, titleSize.width, titleSize.height)];
-    titleLabel.font = [UIFont systemFontOfSize:32/2];
+    titleLabel.font = [UIFont systemFontOfSize:15];
     titleLabel.textColor = [UIColor colorWithHexString:@"333333"];
     titleLabel.text = title;
     [self addSubview:titleLabel];
@@ -112,9 +112,9 @@
     [self addSubview:textField];
     
     if ([type isEqualToString:@"1"]) {
-        CGSize moneySize = [NSString getStringContentSizeWithFontSize:32/2 andContent:@"¥"];
+        CGSize moneySize = [NSString getStringContentSizeWithFontSize:15 andContent:@"¥"];
         UILabel *titleLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(titleLabel.right + 110/2 , (110/2 - moneySize.height)/2, moneySize.width, moneySize.height)];
-        titleLabel2.font = [UIFont systemFontOfSize:32/2];
+        titleLabel2.font = [UIFont systemFontOfSize:15];
         titleLabel2.textColor = [UIColor colorWithHexString:@"333333"];
         titleLabel2.text = @"¥";
         [self addSubview:titleLabel2];

@@ -86,9 +86,6 @@
     head.layer.masksToBounds =YES;
     head.layer.cornerRadius = 10 ;
 
-//    head.userInteractionEnabled = YES ;
-//    UITapGestureRecognizer *singleTap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addPic)];
-//    [head addGestureRecognizer:singleTap3];
     [header addSubview:head];
     
 //    NSString *name =  [CommonFunc textFromBase64String:vo.name];

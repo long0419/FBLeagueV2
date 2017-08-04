@@ -139,8 +139,6 @@
     typeLabel.font = [UIFont systemFontOfSize:12];
     typeLabel.textColor = [UIColor colorWithHexString:@"333333"];
     typeLabel.text = [NSString stringWithFormat:@"%@" , type] ;
-//    [header addSubview:typeLabel];
-
     
     UIImageView *imageView = [[UIImageView alloc] init];
     imageView.size = CGSizeMake(72/2, 72/2) ;
@@ -153,19 +151,16 @@
         image = [UIImage imageNamed:imageName];
         [imageView setImage:image];
     }else{
-//        NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageName]];
-//        image = [UIImage imageWithData:data];
-        
         [imageView sd_setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:nil];
     }
     [bg addSubview:imageView];
 
     
-    CGSize nameSize = [NSString getStringContentSizeWithFontSize:32/2 andContent:[NSString stringWithFormat:@"%@" , name]];
+    CGSize nameSize = [NSString getStringContentSizeWithFontSize:32/2 andContent:[NSString stringWithFormat:@"%@" , [CommonFunc textFromBase64String:name]]];
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.right + 32/2 , imageView.top , nameSize.width, nameSize.height)];
     nameLabel.font = [UIFont systemFontOfSize:32/2];
     nameLabel.textColor = [UIColor colorWithHexString:@"333333"];
-    nameLabel.text = [NSString stringWithFormat:@"%@" , name] ;
+    nameLabel.text = [NSString stringWithFormat:@"%@" , [CommonFunc textFromBase64String:name]] ;
     [bg addSubview:nameLabel];
     
     NSString *roleName = @"教练员";
@@ -307,7 +302,6 @@
     [bg addSubview:line];
     
 }
-
 
 
 -(NSUInteger) unicodeLengthOfString: (NSString *) text {

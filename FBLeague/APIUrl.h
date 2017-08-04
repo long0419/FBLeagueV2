@@ -35,6 +35,9 @@
 #define focusPerson [NSString stringWithFormat:@"%@/%@",API,@"fans/apisave"]
 #define getCoaches [NSString stringWithFormat:@"%@/%@",API,@"user/listCoaches"]
 #define getAllFocus [NSString stringWithFormat:@"%@/%@",API,@"fans/getAllFocus"]
+#define getCBDetail [NSString stringWithFormat:@"%@/%@",API,@"user/apiinfo"]
+#define setSkill [NSString stringWithFormat:@"%@/%@",API,@"user/setSkill"]
+#define getUsersByClubId [NSString stringWithFormat:@"%@/%@",API,@"club/getUsersByClubId"]
 
 /*******俱乐部********/
 #define listClubs [NSString stringWithFormat:@"%@/%@",API,@"club/listClubs"]
