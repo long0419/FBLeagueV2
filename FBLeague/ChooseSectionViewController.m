@@ -66,31 +66,38 @@
 }
 
 -(void)send{
-    PersonInfoViewController *verifyCode2 = [[PersonInfoViewController alloc] init];
-    verifyCode2.areaStr = chooseProAndCity ;
-    verifyCode2.areaCodeStr = proCityCode ;
-    [self.rt_navigationController pushViewController:verifyCode2 animated:verifyCode2 complete:^(BOOL finished) {
-        [self.rt_navigationController removeViewController:self];
-    }];
+    RTContainerController *verifyCode2 =
+    [self.rt_navigationController.viewControllers objectAtIndex:self.rt_navigationController.viewControllers.count - 4];
+    if([_isfrom isEqualToString:@"1"]){
+        CreateClubViewController *info = verifyCode2.contentViewController ;
+        info.areaStr = chooseProAndCity ;
+        info.areaCodeStr = proCityCode ;
+        [self.rt_navigationController popToViewController:info animated:YES];
+    }else{
+        PersonInfoViewController *info = verifyCode2.contentViewController ;
+        info.areaStr = chooseProAndCity ;
+        info.areaCodeStr = proCityCode ;
+        [self.rt_navigationController popToViewController:info animated:YES];
+    }
 }
 
 -(void)getNeedDatas{
     self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_code , @"cityCode" , nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_cityCode , @"cityCode" , nil];
     
     [PPNetworkHelper POST:getAreas parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
-            NSDictionary *list = data[@"cities"];
+            NSDictionary *list = data[@"areas"];
             CityVo *model = nil ;
             [kouList22 removeAllObjects];
             
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
                     model = [CityVo new];
-                    model.code = [NSString stringWithFormat:@"%@" , dic[@"code"]] ;
+//                    model.code = [NSString stringWithFormat:@"%@" , dic[@"code"]] ;
                     model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]] ;
-                    model.provincecode = [NSString stringWithFormat:@"%@" ,dic[@"provincecode"]] ;
+                    model.citycode = [NSString stringWithFormat:@"%@" ,dic[@"code"]] ;
                     model.cid = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
                     [kouList22 addObject:model];
                 }
@@ -153,8 +160,8 @@
     //去掉之前有勾选的状态
     [self cancelChooseStatus:tableView : indexPath];
     
-    chooseProAndCity = [NSString stringWithFormat:@"%@ %@" , _provincename , vo.name];
-    proCityCode = [NSString stringWithFormat:@"%@ %@" , vo.provincecode , vo.code];
+    chooseProAndCity = [NSString stringWithFormat:@"%@ %@" , _name , vo.name];
+    proCityCode = [NSString stringWithFormat:@"%@ %@" , _code , vo.citycode];
 
 }
 

@@ -41,6 +41,8 @@
 
 /*******俱乐部********/
 #define listClubs [NSString stringWithFormat:@"%@/%@",API,@"club/listClubs"]
+#define crxClub [NSString stringWithFormat:@"%@/%@",API,@"club/apisave"]
+
 
 /*******保证金********/
 #define getDepositProtocol [NSString stringWithFormat:@"%@/%@",API,@"ht/user/getDepositProtocol"]

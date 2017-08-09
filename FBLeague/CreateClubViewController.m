@@ -16,14 +16,22 @@
     NSString *url ;
     DSLLoginTextField *tf ;
     DSLLoginTextField *psw ;
-    DSLLoginTextField *time ;
+    DSLLoginTextField *timeTxt ;
     DSLLoginTextField *moto ;
+    YYCache *cache ;
+    UserDataVo *uvo ;
 
 }
 
 @end
 
 @implementation CreateClubViewController
+
+-(void)viewDidAppear:(BOOL)animated{
+    if (_areaStr != nil && ![@"" isEqualToString:_areaStr] && psw != nil) {
+        ((UITextField *)psw).text = _areaStr ;
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,7 +74,7 @@
     tf.clearButtonMode=UITextFieldViewModeWhileEditing;
     tf.placeholderColor=[UIColor colorWithHexString:@"cdcdcd"];
     tf.font=[UIFont systemFontOfSize:14];
-    tf.placeholder=@"昵称";
+    tf.placeholder=@"俱乐部名称";
     tf.maxTextLength= 11;
     tf.returnKeyType = UIReturnKeyGo ;
     tf.textAlignment = NSTextAlignmentCenter ;
@@ -97,16 +105,16 @@
         make.width.mas_equalTo(self.view.width - 60);
     }];
     
-    time=[[DSLLoginTextField alloc]init];
-    time.clearButtonMode=UITextFieldViewModeWhileEditing;
-    time.placeholderColor=[UIColor colorWithHexString:@"cdcdcd"];
-    time.font=[UIFont systemFontOfSize:14];
-    time.placeholder=@"成立时间";
-    time.maxTextLength= 11;
-    time.delegate = self ;
-    time.textAlignment = NSTextAlignmentCenter ;
-    [self.view addSubview:time];
-    [time mas_makeConstraints:^(MASConstraintMaker *make) {
+    timeTxt=[[DSLLoginTextField alloc]init];
+    timeTxt.clearButtonMode=UITextFieldViewModeWhileEditing;
+    timeTxt.placeholderColor=[UIColor colorWithHexString:@"cdcdcd"];
+    timeTxt.font=[UIFont systemFontOfSize:14];
+    timeTxt.placeholder=@"成立时间";
+    timeTxt.maxTextLength= 11;
+//    timeTxt.delegate = self ;
+    timeTxt.textAlignment = NSTextAlignmentCenter ;
+    [self.view addSubview:timeTxt];
+    [timeTxt mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(psw.mas_bottom).with.offset(20) ;
         make.centerX.mas_equalTo(self.view);
         make.left.mas_equalTo(SYRealValue(30)) ;
@@ -120,11 +128,11 @@
     moto.font=[UIFont systemFontOfSize:14];
     moto.placeholder=@"俱乐部口号";
     moto.maxTextLength= 11;
-    moto.delegate = self ;
+//    moto.delegate = self ;
     moto.textAlignment = NSTextAlignmentCenter ;
     [self.view addSubview:moto];
-    [time mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(psw.mas_bottom).with.offset(20) ;
+    [moto mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(timeTxt.mas_bottom).with.offset(20) ;
         make.centerX.mas_equalTo(self.view);
         make.left.mas_equalTo(SYRealValue(30)) ;
         make.height.mas_equalTo(SYRealValue(40));
@@ -142,7 +150,7 @@
     [button addTarget:self action:@selector(ctx) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:button];
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(time.mas_bottom).with.offset(44);
+        make.top.mas_equalTo(moto.mas_bottom).with.offset(44);
         make.centerX.mas_equalTo(self.view);
         make.left.mas_equalTo(SYRealValue(30)) ;
         make.height.mas_equalTo(SYRealValue(40));
@@ -165,16 +173,38 @@
 }
 
 -(void)ctx{
-//    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    SCLAlertView *alert = [[SCLAlertView alloc] init];
-    [alert addButton:@"去报名" actionBlock:^(void) {
-        self.hidesBottomBarWhenPushed=YES;
-        VerifyClubViewController *verify = [VerifyClubViewController new];
-        [self.navigationController pushViewController:verify animated:YES];
-        self.hidesBottomBarWhenPushed=NO;
+    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    cache = [YYCache cacheWithName:@"FB"];
+    uvo = [cache objectForKey:@"userData"];
+
+    NSArray *areas = [_areaCodeStr componentsSeparatedByString:@" "];
+    NSDictionary *params = [NSDictionary
+                            dictionaryWithObjectsAndKeys:
+                            uvo.phone , @"creator"  ,
+                            [CommonFunc base64StringFromText:tf.text] , @"name" ,
+                            moto.text ,@"description" ,
+                            uvo.phone ,  @"token",
+                            [areas objectAtIndex:0] , @"provincecode" ,
+                            [areas objectAtIndex:1] , @"citycode" ,
+                            [areas objectAtIndex:2] , @"areacode" ,
+                            url , @"logourl" ,
+                            nil];
+    [PPNetworkHelper POST:crxClub parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+            SCLAlertView *alert = [[SCLAlertView alloc] init];
+            [alert addButton:@"去报名" actionBlock:^(void) {
+                self.hidesBottomBarWhenPushed=YES;
+                VerifyClubViewController *verify = [VerifyClubViewController new];
+                [self.navigationController pushViewController:verify animated:YES];
+                self.hidesBottomBarWhenPushed=NO;
+            }];
+            [alert showSuccess:self title:@"创建成功" subTitle:@"你可以报名参加咖盟联赛啦!" closeButtonTitle:@"拒绝，并返回俱乐部页面" duration:0.0f];
+            
+            [self closeProgressView] ;
+        }
+    } failure:^(NSError *error) {
+        
     }];
-    
-    [alert showSuccess:self title:@"创建成功" subTitle:@"你可以报名参加咖盟联赛啦!" closeButtonTitle:@"拒绝，并返回俱乐部页面" duration:0.0f];
 
 }
 
@@ -183,10 +213,12 @@
 
 {
     [textField resignFirstResponder];
-    
     if(textField.tag == 10){
+        self.hidesBottomBarWhenPushed=YES;
         ChooseAreaViewController *area = [[ChooseAreaViewController alloc] init];
+        area.isfrom = @"1" ;
         [self.navigationController pushViewController:area animated:YES];
+        self.hidesBottomBarWhenPushed=NO;
     }
 }
 

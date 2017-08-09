@@ -14,6 +14,6 @@
 @property (nonatomic , strong) NSString *name ;
 @property (nonatomic , strong) NSString *cid ;
 @property (nonatomic , strong) NSString *provincecode ;
- 
+@property (nonatomic , strong) NSString *citycode ;
 
 @end

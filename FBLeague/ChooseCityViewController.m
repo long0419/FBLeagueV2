@@ -35,7 +35,7 @@
     [self setBackBottmAndTitle];
     
     
-    [self setRightBottom];
+//    [self setRightBottom];
 
     _goodTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0 , kScreen_Width, kScreen_Height)];
     _goodTableView.delegate = self ;
@@ -85,9 +85,9 @@
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
                     model = [CityVo new];
-                    model.code = [NSString stringWithFormat:@"%@" , dic[@"code"]] ;
+                    model.code = [NSString stringWithFormat:@"%@" , dic[@"provincecode"]] ;
                     model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]] ;
-                    model.provincecode = [NSString stringWithFormat:@"%@" ,dic[@"provincecode"]] ;
+                    model.provincecode = [NSString stringWithFormat:@"%@" ,dic[@"code"]] ;
                     model.cid = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
                     [kouList addObject:model];
                 }
@@ -142,17 +142,31 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     CityVo *vo = [kouList objectAtIndex:indexPath.section];
     
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    UIView *right = [[cell subviews] objectAtIndex:1] ;
-    //显示当前的点击效果
-    [right viewWithTag:11].hidden = ![right viewWithTag:11].hidden ;
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    UIView *right = [[cell subviews] objectAtIndex:1] ;
+//    //显示当前的点击效果
+//    [right viewWithTag:11].hidden = ![right viewWithTag:11].hidden ;
     
     //去掉之前有勾选的状态
-    [self cancelChooseStatus:tableView : indexPath];
+//    [self cancelChooseStatus:tableView : indexPath];
     
     chooseProAndCity = [NSString stringWithFormat:@"%@ %@" , _provincename , vo.name];
     proCityCode = [NSString stringWithFormat:@"%@ %@" , vo.provincecode , vo.code];
 
+    if([_isfrom isEqualToString:@"1"]){
+        self.hidesBottomBarWhenPushed=YES;
+    }
+    ChooseSectionViewController *city = [[ChooseSectionViewController alloc] init];
+    city.code = proCityCode ;
+    city.cityCode = vo.provincecode ;
+    city.name = chooseProAndCity ;
+    city.isfrom = _isfrom ;
+    [self.navigationController pushViewController:city animated:YES];
+    if([_isfrom isEqualToString:@"1"]){
+        self.hidesBottomBarWhenPushed=NO;
+    }
+
+    
 }
 
 -(void)cancelChooseStatus : (UITableView *)tableView :(NSIndexPath *) indexPath{

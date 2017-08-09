@@ -40,7 +40,7 @@
         [self getNeedDatas : @"1"];
         pageNO = @"1" ;
         
-        self.soTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,  0 , kScreen_Width, kScreen_Height)];
+        self.soTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,  20 + 44 , kScreen_Width, kScreen_Height)];
         _soTableView.delegate = self ;
         _soTableView.dataSource = self;
         _soTableView.backgroundColor = [UIColor clearColor];
@@ -152,24 +152,23 @@
 #pragma mark - 没有俱乐部的情况
 -(void)getNeedDatas :(NSString *) page{
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , page , @"page" , nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , page , @"page" ,uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:listClubs parameters:params success:^(id object) {
         
         if([object[@"code"] isEqualToString:@"0000"]){
-            NSDictionary *list = object[@"coaches"];
+            NSDictionary *list = object[@"page"][@"list"];
             CoachVo *model = nil ;
             [kouList removeAllObjects];
             
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
                     model = [CoachVo new];
-                    model.cityName = [NSString stringWithFormat:@"%@" , dic[@"cityName"]] ;
-                    model.firstLetter = [NSString stringWithFormat:@"%@" ,dic[@"firstLetter"]] ;
-                    model.hasFocus = [NSString stringWithFormat:@"%@" ,dic[@"hasFocus"]] ;
+                    model.cityName = [NSString stringWithFormat:@"%@ %@" , dic[@"cityname"] , dic[@"areaname"]] ;
+                    model.hasFocus = [NSString stringWithFormat:@"%@" ,dic[@"hasfocus"]] ;
                     model.level = [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
-                    model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]]  ;
+                    model.name = [CommonFunc textFromBase64String:dic[@"name"]] ;
                     model.phone =  [NSString stringWithFormat:@"%@" ,dic[@"phone"]]  ;
-                    model.headerUrl =  [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]]  ;
+                    model.headerUrl =  [NSString stringWithFormat:@"%@" ,dic[@"logourl"]]  ;
                     [kouList addObject:model];
                 }
                 [_soTableView reloadData];

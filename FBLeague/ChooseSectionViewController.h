@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "CityVo.h"
+#import "CreateClubViewController.h"
+
 @interface ChooseSectionViewController : BaseViewController<UIAlertViewDelegate,UITableViewDelegate , UITableViewDataSource>
 
 @property (nonatomic , strong) NSString *code ;
-@property (nonatomic , strong) NSString *provincename ;
+@property (nonatomic , strong) NSString *name ;
 @property (nonatomic , strong) NSString *isfrom ;
+@property (nonatomic , strong) NSString *cityCode ;
 
 @property  (nonatomic , strong) UITableView *goodTableView;
 

@@ -15,6 +15,6 @@
 
 @property  (nonatomic , strong) UITableView *goodTableView;
 
-@property  (nonatomic , strong) NSString *isfrom;
+@property  (nonatomic , strong) NSString *isfrom; //0.从注册开始 1.从俱乐部开始
 
 @end

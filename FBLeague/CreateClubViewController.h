@@ -13,4 +13,8 @@
 
 @interface CreateClubViewController : BaseViewController<UITextFieldDelegate>
 
+@property (nonatomic , strong) NSString *areaStr ;
+@property (nonatomic , strong) NSString *areaCodeStr ;
+
+
 @end

@@ -257,6 +257,7 @@
     
     if(textField.tag == 10){
         ChooseAreaViewController *area = [[ChooseAreaViewController alloc] init];
+        area.isfrom = @"0" ;
         [self.navigationController pushViewController:area animated:YES];
     }
 }
@@ -292,7 +293,7 @@
                             sex , @"sex" ,
                             [areas objectAtIndex:0] , @"provincecode" ,
                             [areas objectAtIndex:1] , @"citycode" ,
-                            @"10001" , @"areacode" ,
+                            [areas objectAtIndex:2] , @"areacode" ,
                             url , @"headpicurl" , nil];
     
     [PPNetworkHelper POST:registerUser parameters:params success:^(id data) {
