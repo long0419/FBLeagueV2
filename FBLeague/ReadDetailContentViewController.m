@@ -23,7 +23,7 @@
     self.title = @"" ;
     self.view.backgroundColor = [UIColor colorWithHexString:@"f5f6f7"];
     
-    [self setBackBottmAndTitle];
+    [self setBackBottmAndTitle2];
 
     
     self.uview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height - 44 - 20)];

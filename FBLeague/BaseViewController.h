@@ -27,6 +27,7 @@
 - (void)tabBarItemClicked;
 
 - (void)setBackBottmAndTitle;
+- (void)setBackBottmAndTitle2;
 
 - (void)setBackTitle : (NSString *) title andWithSize : (CGFloat) size andWithColor :(NSString *) color ;
 

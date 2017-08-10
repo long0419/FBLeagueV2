@@ -20,12 +20,17 @@
     DSLLoginTextField *moto ;
     YYCache *cache ;
     UserDataVo *uvo ;
-
+    UIView *alertView ;
 }
 
 @end
 
 @implementation CreateClubViewController
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self hideTabBottom] ;
+    self.hidesBottomBarWhenPushed = NO ;
+}
 
 -(void)viewDidAppear:(BOOL)animated{
     if (_areaStr != nil && ![@"" isEqualToString:_areaStr] && psw != nil) {
@@ -38,7 +43,7 @@
     
     [self setBackBottmAndTitle];
     self.title = @"创建俱乐部" ;
-
+    
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake((self.view.width - 168/2)/2, 198/2 , 168/2 , 168/2)];
     bgView.layer.borderWidth = 1;
     bgView.layer.cornerRadius = 168/4 ;
@@ -156,6 +161,94 @@
         make.height.mas_equalTo(SYRealValue(40));
         make.width.mas_equalTo((self.view.width - 60));
     }];
+    
+    [self loadAlertView];
+
+}
+
+-(void)loadAlertView{
+    alertView = [UIView new];
+    alertView.frame = CGRectMake(0 , 0 , kScreen_Width , kScreen_Height);
+    alertView.backgroundColor = [UIColor clearColor];
+    alertView.hidden = YES ;
+    [self.view addSubview:alertView];
+    
+    UIView *tmp = [UIView new];
+    tmp.frame = CGRectMake(40 , (kScreen_Height - 300)/2 , kScreen_Width - 80, 260);
+    tmp.backgroundColor = [UIColor whiteColor];
+    tmp.layer.borderWidth = .1;
+    tmp.layer.borderColor = [[UIColor blackColor] CGColor];
+    tmp.layer.cornerRadius = 5;
+    tmp.layer.masksToBounds = YES;
+    [alertView addSubview:tmp];
+
+    UIImageView *right = [[UIImageView alloc] initWithFrame:CGRectMake((300 - 40)/2, 36/2, 40, 40)];
+    right.backgroundColor = [UIColor whiteColor];
+    right.image = [UIImage imageNamed:@"完成"];
+    [tmp addSubview:right];
+    
+    UILabel *titleLabel3 = [UILabel new];
+    titleLabel3.font = [UIFont systemFontOfSize:12];
+    titleLabel3.numberOfLines = 0;//多行显示，计算高度
+    titleLabel3.textColor = [UIColor blackColor];
+    NSString *desc3 = @"恭喜你，俱乐部已创建成功" ;
+    CGSize titleSize3 = [NSString getMultiStringContentSizeWithFontSize:12 andContent:desc3];
+    titleLabel3.size = titleSize3;
+    titleLabel3.text = desc3 ;
+    titleLabel3.x = (tmp.width - titleSize3.width)/2 ;
+    titleLabel3.y = right.bottom + 10 ;
+    [tmp addSubview:titleLabel3];
+
+    UILabel *tl = [UILabel new];
+    tl.font = [UIFont systemFontOfSize:14];
+    tl.numberOfLines = 0;//多行显示，计算高度
+    tl.textColor = [UIColor colorWithHexString:@"5c73d2"];
+    NSString *desc = @"你可以报名参加咖盟秋季联赛啦！" ;
+    CGSize tl3 = [NSString getMultiStringContentSizeWithFontSize:14 andContent:desc];
+    tl.size = tl3;
+    tl.text = desc ;
+    tl.x = (tmp.width - tl3.width)/2 ;
+    tl.y = titleLabel3.bottom + 74/2 ;
+    [tmp addSubview:tl];
+
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, tl.bottom + 46/2 , kScreen_Width - 20 , .5)];
+    line.backgroundColor = [UIColor colorWithHexString:@"e3e3e3"];
+    [tmp addSubview:line];
+    
+    UILabel *tl2 = [UILabel new];
+    tl2.font = [UIFont systemFontOfSize:14];
+    tl2.numberOfLines = 0;//多行显示，计算高度
+    tl2.textColor = [UIColor colorWithHexString:@"5c73d2"];
+    NSString *des2c = @"去报名" ;
+    CGSize tl23 = [NSString getMultiStringContentSizeWithFontSize:14 andContent:des2c];
+    tl2.size = tl23;
+    tl2.text = des2c ;
+    tl2.x = (tmp.width - tl23.width)/2 ;
+    tl2.y = line.bottom + 32/2 ;
+    tl2.userInteractionEnabled=YES;
+    UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(baoming)];
+    [tl2 addGestureRecognizer:labelTapGestureRecognizer];
+    [tmp addSubview:tl2];
+
+    UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(10, tl2.bottom + 32/2 , kScreen_Width - 20 , .5)];
+    line2.backgroundColor = [UIColor colorWithHexString:@"e3e3e3"];
+    [tmp addSubview:line2];
+    
+    UILabel *tl4 = [UILabel new];
+    tl4.font = [UIFont systemFontOfSize:14];
+    tl4.numberOfLines = 0;//多行显示，计算高度
+    tl4.textColor = [UIColor colorWithHexString:@"a7a7a7"];
+    NSString *des2c1 = @"拒绝，并返回俱乐部页面" ;
+    CGSize tl213 = [NSString getMultiStringContentSizeWithFontSize:14 andContent:des2c1];
+    tl4.size = tl213;
+    tl4.text = des2c1 ;
+    tl4.userInteractionEnabled=YES;
+    UITapGestureRecognizer *labelTapGestureRecognizer2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(back2)];
+    [tl4 addGestureRecognizer:labelTapGestureRecognizer2];
+    tl4.x = (tmp.width - tl213.width)/2 ;
+    tl4.y = line2.bottom + 32/2 ;
+    [tmp addSubview:tl4];
+
 }
 
 -(void)setBackBottmAndTitle{
@@ -191,23 +284,25 @@
                             nil];
     [PPNetworkHelper POST:crxClub parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
-            SCLAlertView *alert = [[SCLAlertView alloc] init];
-            [alert addButton:@"去报名" actionBlock:^(void) {
-                self.hidesBottomBarWhenPushed=YES;
-                VerifyClubViewController *verify = [VerifyClubViewController new];
-                [self.navigationController pushViewController:verify animated:YES];
-                self.hidesBottomBarWhenPushed=NO;
-            }];
-            [alert alertIsDismissed:^{
-                [self.navigationController popViewControllerAnimated:YES];
-                self.hidesBottomBarWhenPushed=NO;
-            }];
-            [alert showSuccess:self title:@"创建成功" subTitle:@"你可以报名参加咖盟联赛啦!" closeButtonTitle:@"拒绝，并返回俱乐部页面" duration:0.0f];
-            [self closeProgressView] ;
+            alertView.hidden = NO ;
         }
+        
     } failure:^(NSError *error) {
     }];
+    [self closeProgressView] ;
+}
 
+-(void)back2{
+    alertView.hidden = NO ;
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)baoming{
+    alertView.hidden = NO ;
+    self.hidesBottomBarWhenPushed=YES;
+    VerifyClubViewController *verify = [VerifyClubViewController new];
+    [self.navigationController pushViewController:verify animated:YES];
+    self.hidesBottomBarWhenPushed=NO;
 }
 
 
