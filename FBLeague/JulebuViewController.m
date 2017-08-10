@@ -30,7 +30,7 @@
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
     
-    if(![uvo.club isEqual:[NSNull null]]){
+    if([uvo.club isEqual:[NSNull null]]){
         [self setJulebuView];
     }else{
         if([uvo.role isEqualToString:@"1"]){
@@ -234,7 +234,7 @@
         CoachVo *vo = [kouList objectAtIndex:indexPath.row];
         
         [cell setPhoneContactCellByImageName:vo.headerUrl andWithName:vo.name andWithPhoneNum:vo.cityName andWithChoose:vo.hasFocus andWithindex:indexPath.section];
-        //        cell.delegate =  self ;
+        cell.delegate =  self ;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone ;
     return cell ;

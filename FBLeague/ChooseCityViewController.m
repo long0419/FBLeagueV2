@@ -153,18 +153,18 @@
     chooseProAndCity = [NSString stringWithFormat:@"%@ %@" , _provincename , vo.name];
     proCityCode = [NSString stringWithFormat:@"%@ %@" , vo.provincecode , vo.code];
 
-    if([_isfrom isEqualToString:@"1"]){
+//    if([_isfrom isEqualToString:@"1"]){
         self.hidesBottomBarWhenPushed=YES;
-    }
+//    }
     ChooseSectionViewController *city = [[ChooseSectionViewController alloc] init];
     city.code = proCityCode ;
     city.cityCode = vo.provincecode ;
     city.name = chooseProAndCity ;
     city.isfrom = _isfrom ;
     [self.navigationController pushViewController:city animated:YES];
-    if([_isfrom isEqualToString:@"1"]){
+//    if([_isfrom isEqualToString:@"1"]){
         self.hidesBottomBarWhenPushed=NO;
-    }
+//    }
 
     
 }

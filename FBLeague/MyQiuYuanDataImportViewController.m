@@ -124,6 +124,21 @@
  
 }
 
+-(void)setBackBottmAndTitle{
+    
+    UIButton *backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backViewBtn.frame = CGRectMake(0, 0, 17, 17);
+    [backViewBtn setImage:[UIImage imageNamed:@"back2"] forState:UIControlStateNormal];
+    [backViewBtn addTarget:self action: @selector(back)
+          forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
+    self.navigationItem.leftBarButtonItem = backItem ;
+}
+
+-(void)back{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)setRightBottom {
     CGSize size = [NSString getStringContentSizeWithFontSize:15 andContent:@"提交"] ;
     UIButton *sender = [UIButton buttonWithType:UIButtonTypeCustom];

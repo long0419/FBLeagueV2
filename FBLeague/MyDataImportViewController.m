@@ -53,18 +53,28 @@
 
 }
 
+-(void)setBackBottmAndTitle{
+    
+    UIButton *backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backViewBtn.frame = CGRectMake(0, 0, 17, 17);
+    [backViewBtn setImage:[UIImage imageNamed:@"back2"] forState:UIControlStateNormal];
+    [backViewBtn addTarget:self action: @selector(back)
+          forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
+    self.navigationItem.leftBarButtonItem = backItem ;
+}
+
+-(void)back{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 -(void)keyboardWillShow : (NSNotification *) notification{
-    
     CGRect frame = self.view.frame;
-        
     frame.origin.y = - kScreen_Height/3 ;
-    
     self.view.frame = frame;
-        
 }
 
 -(void)keyboardWillHide : (NSNotification *) notification{
-    //恢复到默认y为0的状态，有时候要考虑导航栏要+64
     CGRect frame = self.view.frame;
     frame.origin.y = 0;
     self.view.frame = frame;
@@ -114,23 +124,12 @@
                                   [NSString stringWithFormat:@"激励"]];
     radarChart.layerCount = 5;
     radarChart.tag = 11 ;
-    
-//    if ([_skill isEqualToString:@"0"] &&[_control isEqualToString:@"0"] &&[_counterattack isEqualToString:@"0"]
-//        &&[_stronghand isEqualToString:@"0"] && [_compete isEqualToString:@"0"] && [_stimulate isEqualToString:@"0"]) {
-//        _skill = @"60" ;
-//        _control = @"60" ;
-//        _counterattack = @"60" ;
-//        _stronghand = @"60" ;
-//        _compete = @"60" ;
-//        _stimulate = @"60" ;
-//    }
-    
     radarChart.valueDataArray = @[@[_skill , _control , _stronghand , _counterattack , _compete, _stimulate]];
-
     radarChart.layerFillColor = [UIColor colorWithHexString:@"ffffff" andAlpha:.5];
     radarChart.valueDrawFillColorArray = @[[UIColor colorWithHexString:@"4cc07f" andAlpha:.5]];
     [radarChart showAnimation];
     [bg addSubview:radarChart];
+    
 }
 
 

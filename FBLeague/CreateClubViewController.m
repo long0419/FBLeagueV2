@@ -198,12 +198,14 @@
                 [self.navigationController pushViewController:verify animated:YES];
                 self.hidesBottomBarWhenPushed=NO;
             }];
+            [alert alertIsDismissed:^{
+                [self.navigationController popViewControllerAnimated:YES];
+                self.hidesBottomBarWhenPushed=NO;
+            }];
             [alert showSuccess:self title:@"创建成功" subTitle:@"你可以报名参加咖盟联赛啦!" closeButtonTitle:@"拒绝，并返回俱乐部页面" duration:0.0f];
-            
             [self closeProgressView] ;
         }
     } failure:^(NSError *error) {
-        
     }];
 
 }

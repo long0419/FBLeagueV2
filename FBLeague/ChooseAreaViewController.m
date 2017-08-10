@@ -112,17 +112,18 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     ProvinceVo *vo = [kouList objectAtIndex:indexPath.section];
     
-    if([_isfrom isEqualToString:@"1"]){
-        self.hidesBottomBarWhenPushed=YES;
-    }
+//    if([_isfrom isEqualToString:@"1"]){
+//        self.hidesBottomBarWhenPushed=YES;
+//    }
+    self.hidesBottomBarWhenPushed=YES;
     ChooseCityViewController *city = [[ChooseCityViewController alloc] init];
     city.code = vo.code ;
     city.provincename = vo.name ;
     city.isfrom = _isfrom ;
     [self.navigationController pushViewController:city animated:YES];
-    if([_isfrom isEqualToString:@"1"]){
+//    if([_isfrom isEqualToString:@"1"]){
         self.hidesBottomBarWhenPushed=NO;
-    }
+//    }
 
 }
 
