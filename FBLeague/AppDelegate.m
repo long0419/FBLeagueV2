@@ -17,6 +17,7 @@
 #import "QDTabBarViewController.h"
 #import "QDNavigationController.h"
 #import "FirstLoginViewController.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface AppDelegate ()
 
@@ -42,6 +43,9 @@
     // 界面
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self showMsg];
+    
+    [WXApi registerApp:@"wxa8c4fb497943e690"];
+
     
     // 启动动画
     [self startLaunchingAnimation];
@@ -124,6 +128,135 @@
     } completion:^(BOOL finished) {
         [launchScreenView removeFromSuperview];
     }];
+}
+
+-(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
+    
+    if ([url.host isEqualToString:@"safepay"]) {
+        // 支付跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+        }];
+        
+        // 授权跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processAuth_V2Result:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+            // 解析 auth code
+            NSString *result = resultDic[@"result"];
+            NSString *authCode = nil;
+            if (result.length>0) {
+                NSArray *resultArr = [result componentsSeparatedByString:@"&"];
+                for (NSString *subResult in resultArr) {
+                    if (subResult.length > 10 && [subResult hasPrefix:@"auth_code="]) {
+                        authCode = [subResult substringFromIndex:10];
+                        break;
+                    }
+                }
+            }
+            NSLog(@"授权结果 authCode = %@", authCode?:@"");
+        }];
+    }else{
+        return [TencentOAuth HandleOpenURL:url] || [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]] || [QQApiInterface handleOpenURL:url delegate:self] ;
+    }
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    if ([url.host isEqualToString:@"safepay"]) {
+        // 支付跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+        }];
+        
+        // 授权跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processAuth_V2Result:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+            // 解析 auth code
+            NSString *result = resultDic[@"result"];
+            NSString *authCode = nil;
+            if (result.length>0) {
+                NSArray *resultArr = [result componentsSeparatedByString:@"&"];
+                for (NSString *subResult in resultArr) {
+                    if (subResult.length > 10 && [subResult hasPrefix:@"auth_code="]) {
+                        authCode = [subResult substringFromIndex:10];
+                        break;
+                    }
+                }
+            }
+            NSLog(@"授权结果 authCode = %@", authCode?:@"");
+        }];
+    }else{
+        return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]] ;
+    }
+    return YES;
+    
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]] ;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    // Required
+    //    [JPUSHService registerDeviceToken:deviceToken];
+}
+
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    
+    // Required,For systems with less than or equal to iOS6
+    //    [JPUSHService handleRemoteNotification:userInfo];
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    
+    // IOS 7 Support Required
+    //    [JPUSHService handleRemoteNotification:userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+
+{
+    if (alertView.tag==10000) {
+        if (buttonIndex==1) {
+            NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/us/app/ka-che-guan-jia/id1091500013?mt=8&uo=4"];
+            [[UIApplication sharedApplication]openURL:url];
+        }
+    }
+}
+
+//微信原生SDK 回调
+-(void) onResp:(BaseResp*)resp{
+    SendAuthResp * resp1 = (SendAuthResp *)resp;
+    if (resp1.errCode ==WXSuccess) {
+        NSString * grantStr =@"grant_type=authorization_code";
+        
+        NSString * tokenUrl =@"https://api.weixin.qq.com/sns/oauth2/access_token?";
+        
+        NSString * tokenUrl1 = [tokenUrl stringByAppendingString:[NSString stringWithFormat:@"appid=%@&",MXWechatAPPID]];
+        
+        NSString * tokenUrl2 = [tokenUrl1 stringByAppendingString:[NSString stringWithFormat:@"secret=%@&",AppSecret]];
+        
+        NSString * tokenUrl3 = [tokenUrl2 stringByAppendingString:[NSString stringWithFormat:@"code=%@&",resp1.code]];
+        NSString * tokenUrlend = [tokenUrl3 stringByAppendingString:grantStr];
+        
+        [PPNetworkHelper POST:tokenUrlend parameters:nil success:^(id data) {
+            NSString * userfulStr = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@" , data[@"access_token"] , data[@"openid"]];
+            [PPNetworkHelper POST:userfulStr parameters:nil success:^(id data) {
+                 [[NSNotificationCenter defaultCenter] postNotificationName:@"showRegisterView" object:data];
+                
+            } failure:^(NSError *error) {
+            }];
+
+        } failure:^(NSError *error) {
+        }];
+
+        
+    }
 }
 
 @end

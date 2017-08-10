@@ -47,8 +47,16 @@
 /*******保证金********/
 #define getDepositProtocol [NSString stringWithFormat:@"%@/%@",API,@"ht/user/getDepositProtocol"]
 #define getCoachProtocol [NSString stringWithFormat:@"%@/%@",API,@"ht/user/getCoachProtocol"]
-#define isAuth [NSString stringWithFormat:@"%@/%@",API,@"ht/user/isAuth"]
+#define isAuth [NSString stringWithFormat:@"%@/%@",API,@"api/user/isAuth"]
 
+
+/******支付*******/
+#define getWXPrepayId [NSString stringWithFormat:@"%@/%@",API,@"pay/getWXPrepayId"]
+#define getRandomId [NSString stringWithFormat:@"%@/%@",API,@"pay/getRandomId"]
+#define zfbPayNotify [NSString stringWithFormat:@"%@/%@",API,@"pay/zfbPayNotify"]
+#define wxPayNotify [NSString stringWithFormat:@"%@/%@",API,@"pay/wxPayNotify"]
+#define zfbPayForCourseNotify [NSString stringWithFormat:@"%@/%@",API,@"pay/zfbPayForCourseNotify"]
+#define wxPayForCourseNotify [NSString stringWithFormat:@"%@/%@",API,@"pay/wxPayForCourseNotify"]
 
 
 #endif /* APIUrl_h */

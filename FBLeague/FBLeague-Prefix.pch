@@ -81,6 +81,49 @@
 #define apikey  @"82428a4618b6aa313be6914d727cb9b7"
 #define InputViewObserveKeyPath @"inputViewOffsetY"
 
+
+//微信开放平台相关
+#define MXWechatAPPID  @"wxa8c4fb497943e690"
+#define AppSecret @"edd576ea232617cf53a5761dfcb49325"
+// 微信支付商户号
+#define MCH_ID  @"1437534402"
+
+// 安全校验码（MD5）密钥，商户平台登录账户和密码登录http://pay.weixin.qq.com 平台设置的“API密钥”，为了安全，请设置为以数字和字母组成的32字符串。
+#define WX_PartnerKey @"FBLEAGUE20161107MILEWORKS1721434"
+
+#pragma mark - 统一下单请求参数键值
+
+/**
+ -----------------------------------
+ 统一下单请求参数键值
+ -----------------------------------
+ */
+
+#define WXAPPID         @"appid"            // 应用id
+#define WXMCHID         @"mch_id"           // 商户号
+#define WXNONCESTR      @"nonce_str"        // 随机字符串
+#define WXSIGN          @"sign"             // 签名
+#define WXBODY          @"body"             // 商品描述
+#define WXOUTTRADENO    @"out_trade_no"     // 商户订单号
+#define WXTOTALFEE      @"total_fee"        // 总金额
+#define WXEQUIPMENTIP   @"spbill_create_ip" // 终端IP
+#define WXNOTIFYURL     @"notify_url"       // 通知地址
+#define WXTRADETYPE     @"trade_type"       // 交易类型
+#define WXPREPAYID      @"prepay_id"        // 预支付交易会话
+
+//  微信统一下单接口连接
+#define WXUNIFIEDORDERURL @"https://api.mch.weixin.qq.com/pay/unifiedorder"
+
+//QQ开放平台相关
+#define tencentAPPID @"1105889047"
+
+//支付宝相关
+#define PARTNER @"2017020705551206";
+#define SELLER @"88-626@163.com";
+#define RSA_PRIVATE @"MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCajkaL8MIgx1fxBRr2yDgQRfGkDAgF2SyyG6omeUE0OkOm0njBveN0ryycJaqLzbKdLK6ECCG42CqaMJXL6tE5eu9Di3WQi5cREblClc5wQZOqnwnoXmx9N6z5jUjVG98LHKH+tGx2SkafbxIFMFIlEEDn92yPXLuKA/4LSEQ03eDEVGg1zlsvdT4KvVoKMhMkepG7duPd0u1IbVYYNY/g4PkE5vrJwpkj9DtYIxsevzWKehNVbX0Olta+KJmd/2butxMDObPFzfc7kARVllFqi4fs1mKt9S7RHqZUTmb4h28cxs6G5tqzp5R2lseT/600NoE/Zcf07iOE+Fe2+6YJAgMBAAECggEAAko3W11u0uOBNw33T066HeubX+3ZtJR6KA1m4PkM8UQnunIF3gD9PL5Xr9yTAU1D5zZBQ62HKmDxiKVNot7QyMQ8hUisrj6TN2qGzyi/DUS7dlyy3eGAQ/6uLmhceuPV0ylScR6lOL9y+mu/3ZnQrcHm5EjzL9CU6r+SZQJmGE5nXo4EYmzrcyMA/cnTdkKbBt+rQbiJpxNkrbXYF0Q3VCU9Zy4KqDUA1nQXGoWN2VHPX85CDl+MN8KX8T+w/VHtG9J9AQRgx1ktvaqzKdK2ZrSR8OyLs5gHgKGdG0gPf+Hm4Y7kcuIk/p8B8K8r/nOVMA2xn0tjQNc75qqpsuMm3QKBgQDQZJDnsBZACQBSMoz0JE4Uhw/vuztJvemviCpzVxECITteXrBqFtS/m9xIAQlk5n+P258N+td0/2YCFf6agpHvCSXjoup1sU1YNqVBVhcnWriahYWOrUYXeh4u9GaJKaPby4TJCKEgmsUKx+tb6wDO+D83zxvA03Vwqp2djbGwHwKBgQC93Sg7ERuIjF42xk8tt/+aCh5noebfkL1G84jN5bVm5bnCnN5JcvPm22yylfA4wfYrt2OgNgsysFP5WGA+pIussTU38XpFRUnCY3Mcf+zII5rdMOBZol6nYUDdbuO0scg3+YYKTElzPQD5BaSmjWyjzQCZlwrfQo/3sNA3gvfE1wKBgCU3UImP8OlOsjf7vyB6u1b/J+FwVo481Fb8wlgG3Iq81JVt46OOoD/33cceKEdUwsM2PZmJiqDiW51TwDxnxRgjUhjtJ2INX/q5B5o7fbcRhJZT8h4g47udm3ZXP1iPjyvZlMUyPVRNT5M1UNsBhQtxWhjla9dr7DVKwws4GtuRAoGAQ2cZ+y4tmiJK6CMqxM5HfYYOGThO4BtgNqoKbR4Zcjgn5EEQYP7gO5q2UggMyfmBzS9DvQKyowIaLbEEKfj8ZQhcHkop4CGi99GacgmwI7UQK2pIm0mbVMyf3HybdfCPZd+9iDZg9Po5OC6ar04RvWzvw5btkyjsN0CcCrkCAO0CgYBp2jX8C/+dfvQ1DjJt+ZrkTxSngtspdMH240H549QmlrLSwL+m7GCwKB7YdLW4IfPKGs28CuYspA6e4iRd/dJnSkQyNwHnpjas2QAUYNvSINi2dfPLsHQC/Nh+bVOyqOlr6DEhXU8BC4b56u6o4BE3jtOrNIPQKg+LM/W2bwnAbw==";
+#define RSA_PUBLIC @"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsXSVJJr4NnkDo0lgIHTYc7pD7kkaGEgTA0IopUPTookGWQmvyivw0gd2+3FaWEVkwDpa2myTs7n8/W0gTzJlBkLOFGHoJ1s7uSHQrbjAI9Kve8jKNehtirhaP3Q/I/nOHJ1zRq2skacCng9RsKiJhPQPd9QmOdsHLuIgTo3IhSELUZY5aDJZzjvJDZ5EnuDfmjyWQpObFAnjlj+ZpEEyIfU9YJUPTZpcxhvFX4X0Z3sQPG2hPDJ10+ZphMBlvh5Lli+6YM83Wq1CeKoL5CFKXw+fkD9XJ27YulzSK7a3VVcZfHgXSm6/crHucoxxEkH42tVFVcn4YHhbywzXf9Oo9QIDAQAB";
+
+
 #import "UIColor+Expanded.h"
 #import "NSString+Common.h"
 #import "UIColor+Expanded.h"

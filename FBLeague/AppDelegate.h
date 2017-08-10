@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WXApi.h"
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import "WXApiManager.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, QQApiInterfaceDelegate ,WXApiDelegate>
+
 
 @property (strong, nonatomic) UIWindow *window;
 

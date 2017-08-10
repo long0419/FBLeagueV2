@@ -18,5 +18,7 @@
 @property (nonatomic , strong) NSString *nickname ;
 @property (nonatomic , strong) NSString *openId ;
 @property (nonatomic , strong) NSString *from ;
+@property (nonatomic , strong) NSString *imageUrl ;
+
 
 @end

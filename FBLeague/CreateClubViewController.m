@@ -310,6 +310,7 @@
 
 {
     [textField resignFirstResponder];
+    
     if(textField.tag == 10){
         self.hidesBottomBarWhenPushed=YES;
         ChooseAreaViewController *area = [[ChooseAreaViewController alloc] init];

@@ -39,6 +39,8 @@
     }];
     
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(on:)   name:@"showRegisterView" object:nil];
+    
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake((self.view.width - 168/2)/2, 198/2 , 168/2 , 168/2)];
     bgView.layer.borderWidth = 1;
     bgView.layer.cornerRadius = 168/4 ;
@@ -225,6 +227,26 @@
         make.center.mas_equalTo(wxView);
     }];
 
+}
+
+-(void)on:(NSNotification *) notification{
+    RegisterViewController *registerController = [[RegisterViewController alloc] init];
+    //    registerController.from = @"1" ;
+    NSDictionary *userInfoDic = [notification object];
+    registerController.nickname = [userInfoDic objectForKey:@"nickname"];
+    if ([userInfoDic objectForKey:@"headimgurl"]) {
+        registerController.imageUrl = [userInfoDic objectForKey:@"headimgurl"];
+    }else{
+        registerController.imageUrl = [userInfoDic objectForKey:@"figureurl_2"];
+    }
+    
+    if ([userInfoDic objectForKey:@"openid"]) {
+        registerController.openId = [userInfoDic objectForKey:@"openid"];
+    }else{
+        registerController.openId = [NSString stringWithFormat:@"tencentID %@" ,tencentAPPID] ; //QQ登录没有返回 则写死appid
+    }
+    
+    [self.navigationController pushViewController:registerController animated:YES];
 }
 
 -(void)handleSingleTap{
