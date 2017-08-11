@@ -277,8 +277,8 @@
                             [CommonFunc base64StringFromText:tf.text] , @"name" ,
                             moto.text ,@"description" ,
                             uvo.phone ,  @"token",
-                            [areas objectAtIndex:0] , @"provincecode" ,
-                            [areas objectAtIndex:1] , @"citycode" ,
+                            [areas objectAtIndex:0] , @"citycode" ,
+                            [areas objectAtIndex:1] , @"provincecode" ,
                             [areas objectAtIndex:2] , @"areacode" ,
                             url , @"logourl" ,
                             nil];
