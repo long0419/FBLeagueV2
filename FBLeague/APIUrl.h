@@ -30,6 +30,7 @@
 #define setPraise [NSString stringWithFormat:@"%@/%@",API,@"theme/setPraise"]
 #define apicmsave [NSString stringWithFormat:@"%@/%@",API,@"comment/apisave"]
 #define listTheme [NSString stringWithFormat:@"%@/%@",API,@"theme/listTheme"]
+#define clubTheme [NSString stringWithFormat:@"%@/%@",API,@"theme/clubTheme"]
 
 /*******教练或球员相关********/
 #define focusPerson [NSString stringWithFormat:@"%@/%@",API,@"fans/apisave"]
@@ -38,6 +39,10 @@
 #define getCBDetail [NSString stringWithFormat:@"%@/%@",API,@"user/apiinfo"]
 #define setSkill [NSString stringWithFormat:@"%@/%@",API,@"user/setSkill"]
 #define getUsersByClubId [NSString stringWithFormat:@"%@/%@",API,@"club/getUsersByClubId"]
+#define getApplyTrainee [NSString stringWithFormat:@"%@/%@",API,@"user/getApplyTrainee"]
+#define clubDetail [NSString stringWithFormat:@"%@/%@",API,@"club/apiinfo"]
+#define applyClub [NSString stringWithFormat:@"%@/%@",API,@"user/apply"]
+
 
 /*******俱乐部********/
 #define listClubs [NSString stringWithFormat:@"%@/%@",API,@"club/listClubs"]

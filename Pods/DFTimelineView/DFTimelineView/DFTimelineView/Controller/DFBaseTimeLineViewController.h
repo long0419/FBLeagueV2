@@ -20,6 +20,8 @@
 @property (nonatomic, assign) NSUInteger coverHeight;
 @property (nonatomic, assign) NSUInteger userAvatarSize;
 
+@property (nonatomic, assign) NSInteger height ;
+
 //结束上拉更多
 -(void) endLoadMore;
 

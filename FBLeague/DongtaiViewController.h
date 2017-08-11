@@ -18,6 +18,8 @@
 
 @interface DongtaiViewController : DFTimeLineViewController
 
+@property (nonatomic , strong) NSString *type ;
+
 - (void) onFCTextImage:(NSString *) text images:(NSArray *)images ;
 
 @end

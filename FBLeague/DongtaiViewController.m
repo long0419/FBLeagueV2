@@ -47,8 +47,14 @@
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
     
-        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" ,uvo.phone ,@"token" , nil];
-        [PPNetworkHelper POST:apilist parameters:params success:^(id object) {
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" ,uvo.phone ,@"token" , nil];
+    NSString *url = apilist ;
+    if ([_type isEqualToString:@"2"]) {
+        params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" , uvo.club , @"clubId" ,uvo.phone ,@"token" , nil];
+        url = clubTheme ;
+    }
+    
+    [PPNetworkHelper POST:url parameters:params success:^(id object) {
             if([object[@"code"] isEqualToString:@"0000"]){
                 
                 if ([object[@"page"] isEqual:[NSNull null]]) {
@@ -114,7 +120,7 @@
                 [self endRefresh];
             }
         } failure:^(NSError *error) {
-        }];
+    }];
 }
 
 -(void) processData :(NSString *) phone andWithName :(NSString *) name andWithText :(NSString *)text andWithItemId :(NSString *) itemId andWithCommentId :(NSString *) commentId{

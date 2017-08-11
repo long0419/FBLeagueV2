@@ -30,8 +30,25 @@
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
     
-    if([uvo.club isEqual:[NSNull null]]){
-        [self setJulebuView];
+    if(![uvo.club isEqual:[NSNull null]]){
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.club , @"id" ,uvo.phone ,  @"token", nil];
+        [PPNetworkHelper POST:clubDetail parameters:params success:^(id object) {
+            if([object[@"code"] isEqualToString:@"0000"]){
+                ClubVo *clubVo = [ClubVo new] ;
+                clubVo.desc = object[@"club"][@"description"] ;
+                clubVo.areacode = object[@"club"][@"areacode"] ;
+                clubVo.logourl = object[@"club"][@"logourl"] ;
+                clubVo.cityname = object[@"club"][@"cityname"] ;
+                clubVo.creator = object[@"club"][@"creator"] ;
+                clubVo.areaname = object[@"club"][@"areaname"] ;
+                clubVo.name = object[@"club"][@"name"] ;
+                
+                [self setJulebuView : clubVo];
+            }
+        } failure:^(NSError *error) {
+            
+        }];
+        
     }else{
         if([uvo.role isEqualToString:@"1"]){
             [self setBackBottmAndTitle];
@@ -69,18 +86,18 @@
 }
 
 #pragma mark - 有俱乐部的情况
--(void)setJulebuView{
+-(void)setJulebuView :(ClubVo *) clubVo{
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 40 + 22 , kScreen_Width,  230/2)];
     header.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:header];
     
     UIImageView *head ;
-    if (nil == uvo.headpicurl || [@"" isEqualToString:uvo.headpicurl]) {
+    if (nil == clubVo.logourl || [@"" isEqualToString:clubVo.logourl]) {
         head = [[UIImageView alloc]
                 initWithImage:[UIImage imageNamed:@"defaulthead"]];
     }else{
         head = [[UIImageView alloc] init];
-        [head sd_setImageWithURL:[NSURL URLWithString:uvo.headpicurl] placeholderImage:nil];
+        [head sd_setImageWithURL:[NSURL URLWithString:clubVo.logourl] placeholderImage:nil];
     }
     head.frame = CGRectMake(30, 25 , 140/2, 140/2) ;
     head.layer.masksToBounds =YES;
@@ -88,8 +105,8 @@
 
     [header addSubview:head];
     
-//    NSString *name =  [CommonFunc textFromBase64String:vo.name];
-    NSString *name = @"武汉体育学院足协代表队" ;
+    NSString *name =  [CommonFunc textFromBase64String:clubVo.name];
+//    NSString *name = @"武汉体育学院足协代表队" ;
     CGSize nameSize = [NSString getStringContentSizeWithFontSize:34/2 andContent:name];
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(head.right + 12 , head.top , nameSize.width, nameSize.height)];
     nameLabel.font = [UIFont systemFontOfSize:30/2];
@@ -101,8 +118,8 @@
     titleLabel.font = [UIFont systemFontOfSize:10];
     titleLabel.numberOfLines = 0;//多行显示，计算高度
     titleLabel.textColor = [UIColor colorWithHexString:@"000"];
-//    NSString *desc =  [CommonFunc textFromBase64String:vo.desc];
-    NSString *desc = @"不错 不错" ;
+    NSString *desc =  [CommonFunc textFromBase64String:clubVo.desc];
+//    NSString *desc = @"不错 不错" ;
     CGSize titleSize = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc];
     titleLabel.size = titleSize;
     titleLabel.text = desc ;
@@ -121,7 +138,7 @@
     titleLabel2.text = desc2 ;
     titleLabel2.x = nameLabel.left ;
     titleLabel2.y = titleLabel.bottom + 5 ;
-    [header addSubview:titleLabel2];
+//    [header addSubview:titleLabel2];
 
     UILabel *titleLabel3 = [UILabel new];
     titleLabel3.font = [UIFont systemFontOfSize:10];
@@ -134,10 +151,12 @@
     titleLabel3.text = desc3 ;
     titleLabel3.x = nameLabel.left ;
     titleLabel3.y = titleLabel2.bottom + 5 ;
-    [header addSubview:titleLabel3];
+//    [header addSubview:titleLabel3];
 
     DongtaiViewController *dongtai = [DongtaiViewController new] ;
-    
+    dongtai.type = @"2" ;
+    dongtai.height = self.view.frame.size.height - 20 - 44 - 98/2 - 36 - 66 ;
+
     MemberViewController *focus = [MemberViewController new];
     
     SaiChengViewController *jiaolian = [SaiChengViewController new] ;    
@@ -233,10 +252,12 @@
     if (kouList.count > 0){
         CoachVo *vo = [kouList objectAtIndex:indexPath.row];
         
-        [cell setPhoneContactCellByImageName:vo.headerUrl andWithName:vo.name andWithPhoneNum:vo.cityName andWithChoose:vo.hasFocus andWithindex:indexPath.section];
+        [cell setPhoneApplyCellByImageName:vo.headerUrl andWithName:vo.name andWithPhoneNum:vo.cityName andWithTel : vo.clubId andWithChoose:vo.hasFocus andWithindex:indexPath.section];
         cell.delegate =  self ;
     }
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone ;
+    
     return cell ;
 }
 
@@ -258,5 +279,22 @@
     
 }
 
+-(void) sendapply : (NSString *)clubid andWith :(NSString *)phone {
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: clubid , @"clubId" , uvo.phone , @"phone" ,uvo.phone , @"token", nil];
+
+    [PPNetworkHelper POST:applyClub parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+            hud.mode = MBProgressHUDModeText;
+            hud.removeFromSuperViewOnHide = YES;
+            hud.labelText = @"申请成功";
+            [hud hide:YES afterDelay:2];
+        }
+    } failure:^(NSError *error) {
+        
+    }];    
+    
+}
 
 @end

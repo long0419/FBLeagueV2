@@ -25,6 +25,9 @@
 
 -(void) setPhoneContactCellByImageName2 :(NSString *) imageName andWithName :(NSString *) name andWithPhoneNum : (NSString *) num andWithChoose :(NSString *) use andWithindex :(NSInteger) indexPath ;
 
+-(void) setPhoneApplyCellByImageName :(NSString *) imageName andWithName :(NSString *) name andWithPhoneNum : (NSString *) num andWithTel : (NSString *) tel andWithChoose :(NSString *) use andWithindex :(NSInteger) indexPath ;
+
+
 @property (nonatomic , strong) id<focusAction> delegate ;
 
 @end

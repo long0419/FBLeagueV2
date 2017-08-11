@@ -98,12 +98,12 @@
 }
 
 -(void)apply:(UITapGestureRecognizer *)sender{
-    sender.self.view.backgroundColor = [UIColor colorWithHexString:@"2eb66a"];
+    sender.self.view.backgroundColor = [UIColor blackColor];
     UILabel *label = [sender.self.view viewWithTag:12];
     label.text = @"同意审核" ;
     label.textColor = [UIColor colorWithHexString:@"ffffff"];
 
-    [self.delegate sendapply:sender.self.view.accessibilityHint andWith:label.accessibilityHint];
+    [self.delegate sendapply:label.accessibilityHint andWith:@""];
 
 }
 
@@ -304,6 +304,87 @@
 }
 
 
+-(void) setPhoneApplyCellByImageName :(NSString *) imageName andWithName :(NSString *) name andWithPhoneNum : (NSString *) num  andWithTel : (NSString *) tel andWithChoose :(NSString *) use andWithindex :(NSInteger) indexPath{
+    
+    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, 70)];
+    bg.backgroundColor = [UIColor whiteColor];
+    [self.contentView addSubview:bg];
+    
+    UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.size = CGSizeMake(72/2, 72/2) ;
+    imageView.origin = CGPointMake(12 , (bg.height - 72/2)/2);
+    imageView.layer.cornerRadius = 72 / 4 ;
+    imageView.layer.masksToBounds = YES;
+    UIImage *image = nil ;
+    if ([imageName isEqual:[NSNull null]] || [imageName isEqualToString:@""]
+        || [imageName isEqualToString:@"<null>"]) {
+        imageName = @"defaulthead" ;
+        image = [UIImage imageNamed:imageName];
+        [imageView setImage:image];
+        
+    }else{
+        [imageView sd_setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:nil];
+    }
+    [bg addSubview:imageView];
+    
+    CGSize nameSize = [NSString getStringContentSizeWithFontSize:32/2 andContent:name];
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.right + 32/2 , imageView.top , nameSize.width, nameSize.height)];
+    nameLabel.font = [UIFont systemFontOfSize:32/2];
+    nameLabel.textColor = [UIColor colorWithHexString:@"333333"];
+    nameLabel.text = name;
+    [bg addSubview:nameLabel];
+    
+    
+    CGSize phoneSize = [NSString getStringContentSizeWithFontSize:11 andContent:num];
+    UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.right + 32/2 , nameLabel.bottom + 6, phoneSize.width, phoneSize.height)];
+    phoneLabel.font = [UIFont systemFontOfSize:11];
+    phoneLabel.textColor = [UIColor colorWithHexString:@"999999"];
+    phoneLabel.text = num ;
+    [bg addSubview:phoneLabel];
+    
+    UITapGestureRecognizer *singleTap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(apply:)];
+    UIView *focus = [[UIView alloc] initWithFrame:CGRectMake(bg.right - 20 - 134/2, (bg.height - 58/2)/2, 134/2, 58/2)] ;
+    [[focus layer]setCornerRadius:58/4];
+    focus.tag = indexPath ;
+    focus.accessibilityHint = tel ;
+    UILabel *focusLabel = nil ;
+    if ([use isEqualToString:@"no"]) {
+        focus.backgroundColor = [UIColor whiteColor];
+        focus.layer.borderWidth = 1;
+        focus.layer.borderColor = [UIColor colorWithHexString:@"000000"].CGColor ;
+        
+        CGSize focusSize = [NSString getStringContentSizeWithFontSize:14 andContent:@"申请加入"];
+        focusLabel = [[UILabel alloc] initWithFrame:CGRectMake((focus.width - focusSize.width)/2 , (focus.height - focusSize.height)/2, focusSize.width, focusSize.height)];
+        focusLabel.font = [UIFont systemFontOfSize:14];
+        focusLabel.textColor = [UIColor colorWithHexString:@"000"];
+        focusLabel.text = @"申请加入" ;
+        focusLabel.tag = 12 ;
+        focus.userInteractionEnabled = YES;
+        [focus addGestureRecognizer:singleTap4];
+    }else{
+        focus.backgroundColor = [UIColor colorWithHexString:@"000"];
+        
+        CGSize focusSize = [NSString getStringContentSizeWithFontSize:14 andContent:@"已加入"];
+        focusLabel = [[UILabel alloc] initWithFrame:CGRectMake((focus.width - focusSize.width)/2 , (focus.height - focusSize.height)/2, focusSize.width, focusSize.height)];
+        focusLabel.font = [UIFont systemFontOfSize:14];
+        focusLabel.textColor = [UIColor whiteColor];
+        focusLabel.text = @"已加入" ;
+        focusLabel.tag = 12 ;
+        
+        focus.userInteractionEnabled = NO ;
+        
+    }
+    [focus addSubview:focusLabel];
+    [bg addSubview:focus];
+    
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake( 32 /2 , bg.bottom , kScreen_Width - 32 , .5)] ;
+    line.backgroundColor = [UIColor colorWithHexString:@"dddddd"];
+    [bg addSubview:line];
+    
+}
+
+
+
 -(NSUInteger) unicodeLengthOfString: (NSString *) text {
     NSUInteger asciiLength = 0;
     for (NSUInteger i = 0; i < text.length; i++) {
@@ -325,5 +406,6 @@
     [self.delegate focusContact:recognizer.view];
 }
 
- 
+
+
 @end

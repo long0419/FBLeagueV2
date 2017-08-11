@@ -36,6 +36,8 @@
     [self setRightBottom];
     
     dongtai = [DongtaiViewController new] ;
+    dongtai.type = @"1" ;
+    dongtai.height = self.view.frame.size.height - 20 - 44 - 98/2 - 36 - 10 ;
     
     focus = [FocusViewController new];
     
