@@ -14,4 +14,6 @@
 #import "DongtaiViewController.h"
 @interface MemberViewController : BaseViewController
 
+@property (nonatomic , strong) UserDataVo *userVo ;
+
 @end

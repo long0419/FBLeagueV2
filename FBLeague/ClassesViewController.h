@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "CoachChooseTableViewCell.h"
+#import "JulebuViewController.h"
 
 @interface ClassesViewController : BaseViewController<UIAlertViewDelegate,UITableViewDelegate , UITableViewDataSource>
 

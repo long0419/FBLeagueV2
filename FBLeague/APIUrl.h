@@ -31,6 +31,7 @@
 #define apicmsave [NSString stringWithFormat:@"%@/%@",API,@"comment/apisave"]
 #define listTheme [NSString stringWithFormat:@"%@/%@",API,@"theme/listTheme"]
 #define clubTheme [NSString stringWithFormat:@"%@/%@",API,@"theme/clubTheme"]
+#define userTheme [NSString stringWithFormat:@"%@/%@",API,@"theme/userTheme"]
 
 /*******教练或球员相关********/
 #define focusPerson [NSString stringWithFormat:@"%@/%@",API,@"fans/apisave"]
@@ -47,7 +48,7 @@
 /*******俱乐部********/
 #define listClubs [NSString stringWithFormat:@"%@/%@",API,@"club/listClubs"]
 #define crxClub [NSString stringWithFormat:@"%@/%@",API,@"club/apisave"]
-
+#define getUsersByClubId [NSString stringWithFormat:@"%@/%@",API,@"club/getUsersByClubId"]
 
 /*******保证金********/
 #define getDepositProtocol [NSString stringWithFormat:@"%@/%@",API,@"ht/user/getDepositProtocol"]

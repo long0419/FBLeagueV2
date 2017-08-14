@@ -109,7 +109,7 @@
 
 -(void) setPhoneContactCellByImageName :(NSString *) imageName andWithName :(NSString *) name andWithPhoneNum : (NSString *) num  andWithindex :(NSInteger) indexPath andWithRole :(NSString *)role andPosition : (NSString *) position {
 
-    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, 70 + 20)];
+    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, 70)];
     bg.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:bg];
     
@@ -130,7 +130,7 @@
         }
     }
     
-    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width , 20)];
+    UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width , 0)];
     header.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
     [bg addSubview:header];
     

@@ -27,7 +27,7 @@
     [navigationBar setBackgroundImage:[UIImage imageNamed:@"parentTopBackgroupd"] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     [navigationBar setShadowImage:[UIImage new]];
     
-    self.title = @"徐龙" ;
+    self.title = [CommonFunc textFromBase64String:_userVo.nickname] ;
     
     [self setJulebuView];
     
@@ -54,24 +54,19 @@
     [self.view addSubview:header];
     
     UIImageView *head ;
-    if (nil == uvo.headpicurl || [@"" isEqualToString:uvo.headpicurl]) {
+    if (nil == _userVo.headpicurl || [@"" isEqualToString:_userVo.headpicurl]) {
         head = [[UIImageView alloc]
                 initWithImage:[UIImage imageNamed:@"defaulthead"]];
     }else{
         head = [[UIImageView alloc] init];
-        [head sd_setImageWithURL:[NSURL URLWithString:uvo.headpicurl] placeholderImage:nil];
+        [head sd_setImageWithURL:[NSURL URLWithString:_userVo.headpicurl] placeholderImage:nil];
     }
     head.frame = CGRectMake((kScreen_Width - 120/2)/2, 5 , 120/2, 120/2) ;
     head.layer.masksToBounds =YES;
     head.layer.cornerRadius = 120/4 ;
-    
-    //    head.userInteractionEnabled = YES ;
-    //    UITapGestureRecognizer *singleTap3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addPic)];
-    //    [head addGestureRecognizer:singleTap3];
     [header addSubview:head];
 
-//    NSString *name =  [CommonFunc textFromBase64String:vo.name];
-    NSString *name = @"xxxxxx" ;
+    NSString *name = [NSString stringWithFormat:@"%@ %@" , _userVo.cityName , _userVo.areaname] ;
     CGSize nameSize = [NSString getStringContentSizeWithFontSize:34/2 andContent:name];
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake((kScreen_Width - nameSize.width)/2 , head.bottom + 5 , nameSize.width, nameSize.height)];
     nameLabel.font = [UIFont systemFontOfSize:30/2];
@@ -83,7 +78,6 @@
     titleLabel.font = [UIFont systemFontOfSize:10];
     titleLabel.numberOfLines = 0;//多行显示，计算高度
     titleLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
-    //    NSString *desc =  [CommonFunc textFromBase64String:vo.desc];
     NSString *desc = @"武汉体育学院代表队" ;
     CGSize titleSize = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc];
     titleLabel.size = titleSize;
@@ -121,10 +115,15 @@
     MemeberDataViewController *dongtai = [MemeberDataViewController new] ;
     
     DongtaiViewController *focus = [DongtaiViewController new];
+    focus.type = @"3" ;
+    focus.phone = _userVo.phone ;
     
     ClassesViewController *jiaolian = [ClassesViewController new] ;
     
-    NSArray *viewControllers = @[@{@"他的课程":dongtai}, @{@"他的动态":focus}, @{@"他的数据":jiaolian}];
+    NSArray *viewControllers = @[
+//                                 @{@"他的课程":dongtai},
+                                 @{@"他的动态":focus},
+                                 @{@"他的数据":jiaolian}];
     
     YCSlideView * view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, header.bottom, kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
     [self.view addSubview:view];

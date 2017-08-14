@@ -26,6 +26,9 @@
     [super viewDidLoad];
     kouList = [[NSMutableArray alloc] init];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forward:) name:@"forwardDetail" object:nil];
+
+    
     self.title = @"俱乐部" ;
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
@@ -81,7 +84,7 @@
         [_soTableView.pullToRefreshView setTitle:@"加载中..." forState:SVPullToRefreshStateLoading];
     }
     
-    [self setRightBottom];
+//    [self setRightBottom];
     
 }
 
@@ -157,7 +160,7 @@
     dongtai.type = @"2" ;
     dongtai.height = self.view.frame.size.height - 20 - 44 - 98/2 - 36 - 66 ;
 
-    MemberViewController *focus = [MemberViewController new];
+    ClassesViewController *focus = [ClassesViewController new];
     
     SaiChengViewController *jiaolian = [SaiChengViewController new] ;    
     
@@ -294,7 +297,18 @@
     } failure:^(NSError *error) {
         
     }];    
+}
+
+-(void)forward : (NSNotification *) notification {
+    UserDataVo *vo = [notification object];
+    self.hidesBottomBarWhenPushed=YES;
     
+    MemberViewController *mem = [MemberViewController new] ;
+    mem.userVo = vo ;
+    [self.navigationController pushViewController:mem animated:YES];
+    
+    self.hidesBottomBarWhenPushed=NO;
+
 }
 
 @end

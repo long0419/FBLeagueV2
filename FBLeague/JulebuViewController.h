@@ -19,4 +19,9 @@
 
 @property (nonatomic , strong) UITableView *soTableView;
 
+-(void) gotojiaoLianDetail : (NSString *)phone ;
+
+-(void) gotoQiuDetail : (NSString *)phone ;
+
+
 @end

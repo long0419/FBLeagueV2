@@ -18,7 +18,9 @@
 
 @interface DongtaiViewController : DFTimeLineViewController
 
-@property (nonatomic , strong) NSString *type ;
+@property (nonatomic , strong) NSString *type ; //1.首页 2.俱乐部 3.个人动态
+
+@property (nonatomic , strong) NSString *phone ; 
 
 - (void) onFCTextImage:(NSString *) text images:(NSArray *)images ;
 

@@ -37,7 +37,6 @@
 @property (nonatomic , strong) NSString *speed ;
 @property (nonatomic , strong) NSString *stimulate ;
 @property (nonatomic , strong) NSString *strength ;
-//@property (nonatomic , strong) NSString *strongHand ;
 @property (nonatomic , strong) NSString *withstand ;
 @property (nonatomic , strong) NSString *pass ;
 @property (nonatomic , strong) NSString *defend ;
@@ -55,7 +54,11 @@
 @property (nonatomic , strong) NSString *token ;
 @property (nonatomic , strong) NSString *rongyun_token ;
 
-
-
+@property (nonatomic , strong) NSString *team ;
+@property (nonatomic , strong) NSString *areaname ;
+@property (nonatomic , strong) NSString *sex ;
+@property (nonatomic , strong) NSString *openidbyqq ;
+@property (nonatomic , strong) NSString *openidbywx ;
+@property (nonatomic , strong) NSString *certification ;
 
 @end

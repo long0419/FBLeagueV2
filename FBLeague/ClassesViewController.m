@@ -9,6 +9,7 @@
 #import "ClassesViewController.h"
 #import "SVPullToRefresh.h"
 #import "CoachVo.h"
+#import "MemberViewController.h"
 
 @interface ClassesViewController (){
     NSMutableArray *kouList ;
@@ -24,7 +25,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    cache = [YYCache cacheWithName:@"FB"];
+    uvo = [cache objectForKey:@"userData"];
+    kouList= [NSMutableArray new] ;
+    
     [self getNeedDatas : @"1"];
     pageNO = @"1" ;
     
@@ -55,29 +59,47 @@
 
 -(void)getNeedDatas :(NSString *) page{
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , page , @"page" , nil];
-    [PPNetworkHelper POST:listClubs parameters:params success:^(id object) {
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.club , @"id" , uvo.phone , @"token" , nil];
+    [PPNetworkHelper POST:getUsersByClubId parameters:params success:^(id object) {
         
         if([object[@"code"] isEqualToString:@"0000"]){
-            NSDictionary *list = object[@"coaches"];
-            CoachVo *model = nil ;
+            NSDictionary *list = object[@"users"];
+            UserDataVo *vo = nil ;
             [kouList removeAllObjects];
             
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
-                    model = [CoachVo new];
-                    model.cityName = [NSString stringWithFormat:@"%@" , dic[@"cityName"]] ;
-                    model.firstLetter = [NSString stringWithFormat:@"%@" ,dic[@"firstLetter"]] ;
-                    model.hasFocus = [NSString stringWithFormat:@"%@" ,dic[@"hasFocus"]] ;
-                    model.level = [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
-                    model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]]  ;
-                    model.phone =  [NSString stringWithFormat:@"%@" ,dic[@"phone"]]  ;
-                    model.headerUrl =  [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]]  ;
-                    [kouList addObject:model];
+                    vo = [UserDataVo new];
+                    vo.areacode = [NSString stringWithFormat:@"%@" , dic[@"areacode"]] ;
+                    vo.brithday = [NSString stringWithFormat:@"%@" ,dic[@"brithday"]] ;
+                    vo.citycode = [NSString stringWithFormat:@"%@" ,dic[@"citycode"]] ;
+                    vo.club = [NSString stringWithFormat:@"%@" ,dic[@"club"]]  ;
+                    vo.desc = [NSString stringWithFormat:@"%@" ,dic[@"description"]]  ;
+                    vo.firstletter =  [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]]  ;
+                    vo.headpicurl =  [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]]  ;
+                    vo.firstletter =  [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]]  ;
+                    vo.level =  [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
+                    vo.nickname = dic[@"nickname"]  ;
+                    vo.openid = dic[@"openid"]  ;
+                    vo.phone = dic[@"phone"]  ;
+                    vo.position = dic[@"position"]  ;
+                    vo.provincecode = dic[@"provincecode"]  ;
+                    vo.pwd = dic[@"pwd"]  ;
+                    vo.realname = dic[@"realname"]  ;
+                    vo.registrationid = dic[@"registrationid"]  ;
+                    vo.regtime = dic[@"regtime"]  ;
+                    vo.role = dic[@"role"]  ;
+                    vo.cityName = dic[@"cityname"] ;
+                    vo.areaname = dic[@"areaname"] ;
+                    vo.sex = dic[@"sex"] ;
+                    vo.openidbyqq = dic[@"openidbyqq"] ;
+                    vo.openidbywx = dic[@"openidbywx"] ;
+                    vo.certification = dic[@"certification"] ;
+                    
+                    [kouList addObject:vo];
                 }
-                [_soTableView reloadData];
             }
-            
+            [_soTableView reloadData];
         }
         
     } failure:^(NSError *error) {
@@ -87,12 +109,13 @@
 
 #pragma mark 返回分组数
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1 ;
+    return [kouList count] ;
 }
+
 
 #pragma mark 返回每组行数
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [kouList count];
+    return 1 ;
 }
 
 #pragma mark返回每行的单元格
@@ -101,10 +124,8 @@
     
     CoachChooseTableViewCell *cell = [[CoachChooseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Categorys];
     if (kouList.count > 0){
-        CoachVo *vo = [kouList objectAtIndex:indexPath.row];
-        
-        [cell setPhoneContactCellByImageName:vo.headerUrl andWithName:vo.name andWithPhoneNum:vo.cityName andWithChoose:vo.hasFocus andWithindex:indexPath.section];
-        //        cell.delegate =  self ;
+        UserDataVo *vo = [kouList objectAtIndex:indexPath.section];
+        [cell setPhoneContactCellByImageName:vo.headpicurl andWithName:vo.nickname andWithPhoneNum:vo.phone andWithindex:indexPath.section andWithRole:vo.role andPosition:vo.position];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone ;
     return cell ;
@@ -120,10 +141,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    CoachVo *vo = [kouList objectAtIndex:indexPath.section];
+    UserDataVo *vo = [kouList objectAtIndex:indexPath.section];
     
-    
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"forwardDetail" object:vo userInfo:nil]];
+
 }
+
 
 
 @end

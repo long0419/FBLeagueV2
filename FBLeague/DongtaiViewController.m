@@ -52,6 +52,9 @@
     if ([_type isEqualToString:@"2"]) {
         params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" , uvo.club , @"clubId" ,uvo.phone ,@"token" , nil];
         url = clubTheme ;
+    }else if([_type isEqualToString:@"3"]){
+        params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" , _phone , @"phone" ,uvo.phone ,@"token" , nil];
+        url = userTheme ;
     }
     
     [PPNetworkHelper POST:url parameters:params success:^(id object) {
