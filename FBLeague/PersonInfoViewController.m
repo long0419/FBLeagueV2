@@ -256,10 +256,17 @@
     [textField resignFirstResponder];
     
     if(textField.tag == 10){
+        [tf resignFirstResponder];
+        [psw resignFirstResponder];
         ChooseAreaViewController *area = [[ChooseAreaViewController alloc] init];
         area.isfrom = @"0" ;
         [self.navigationController pushViewController:area animated:YES];
     }
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [tf resignFirstResponder];
+    [psw resignFirstResponder];
 }
 
 -(void)finish{

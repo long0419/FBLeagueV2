@@ -17,6 +17,7 @@
 
 @interface LianmengViewController (){
     DongtaiViewController *dongtai ;
+    DongtaiViewController *dongtai2 ;
     FocusViewController *focus ;
     JiaoLianViewController *jiaolian ;
 }
@@ -39,13 +40,18 @@
     dongtai.type = @"1" ;
     dongtai.height = self.view.frame.size.height - 20 - 44 - 98/2 - 36 - 10 ;
     
-    focus = [FocusViewController new];
+    dongtai2 = [DongtaiViewController new] ;
+    dongtai2.type = @"4" ;
+    dongtai2.height = self.view.frame.size.height - 20 - 44 - 98/2 - 36 - 10 ;
     
     jiaolian = [JiaoLianViewController new] ;
     jiaolian.delegate = self ;
 
     
-    NSArray *viewControllers = @[@{@"全部动态":dongtai}, @{@"已关注":focus}, @{@"教练员列表":jiaolian}];
+    NSArray *viewControllers = @[
+                @{@"全部动态":dongtai},
+                @{@"已关注":dongtai2},
+                @{@"教练员列表":jiaolian}];
     
     YCSlideView * view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, 20 + 44, kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
     [self.view addSubview:view];

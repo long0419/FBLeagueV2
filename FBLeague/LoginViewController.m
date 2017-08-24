@@ -350,5 +350,9 @@
     
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [tf resignFirstResponder];
+    [psw resignFirstResponder];
+}
 
 @end

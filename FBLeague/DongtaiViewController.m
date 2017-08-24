@@ -9,7 +9,7 @@
 #import "DongtaiViewController.h"
 
 @interface DongtaiViewController (){
-    DongtaiViewController *dongtai ;
+//    DongtaiViewController *dongtai ;
     NSString *picUrl ;
     NSMutableArray *kouList ;
     NSMutableArray *tmpList ;
@@ -55,6 +55,9 @@
     }else if([_type isEqualToString:@"3"]){
         params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" , _phone , @"phone" ,uvo.phone ,@"token" , nil];
         url = userTheme ;
+    }else if([_type isEqualToString:@"4"]){
+        params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" , uvo.phone ,@"phone",uvo.phone ,@"token" , nil];
+        url = focusTheme ;
     }
     
     [PPNetworkHelper POST:url parameters:params success:^(id object) {

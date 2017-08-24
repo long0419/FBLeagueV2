@@ -210,7 +210,8 @@
 {
     self.item = item;
     
-    if ([NSNull null] == item.userAvatar || [@"" isEqualToString:item.userAvatar]) {
+    if ([NSNull null] == item.userAvatar || [@"" isEqualToString:item.userAvatar]
+        || [item.userAvatar isEqualToString:@"<null>"]) {
         [_userAvatarView setImage:[UIImage imageNamed:@"head"]];
     }else{
         [_userAvatarView sd_setImageWithURL:[NSURL URLWithString:item.userAvatar]];

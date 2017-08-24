@@ -38,7 +38,7 @@
     [imagePositionButton1 setImage:UIImageMake(@"随便逛逛") forState:UIControlStateNormal];
     imagePositionButton1.titleLabel.font = UIFontMake(11);
 //    imagePositionButton1.qmui_borderPosition = QMUIBorderViewPositionTop | QMUIBorderViewPositionRight | QMUIBorderViewPositionBottom;
-    [self.view addSubview:imagePositionButton1];
+//    [self.view addSubview:imagePositionButton1];
 
     
     left = [[QMUIButton alloc] init];
@@ -61,12 +61,12 @@
         make.center.equalTo(self.view);
     }] ;
     
-    [imagePositionButton1 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-16);
-        make.top.mas_equalTo(76/2);
-        make.width.mas_equalTo(SYRealValue(100));
-        make.height.mas_equalTo(SYRealValue(35));
-    }];
+//    [imagePositionButton1 mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.mas_equalTo(-16);
+//        make.top.mas_equalTo(76/2);
+//        make.width.mas_equalTo(SYRealValue(100));
+//        make.height.mas_equalTo(SYRealValue(35));
+//    }];
     
     [left mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(30);

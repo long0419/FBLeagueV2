@@ -32,6 +32,7 @@
 #define listTheme [NSString stringWithFormat:@"%@/%@",API,@"theme/listTheme"]
 #define clubTheme [NSString stringWithFormat:@"%@/%@",API,@"theme/clubTheme"]
 #define userTheme [NSString stringWithFormat:@"%@/%@",API,@"theme/userTheme"]
+#define focusTheme [NSString stringWithFormat:@"%@/%@",API,@"theme/focusTheme"]
 
 /*******教练或球员相关********/
 #define focusPerson [NSString stringWithFormat:@"%@/%@",API,@"fans/apisave"]

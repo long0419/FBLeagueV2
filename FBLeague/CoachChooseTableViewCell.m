@@ -193,7 +193,7 @@
     UIImage *image = nil ;
     if ([imageName isEqual:[NSNull null]] || [imageName isEqualToString:@""]
         || [imageName isEqualToString:@"<null>"]) {
-        imageName = @"defaulthead" ;
+        imageName = @"head" ;
         image = [UIImage imageNamed:imageName];
         [imageView setImage:image];
 
