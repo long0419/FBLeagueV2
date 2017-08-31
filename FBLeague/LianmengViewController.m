@@ -47,7 +47,6 @@
     jiaolian = [JiaoLianViewController new] ;
     jiaolian.delegate = self ;
 
-    
     NSArray *viewControllers = @[
                 @{@"全部动态":dongtai},
                 @{@"已关注":dongtai2},
