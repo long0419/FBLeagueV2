@@ -33,7 +33,7 @@
     
     // 启动QMUI的配置模板
     [QMUIConfigurationTemplate setupConfigurationTemplate];
-        
+    
     // 将状态栏设置为希望的样式
     [QMUIHelper renderStatusBarStyleLight];
     
@@ -91,43 +91,54 @@
 }
 
 - (void)startLaunchingAnimation {
-    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    UIView *launchScreenView = [[NSBundle mainBundle] loadNibNamed:@"LaunchScreen" owner:self options:nil].firstObject;
-    launchScreenView.frame = window.bounds;
-    [window addSubview:launchScreenView];
+//    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
+//    UIView *launchScreenView = [[NSBundle mainBundle] loadNibNamed:@"LaunchScreen" owner:self options:nil].firstObject;
+//    launchScreenView.frame = window.bounds;
+//    [window addSubview:launchScreenView];
+//    
+//    UIImageView *backgroundImageView = launchScreenView.subviews[0];
+//    backgroundImageView.clipsToBounds = YES;
+//    
+//    UIImageView *logoImageView = launchScreenView.subviews[1];
+//    UILabel *copyrightLabel = launchScreenView.subviews.lastObject;
+//    
+//    UIView *maskView = [[UIView alloc] initWithFrame:launchScreenView.bounds];
+//    maskView.backgroundColor = UIColorWhite;
+//    [launchScreenView insertSubview:maskView belowSubview:backgroundImageView];
+//    
+//    [launchScreenView layoutIfNeeded];
+//    
+//    
+//    [launchScreenView.constraints enumerateObjectsUsingBlock:^(__kindof NSLayoutConstraint * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        if ([obj.identifier isEqualToString:@"bottomAlign"]) {
+//            obj.active = NO;
+//            [NSLayoutConstraint constraintWithItem:backgroundImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:launchScreenView attribute:NSLayoutAttributeTop multiplier:1 constant:NavigationContentTop].active = YES;
+//            *stop = YES;
+//        }
+//    }];
+//    
+//    [UIView animateWithDuration:.15 delay:0.9 options:QMUIViewAnimationOptionsCurveOut animations:^{
+//        [launchScreenView layoutIfNeeded];
+//        logoImageView.alpha = 0.0;
+//        copyrightLabel.alpha = 0;
+//    } completion:nil];
+//    [UIView animateWithDuration:1.2 delay:0.9 options:UIViewAnimationOptionCurveEaseOut animations:^{
+//        maskView.alpha = 0;
+//        backgroundImageView.alpha = 0;
+//    } completion:^(BOOL finished) {
+//        [launchScreenView removeFromSuperview];
+//    }];
+
+    NSString *adImageJPGUrl = @"http://p5.image.hiapk.com/uploads/allimg/150112/7730-150112143S3.jpg";
+    NSString *adimageGIFUrl = @"http://img.ui.cn/data/file/3/4/6/210643.gif";
+    NSString *adImageJPGPath = [[NSBundle mainBundle] pathForResource:@"adImage2" ofType:@"jpg"];
+    NSString *adImageGifPath = [[NSBundle mainBundle] pathForResource:@"adImage3" ofType:@"gif"];
     
-    UIImageView *backgroundImageView = launchScreenView.subviews[0];
-    backgroundImageView.clipsToBounds = YES;
-    
-    UIImageView *logoImageView = launchScreenView.subviews[1];
-    UILabel *copyrightLabel = launchScreenView.subviews.lastObject;
-    
-    UIView *maskView = [[UIView alloc] initWithFrame:launchScreenView.bounds];
-    maskView.backgroundColor = UIColorWhite;
-    [launchScreenView insertSubview:maskView belowSubview:backgroundImageView];
-    
-    [launchScreenView layoutIfNeeded];
-    
-    
-    [launchScreenView.constraints enumerateObjectsUsingBlock:^(__kindof NSLayoutConstraint * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj.identifier isEqualToString:@"bottomAlign"]) {
-            obj.active = NO;
-            [NSLayoutConstraint constraintWithItem:backgroundImageView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:launchScreenView attribute:NSLayoutAttributeTop multiplier:1 constant:NavigationContentTop].active = YES;
-            *stop = YES;
-        }
+    DHLaunchAdPageHUD *launchAd = [[DHLaunchAdPageHUD alloc] initWithFrame:CGRectMake(0, 0, DDScreenW, DDScreenH-100) aDduration:4.0 aDImageUrl:adImageGifPath hideSkipButton:NO launchAdClickBlock:^{
+        NSLog(@"[AppDelegate]:点了广告图片");
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.baidu.com"]];
     }];
-    
-    [UIView animateWithDuration:.15 delay:0.9 options:QMUIViewAnimationOptionsCurveOut animations:^{
-        [launchScreenView layoutIfNeeded];
-        logoImageView.alpha = 0.0;
-        copyrightLabel.alpha = 0;
-    } completion:nil];
-    [UIView animateWithDuration:1.2 delay:0.9 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        maskView.alpha = 0;
-        backgroundImageView.alpha = 0;
-    } completion:^(BOOL finished) {
-        [launchScreenView removeFromSuperview];
-    }];
+
 }
 
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{

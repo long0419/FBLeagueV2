@@ -8,7 +8,7 @@
 
 #import "CreateClubViewController.h"
 #import "DSLLoginTextField.h"
-#import "SCLAlertView.h"
+//#import "SCLAlertView.h"
 
 @interface CreateClubViewController (){
     UIImageView *bgImg ;

@@ -22,6 +22,7 @@ target 'FBLeague' do
 	pod 'YHExcelView'
 	pod 'StepSlider'
 	pod 'ZYBannerView'
-	pod 'XHLaunchAd'
+	pod 'RongCloudIM/IMLib'
+    pod 'RongCloudIM/IMKit'
 end
 

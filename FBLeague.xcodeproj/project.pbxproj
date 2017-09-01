@@ -18,7 +18,7 @@
 		FD1F2C691F0490EC00063765 /* QDCommonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C601F0490EC00063765 /* QDCommonViewController.m */; };
 		FD1F2C6A1F0490EC00063765 /* QDNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C621F0490EC00063765 /* QDNavigationController.m */; };
 		FD1F2C6B1F0490EC00063765 /* QDTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C641F0490EC00063765 /* QDTabBarViewController.m */; };
-		FD1F2C6E1F04B91700063765 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD1F2C6D1F04B91700063765 /* LaunchScreen.xib */; };
+		FD1F2C6E1F04B91700063765 /* LaunchScreen2.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD1F2C6D1F04B91700063765 /* LaunchScreen2.xib */; };
 		FD20D7B81F12731000DDDA86 /* libPods-FBLeague.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D654840A8FAB860BDF22C51 /* libPods-FBLeague.a */; };
 		FD265A9E1F29E0BF00F92316 /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = FD265A9B1F29E0BF00F92316 /* UIResponder+FirstResponder.m */; };
 		FD265A9F1F29E0BF00F92316 /* WPAutoSpringTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD265A9D1F29E0BF00F92316 /* WPAutoSpringTextViewController.m */; };
@@ -34,6 +34,14 @@
 		FD4F6AF91F57B4B900DC1C10 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6AF41F57B4B900DC1C10 /* UIView+Extension.m */; };
 		FD4F6AFA1F57B4B900DC1C10 /* WSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6AF61F57B4B900DC1C10 /* WSDatePickerView.m */; };
 		FD4F6AFB1F57B4B900DC1C10 /* WSDatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6AF71F57B4B900DC1C10 /* WSDatePickerView.xib */; };
+		FD4F6B511F59A18B00DC1C10 /* DHGifImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B291F59A18B00DC1C10 /* DHGifImageOperation.m */; };
+		FD4F6B521F59A18B00DC1C10 /* DHLaunchAdPageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B2B1F59A18B00DC1C10 /* DHLaunchAdPageHUD.m */; };
+		FD4F6B531F59A18B00DC1C10 /* DHRegularExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B2D1F59A18B00DC1C10 /* DHRegularExpression.m */; };
+		FD4F6B731F59A33500DC1C10 /* adImage1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B6E1F59A33500DC1C10 /* adImage1.jpg */; };
+		FD4F6B741F59A33500DC1C10 /* adImage2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B6F1F59A33500DC1C10 /* adImage2.jpg */; };
+		FD4F6B751F59A33500DC1C10 /* adImage3.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B701F59A33500DC1C10 /* adImage3.gif */; };
+		FD4F6B761F59A33500DC1C10 /* adImage4.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B711F59A33500DC1C10 /* adImage4.gif */; };
+		FD4F6B771F59A33500DC1C10 /* view_bg_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B721F59A33500DC1C10 /* view_bg_image.png */; };
 		FD5018591F3C4E180077C418 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5018481F3C4E180077C418 /* libWeChatSDK.a */; };
 		FD50185A1F3C4E180077C418 /* MXWechatPayHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FD50184D1F3C4E180077C418 /* MXWechatPayHandler.m */; };
 		FD50185B1F3C4E180077C418 /* MXWechatSignAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = FD50184F1F3C4E180077C418 /* MXWechatSignAdaptor.m */; };
@@ -176,7 +184,7 @@
 		FD1F2C621F0490EC00063765 /* QDNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDNavigationController.m; sourceTree = "<group>"; };
 		FD1F2C631F0490EC00063765 /* QDTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDTabBarViewController.h; sourceTree = "<group>"; };
 		FD1F2C641F0490EC00063765 /* QDTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDTabBarViewController.m; sourceTree = "<group>"; };
-		FD1F2C6D1F04B91700063765 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		FD1F2C6D1F04B91700063765 /* LaunchScreen2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen2.xib; sourceTree = "<group>"; };
 		FD265A9A1F29E0BF00F92316 /* UIResponder+FirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+FirstResponder.h"; sourceTree = "<group>"; };
 		FD265A9B1F29E0BF00F92316 /* UIResponder+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+FirstResponder.m"; sourceTree = "<group>"; };
 		FD265A9C1F29E0BF00F92316 /* WPAutoSpringTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAutoSpringTextViewController.h; sourceTree = "<group>"; };
@@ -202,6 +210,17 @@
 		FD4F6AF51F57B4B900DC1C10 /* WSDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSDatePickerView.h; sourceTree = "<group>"; };
 		FD4F6AF61F57B4B900DC1C10 /* WSDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSDatePickerView.m; sourceTree = "<group>"; };
 		FD4F6AF71F57B4B900DC1C10 /* WSDatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WSDatePickerView.xib; sourceTree = "<group>"; };
+		FD4F6B281F59A18B00DC1C10 /* DHGifImageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHGifImageOperation.h; sourceTree = "<group>"; };
+		FD4F6B291F59A18B00DC1C10 /* DHGifImageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHGifImageOperation.m; sourceTree = "<group>"; };
+		FD4F6B2A1F59A18B00DC1C10 /* DHLaunchAdPageHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHLaunchAdPageHUD.h; sourceTree = "<group>"; };
+		FD4F6B2B1F59A18B00DC1C10 /* DHLaunchAdPageHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHLaunchAdPageHUD.m; sourceTree = "<group>"; };
+		FD4F6B2C1F59A18B00DC1C10 /* DHRegularExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHRegularExpression.h; sourceTree = "<group>"; };
+		FD4F6B2D1F59A18B00DC1C10 /* DHRegularExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHRegularExpression.m; sourceTree = "<group>"; };
+		FD4F6B6E1F59A33500DC1C10 /* adImage1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = adImage1.jpg; sourceTree = "<group>"; };
+		FD4F6B6F1F59A33500DC1C10 /* adImage2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = adImage2.jpg; sourceTree = "<group>"; };
+		FD4F6B701F59A33500DC1C10 /* adImage3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = adImage3.gif; sourceTree = "<group>"; };
+		FD4F6B711F59A33500DC1C10 /* adImage4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = adImage4.gif; sourceTree = "<group>"; };
+		FD4F6B721F59A33500DC1C10 /* view_bg_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = view_bg_image.png; sourceTree = "<group>"; };
 		FD5018481F3C4E180077C418 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		FD5018491F3C4E180077C418 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		FD50184B1F3C4E180077C418 /* MXWechatConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXWechatConfig.h; sourceTree = "<group>"; };
@@ -596,6 +615,33 @@
 			path = WSDaePickerView;
 			sourceTree = "<group>";
 		};
+		FD4F6B271F59A18B00DC1C10 /* DHLaunchAdPageHUD */ = {
+			isa = PBXGroup;
+			children = (
+				FD4F6B6D1F59A33500DC1C10 /* Images */,
+				FD4F6B281F59A18B00DC1C10 /* DHGifImageOperation.h */,
+				FD4F6B291F59A18B00DC1C10 /* DHGifImageOperation.m */,
+				FD4F6B2A1F59A18B00DC1C10 /* DHLaunchAdPageHUD.h */,
+				FD4F6B2B1F59A18B00DC1C10 /* DHLaunchAdPageHUD.m */,
+				FD4F6B2C1F59A18B00DC1C10 /* DHRegularExpression.h */,
+				FD4F6B2D1F59A18B00DC1C10 /* DHRegularExpression.m */,
+			);
+			name = DHLaunchAdPageHUD;
+			path = DHLaunchAdPageHUD/DHLaunchAdPageHUD;
+			sourceTree = "<group>";
+		};
+		FD4F6B6D1F59A33500DC1C10 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				FD4F6B6E1F59A33500DC1C10 /* adImage1.jpg */,
+				FD4F6B6F1F59A33500DC1C10 /* adImage2.jpg */,
+				FD4F6B701F59A33500DC1C10 /* adImage3.gif */,
+				FD4F6B711F59A33500DC1C10 /* adImage4.gif */,
+				FD4F6B721F59A33500DC1C10 /* view_bg_image.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		FD50184A1F3C4E180077C418 /* WechatTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -885,7 +931,7 @@
 				FDAA37A21DD2BCF80038658F /* Assets.xcassets */,
 				FDAA37991DD2BCF80038658F /* AppDelegate.h */,
 				FDAA379A1DD2BCF80038658F /* AppDelegate.m */,
-				FD1F2C6D1F04B91700063765 /* LaunchScreen.xib */,
+				FD1F2C6D1F04B91700063765 /* LaunchScreen2.xib */,
 				FDAA379F1DD2BCF80038658F /* Main.storyboard */,
 				FDAA37A71DD2BCF90038658F /* Info.plist */,
 				FDAA37971DD2BCF80038658F /* main.m */,
@@ -1024,6 +1070,7 @@
 		FDAA38341DD2BF3D0038658F /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				FD4F6B271F59A18B00DC1C10 /* DHLaunchAdPageHUD */,
 				FD4F6AF01F57B4B900DC1C10 /* WSDaePickerView */,
 				FD5018CC1F3C523C0077C418 /* TencentOpenAPI.framework */,
 				FD5018601F3C4E3E0077C418 /* Alipay */,
@@ -1324,12 +1371,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD5018C11F3C4E3E0077C418 /* AlipaySDK.bundle in Resources */,
+				FD4F6B771F59A33500DC1C10 /* view_bg_image.png in Resources */,
 				FD4F6AFB1F57B4B900DC1C10 /* WSDatePickerView.xib in Resources */,
-				FD1F2C6E1F04B91700063765 /* LaunchScreen.xib in Resources */,
+				FD1F2C6E1F04B91700063765 /* LaunchScreen2.xib in Resources */,
 				FDAA37A31DD2BCF80038658F /* Assets.xcassets in Resources */,
+				FD4F6B741F59A33500DC1C10 /* adImage2.jpg in Resources */,
+				FD4F6B731F59A33500DC1C10 /* adImage1.jpg in Resources */,
 				FDA572AA1F035A780072DF95 /* LICENSE in Resources */,
+				FD4F6B761F59A33500DC1C10 /* adImage4.gif in Resources */,
 				FDC497BA1F29AF1A002E7105 /* ACActionSheet.bundle in Resources */,
 				FDAA37A11DD2BCF80038658F /* Main.storyboard in Resources */,
+				FD4F6B751F59A33500DC1C10 /* adImage3.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1459,6 +1511,7 @@
 				FDAA381D1DD2BDA40038658F /* UIColor+Expanded.m in Sources */,
 				FDD3AF6A1F21B01900EA7C23 /* CreateClubViewController.m in Sources */,
 				FD50185D1F3C4E180077C418 /* WXOrder.m in Sources */,
+				FD4F6B511F59A18B00DC1C10 /* DHGifImageOperation.m in Sources */,
 				FD1F2C681F0490EC00063765 /* QDCommonTableViewController.m in Sources */,
 				FD5018CB1F3C4E3E0077C418 /* RSADataVerifier.m in Sources */,
 				FDAA38191DD2BDA40038658F /* NSObject+Common.m in Sources */,
@@ -1512,6 +1565,7 @@
 				FD1F2C651F0490EC00063765 /* QDCommonGridViewController.m in Sources */,
 				FDFAE5E81F10C8C5008DF0BB /* ChooseSectionViewController.m in Sources */,
 				FD50185B1F3C4E180077C418 /* MXWechatSignAdaptor.m in Sources */,
+				FD4F6B531F59A18B00DC1C10 /* DHRegularExpression.m in Sources */,
 				FD5018C31F3C4E3E0077C418 /* APAuthV2Info.m in Sources */,
 				FDAA38201DD2BDA40038658F /* UILabel+Common.m in Sources */,
 				FD4F6AFA1F57B4B900DC1C10 /* WSDatePickerView.m in Sources */,
@@ -1531,6 +1585,7 @@
 				FDAA38301DD2BE1F0038658F /* LianmengViewController.m in Sources */,
 				FDD24CC31F0BECF900DA16FC /* ChooseCityViewController.m in Sources */,
 				FD5018C91F3C4E3E0077C418 /* openssl_wrapper.m in Sources */,
+				FD4F6B521F59A18B00DC1C10 /* DHLaunchAdPageHUD.m in Sources */,
 				FDA8EE5D1F07F3B800F3A01A /* UserDataVo.m in Sources */,
 				FDF3D43D1F0B981D003CAF5A /* ZLVerifyCodeButton.m in Sources */,
 				FDAA38331DD2BE1F0038658F /* MeViewController.m in Sources */,
@@ -1690,6 +1745,7 @@
 			baseConfigurationReference = 93675E447FFAF16F47BF4878 /* Pods-FBLeague.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = XYUANU952P;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1699,6 +1755,7 @@
 					"$(PROJECT_DIR)/FBLeague/Vendors/Alipay",
 					"$(PROJECT_DIR)/FBLeague/Vendors",
 				);
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/FBLeague/FBLeague-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1757,6 +1814,7 @@
 			baseConfigurationReference = 32620ACCF1BDE2BDA488716C /* Pods-FBLeague.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = XYUANU952P;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1766,6 +1824,7 @@
 					"$(PROJECT_DIR)/FBLeague/Vendors/Alipay",
 					"$(PROJECT_DIR)/FBLeague/Vendors",
 				);
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/FBLeague/FBLeague-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
