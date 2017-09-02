@@ -42,6 +42,15 @@
 		FD4F6B751F59A33500DC1C10 /* adImage3.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B701F59A33500DC1C10 /* adImage3.gif */; };
 		FD4F6B761F59A33500DC1C10 /* adImage4.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B711F59A33500DC1C10 /* adImage4.gif */; };
 		FD4F6B771F59A33500DC1C10 /* view_bg_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B721F59A33500DC1C10 /* view_bg_image.png */; };
+		FD4F6B811F5A672900DC1C10 /* ad_0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B7D1F5A672900DC1C10 /* ad_0.jpg */; };
+		FD4F6B821F5A672900DC1C10 /* ad_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B7E1F5A672900DC1C10 /* ad_1.jpg */; };
+		FD4F6B831F5A672900DC1C10 /* ad_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B7F1F5A672900DC1C10 /* ad_2.jpg */; };
+		FD4F6B841F5A672900DC1C10 /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B801F5A672900DC1C10 /* demo.gif */; };
+		FD4F6B8B1F5A6B1000DC1C10 /* JiFenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B8A1F5A6B1000DC1C10 /* JiFenViewController.m */; };
+		FD4F6B951F5A73A300DC1C10 /* ZRGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B8E1F5A73A300DC1C10 /* ZRGridView.m */; };
+		FD4F6B961F5A73A300DC1C10 /* ZRGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B901F5A73A300DC1C10 /* ZRGridViewCell.m */; };
+		FD4F6B971F5A73A300DC1C10 /* ZRGridViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B921F5A73A300DC1C10 /* ZRGridViewHeader.m */; };
+		FD4F6B981F5A73A300DC1C10 /* ZRGridViewLayoutAndStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B941F5A73A300DC1C10 /* ZRGridViewLayoutAndStyle.m */; };
 		FD5018591F3C4E180077C418 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5018481F3C4E180077C418 /* libWeChatSDK.a */; };
 		FD50185A1F3C4E180077C418 /* MXWechatPayHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FD50184D1F3C4E180077C418 /* MXWechatPayHandler.m */; };
 		FD50185B1F3C4E180077C418 /* MXWechatSignAdaptor.m in Sources */ = {isa = PBXBuildFile; fileRef = FD50184F1F3C4E180077C418 /* MXWechatSignAdaptor.m */; };
@@ -221,6 +230,20 @@
 		FD4F6B701F59A33500DC1C10 /* adImage3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = adImage3.gif; sourceTree = "<group>"; };
 		FD4F6B711F59A33500DC1C10 /* adImage4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = adImage4.gif; sourceTree = "<group>"; };
 		FD4F6B721F59A33500DC1C10 /* view_bg_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = view_bg_image.png; sourceTree = "<group>"; };
+		FD4F6B7D1F5A672900DC1C10 /* ad_0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ad_0.jpg; sourceTree = "<group>"; };
+		FD4F6B7E1F5A672900DC1C10 /* ad_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ad_1.jpg; sourceTree = "<group>"; };
+		FD4F6B7F1F5A672900DC1C10 /* ad_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ad_2.jpg; sourceTree = "<group>"; };
+		FD4F6B801F5A672900DC1C10 /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
+		FD4F6B891F5A6B1000DC1C10 /* JiFenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiFenViewController.h; sourceTree = "<group>"; };
+		FD4F6B8A1F5A6B1000DC1C10 /* JiFenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiFenViewController.m; sourceTree = "<group>"; };
+		FD4F6B8D1F5A73A300DC1C10 /* ZRGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRGridView.h; sourceTree = "<group>"; };
+		FD4F6B8E1F5A73A300DC1C10 /* ZRGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRGridView.m; sourceTree = "<group>"; };
+		FD4F6B8F1F5A73A300DC1C10 /* ZRGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRGridViewCell.h; sourceTree = "<group>"; };
+		FD4F6B901F5A73A300DC1C10 /* ZRGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRGridViewCell.m; sourceTree = "<group>"; };
+		FD4F6B911F5A73A300DC1C10 /* ZRGridViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRGridViewHeader.h; sourceTree = "<group>"; };
+		FD4F6B921F5A73A300DC1C10 /* ZRGridViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRGridViewHeader.m; sourceTree = "<group>"; };
+		FD4F6B931F5A73A300DC1C10 /* ZRGridViewLayoutAndStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRGridViewLayoutAndStyle.h; sourceTree = "<group>"; };
+		FD4F6B941F5A73A300DC1C10 /* ZRGridViewLayoutAndStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZRGridViewLayoutAndStyle.m; sourceTree = "<group>"; };
 		FD5018481F3C4E180077C418 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		FD5018491F3C4E180077C418 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
 		FD50184B1F3C4E180077C418 /* MXWechatConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MXWechatConfig.h; sourceTree = "<group>"; };
@@ -642,6 +665,42 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		FD4F6B7C1F5A672900DC1C10 /* SlideResource */ = {
+			isa = PBXGroup;
+			children = (
+				FD4F6B7D1F5A672900DC1C10 /* ad_0.jpg */,
+				FD4F6B7E1F5A672900DC1C10 /* ad_1.jpg */,
+				FD4F6B7F1F5A672900DC1C10 /* ad_2.jpg */,
+				FD4F6B801F5A672900DC1C10 /* demo.gif */,
+			);
+			name = SlideResource;
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		FD4F6B851F5A69B500DC1C10 /* liansai */ = {
+			isa = PBXGroup;
+			children = (
+				FD4F6B891F5A6B1000DC1C10 /* JiFenViewController.h */,
+				FD4F6B8A1F5A6B1000DC1C10 /* JiFenViewController.m */,
+			);
+			name = liansai;
+			sourceTree = "<group>";
+		};
+		FD4F6B8C1F5A73A300DC1C10 /* ZRGridView */ = {
+			isa = PBXGroup;
+			children = (
+				FD4F6B8D1F5A73A300DC1C10 /* ZRGridView.h */,
+				FD4F6B8E1F5A73A300DC1C10 /* ZRGridView.m */,
+				FD4F6B8F1F5A73A300DC1C10 /* ZRGridViewCell.h */,
+				FD4F6B901F5A73A300DC1C10 /* ZRGridViewCell.m */,
+				FD4F6B911F5A73A300DC1C10 /* ZRGridViewHeader.h */,
+				FD4F6B921F5A73A300DC1C10 /* ZRGridViewHeader.m */,
+				FD4F6B931F5A73A300DC1C10 /* ZRGridViewLayoutAndStyle.h */,
+				FD4F6B941F5A73A300DC1C10 /* ZRGridViewLayoutAndStyle.m */,
+			);
+			path = ZRGridView;
+			sourceTree = "<group>";
+		};
 		FD50184A1F3C4E180077C418 /* WechatTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -1051,6 +1110,7 @@
 		FDAA38271DD2BDF90038658F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FD4F6B851F5A69B500DC1C10 /* liansai */,
 				FDC497A11F29AB1F002E7105 /* me */,
 				FDD3AF671F21AFE100EA7C23 /* julebu */,
 				FDFAE5E91F10E1FC008DF0BB /* shouye */,
@@ -1070,6 +1130,8 @@
 		FDAA38341DD2BF3D0038658F /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				FD4F6B8C1F5A73A300DC1C10 /* ZRGridView */,
+				FD4F6B7C1F5A672900DC1C10 /* SlideResource */,
 				FD4F6B271F59A18B00DC1C10 /* DHLaunchAdPageHUD */,
 				FD4F6AF01F57B4B900DC1C10 /* WSDaePickerView */,
 				FD5018CC1F3C523C0077C418 /* TencentOpenAPI.framework */,
@@ -1370,6 +1432,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD4F6B811F5A672900DC1C10 /* ad_0.jpg in Resources */,
+				FD4F6B841F5A672900DC1C10 /* demo.gif in Resources */,
+				FD4F6B831F5A672900DC1C10 /* ad_2.jpg in Resources */,
 				FD5018C11F3C4E3E0077C418 /* AlipaySDK.bundle in Resources */,
 				FD4F6B771F59A33500DC1C10 /* view_bg_image.png in Resources */,
 				FD4F6AFB1F57B4B900DC1C10 /* WSDatePickerView.xib in Resources */,
@@ -1379,6 +1444,7 @@
 				FD4F6B731F59A33500DC1C10 /* adImage1.jpg in Resources */,
 				FDA572AA1F035A780072DF95 /* LICENSE in Resources */,
 				FD4F6B761F59A33500DC1C10 /* adImage4.gif in Resources */,
+				FD4F6B821F5A672900DC1C10 /* ad_1.jpg in Resources */,
 				FDC497BA1F29AF1A002E7105 /* ACActionSheet.bundle in Resources */,
 				FDAA37A11DD2BCF80038658F /* Main.storyboard in Resources */,
 				FD4F6B751F59A33500DC1C10 /* adImage3.gif in Resources */,
@@ -1500,6 +1566,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD4F6B961F5A73A300DC1C10 /* ZRGridViewCell.m in Sources */,
 				FD5018C71F3C4E3E0077C418 /* base64.m in Sources */,
 				FD265AA71F29E87200F92316 /* CommonFunc.h in Sources */,
 				FD352FC41F1FA38000EA2A60 /* JiaoLianViewController.m in Sources */,
@@ -1511,6 +1578,7 @@
 				FDAA381D1DD2BDA40038658F /* UIColor+Expanded.m in Sources */,
 				FDD3AF6A1F21B01900EA7C23 /* CreateClubViewController.m in Sources */,
 				FD50185D1F3C4E180077C418 /* WXOrder.m in Sources */,
+				FD4F6B951F5A73A300DC1C10 /* ZRGridView.m in Sources */,
 				FD4F6B511F59A18B00DC1C10 /* DHGifImageOperation.m in Sources */,
 				FD1F2C681F0490EC00063765 /* QDCommonTableViewController.m in Sources */,
 				FD5018CB1F3C4E3E0077C418 /* RSADataVerifier.m in Sources */,
@@ -1527,6 +1595,7 @@
 				FD76CB3E1F0B87AE0047C0FE /* RegisterViewController.m in Sources */,
 				FD265AA61F29E20600F92316 /* LianSaiViewController.m in Sources */,
 				FD352FD11F1FA4AA00EA2A60 /* CoachVo.m in Sources */,
+				FD4F6B8B1F5A6B1000DC1C10 /* JiFenViewController.m in Sources */,
 				FD5018CA1F3C4E3E0077C418 /* RSADataSigner.m in Sources */,
 				FDAA381E1DD2BDA40038658F /* UIImage+Common.m in Sources */,
 				FD75D2351F25837C00306F77 /* SaiChengViewController.m in Sources */,
@@ -1549,6 +1618,7 @@
 				FDC497A81F29AE5D002E7105 /* MyDataImportViewController.m in Sources */,
 				FD71DD741F21D5E0006242B4 /* ReadDetailContentViewController.m in Sources */,
 				FDAA38181DD2BDA40038658F /* MWLocalDataTool.m in Sources */,
+				FD4F6B971F5A73A300DC1C10 /* ZRGridViewHeader.m in Sources */,
 				FD265A9E1F29E0BF00F92316 /* UIResponder+FirstResponder.m in Sources */,
 				FD396B2F1F343EEE00265CF7 /* AddZhanViewController.m in Sources */,
 				FDA8EE591F07F21B00F3A01A /* FirstLoginViewController.m in Sources */,
@@ -1574,6 +1644,7 @@
 				FDC497AE1F29AE9E002E7105 /* BeginTouView.m in Sources */,
 				FDAA38171DD2BDA40038658F /* CommonFunc.m in Sources */,
 				FD979CC91F09473700F5BFBB /* LoginViewController.m in Sources */,
+				FD4F6B981F5A73A300DC1C10 /* ZRGridViewLayoutAndStyle.m in Sources */,
 				FDF3D4431F0B9DCC003CAF5A /* PersonInfoViewController.m in Sources */,
 				FD75D2391F2583C200306F77 /* ClassesViewController.m in Sources */,
 				FDF6FD1A1F20EADE00B4FB73 /* SearchClubViewController.m in Sources */,

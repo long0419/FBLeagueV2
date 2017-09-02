@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "ZYBannerView.h"
 
-@interface LianSaiViewController : BaseViewController
+@interface LianSaiViewController : BaseViewController <ZYBannerViewDataSource, ZYBannerViewDelegate, UITextFieldDelegate>
+
+@property (nonatomic, strong) ZYBannerView *banner;
+@property (nonatomic, strong) NSArray *dataArray;
 
 @end

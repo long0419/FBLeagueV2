@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
   - BFPaperCheckbox (2.1.0)
+  - BSNumbersView (1.0.0)
   - CocoaPicker (1.1)
   - DFCommon (1.4.16):
     - AFNetworking (~> 3.0.0)
@@ -75,7 +76,6 @@ PODS:
   - TPKeyboardAvoiding (1.3.1)
   - TYMProgressBarView (0.3.2)
   - TZImagePickerController (1.8.1)
-  - YHExcelView (0.11)
   - YLGIFImage (0.11)
   - YUChineseSorting (1.0.2)
   - YYCache (1.0.4)
@@ -83,6 +83,7 @@ PODS:
 
 DEPENDENCIES:
   - BFPaperCheckbox
+  - BSNumbersView
   - CocoaPicker
   - DFTimelineView
   - FDFullscreenPopGesture
@@ -98,7 +99,6 @@ DEPENDENCIES:
   - SVPullToRefresh_Bell
   - TPKeyboardAvoiding
   - TYMProgressBarView
-  - YHExcelView
   - YUChineseSorting
   - YYCache
   - ZYBannerView
@@ -106,6 +106,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   BFPaperCheckbox: 447570b82c15e16e8cf427a83ef1ad04ae1dc6c7
+  BSNumbersView: ab55340238a32b21547f3647ed649dad40c1f138
   CocoaPicker: 0d898140a152c01585322586b97868496c4f097b
   DFCommon: 074ea4f031ca0c6a5db158d1c561ac158fd15d57
   DFTimelineView: 5d56795ab39277c55d4835b856a471c545e8541b
@@ -131,12 +132,11 @@ SPEC CHECKSUMS:
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
   TYMProgressBarView: 9f4c54bfd1cde0340f25a8c67e6c3548611f1a8e
   TZImagePickerController: 086034156913375cb19c8e4103562f15322c3b36
-  YHExcelView: a26398e47fd00a6e4b7d8c8ab20039181563b19c
   YLGIFImage: c0ae132fe80e5282b2762a97d14e23ba71a748ae
   YUChineseSorting: 46bbd4fa0344e21b169a537bb17aafec0980c560
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   ZYBannerView: 477bcb8c38bb0b2a45bae014f9e4fa8357809023
 
-PODFILE CHECKSUM: 0c98b3f35a5fe860fe311602afc41e046049e899
+PODFILE CHECKSUM: 36c875edff6aab46042c2c19ec9bc3324c0df06e
 
 COCOAPODS: 1.3.0.beta.2

@@ -19,7 +19,7 @@ target 'FBLeague' do
 	pod 'RongCloudIM/IMLib'
     pod 'RongCloudIM/IMKit'
 	pod 'BFPaperCheckbox'
-	pod 'YHExcelView'
+	pod 'BSNumbersView'
 	pod 'StepSlider'
 	pod 'ZYBannerView'
 	pod 'RongCloudIM/IMLib'
