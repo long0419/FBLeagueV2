@@ -154,8 +154,11 @@
 - (void)exitApplication {
     cache = [YYCache cacheWithName:@"FB"];
     [cache removeObjectForKey:@"userData"] ;
-    
     [((AppDelegate *)[UIApplication sharedApplication].delegate) showMsg];
+    
+//    SaiResultViewController *member = [SaiResultViewController new] ;
+//    [self.navigationController pushViewController:member animated:YES];
+    
 }
 
 

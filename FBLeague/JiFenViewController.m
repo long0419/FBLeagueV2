@@ -58,7 +58,7 @@
 
 - (CGFloat)gridView:(ZRGridView *)gridView widthForColumn:(NSInteger)index{
     if (index == 0) {
-        return 240 ;
+        return kScreen_Width - 30*6 ;
     }else{
         return 30 ;
     }

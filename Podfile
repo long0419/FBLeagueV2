@@ -24,5 +24,6 @@ target 'FBLeague' do
 	pod 'ZYBannerView'
 	pod 'RongCloudIM/IMLib'
     pod 'RongCloudIM/IMKit'
+	pod 'SCLAlertView-Objective-C'
 end
 

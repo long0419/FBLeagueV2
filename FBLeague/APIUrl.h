@@ -65,5 +65,10 @@
 #define zfbPayForCourseNotify [NSString stringWithFormat:@"%@/%@",API,@"pay/zfbPayForCourseNotify"]
 #define wxPayForCourseNotify [NSString stringWithFormat:@"%@/%@",API,@"pay/wxPayForCourseNotify"]
 
+/******联赛*******/
+#define liansaidetail [NSString stringWithFormat:@"%@/%@",API,@"league/getDefault"]
+#define joinSave [NSString stringWithFormat:@"%@/%@",API,@"joinin/apisave"]
+#define listJoinin [NSString stringWithFormat:@"%@/%@",API,@"joinin/listJoinin"]
+#define listSchedules [NSString stringWithFormat:@"%@/%@",API,@"schedule/listSchedules"]
 
 #endif /* APIUrl_h */

@@ -20,6 +20,10 @@
 		FD1F2C6B1F0490EC00063765 /* QDTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C641F0490EC00063765 /* QDTabBarViewController.m */; };
 		FD1F2C6E1F04B91700063765 /* LaunchScreen2.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD1F2C6D1F04B91700063765 /* LaunchScreen2.xib */; };
 		FD20D7B81F12731000DDDA86 /* libPods-FBLeague.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D654840A8FAB860BDF22C51 /* libPods-FBLeague.a */; };
+		FD242A691F5FD6150039A8A4 /* BaomingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD242A681F5FD6150039A8A4 /* BaomingViewController.m */; };
+		FD242A701F5FE2060039A8A4 /* LianSaiView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD242A6F1F5FE2060039A8A4 /* LianSaiView.m */; };
+		FD242A731F5FEA140039A8A4 /* LianSaiData.m in Sources */ = {isa = PBXBuildFile; fileRef = FD242A721F5FEA140039A8A4 /* LianSaiData.m */; };
+		FD242A761F5FF9DF0039A8A4 /* SaiListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD242A751F5FF9DF0039A8A4 /* SaiListViewController.m */; };
 		FD265A9E1F29E0BF00F92316 /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = FD265A9B1F29E0BF00F92316 /* UIResponder+FirstResponder.m */; };
 		FD265A9F1F29E0BF00F92316 /* WPAutoSpringTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD265A9D1F29E0BF00F92316 /* WPAutoSpringTextViewController.m */; };
 		FD265AA31F29E16900F92316 /* MyJiaoLianDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD265AA21F29E16900F92316 /* MyJiaoLianDataViewController.m */; };
@@ -81,6 +85,7 @@
 		FD5018E11F3C62F80077C418 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5018E01F3C62F80077C418 /* SystemConfiguration.framework */; };
 		FD5018E31F3C62FE0077C418 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5018E21F3C62FE0077C418 /* libz.tbd */; };
 		FD5018E61F3D52040077C418 /* ClubVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5018E51F3D52040077C418 /* ClubVo.m */; };
+		FD50C4251F5D1A9A00010C88 /* SaiResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD50C4241F5D1A9A00010C88 /* SaiResultViewController.m */; };
 		FD71DD741F21D5E0006242B4 /* ReadDetailContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD71DD731F21D5E0006242B4 /* ReadDetailContentViewController.m */; };
 		FD75D22E1F23518800306F77 /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D22D1F23518800306F77 /* NullSafe.m */; };
 		FD75D2321F25835200306F77 /* MemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D2311F25835200306F77 /* MemberViewController.m */; };
@@ -194,6 +199,14 @@
 		FD1F2C631F0490EC00063765 /* QDTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QDTabBarViewController.h; sourceTree = "<group>"; };
 		FD1F2C641F0490EC00063765 /* QDTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QDTabBarViewController.m; sourceTree = "<group>"; };
 		FD1F2C6D1F04B91700063765 /* LaunchScreen2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen2.xib; sourceTree = "<group>"; };
+		FD242A671F5FD6150039A8A4 /* BaomingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaomingViewController.h; sourceTree = "<group>"; };
+		FD242A681F5FD6150039A8A4 /* BaomingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaomingViewController.m; sourceTree = "<group>"; };
+		FD242A6E1F5FE2060039A8A4 /* LianSaiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LianSaiView.h; sourceTree = "<group>"; };
+		FD242A6F1F5FE2060039A8A4 /* LianSaiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LianSaiView.m; sourceTree = "<group>"; };
+		FD242A711F5FEA140039A8A4 /* LianSaiData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LianSaiData.h; sourceTree = "<group>"; };
+		FD242A721F5FEA140039A8A4 /* LianSaiData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LianSaiData.m; sourceTree = "<group>"; };
+		FD242A741F5FF9DF0039A8A4 /* SaiListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaiListViewController.h; sourceTree = "<group>"; };
+		FD242A751F5FF9DF0039A8A4 /* SaiListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaiListViewController.m; sourceTree = "<group>"; };
 		FD265A9A1F29E0BF00F92316 /* UIResponder+FirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+FirstResponder.h"; sourceTree = "<group>"; };
 		FD265A9B1F29E0BF00F92316 /* UIResponder+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+FirstResponder.m"; sourceTree = "<group>"; };
 		FD265A9C1F29E0BF00F92316 /* WPAutoSpringTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAutoSpringTextViewController.h; sourceTree = "<group>"; };
@@ -367,6 +380,8 @@
 		FD5018E21F3C62FE0077C418 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		FD5018E41F3D52040077C418 /* ClubVo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClubVo.h; sourceTree = "<group>"; };
 		FD5018E51F3D52040077C418 /* ClubVo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClubVo.m; sourceTree = "<group>"; };
+		FD50C4231F5D1A9A00010C88 /* SaiResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaiResultViewController.h; sourceTree = "<group>"; };
+		FD50C4241F5D1A9A00010C88 /* SaiResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaiResultViewController.m; sourceTree = "<group>"; };
 		FD71DD721F21D5E0006242B4 /* ReadDetailContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadDetailContentViewController.h; sourceTree = "<group>"; };
 		FD71DD731F21D5E0006242B4 /* ReadDetailContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadDetailContentViewController.m; sourceTree = "<group>"; };
 		FD75D22D1F23518800306F77 /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
@@ -604,6 +619,15 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		FD242A6A1F5FDD8A0039A8A4 /* liansai */ = {
+			isa = PBXGroup;
+			children = (
+				FD242A6E1F5FE2060039A8A4 /* LianSaiView.h */,
+				FD242A6F1F5FE2060039A8A4 /* LianSaiView.m */,
+			);
+			name = liansai;
+			sourceTree = "<group>";
+		};
 		FD265AA01F29E0C400F92316 /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -682,6 +706,12 @@
 			children = (
 				FD4F6B891F5A6B1000DC1C10 /* JiFenViewController.h */,
 				FD4F6B8A1F5A6B1000DC1C10 /* JiFenViewController.m */,
+				FD50C4231F5D1A9A00010C88 /* SaiResultViewController.h */,
+				FD50C4241F5D1A9A00010C88 /* SaiResultViewController.m */,
+				FD242A671F5FD6150039A8A4 /* BaomingViewController.h */,
+				FD242A681F5FD6150039A8A4 /* BaomingViewController.m */,
+				FD242A741F5FF9DF0039A8A4 /* SaiListViewController.h */,
+				FD242A751F5FF9DF0039A8A4 /* SaiListViewController.m */,
 			);
 			name = liansai;
 			sourceTree = "<group>";
@@ -1094,6 +1124,8 @@
 				FD75D23F1F26486200306F77 /* DongtaiVo.m */,
 				FD75D2411F26491C00306F77 /* CommentVo.h */,
 				FD75D2421F26491C00306F77 /* CommentVo.m */,
+				FD242A711F5FEA140039A8A4 /* LianSaiData.h */,
+				FD242A721F5FEA140039A8A4 /* LianSaiData.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1101,6 +1133,7 @@
 		FDAA38261DD2BDF10038658F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FD242A6A1F5FDD8A0039A8A4 /* liansai */,
 				FDC497AB1F29AE85002E7105 /* me */,
 				FD352FC51F1FA3A700EA2A60 /* shouye */,
 			);
@@ -1567,6 +1600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD4F6B961F5A73A300DC1C10 /* ZRGridViewCell.m in Sources */,
+				FD242A761F5FF9DF0039A8A4 /* SaiListViewController.m in Sources */,
 				FD5018C71F3C4E3E0077C418 /* base64.m in Sources */,
 				FD265AA71F29E87200F92316 /* CommonFunc.h in Sources */,
 				FD352FC41F1FA38000EA2A60 /* JiaoLianViewController.m in Sources */,
@@ -1604,8 +1638,10 @@
 				FDA1166C1F01FC67007F253C /* GTMBase64.m in Sources */,
 				FD75D2401F26486200306F77 /* DongtaiVo.m in Sources */,
 				FD5018C81F3C4E3E0077C418 /* NSDataEx.m in Sources */,
+				FD242A691F5FD6150039A8A4 /* BaomingViewController.m in Sources */,
 				FDC497AA1F29AE5D002E7105 /* MyQiuYuanDataImportViewController.m in Sources */,
 				FD4F6AF91F57B4B900DC1C10 /* UIView+Extension.m in Sources */,
+				FD50C4251F5D1A9A00010C88 /* SaiResultViewController.m in Sources */,
 				FD352FCE1F1FA43F00EA2A60 /* BaseTableViewController.m in Sources */,
 				FD5018E61F3D52040077C418 /* ClubVo.m in Sources */,
 				FD1F2C541F0490DF00063765 /* QDUIHelper.m in Sources */,
@@ -1660,8 +1696,10 @@
 				FDA8EE5D1F07F3B800F3A01A /* UserDataVo.m in Sources */,
 				FDF3D43D1F0B981D003CAF5A /* ZLVerifyCodeButton.m in Sources */,
 				FDAA38331DD2BE1F0038658F /* MeViewController.m in Sources */,
+				FD242A701F5FE2060039A8A4 /* LianSaiView.m in Sources */,
 				FDAA381B1DD2BDA40038658F /* UIBarButtonItem+Tinted.m in Sources */,
 				FDD24CC21F0BECF900DA16FC /* ChooseAreaViewController.m in Sources */,
+				FD242A731F5FEA140039A8A4 /* LianSaiData.m in Sources */,
 				FD75D2321F25835200306F77 /* MemberViewController.m in Sources */,
 				FD1F2C531F0490DF00063765 /* QDCommonUI.m in Sources */,
 				FDD24CC91F0BEE1900DA16FC /* ProvinceVo.m in Sources */,

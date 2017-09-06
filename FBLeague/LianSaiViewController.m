@@ -10,24 +10,72 @@
 #import "DongtaiViewController.h"
 #import "ClassesViewController.h"
 #import "JiFenViewController.h"
+#import "BaomingViewController.h"
+#import "SaiListViewController.h"
 
-@interface LianSaiViewController ()
+@interface LianSaiViewController (){
+    NSString *title ;
+    YYCache *cache ;
+    UserDataVo *uvo ;
+    NSString *adurls ;
+    NSString *leagueId ;
+    UIButton *backViewBtn ;
+
+}
 
 @end
 
 @implementation LianSaiViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self getNeedData] ;
+}
+
+-(void)getNeedData{
+    cache = [YYCache cacheWithName:@"FB"];
+    uvo = [cache objectForKey:@"userData"];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:liansaidetail parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+            self.title = object[@"league"][@"name"];
+            adurls = object[@"league"][@"adurls"] ;
+            _dataArray = [adurls componentsSeparatedByString:@","];
+            leagueId = object[@"league"][@"id"] ;
+            // 配置banner
+            [self setupBanner];
+            
+            [self setRightBottom];
+
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"咖盟联赛" ;
     
     self.automaticallyAdjustsScrollViewInsets = NO;
 
-    
-    // 配置banner
-    [self setupBanner];
-
 }
+
+- (void)setRightBottom {
+    backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backViewBtn.frame = CGRectMake(0, 0, 17, 17);
+    [backViewBtn setImage:[UIImage imageNamed:@"addcircle"] forState:UIControlStateNormal];
+    [backViewBtn addTarget:self action: @selector(goAction)
+          forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
+    self.navigationItem.rightBarButtonItem = backItem ;
+}
+
+-(void)goAction{
+    
+}
+
 
 - (void)setupBanner
 {
@@ -45,20 +93,18 @@
     self.banner.shouldLoop = YES;
     self.banner.autoScroll = NO;
     
+    BaomingViewController *dongtai = [BaomingViewController new] ;
+    dongtai.leagueId = leagueId ;
     
-    DongtaiViewController *dongtai = [DongtaiViewController new] ;
-    dongtai.type = @"2" ;
-    dongtai.height = self.view.frame.size.height - 20 - 44 - 98/2 - 36 - 66 ;
-    
-    ClassesViewController *focus = [ClassesViewController new];
-    
+    SaiListViewController *focus = [SaiListViewController new];
+    focus.leagueId = leagueId ;
+
     JiFenViewController *jifen = [JiFenViewController new] ;
     
     NSArray *viewControllers = @[@{@"报名":dongtai}, @{@"赛程":focus}, @{@"积分":jifen}];
     YCSlideView * view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, self.banner.bottom, kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
+    view.delegate = self ;
     [self.view addSubview:view];
-
-    
 
 }
 
@@ -78,7 +124,9 @@
     
     // 创建将要显示控件
     UIImageView *imageView = [[UIImageView alloc] init];
-    imageView.image = [UIImage imageNamed:imageName];
+    NSURL *imageUrl = [NSURL URLWithString:imageName];
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
+    imageView.image = image;
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     
     return imageView;
@@ -89,10 +137,16 @@
 
 - (NSArray *)dataArray
 {
-    if (!_dataArray) {
-        _dataArray = @[@"ad_0.jpg", @"ad_1.jpg", @"ad_2.jpg"];
-    }
     return _dataArray;
+}
+
+-(void) getScrollIndex :(NSInteger) index {
+    if (index == 2) {
+        backViewBtn.hidden = YES ;
+    }else{
+        backViewBtn.hidden = NO ;
+    }
+    
 }
 
 @end

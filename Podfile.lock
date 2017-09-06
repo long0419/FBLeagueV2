@@ -67,6 +67,7 @@ PODS:
   - RTRootNavigationController (0.5.26):
     - RTRootNavigationController/Core (= 0.5.26)
   - RTRootNavigationController/Core (0.5.26)
+  - SCLAlertView-Objective-C (1.1.2)
   - SDWebImage (3.7.6):
     - SDWebImage/Core (= 3.7.6)
   - SDWebImage/Core (3.7.6)
@@ -95,6 +96,7 @@ DEPENDENCIES:
   - RongCloudIM/IMKit
   - RongCloudIM/IMLib
   - RTRootNavigationController
+  - SCLAlertView-Objective-C
   - StepSlider
   - SVPullToRefresh_Bell
   - TPKeyboardAvoiding
@@ -125,6 +127,7 @@ SPEC CHECKSUMS:
   RadioButton: 7ef053baf6ff0e7f9e777016c28e9ba4e330edba
   RongCloudIM: bfaeb83dcfaf6b2039434f3692d328430de215c7
   RTRootNavigationController: 153e538439fa20faec706019b04375f6c6fabeb6
+  SCLAlertView-Objective-C: 0e54351fa4f98a5c7c6ad3727e6dbb46784534e5
   SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
   StepSlider: 67b0c59519e253df9de599043bc76397d68310b2
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
@@ -137,6 +140,6 @@ SPEC CHECKSUMS:
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   ZYBannerView: 477bcb8c38bb0b2a45bae014f9e4fa8357809023
 
-PODFILE CHECKSUM: 36c875edff6aab46042c2c19ec9bc3324c0df06e
+PODFILE CHECKSUM: 6beb5c0f2d2da911f13e989bdec730bd619b680b
 
 COCOAPODS: 1.3.0.beta.2
