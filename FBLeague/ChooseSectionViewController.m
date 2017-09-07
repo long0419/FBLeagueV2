@@ -9,6 +9,7 @@
 #import "ChooseSectionViewController.h"
 #import "ProvinceVo.h"
 #import "PersonInfoViewController.h"
+#import "AddSaiViewController.h"
 
 @interface ChooseSectionViewController (){
     NSString *chooseProAndCity ;
@@ -73,8 +74,13 @@
         info.areaStr = chooseProAndCity ;
         info.areaCodeStr = proCityCode ;
         [self.rt_navigationController popToViewController:info animated:YES];
-    }else{
+    }else if([_isfrom isEqualToString:@"0"]){
         PersonInfoViewController *info = verifyCode2.contentViewController ;
+        info.areaStr = chooseProAndCity ;
+        info.areaCodeStr = proCityCode ;
+        [self.rt_navigationController popToViewController:info animated:YES];
+    }else{
+        AddSaiViewController *info =  verifyCode2.contentViewController;
         info.areaStr = chooseProAndCity ;
         info.areaCodeStr = proCityCode ;
         [self.rt_navigationController popToViewController:info animated:YES];

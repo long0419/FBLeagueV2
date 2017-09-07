@@ -24,6 +24,9 @@
 		FD242A701F5FE2060039A8A4 /* LianSaiView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD242A6F1F5FE2060039A8A4 /* LianSaiView.m */; };
 		FD242A731F5FEA140039A8A4 /* LianSaiData.m in Sources */ = {isa = PBXBuildFile; fileRef = FD242A721F5FEA140039A8A4 /* LianSaiData.m */; };
 		FD242A761F5FF9DF0039A8A4 /* SaiListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD242A751F5FF9DF0039A8A4 /* SaiListViewController.m */; };
+		FD242A791F601B150039A8A4 /* AddSaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD242A781F601B150039A8A4 /* AddSaiViewController.m */; };
+		FD242AA71F60E62F0039A8A4 /* JHChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FD242AA31F60E62E0039A8A4 /* JHChart.m */; };
+		FD242AA81F60E62F0039A8A4 /* JHRadarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FD242AA61F60E62F0039A8A4 /* JHRadarChart.m */; };
 		FD265A9E1F29E0BF00F92316 /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = FD265A9B1F29E0BF00F92316 /* UIResponder+FirstResponder.m */; };
 		FD265A9F1F29E0BF00F92316 /* WPAutoSpringTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD265A9D1F29E0BF00F92316 /* WPAutoSpringTextViewController.m */; };
 		FD265AA31F29E16900F92316 /* MyJiaoLianDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD265AA21F29E16900F92316 /* MyJiaoLianDataViewController.m */; };
@@ -46,10 +49,6 @@
 		FD4F6B751F59A33500DC1C10 /* adImage3.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B701F59A33500DC1C10 /* adImage3.gif */; };
 		FD4F6B761F59A33500DC1C10 /* adImage4.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B711F59A33500DC1C10 /* adImage4.gif */; };
 		FD4F6B771F59A33500DC1C10 /* view_bg_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B721F59A33500DC1C10 /* view_bg_image.png */; };
-		FD4F6B811F5A672900DC1C10 /* ad_0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B7D1F5A672900DC1C10 /* ad_0.jpg */; };
-		FD4F6B821F5A672900DC1C10 /* ad_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B7E1F5A672900DC1C10 /* ad_1.jpg */; };
-		FD4F6B831F5A672900DC1C10 /* ad_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B7F1F5A672900DC1C10 /* ad_2.jpg */; };
-		FD4F6B841F5A672900DC1C10 /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B801F5A672900DC1C10 /* demo.gif */; };
 		FD4F6B8B1F5A6B1000DC1C10 /* JiFenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B8A1F5A6B1000DC1C10 /* JiFenViewController.m */; };
 		FD4F6B951F5A73A300DC1C10 /* ZRGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B8E1F5A73A300DC1C10 /* ZRGridView.m */; };
 		FD4F6B961F5A73A300DC1C10 /* ZRGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B901F5A73A300DC1C10 /* ZRGridViewCell.m */; };
@@ -134,8 +133,6 @@
 		FDC497B51F29AF03002E7105 /* PPNumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC497B41F29AF03002E7105 /* PPNumberButton.m */; };
 		FDC497BA1F29AF1A002E7105 /* ACActionSheet.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FDC497B71F29AF1A002E7105 /* ACActionSheet.bundle */; };
 		FDC497BB1F29AF1A002E7105 /* ACActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC497B91F29AF1A002E7105 /* ACActionSheet.m */; };
-		FDC4994B1F29AF9B002E7105 /* JHChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC499481F29AF9B002E7105 /* JHChart.m */; };
-		FDC4994C1F29AF9B002E7105 /* JHRadarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC4994A1F29AF9B002E7105 /* JHRadarChart.m */; };
 		FDD24CC21F0BECF900DA16FC /* ChooseAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD24CBF1F0BECF900DA16FC /* ChooseAreaViewController.m */; };
 		FDD24CC31F0BECF900DA16FC /* ChooseCityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD24CC11F0BECF900DA16FC /* ChooseCityViewController.m */; };
 		FDD24CC61F0BEDF800DA16FC /* CityVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD24CC51F0BEDF800DA16FC /* CityVo.m */; };
@@ -207,6 +204,13 @@
 		FD242A721F5FEA140039A8A4 /* LianSaiData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LianSaiData.m; sourceTree = "<group>"; };
 		FD242A741F5FF9DF0039A8A4 /* SaiListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaiListViewController.h; sourceTree = "<group>"; };
 		FD242A751F5FF9DF0039A8A4 /* SaiListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaiListViewController.m; sourceTree = "<group>"; };
+		FD242A771F601B150039A8A4 /* AddSaiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSaiViewController.h; sourceTree = "<group>"; };
+		FD242A781F601B150039A8A4 /* AddSaiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSaiViewController.m; sourceTree = "<group>"; };
+		FD242AA21F60E62E0039A8A4 /* JHChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHChart.h; sourceTree = "<group>"; };
+		FD242AA31F60E62E0039A8A4 /* JHChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHChart.m; sourceTree = "<group>"; };
+		FD242AA41F60E62E0039A8A4 /* JHChartHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHChartHeader.h; sourceTree = "<group>"; };
+		FD242AA51F60E62E0039A8A4 /* JHRadarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHRadarChart.h; sourceTree = "<group>"; };
+		FD242AA61F60E62F0039A8A4 /* JHRadarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHRadarChart.m; sourceTree = "<group>"; };
 		FD265A9A1F29E0BF00F92316 /* UIResponder+FirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+FirstResponder.h"; sourceTree = "<group>"; };
 		FD265A9B1F29E0BF00F92316 /* UIResponder+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+FirstResponder.m"; sourceTree = "<group>"; };
 		FD265A9C1F29E0BF00F92316 /* WPAutoSpringTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAutoSpringTextViewController.h; sourceTree = "<group>"; };
@@ -243,10 +247,6 @@
 		FD4F6B701F59A33500DC1C10 /* adImage3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = adImage3.gif; sourceTree = "<group>"; };
 		FD4F6B711F59A33500DC1C10 /* adImage4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = adImage4.gif; sourceTree = "<group>"; };
 		FD4F6B721F59A33500DC1C10 /* view_bg_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = view_bg_image.png; sourceTree = "<group>"; };
-		FD4F6B7D1F5A672900DC1C10 /* ad_0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ad_0.jpg; sourceTree = "<group>"; };
-		FD4F6B7E1F5A672900DC1C10 /* ad_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ad_1.jpg; sourceTree = "<group>"; };
-		FD4F6B7F1F5A672900DC1C10 /* ad_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ad_2.jpg; sourceTree = "<group>"; };
-		FD4F6B801F5A672900DC1C10 /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
 		FD4F6B891F5A6B1000DC1C10 /* JiFenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiFenViewController.h; sourceTree = "<group>"; };
 		FD4F6B8A1F5A6B1000DC1C10 /* JiFenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiFenViewController.m; sourceTree = "<group>"; };
 		FD4F6B8D1F5A73A300DC1C10 /* ZRGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRGridView.h; sourceTree = "<group>"; };
@@ -479,11 +479,6 @@
 		FDC497B71F29AF1A002E7105 /* ACActionSheet.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ACActionSheet.bundle; sourceTree = "<group>"; };
 		FDC497B81F29AF1A002E7105 /* ACActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACActionSheet.h; sourceTree = "<group>"; };
 		FDC497B91F29AF1A002E7105 /* ACActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACActionSheet.m; sourceTree = "<group>"; };
-		FDC499461F29AF9B002E7105 /* JHChartHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHChartHeader.h; sourceTree = "<group>"; };
-		FDC499471F29AF9B002E7105 /* JHChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHChart.h; sourceTree = "<group>"; };
-		FDC499481F29AF9B002E7105 /* JHChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHChart.m; sourceTree = "<group>"; };
-		FDC499491F29AF9B002E7105 /* JHRadarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHRadarChart.h; sourceTree = "<group>"; };
-		FDC4994A1F29AF9B002E7105 /* JHRadarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHRadarChart.m; sourceTree = "<group>"; };
 		FDD24CBE1F0BECF900DA16FC /* ChooseAreaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAreaViewController.h; sourceTree = "<group>"; };
 		FDD24CBF1F0BECF900DA16FC /* ChooseAreaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAreaViewController.m; sourceTree = "<group>"; };
 		FDD24CC01F0BECF900DA16FC /* ChooseCityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCityViewController.h; sourceTree = "<group>"; };
@@ -628,6 +623,18 @@
 			name = liansai;
 			sourceTree = "<group>";
 		};
+		FD242AA91F60E6330039A8A4 /* radar */ = {
+			isa = PBXGroup;
+			children = (
+				FD242AA21F60E62E0039A8A4 /* JHChart.h */,
+				FD242AA31F60E62E0039A8A4 /* JHChart.m */,
+				FD242AA41F60E62E0039A8A4 /* JHChartHeader.h */,
+				FD242AA51F60E62E0039A8A4 /* JHRadarChart.h */,
+				FD242AA61F60E62F0039A8A4 /* JHRadarChart.m */,
+			);
+			name = radar;
+			sourceTree = "<group>";
+		};
 		FD265AA01F29E0C400F92316 /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -689,18 +696,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		FD4F6B7C1F5A672900DC1C10 /* SlideResource */ = {
-			isa = PBXGroup;
-			children = (
-				FD4F6B7D1F5A672900DC1C10 /* ad_0.jpg */,
-				FD4F6B7E1F5A672900DC1C10 /* ad_1.jpg */,
-				FD4F6B7F1F5A672900DC1C10 /* ad_2.jpg */,
-				FD4F6B801F5A672900DC1C10 /* demo.gif */,
-			);
-			name = SlideResource;
-			path = Resource;
-			sourceTree = "<group>";
-		};
 		FD4F6B851F5A69B500DC1C10 /* liansai */ = {
 			isa = PBXGroup;
 			children = (
@@ -712,6 +707,8 @@
 				FD242A681F5FD6150039A8A4 /* BaomingViewController.m */,
 				FD242A741F5FF9DF0039A8A4 /* SaiListViewController.h */,
 				FD242A751F5FF9DF0039A8A4 /* SaiListViewController.m */,
+				FD242A771F601B150039A8A4 /* AddSaiViewController.h */,
+				FD242A781F601B150039A8A4 /* AddSaiViewController.m */,
 			);
 			name = liansai;
 			sourceTree = "<group>";
@@ -1163,15 +1160,14 @@
 		FDAA38341DD2BF3D0038658F /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				FD242AA91F60E6330039A8A4 /* radar */,
 				FD4F6B8C1F5A73A300DC1C10 /* ZRGridView */,
-				FD4F6B7C1F5A672900DC1C10 /* SlideResource */,
 				FD4F6B271F59A18B00DC1C10 /* DHLaunchAdPageHUD */,
 				FD4F6AF01F57B4B900DC1C10 /* WSDaePickerView */,
 				FD5018CC1F3C523C0077C418 /* TencentOpenAPI.framework */,
 				FD5018601F3C4E3E0077C418 /* Alipay */,
 				FD50185F1F3C4E230077C418 /* weixin */,
 				FD265AA01F29E0C400F92316 /* keyboard */,
-				FDC4994D1F29AF9F002E7105 /* radar */,
 				FDC497B61F29AF1A002E7105 /* ACActionSheet */,
 				FDC497B21F29AF03002E7105 /* PPNumberButton */,
 				FD75D22C1F23516600306F77 /* NullSafe */,
@@ -1278,18 +1274,6 @@
 				FDC497B91F29AF1A002E7105 /* ACActionSheet.m */,
 			);
 			path = ACActionSheet;
-			sourceTree = "<group>";
-		};
-		FDC4994D1F29AF9F002E7105 /* radar */ = {
-			isa = PBXGroup;
-			children = (
-				FDC499461F29AF9B002E7105 /* JHChartHeader.h */,
-				FDC499471F29AF9B002E7105 /* JHChart.h */,
-				FDC499481F29AF9B002E7105 /* JHChart.m */,
-				FDC499491F29AF9B002E7105 /* JHRadarChart.h */,
-				FDC4994A1F29AF9B002E7105 /* JHRadarChart.m */,
-			);
-			name = radar;
 			sourceTree = "<group>";
 		};
 		FDD3AF671F21AFE100EA7C23 /* julebu */ = {
@@ -1465,9 +1449,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD4F6B811F5A672900DC1C10 /* ad_0.jpg in Resources */,
-				FD4F6B841F5A672900DC1C10 /* demo.gif in Resources */,
-				FD4F6B831F5A672900DC1C10 /* ad_2.jpg in Resources */,
 				FD5018C11F3C4E3E0077C418 /* AlipaySDK.bundle in Resources */,
 				FD4F6B771F59A33500DC1C10 /* view_bg_image.png in Resources */,
 				FD4F6AFB1F57B4B900DC1C10 /* WSDatePickerView.xib in Resources */,
@@ -1477,7 +1458,6 @@
 				FD4F6B731F59A33500DC1C10 /* adImage1.jpg in Resources */,
 				FDA572AA1F035A780072DF95 /* LICENSE in Resources */,
 				FD4F6B761F59A33500DC1C10 /* adImage4.gif in Resources */,
-				FD4F6B821F5A672900DC1C10 /* ad_1.jpg in Resources */,
 				FDC497BA1F29AF1A002E7105 /* ACActionSheet.bundle in Resources */,
 				FDAA37A11DD2BCF80038658F /* Main.storyboard in Resources */,
 				FD4F6B751F59A33500DC1C10 /* adImage3.gif in Resources */,
@@ -1621,10 +1601,10 @@
 				FDFAE5F91F10F4F4008DF0BB /* YCSlideView.m in Sources */,
 				FD1F2C661F0490EC00063765 /* QDCommonGroupListViewController.m in Sources */,
 				FDA572AB1F035A780072DF95 /* MBProgressHUD+Add.m in Sources */,
+				FD242A791F601B150039A8A4 /* AddSaiViewController.m in Sources */,
 				FDAA38321DD2BE1F0038658F /* JulebuViewController.m in Sources */,
 				FDC497B11F29AEE4002E7105 /* MeView.m in Sources */,
 				FD4F6AF81F57B4B900DC1C10 /* NSDate+Extension.m in Sources */,
-				FDC4994C1F29AF9B002E7105 /* JHRadarChart.m in Sources */,
 				FD1F2C551F0490DF00063765 /* UIImageEffects.m in Sources */,
 				FD76CB3E1F0B87AE0047C0FE /* RegisterViewController.m in Sources */,
 				FD265AA61F29E20600F92316 /* LianSaiViewController.m in Sources */,
@@ -1652,6 +1632,7 @@
 				FDAA381A1DD2BDA40038658F /* NSString+Common.m in Sources */,
 				FD1F2C691F0490EC00063765 /* QDCommonViewController.m in Sources */,
 				FDC497A81F29AE5D002E7105 /* MyDataImportViewController.m in Sources */,
+				FD242AA71F60E62F0039A8A4 /* JHChart.m in Sources */,
 				FD71DD741F21D5E0006242B4 /* ReadDetailContentViewController.m in Sources */,
 				FDAA38181DD2BDA40038658F /* MWLocalDataTool.m in Sources */,
 				FD4F6B971F5A73A300DC1C10 /* ZRGridViewHeader.m in Sources */,
@@ -1662,7 +1643,6 @@
 				FDD24CC61F0BEDF800DA16FC /* CityVo.m in Sources */,
 				FDAA381F1DD2BDA40038658F /* UIImage+SCImage.m in Sources */,
 				FD75D2431F26491C00306F77 /* CommentVo.m in Sources */,
-				FDC4994B1F29AF9B002E7105 /* JHChart.m in Sources */,
 				FDAA37981DD2BCF80038658F /* main.m in Sources */,
 				FD1F2C671F0490EC00063765 /* QDCommonListViewController.m in Sources */,
 				FD8F08F41F3418B60067AF4C /* MyQiuYuanViewController.m in Sources */,
@@ -1673,6 +1653,7 @@
 				FD50185B1F3C4E180077C418 /* MXWechatSignAdaptor.m in Sources */,
 				FD4F6B531F59A18B00DC1C10 /* DHRegularExpression.m in Sources */,
 				FD5018C31F3C4E3E0077C418 /* APAuthV2Info.m in Sources */,
+				FD242AA81F60E62F0039A8A4 /* JHRadarChart.m in Sources */,
 				FDAA38201DD2BDA40038658F /* UILabel+Common.m in Sources */,
 				FD4F6AFA1F57B4B900DC1C10 /* WSDatePickerView.m in Sources */,
 				FDF3D4401F0B9AF0003CAF5A /* VerifyPswViewController.m in Sources */,
@@ -1801,6 +1782,10 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1843,6 +1828,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1859,12 +1848,10 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/FBLeague/Vendors/Vendors/Alipay",
-					"$(PROJECT_DIR)/FBLeague/Vendors/Vendors",
 					"$(PROJECT_DIR)/FBLeague/Vendors/Alipay",
 					"$(PROJECT_DIR)/FBLeague/Vendors",
 				);
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/FBLeague/FBLeague-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1906,9 +1893,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/FBLeague/Vendors/JPush",
-					"$(PROJECT_DIR)/FBLeague/Vendors/Vendors/Alipay",
-					"$(PROJECT_DIR)/FBLeague/Vendors/Vendors",
 					"$(PROJECT_DIR)/FBLeague/Vendors",
 					"$(PROJECT_DIR)/FBLeague/Vendors/Alipay",
 				);
@@ -1928,12 +1912,10 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/FBLeague/Vendors/Vendors/Alipay",
-					"$(PROJECT_DIR)/FBLeague/Vendors/Vendors",
 					"$(PROJECT_DIR)/FBLeague/Vendors/Alipay",
 					"$(PROJECT_DIR)/FBLeague/Vendors",
 				);
-				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_NO_COMMON_BLOCKS = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/FBLeague/FBLeague-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1975,9 +1957,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/FBLeague/Vendors/JPush",
-					"$(PROJECT_DIR)/FBLeague/Vendors/Vendors/Alipay",
-					"$(PROJECT_DIR)/FBLeague/Vendors/Vendors",
 					"$(PROJECT_DIR)/FBLeague/Vendors",
 					"$(PROJECT_DIR)/FBLeague/Vendors/Alipay",
 				);

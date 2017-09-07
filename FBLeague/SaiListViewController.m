@@ -40,7 +40,7 @@
     //获取需要数据内容 (获取第一页)
     pageNO = @"1" ;
     
-    [self getNeedDatas:pageNO];
+//    [self getNeedDatas:pageNO];
     
     __weak SaiListViewController *weakSelf = self ;
     [_goodTableView addPullToRefreshWithActionHandler:^{
@@ -68,10 +68,10 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _leagueId , @"matchId" , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:listSchedules parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
-            if ([data[@"page"] isEqual:[NSNull null]]) {
+            if ([data[@"schedules"] isEqual:[NSNull null]]) {
                 return ;
             }
-            NSDictionary *list = data[@"page"][@"list"];
+            NSDictionary *list = data[@"schedules"][@"list"];
             NSString *currPage = data[@"page"][@"currPage"];
             NSString *nextPage = data[@"page"][@"nextPage"];
             LianSaiData *model = nil ;

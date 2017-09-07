@@ -12,6 +12,7 @@
 #import "JiFenViewController.h"
 #import "BaomingViewController.h"
 #import "SaiListViewController.h"
+#import "AddSaiViewController.h"
 
 @interface LianSaiViewController (){
     NSString *title ;
@@ -20,7 +21,8 @@
     NSString *adurls ;
     NSString *leagueId ;
     UIButton *backViewBtn ;
-
+    UIButton *explainViewBtn ;
+    NSUInteger index_ ;
 }
 
 @end
@@ -70,10 +72,29 @@
           forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
     self.navigationItem.rightBarButtonItem = backItem ;
+    
+    explainViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    explainViewBtn.frame = CGRectMake(0, 0, 17, 17);
+    [explainViewBtn setImage:[UIImage imageNamed:@"explain"] forState:UIControlStateNormal];
+    [explainViewBtn addTarget:self action: @selector(explain)
+          forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backItem2 = [[UIBarButtonItem alloc] initWithCustomView:explainViewBtn];
+    self.navigationItem.leftBarButtonItem = backItem2 ;
+}
+
+-(void)explain{
+    
 }
 
 -(void)goAction{
-    
+    if (index_ == 0) {
+        self.hidesBottomBarWhenPushed = YES ;
+        AddSaiViewController *add = [AddSaiViewController new] ;
+        [self.navigationController pushViewController:add animated:YES];
+        self.hidesBottomBarWhenPushed = NO ;
+    }else if(index_ == 1){
+        
+    }
 }
 
 
@@ -145,8 +166,15 @@
         backViewBtn.hidden = YES ;
     }else{
         backViewBtn.hidden = NO ;
+        explainViewBtn.hidden = NO ;
+        if (index == 0) {
+            [backViewBtn setImage:[UIImage imageNamed:@"addcircle"] forState:UIControlStateNormal];
+        }else{
+            explainViewBtn.hidden = YES ;
+            [backViewBtn setImage:[UIImage imageNamed:@"clock"] forState:UIControlStateNormal];
+        }
     }
-    
+    index_ = index ;
 }
 
 @end
