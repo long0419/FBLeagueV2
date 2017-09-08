@@ -63,9 +63,8 @@
 -(void) getNeedDatas : (NSString *) page{
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
-    //    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.club , @"clubId" , uvo.phone ,  @"token", nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.club , @"clubId" , _leagueId , @"leagueId" , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:listSchedules parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
             if ([data[@"schedules"] isEqual:[NSNull null]]) {
@@ -133,8 +132,8 @@
     SaiChengVo *vo = [kouList objectAtIndex:indexPath.section];
     NSString *content = [NSString stringWithFormat:@"%@ vs %@" , vo.homeclubname , vo.visitingclubname];
     
-    if(![vo.hasplayed isEqualToString:@"n"]){
-        content = [NSString stringWithFormat:@"%@ 2 - 1 %@" ,vo.homeclubname , vo.visitingclubname];
+    if(![vo.matchstatus isEqualToString:@"3"]){
+        content = [NSString stringWithFormat:@"%@ %@ - %@ %@" ,vo.homeclubname ,vo.homegoalcount ,vo.visitinggoalcount , vo.visitingclubname];
     }
     
     LianSaiView *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];

@@ -12,6 +12,7 @@
 
 @interface JiFenViewController : BaseViewController<ZRGridViewDelegate,ZRGridViewDataSource>
 
+@property (nonatomic , strong) NSString *leagueId ;
 
 
 @end

@@ -156,6 +156,8 @@
 		FDEAC82D1F610D7600AB25B2 /* weixin-拷贝@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDEAC82B1F610D7600AB25B2 /* weixin-拷贝@2x.png */; };
 		FDEAC82E1F610D7600AB25B2 /* weixin-拷贝@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDEAC82C1F610D7600AB25B2 /* weixin-拷贝@3x.png */; };
 		FDEAC8311F623EE200AB25B2 /* SaiChengVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEAC8301F623EE200AB25B2 /* SaiChengVo.m */; };
+		FDEAC8341F625F9A00AB25B2 /* AddSaiTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEAC8331F625F9A00AB25B2 /* AddSaiTimeViewController.m */; };
+		FDEAC8371F626EEA00AB25B2 /* JiFenVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEAC8361F626EEA00AB25B2 /* JiFenVo.m */; };
 		FDF3D43D1F0B981D003CAF5A /* ZLVerifyCodeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FDF3D43C1F0B981D003CAF5A /* ZLVerifyCodeButton.m */; };
 		FDF3D4401F0B9AF0003CAF5A /* VerifyPswViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDF3D43F1F0B9AF0003CAF5A /* VerifyPswViewController.m */; };
 		FDF3D4431F0B9DCC003CAF5A /* PersonInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDF3D4421F0B9DCC003CAF5A /* PersonInfoViewController.m */; };
@@ -524,6 +526,10 @@
 		FDEAC82C1F610D7600AB25B2 /* weixin-拷贝@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weixin-拷贝@3x.png"; sourceTree = "<group>"; };
 		FDEAC82F1F623EE200AB25B2 /* SaiChengVo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaiChengVo.h; sourceTree = "<group>"; };
 		FDEAC8301F623EE200AB25B2 /* SaiChengVo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaiChengVo.m; sourceTree = "<group>"; };
+		FDEAC8321F625F9A00AB25B2 /* AddSaiTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSaiTimeViewController.h; sourceTree = "<group>"; };
+		FDEAC8331F625F9A00AB25B2 /* AddSaiTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSaiTimeViewController.m; sourceTree = "<group>"; };
+		FDEAC8351F626EEA00AB25B2 /* JiFenVo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiFenVo.h; sourceTree = "<group>"; };
+		FDEAC8361F626EEA00AB25B2 /* JiFenVo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiFenVo.m; sourceTree = "<group>"; };
 		FDF3D43B1F0B981D003CAF5A /* ZLVerifyCodeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLVerifyCodeButton.h; sourceTree = "<group>"; };
 		FDF3D43C1F0B981D003CAF5A /* ZLVerifyCodeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLVerifyCodeButton.m; sourceTree = "<group>"; };
 		FDF3D43E1F0B9AF0003CAF5A /* VerifyPswViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyPswViewController.h; sourceTree = "<group>"; };
@@ -742,6 +748,8 @@
 				FD242A751F5FF9DF0039A8A4 /* SaiListViewController.m */,
 				FD242A771F601B150039A8A4 /* AddSaiViewController.h */,
 				FD242A781F601B150039A8A4 /* AddSaiViewController.m */,
+				FDEAC8321F625F9A00AB25B2 /* AddSaiTimeViewController.h */,
+				FDEAC8331F625F9A00AB25B2 /* AddSaiTimeViewController.m */,
 			);
 			name = liansai;
 			sourceTree = "<group>";
@@ -1158,6 +1166,8 @@
 				FD242A721F5FEA140039A8A4 /* LianSaiData.m */,
 				FDEAC82F1F623EE200AB25B2 /* SaiChengVo.h */,
 				FDEAC8301F623EE200AB25B2 /* SaiChengVo.m */,
+				FDEAC8351F626EEA00AB25B2 /* JiFenVo.h */,
+				FDEAC8361F626EEA00AB25B2 /* JiFenVo.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1674,9 +1684,11 @@
 				FDFAE5F91F10F4F4008DF0BB /* YCSlideView.m in Sources */,
 				FD1F2C661F0490EC00063765 /* QDCommonGroupListViewController.m in Sources */,
 				FDA572AB1F035A780072DF95 /* MBProgressHUD+Add.m in Sources */,
+				FDEAC8371F626EEA00AB25B2 /* JiFenVo.m in Sources */,
 				FD242A791F601B150039A8A4 /* AddSaiViewController.m in Sources */,
 				FDAA38321DD2BE1F0038658F /* JulebuViewController.m in Sources */,
 				FDC497B11F29AEE4002E7105 /* MeView.m in Sources */,
+				FDEAC8341F625F9A00AB25B2 /* AddSaiTimeViewController.m in Sources */,
 				FD4F6AF81F57B4B900DC1C10 /* NSDate+Extension.m in Sources */,
 				FD1F2C551F0490DF00063765 /* UIImageEffects.m in Sources */,
 				FD76CB3E1F0B87AE0047C0FE /* RegisterViewController.m in Sources */,

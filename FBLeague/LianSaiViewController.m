@@ -12,7 +12,6 @@
 #import "JiFenViewController.h"
 #import "BaomingViewController.h"
 #import "SaiListViewController.h"
-#import "AddSaiViewController.h"
 
 @interface LianSaiViewController (){
     NSString *title ;
@@ -87,14 +86,15 @@
 }
 
 -(void)goAction{
+    self.hidesBottomBarWhenPushed = YES ;
     if (index_ == 0) {
-        self.hidesBottomBarWhenPushed = YES ;
         AddSaiViewController *add = [AddSaiViewController new] ;
         [self.navigationController pushViewController:add animated:YES];
-        self.hidesBottomBarWhenPushed = NO ;
     }else if(index_ == 1){
-        
+        AddSaiTimeViewController *time = [AddSaiTimeViewController new];
+        [self.navigationController pushViewController:time animated:YES];
     }
+    self.hidesBottomBarWhenPushed = NO ;
 }
 
 
@@ -121,7 +121,8 @@
     focus.leagueId = leagueId ;
 
     JiFenViewController *jifen = [JiFenViewController new] ;
-    
+    jifen.leagueId = leagueId ;
+
     NSArray *viewControllers = @[@{@"报名":dongtai}, @{@"赛程":focus}, @{@"积分":jifen}];
     YCSlideView * view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, self.banner.bottom, kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
     view.delegate = self ;

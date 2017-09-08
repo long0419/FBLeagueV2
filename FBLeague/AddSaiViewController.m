@@ -28,7 +28,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"联赛报名";
-//    self.view.backgroundColor = [UIColor colorWithHexString:@"323c45"];
 
     [self setBackBottmAndTitle];
     

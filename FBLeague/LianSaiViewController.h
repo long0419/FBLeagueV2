@@ -11,6 +11,8 @@
 #import "ZYBannerView.h"
 #import "SaiResultViewController.h"
 #import "YCSlideView.h"
+#import "AddSaiViewController.h"
+#import "AddSaiTimeViewController.h"
 
 @interface LianSaiViewController : BaseViewController <ZYBannerViewDataSource, ZYBannerViewDelegate, UITextFieldDelegate,UITableViewDelegate , UITableViewDataSource , UIScrollViewDelegate, ScrollIndex>
 

@@ -84,7 +84,6 @@
     psw.delegate = self ;
     psw.textAlignment = NSTextAlignmentCenter ;
     psw.secureTextEntry = YES;
-//    psw.keyboardType = UIKeyboardTypeNumberPad | UIKeyboardTypeAlphabet ;
     psw.returnKeyType = UIReturnKeyGo ;
     [self.view addSubview:psw];
     [psw mas_makeConstraints:^(MASConstraintMaker *make) {
