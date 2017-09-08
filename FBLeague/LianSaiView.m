@@ -45,8 +45,9 @@
     return view ;
 }
 
+
 -(UIView *)getSaiLineView :(NSString *) content andWithType :(NSString *)type{
-    NSString *colorname = @"000000" ;
+    NSString *colorname = @"ffffff" ;
     
     if ([type isEqualToString:@"33"]) {
         colorname = @"f8845c" ;
@@ -54,16 +55,24 @@
         colorname = @"5b73d4" ;
     }
     
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, 96/2)];
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, 80/2)];
     lineView.backgroundColor = [UIColor colorWithHexString:colorname] ;
     [self addSubview:lineView];
     
+    UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , kScreen_Width, .5)];
+    line1.backgroundColor = [UIColor blackColor];
+    [lineView addSubview:line1];
+
     CGSize titleSize = [NSString getStringContentSizeWithFontSize:11 andContent:content];
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreen_Width - 12 - titleSize.width ,12, titleSize.width, titleSize.height)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreen_Width - 12 - titleSize.width , (80/2 - titleSize.height)/2, titleSize.width, titleSize.height)];
     titleLabel.font = [UIFont systemFontOfSize:11];
-    titleLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
+    titleLabel.textColor = [UIColor colorWithHexString:@"000000"];
     titleLabel.text = content;
-    [self addSubview:titleLabel];
+    [lineView addSubview:titleLabel];
+    
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 80/2, kScreen_Width, .5)];
+    line.backgroundColor = [UIColor blackColor];
+    [lineView addSubview:line];
     
     return lineView ;
 }

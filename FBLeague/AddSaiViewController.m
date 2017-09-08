@@ -240,8 +240,61 @@
         make.top.mas_equalTo(money12.mas_bottom).with.offset(20);
     }];
     
+    NSMutableArray* buttonsx = [NSMutableArray arrayWithCapacity:2];
+    RadioButton* btnx31 = [[RadioButton alloc] init];
+    [btnx31 addTarget:self action:@selector(onRadioButtonValueChanged:) forControlEvents:UIControlEventValueChanged];
+    [btnx31 setTitle:@"支付宝" forState:UIControlStateNormal];
+    [btnx31 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    btnx31.titleLabel.font = [UIFont systemFontOfSize:12];
+    [btnx31 setImage:[UIImage imageNamed:@"unchecked.png"] forState:UIControlStateNormal];
+    [btnx31 setImage:[UIImage imageNamed:@"checked.png"] forState:UIControlStateSelected];
+    btnx31.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    btnx31.titleEdgeInsets = UIEdgeInsetsMake(0, 6, 0, 0);
+    [self.view addSubview:btnx31];
     
+    RadioButton* btn2x = [[RadioButton alloc] init];
+    [btn2x addTarget:self action:@selector(onRadioButtonValueChanged:) forControlEvents:UIControlEventValueChanged];
+    [btn2x setTitle:@"微信" forState:UIControlStateNormal];
+    [btn2x setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    btn2x.titleLabel.font = [UIFont systemFontOfSize:12];
+    [btn2x setImage:[UIImage imageNamed:@"unchecked.png"] forState:UIControlStateNormal];
+    [btn2x setImage:[UIImage imageNamed:@"checked.png"] forState:UIControlStateSelected];
+    btn2x.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    btn2x.titleEdgeInsets = UIEdgeInsetsMake(0, 6, 0, 0);
+    [self.view addSubview:btn2x];
+    [buttonsx addObject:btnx31];
 
+    [btnx31 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(psw);
+        make.top.mas_equalTo(label16.mas_bottom).with.offset(15);
+        make.width.mas_equalTo(100);
+    }];
+    
+    [btn2x mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(psw);
+        make.top.mas_equalTo(label16.mas_bottom).with.offset(15);
+        make.width.mas_equalTo(45);
+    }];
+    [buttonsx addObject:btn2x];
+
+    
+    QMUIButton *button = [[QMUIButton alloc] init];
+    button.adjustsButtonWhenHighlighted = YES;
+    button.titleLabel.font = UIFontBoldMake(37/2);
+    [button setTitleColor:UIColorWhite forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor blackColor];
+    button.highlightedBackgroundColor = [UIColor colorWithHexString:@"5a70d6"];    button.layer.cornerRadius = 4;
+    [button addTarget:self action:@selector(baoming) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"联赛报名" forState:UIControlStateNormal];
+    [self.view addSubview:button];
+    [button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(btn2x.mas_bottom).with.offset(20);
+        make.left.mas_equalTo(SYRealValue(30)) ;
+        make.height.mas_equalTo(SYRealValue(40));
+        make.width.mas_equalTo((self.view.width - 60));
+    }];
+
+    
 }
 
 -(void) onRadioButtonValueChanged:(RadioButton*)sender
@@ -251,6 +304,10 @@
         NSLog(@"Selected color: %@", sender.titleLabel.text);
 
     }
+}
+
+-(void)baoming{
+    NSLog(@"xxxx") ;
 }
 
 - (void)setRightBottom {
@@ -275,6 +332,20 @@
           forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
     self.navigationItem.leftBarButtonItem = backItem ;
+}
+
+-(void)share{
+    //添加popview
+    [BHBPopView showToView:self.view
+                 andImages:@[@"wechat.png",
+                             @"qq.png",
+                             @"friend.png"]
+                 andTitles:
+                    @[@"微信",@"QQ",@"朋友圈"]
+            andSelectBlock:^(BHBItem *item) {
+                NSLog(@"%@" , item.title) ;
+            }
+     ];
 }
 
 -(void)back{

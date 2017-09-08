@@ -137,7 +137,7 @@
     NSString *title = [NSString stringWithFormat:@"%@ %@ %@" , vo.provincename , vo.cityname , vo.areaname];
 
     LianSaiView *cell = [LianSaiView new];
-    [cell BaomingView:title andWithName:vo.matchname andWithLineData:@"1" withTotal:@"1"];
+    [cell BaomingView:title andWithName:vo.matchname andWithLineData:vo.joininCount withTotal:@"20"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone ;
     return cell ;
     

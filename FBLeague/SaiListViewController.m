@@ -7,7 +7,7 @@
 //
 
 #import "SaiListViewController.h"
-#import "LianSaiData.h"
+#import "SaiChengVo.h"
 #import "SVPullToRefresh.h"
 #import "LianSaiView.h"
 
@@ -40,7 +40,7 @@
     //获取需要数据内容 (获取第一页)
     pageNO = @"1" ;
     
-//    [self getNeedDatas:pageNO];
+    [self getNeedDatas:pageNO];
     
     __weak SaiListViewController *weakSelf = self ;
     [_goodTableView addPullToRefreshWithActionHandler:^{
@@ -65,45 +65,43 @@
     uvo = [cache objectForKey:@"userData"];
     //    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _leagueId , @"matchId" , uvo.phone ,  @"token", nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.club , @"clubId" , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:listSchedules parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
             if ([data[@"schedules"] isEqual:[NSNull null]]) {
                 return ;
             }
-            NSDictionary *list = data[@"schedules"][@"list"];
-            NSString *currPage = data[@"page"][@"currPage"];
-            NSString *nextPage = data[@"page"][@"nextPage"];
-            LianSaiData *model = nil ;
+            NSDictionary *list = data[@"schedules"];
+            SaiChengVo *model = nil ;
             [kouList removeAllObjects];
             
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
-                    model = [LianSaiData new];
-                    model.lid = [NSString stringWithFormat:@"%@" , dic[@"id"]] ;
-                    model.provincename = [NSString stringWithFormat:@"%@" , dic[@"provincename"]] ;
-                    model.areacode = [NSString stringWithFormat:@"%@" , dic[@"areacode"]] ;
-                    model.matchname = [NSString stringWithFormat:@"%@" , dic[@"matchname"]] ;
+                    model = [SaiChengVo new];
+                    model.visitingsubmit = [NSString stringWithFormat:@"%@" , dic[@"visitingsubmit"]] ;
+                    model.matchstatus = [NSString stringWithFormat:@"%@" , dic[@"matchstatus"]] ;
+                    model.matchid = [NSString stringWithFormat:@"%@" , dic[@"matchid"]] ;
+                    model.matchid = [NSString stringWithFormat:@"%@" , dic[@"matchid"]] ;
+                    model.visitingclub = [NSString stringWithFormat:@"%@" , dic[@"visitingclub"]] ;
+                    model.homeclubname = [NSString stringWithFormat:@"%@" , dic[@"homeclubname"]] ;
+                    model.visitingeva = [NSString stringWithFormat:@"%@" , dic[@"visitingeva"]] ;
+                    model.homesubmit = [NSString stringWithFormat:@"%@" , dic[@"homesubmit"]] ;
+                    model.field = [NSString stringWithFormat:@"%@" , dic[@"field"]] ;
+                    model.hasplayed = [NSString stringWithFormat:@"%@" , dic[@"hasplayed"]] ;
+                    model.visitingclubname = [NSString stringWithFormat:@"%@" , dic[@"visitingclubname"]] ;
+                    model.challengeid = [NSString stringWithFormat:@"%@" , dic[@"challengeid"]] ;
                     model.leagueid = [NSString stringWithFormat:@"%@" , dic[@"leagueid"]] ;
-                    model.isfull = [NSString stringWithFormat:@"%@" , dic[@"isfull"]] ;
-                    model.cityname = [NSString stringWithFormat:@"%@" , dic[@"cityname"]] ;
-                    model.grouptype = [NSString stringWithFormat:@"%@" , dic[@"grouptype"]] ;
-                    model.provincecode = [NSString stringWithFormat:@"%@" , dic[@"provincecode"]] ;
-                    model.grouptype = [NSString stringWithFormat:@"%@" , dic[@"grouptype"]] ;
-                    model.citycode = [NSString stringWithFormat:@"%@" , dic[@"citycode"]] ;
-                    model.enabled = [NSString stringWithFormat:@"%@" , dic[@"enabled"]] ;
-                    model.format = [NSString stringWithFormat:@"%@" , dic[@"format"]] ;
-                    model.joininCount = [NSString stringWithFormat:@"%@" , dic[@"joininCount"]] ;
-                    model.areaname = [NSString stringWithFormat:@"%@" , dic[@"areaname"]] ;
-                    model.matchnumber = [NSString stringWithFormat:@"%@" , dic[@"matchnumber"]] ;
-                    model.number = [NSString stringWithFormat:@"%@" , dic[@"number"]] ;
-                    model.bonus = [NSString stringWithFormat:@"%@" , dic[@"bonus"]] ;
+                    model.sid = [NSString stringWithFormat:@"%@" , dic[@"id"]] ;
+                    model.challengeid = [NSString stringWithFormat:@"%@" , dic[@"challengeid"]] ;
+                    model.visitinggoalcount = [NSString stringWithFormat:@"%@" , dic[@"visitinggoalcount"]] ;
+                    model.matchname = [NSString stringWithFormat:@"%@" , dic[@"matchname"]] ;
+                    model.homegoalcount = [NSString stringWithFormat:@"%@" , dic[@"homegoalcount"]] ;
+                    model.homeclub = [NSString stringWithFormat:@"%@" , dic[@"homeclub"]] ;
+                    model.remarks = [NSString stringWithFormat:@"%@" , dic[@"remarks"]] ;
+                    model.matchtime = [NSString stringWithFormat:@"%@" , dic[@"matchtime"]] ;
+                    model.roundnum = [NSString stringWithFormat:@"%@" , dic[@"roundnum"]] ;
+                    model.homeeva = [NSString stringWithFormat:@"%@" , dic[@"homeeva"]] ;
                     [kouList addObject:model];
-                }
-                if (currPage.longLongValue == nextPage.longLongValue) {
-                    pageNO =  currPage ;
-                }else{
-                    pageNO =  nextPage ;
                 }
             }else {
                 self.HUD.mode = MBProgressHUDModeText;
@@ -113,7 +111,6 @@
             }
             [_goodTableView reloadData];
         }
-        //        [self closeProgressView];
         
     } failure:^(NSError *error) {
         
@@ -132,12 +129,21 @@
 
 #pragma mark返回每行的单元格
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *Categorys = @"Categorys";
-    LianSaiData *vo = [kouList objectAtIndex:indexPath.section];
-    NSString *title = [NSString stringWithFormat:@"%@ %@ %@" , vo.provincename , vo.cityname , vo.areaname];
+    static NSString *cellIdentifier  = @"cell";
+    SaiChengVo *vo = [kouList objectAtIndex:indexPath.section];
+    NSString *content = [NSString stringWithFormat:@"%@ vs %@" , vo.homeclubname , vo.visitingclubname];
     
-    LianSaiView *cell = [LianSaiView new];
-    [cell BaomingView:title andWithName:vo.matchname andWithLineData:@"1" withTotal:@"1"];
+    if(![vo.hasplayed isEqualToString:@"n"]){
+        content = [NSString stringWithFormat:@"%@ 2 - 1 %@" ,vo.homeclubname , vo.visitingclubname];
+    }
+    
+    LianSaiView *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+
+    if(!cell) {
+        cell = [LianSaiView new];
+        [cell getSaiLineView:content andWithType:vo.matchstatus];
+    }
+    
     cell.selectionStyle = UITableViewCellSelectionStyleNone ;
     return cell ;
     
@@ -148,14 +154,12 @@
 #pragma mark 重新设置单元格高度
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 70 ;
+    return 80/2 ;
 }
 
 #pragma mark 点击行
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
-    LianSaiData *vo = [kouList objectAtIndex:indexPath.section];
     
 }
 

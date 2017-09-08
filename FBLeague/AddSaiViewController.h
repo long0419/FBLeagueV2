@@ -8,10 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-//#import "KYShareViewController.h"
+#import "BHBPopView.h"
 
 @interface AddSaiViewController : BaseViewController<UITextFieldDelegate>
-//, KYShareDismissDelegate>
 
 @property (nonatomic , strong) NSString *areaStr ;
 @property (nonatomic , strong) NSString *areaCodeStr ;

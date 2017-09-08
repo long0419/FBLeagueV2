@@ -22,7 +22,6 @@
     gridViewLayout.headerBackgroudColor = [UIColor colorWithHexString:@"3a444e"];
     gridViewLayout.fieldTitleColor = [UIColor whiteColor];
     
-    CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
     ZRGridView *gridView = [[ZRGridView alloc] initWithFrame:CGRectMake(0 , 0 ,kScreen_Width , kScreen_Height - 200) gridViewLayoutAndStyle:gridViewLayout];
     gridView.gridViewDelegate = self;
     gridView.gridViewDataSource = self;

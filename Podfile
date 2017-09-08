@@ -25,5 +25,6 @@ target 'FBLeague' do
 	pod 'RongCloudIM/IMLib'
     pod 'RongCloudIM/IMKit'
 	pod 'SCLAlertView-Objective-C'
+	pod 'BHBPopView'
 end
 
