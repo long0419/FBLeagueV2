@@ -12,7 +12,7 @@
 #import "CreateClubViewController.h"
 #import "DongtaiViewController.h"
 #import "MemberViewController.h"
-#import "SaiChengViewController.h"
+//#import "SaiChengViewController.h"
 #import "ClubVo.h"
 
 @interface JulebuViewController : QMUICommonViewController <UIAlertViewDelegate,UITableViewDelegate , UITableViewDataSource>

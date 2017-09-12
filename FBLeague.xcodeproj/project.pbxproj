@@ -88,7 +88,6 @@
 		FD71DD741F21D5E0006242B4 /* ReadDetailContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD71DD731F21D5E0006242B4 /* ReadDetailContentViewController.m */; };
 		FD75D22E1F23518800306F77 /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D22D1F23518800306F77 /* NullSafe.m */; };
 		FD75D2321F25835200306F77 /* MemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D2311F25835200306F77 /* MemberViewController.m */; };
-		FD75D2351F25837C00306F77 /* SaiChengViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D2341F25837C00306F77 /* SaiChengViewController.m */; };
 		FD75D2391F2583C200306F77 /* ClassesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D2381F2583C200306F77 /* ClassesViewController.m */; };
 		FD75D23C1F2583E400306F77 /* MemeberDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D23B1F2583E400306F77 /* MemeberDataViewController.m */; };
 		FD75D2401F26486200306F77 /* DongtaiVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D23F1F26486200306F77 /* DongtaiVo.m */; };
@@ -405,8 +404,6 @@
 		FD75D22D1F23518800306F77 /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
 		FD75D2301F25835200306F77 /* MemberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemberViewController.h; sourceTree = "<group>"; };
 		FD75D2311F25835200306F77 /* MemberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemberViewController.m; sourceTree = "<group>"; };
-		FD75D2331F25837C00306F77 /* SaiChengViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaiChengViewController.h; sourceTree = "<group>"; };
-		FD75D2341F25837C00306F77 /* SaiChengViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaiChengViewController.m; sourceTree = "<group>"; };
 		FD75D2371F2583C200306F77 /* ClassesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassesViewController.h; sourceTree = "<group>"; };
 		FD75D2381F2583C200306F77 /* ClassesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassesViewController.m; sourceTree = "<group>"; };
 		FD75D23A1F2583E400306F77 /* MemeberDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemeberDataViewController.h; sourceTree = "<group>"; };
@@ -937,8 +934,6 @@
 			children = (
 				FD75D2301F25835200306F77 /* MemberViewController.h */,
 				FD75D2311F25835200306F77 /* MemberViewController.m */,
-				FD75D2331F25837C00306F77 /* SaiChengViewController.h */,
-				FD75D2341F25837C00306F77 /* SaiChengViewController.m */,
 			);
 			name = "已创建俱乐部";
 			sourceTree = "<group>";
@@ -1697,7 +1692,6 @@
 				FD4F6B8B1F5A6B1000DC1C10 /* JiFenViewController.m in Sources */,
 				FD5018CA1F3C4E3E0077C418 /* RSADataSigner.m in Sources */,
 				FDAA381E1DD2BDA40038658F /* UIImage+Common.m in Sources */,
-				FD75D2351F25837C00306F77 /* SaiChengViewController.m in Sources */,
 				FDAA381C1DD2BDA40038658F /* UIButton+Block.m in Sources */,
 				FDAA37CD1DD2BD690038658F /* BaseViewController.m in Sources */,
 				FDA1166C1F01FC67007F253C /* GTMBase64.m in Sources */,

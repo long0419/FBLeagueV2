@@ -10,6 +10,6 @@
 #import "BaseViewController.h"
 #import "DSLLoginTextField.h"
 
-@interface AddSaiTimeViewController : BaseViewController<UITextFieldDelegate>
+@interface AddSaiTimeViewController : BaseViewController<QMUITextViewDelegate , UITextFieldDelegate>
 
 @end

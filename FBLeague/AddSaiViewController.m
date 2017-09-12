@@ -186,7 +186,7 @@
     money1.placeholderColor=[UIColor colorWithHexString:@"000000"];
     money1.textColor = [UIColor blackColor] ;
     money1.font=[UIFont systemFontOfSize:14];
-    money1.placeholder=@"550元";
+    money1.placeholder=@"500元";
     money1.maxTextLength= 11;
     money1.textAlignment = NSTextAlignmentCenter ;
     [self.view addSubview:money1];

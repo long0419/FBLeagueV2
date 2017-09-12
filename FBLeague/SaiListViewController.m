@@ -64,8 +64,15 @@
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
     
+    NSString *url = listSchedules ;
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.club , @"clubId" , _leagueId , @"leagueId" , uvo.phone ,  @"token", nil];
-    [PPNetworkHelper POST:listSchedules parameters:params success:^(id data) {
+
+    if ([_from isEqualToString:@"1"]) {
+        url = listClubSchedules ;
+        params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.club , @"clubId", uvo.phone ,  @"token" , nil];
+    }
+    
+    [PPNetworkHelper POST:url parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
             if ([data[@"schedules"] isEqual:[NSNull null]]) {
                 return ;
@@ -159,7 +166,14 @@
 #pragma mark 点击行
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    SaiChengVo *vo = [kouList objectAtIndex:indexPath.section];
     
+//    SaiResultViewController *result = [SaiResultViewController new];
+//    result.vo = vo ;
+//    [self.navigationController pushViewController:result animated:YES];
+    
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"saiResult" object:vo userInfo:nil]];
+
 }
 
 

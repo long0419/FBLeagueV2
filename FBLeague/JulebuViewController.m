@@ -9,7 +9,7 @@
 #import "JulebuViewController.h"
 #import "CoachVo.h"
 #import "SVPullToRefresh.h"
-
+#import "SaiListViewController.h"
 @interface JulebuViewController (){
     NSMutableArray *kouList ;
     YYCache *cache ;
@@ -88,6 +88,13 @@
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"forwardDetail" object:nil];
+}
+
+
 #pragma mark - 有俱乐部的情况
 -(void)setJulebuView :(ClubVo *) clubVo{
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 40 + 22 , kScreen_Width,  230/2)];
@@ -162,7 +169,8 @@
 
     ClassesViewController *focus = [ClassesViewController new];
     
-    SaiChengViewController *jiaolian = [SaiChengViewController new] ;    
+    SaiListViewController *jiaolian = [SaiListViewController new];
+    jiaolian.from = @"1" ;
     
     NSArray *viewControllers = @[@{@"俱乐部动态":dongtai}, @{@"俱乐部成员":focus}, @{@"赛程":jiaolian}];
     YCSlideView * view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, header.bottom, kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;

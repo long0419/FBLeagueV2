@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "SaiChengVo.h"
+#import "DSLLoginTextField.h"
 
-@interface SaiResultViewController : BaseViewController
+@interface SaiResultViewController : BaseViewController<UITextFieldDelegate>
+
+@property (nonatomic , strong) SaiChengVo *vo ;
 
 @end

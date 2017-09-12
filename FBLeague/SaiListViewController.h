@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "SaiResultViewController.h"
 
 @interface SaiListViewController : BaseViewController
 
 @property  (nonatomic , strong) UITableView *goodTableView;
 @property (nonatomic , strong) NSString *leagueId ;
+@property (nonatomic , strong) NSString *from ;
 
 @end

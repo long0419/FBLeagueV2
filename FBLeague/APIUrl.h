@@ -70,6 +70,7 @@
 #define joinSave [NSString stringWithFormat:@"%@/%@",API,@"joinin/apisave"]
 #define listJoinin [NSString stringWithFormat:@"%@/%@",API,@"joinin/listJoinin"]
 #define listSchedules [NSString stringWithFormat:@"%@/%@",API,@"schedule/listSchedules"]
+#define listClubSchedules [NSString stringWithFormat:@"%@/%@",API,@"schedule/listClubSchedules"]
 #define getJoinins [NSString stringWithFormat:@"%@/%@",API, @"joinin/getJoinins"]
 
 #endif /* APIUrl_h */

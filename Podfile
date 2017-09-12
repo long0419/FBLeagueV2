@@ -26,5 +26,6 @@ target 'FBLeague' do
     pod 'RongCloudIM/IMKit'
 	pod 'SCLAlertView-Objective-C'
 	pod 'BHBPopView'
+	pod 'HcdDateTimePicker'
 end
 

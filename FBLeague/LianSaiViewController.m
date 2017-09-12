@@ -31,8 +31,28 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sairesult:) name:@"saiResult" object:nil];
+
     [self getNeedData] ;
 }
+
+-(void)sairesult :(NSNotification *)notification{
+    SaiChengVo *vo = [notification object];
+    
+    self.hidesBottomBarWhenPushed=YES;
+    SaiResultViewController *mem = [SaiResultViewController new] ;
+    mem.vo = vo ;
+    [self.navigationController pushViewController:mem animated:YES];
+    self.hidesBottomBarWhenPushed=NO;
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"saiResult" object:nil];
+}
+
 
 -(void)getNeedData{
     cache = [YYCache cacheWithName:@"FB"];
@@ -119,7 +139,8 @@
     
     SaiListViewController *focus = [SaiListViewController new];
     focus.leagueId = leagueId ;
-
+    focus.from = @"0" ;
+    
     JiFenViewController *jifen = [JiFenViewController new] ;
     jifen.leagueId = leagueId ;
 
