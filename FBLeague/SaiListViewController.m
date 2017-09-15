@@ -87,7 +87,6 @@
                     model.visitingsubmit = [NSString stringWithFormat:@"%@" , dic[@"visitingsubmit"]] ;
                     model.matchstatus = [NSString stringWithFormat:@"%@" , dic[@"matchstatus"]] ;
                     model.matchid = [NSString stringWithFormat:@"%@" , dic[@"matchid"]] ;
-                    model.matchid = [NSString stringWithFormat:@"%@" , dic[@"matchid"]] ;
                     model.visitingclub = [NSString stringWithFormat:@"%@" , dic[@"visitingclub"]] ;
                     model.homeclubname = [NSString stringWithFormat:@"%@" , dic[@"homeclubname"]] ;
                     model.visitingeva = [NSString stringWithFormat:@"%@" , dic[@"visitingeva"]] ;
@@ -167,10 +166,6 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     SaiChengVo *vo = [kouList objectAtIndex:indexPath.section];
-    
-//    SaiResultViewController *result = [SaiResultViewController new];
-//    result.vo = vo ;
-//    [self.navigationController pushViewController:result animated:YES];
     
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"saiResult" object:vo userInfo:nil]];
 

@@ -37,6 +37,7 @@
 		FD352FCE1F1FA43F00EA2A60 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD352FCD1F1FA43F00EA2A60 /* BaseTableViewController.m */; };
 		FD352FD11F1FA4AA00EA2A60 /* CoachVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD352FD01F1FA4AA00EA2A60 /* CoachVo.m */; };
 		FD396B2F1F343EEE00265CF7 /* AddZhanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD396B2E1F343EEE00265CF7 /* AddZhanViewController.m */; };
+		FD4269641F6B6468006B7C56 /* PPNumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4269631F6B6468006B7C56 /* PPNumberButton.m */; };
 		FD4F6AF81F57B4B900DC1C10 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6AF21F57B4B900DC1C10 /* NSDate+Extension.m */; };
 		FD4F6AF91F57B4B900DC1C10 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6AF41F57B4B900DC1C10 /* UIView+Extension.m */; };
 		FD4F6AFA1F57B4B900DC1C10 /* WSDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6AF61F57B4B900DC1C10 /* WSDatePickerView.m */; };
@@ -129,7 +130,6 @@
 		FDC497AA1F29AE5D002E7105 /* MyQiuYuanDataImportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC497A71F29AE5D002E7105 /* MyQiuYuanDataImportViewController.m */; };
 		FDC497AE1F29AE9E002E7105 /* BeginTouView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC497AD1F29AE9E002E7105 /* BeginTouView.m */; };
 		FDC497B11F29AEE4002E7105 /* MeView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC497B01F29AEE4002E7105 /* MeView.m */; };
-		FDC497B51F29AF03002E7105 /* PPNumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC497B41F29AF03002E7105 /* PPNumberButton.m */; };
 		FDC497BA1F29AF1A002E7105 /* ACActionSheet.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FDC497B71F29AF1A002E7105 /* ACActionSheet.bundle */; };
 		FDC497BB1F29AF1A002E7105 /* ACActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC497B91F29AF1A002E7105 /* ACActionSheet.m */; };
 		FDD24CC21F0BECF900DA16FC /* ChooseAreaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD24CBF1F0BECF900DA16FC /* ChooseAreaViewController.m */; };
@@ -246,6 +246,8 @@
 		FD352FD01F1FA4AA00EA2A60 /* CoachVo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoachVo.m; sourceTree = "<group>"; };
 		FD396B2D1F343EEE00265CF7 /* AddZhanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddZhanViewController.h; sourceTree = "<group>"; };
 		FD396B2E1F343EEE00265CF7 /* AddZhanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddZhanViewController.m; sourceTree = "<group>"; };
+		FD4269621F6B6468006B7C56 /* PPNumberButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPNumberButton.h; sourceTree = "<group>"; };
+		FD4269631F6B6468006B7C56 /* PPNumberButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPNumberButton.m; sourceTree = "<group>"; };
 		FD4F6AF11F57B4B900DC1C10 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		FD4F6AF21F57B4B900DC1C10 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		FD4F6AF31F57B4B900DC1C10 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
@@ -489,8 +491,6 @@
 		FDC497AD1F29AE9E002E7105 /* BeginTouView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeginTouView.m; sourceTree = "<group>"; };
 		FDC497AF1F29AEE4002E7105 /* MeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeView.h; sourceTree = "<group>"; };
 		FDC497B01F29AEE4002E7105 /* MeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeView.m; sourceTree = "<group>"; };
-		FDC497B31F29AF03002E7105 /* PPNumberButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPNumberButton.h; sourceTree = "<group>"; };
-		FDC497B41F29AF03002E7105 /* PPNumberButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PPNumberButton.m; sourceTree = "<group>"; };
 		FDC497B71F29AF1A002E7105 /* ACActionSheet.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ACActionSheet.bundle; sourceTree = "<group>"; };
 		FDC497B81F29AF1A002E7105 /* ACActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACActionSheet.h; sourceTree = "<group>"; };
 		FDC497B91F29AF1A002E7105 /* ACActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACActionSheet.m; sourceTree = "<group>"; };
@@ -689,6 +689,15 @@
 				FD352FC71F1FA3DB00EA2A60 /* CoachChooseTableViewCell.m */,
 			);
 			name = shouye;
+			sourceTree = "<group>";
+		};
+		FD4269611F6B6468006B7C56 /* PPNumberButton */ = {
+			isa = PBXGroup;
+			children = (
+				FD4269621F6B6468006B7C56 /* PPNumberButton.h */,
+				FD4269631F6B6468006B7C56 /* PPNumberButton.m */,
+			);
+			path = PPNumberButton;
 			sourceTree = "<group>";
 		};
 		FD4F6AF01F57B4B900DC1C10 /* WSDaePickerView */ = {
@@ -1200,6 +1209,7 @@
 		FDAA38341DD2BF3D0038658F /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				FD4269611F6B6468006B7C56 /* PPNumberButton */,
 				FDEAC8101F60FB2400AB25B2 /* shareres */,
 				FD242AA91F60E6330039A8A4 /* radar */,
 				FD4F6B8C1F5A73A300DC1C10 /* ZRGridView */,
@@ -1210,7 +1220,6 @@
 				FD50185F1F3C4E230077C418 /* weixin */,
 				FD265AA01F29E0C400F92316 /* keyboard */,
 				FDC497B61F29AF1A002E7105 /* ACActionSheet */,
-				FDC497B21F29AF03002E7105 /* PPNumberButton */,
 				FD75D22C1F23516600306F77 /* NullSafe */,
 				FDFAE5EA1F10ECEA008DF0BB /* YCSlideView */,
 				FDF3D43A1F0B97FC003CAF5A /* verifycode */,
@@ -1296,15 +1305,6 @@
 				FDC497AD1F29AE9E002E7105 /* BeginTouView.m */,
 			);
 			name = me;
-			sourceTree = "<group>";
-		};
-		FDC497B21F29AF03002E7105 /* PPNumberButton */ = {
-			isa = PBXGroup;
-			children = (
-				FDC497B31F29AF03002E7105 /* PPNumberButton.h */,
-				FDC497B41F29AF03002E7105 /* PPNumberButton.m */,
-			);
-			path = PPNumberButton;
 			sourceTree = "<group>";
 		};
 		FDC497B61F29AF1A002E7105 /* ACActionSheet */ = {
@@ -1766,8 +1766,8 @@
 				FDD24CC91F0BEE1900DA16FC /* ProvinceVo.m in Sources */,
 				FD50185A1F3C4E180077C418 /* MXWechatPayHandler.m in Sources */,
 				FD75D23C1F2583E400306F77 /* MemeberDataViewController.m in Sources */,
-				FDC497B51F29AF03002E7105 /* PPNumberButton.m in Sources */,
 				FDC497BB1F29AF1A002E7105 /* ACActionSheet.m in Sources */,
+				FD4269641F6B6468006B7C56 /* PPNumberButton.m in Sources */,
 				FDFAE5F61F10EE82008DF0BB /* FocusViewController.m in Sources */,
 				FDD3AF6D1F21C9B700EA7C23 /* VerifyClubViewController.m in Sources */,
 				FD75D22E1F23518800306F77 /* NullSafe.m in Sources */,

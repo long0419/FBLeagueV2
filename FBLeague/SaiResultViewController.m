@@ -7,16 +7,47 @@
 //
 
 #import "SaiResultViewController.h"
-#import "StepSlider.h"
+#import "PPNumberButton.h"
 
 @interface SaiResultViewController (){
     UIImageView *bg ;
     QMUILabel *label16 ;
+    QMUILabel *label17 ;
+    NSString *visitingClubPicUrl ;
+    NSString *homeClubPicUrl ;
+    DSLLoginTextField *fen1 ;
+    DSLLoginTextField *fen2 ;
 }
 
 @end
 
 @implementation SaiResultViewController
+
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    [self getNeedData];
+}
+
+-(void)getNeedData {
+    
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *uvo = [cache objectForKey:@"userData"];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_vo.sid , @"id" ,uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:getJoininDetail parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+            visitingClubPicUrl = object[@"visitingClubPicUrl"] ;
+            homeClubPicUrl = object[@"homeClubPicUrl"] ;
+            [self status1] ;
+
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,27 +69,37 @@
     [bg addSubview:label16];
     label16.origin = CGPointMake((kScreen_Width - label16.size.width)/2, 10 + 20 + 44);
     
-    [self status1] ;
+    label17 = [[QMUILabel alloc] init];
+    label17.text = @"VS";
+    label17.font = UIFontMake(12);
+    label17.textColor = UIColorWhite ;
+    [label17 sizeToFit];
+    [bg addSubview:label17];
+    label17.origin = CGPointMake((kScreen_Width - label17.size.width)/2, 10 + 20 + 44 + 50);
+    
     
 //    [self status2] ;
 
     [self status3] ;
 
 //    [self status4] ;
-
-    
     
 }
 
 -(void)status1{
-    UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"weibo-拷贝"]];
+    UIImageView *image = [[UIImageView alloc] initWithImage: [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:visitingClubPicUrl]]]];
     image.frame = CGRectMake(45, label16.bottom + 25, 50, 50);
+    image.layer.cornerRadius = 4 ;
+    image.layer.masksToBounds = true ;
+
     [bg addSubview:image];
     
-    UIImageView *image2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"weixin-拷贝"]];
+    UIImageView *image2 = [[UIImageView alloc] initWithImage: [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:homeClubPicUrl]]]];
     image2.frame = CGRectMake(kScreen_Width - 50 - 45 , label16.bottom + 25, 50, 50);
+    image2.layer.cornerRadius = 4 ;
+    image2.layer.masksToBounds = true ;
     [bg addSubview:image2];
-    
+     
     QMUILabel *name = [[QMUILabel alloc] init];
     name.text = _vo.homeclubname ;
     name.font = UIFontMake(12);
@@ -120,37 +161,36 @@
 
 -(void)status3{
     QMUILabel *name2 = [[QMUILabel alloc] init];
-    name2.text = @"比分";
+    name2.text = @"";
     name2.font = UIFontMake(12);
     name2.textColor = UIColorWhite ;
     [name2 sizeToFit];
     [bg addSubview:name2];
     name2.origin = CGPointMake(30 , bg.bottom + 5);
     
-    DSLLoginTextField *fen1=[[DSLLoginTextField alloc]init];
+    fen1=[[DSLLoginTextField alloc]init];
     fen1.frame = CGRectMake(50 , name2.bottom + 30 , 40, 40) ;
-    fen1.clearButtonMode=UITextFieldViewModeWhileEditing;
     fen1.textColor = [UIColor blackColor] ;
     fen1.backgroundColor = [UIColor whiteColor] ;
     fen1.font=[UIFont systemFontOfSize:14];
-    fen1.placeholderColor = [UIColor blackColor] ;
     fen1.maxTextLength= 2 ;
     fen1.delegate = self ;
+    fen1.keyboardType = UIKeyboardTypeNumberPad;
     fen1.tag = 10 ;
-    fen1.textAlignment = NSTextAlignmentLeft ;
+    fen1.textAlignment = NSTextAlignmentCenter ;
     [self.view addSubview:fen1];
     
-    DSLLoginTextField *fen2=[[DSLLoginTextField alloc]init];
+
+    fen2=[[DSLLoginTextField alloc]init];
     fen2.frame = CGRectMake(kScreen_Width - 40 - 50 , name2.bottom + 30 , 40, 40) ;
-    fen2.clearButtonMode=UITextFieldViewModeWhileEditing;
     fen2.textColor = [UIColor blackColor] ;
     fen2.backgroundColor = [UIColor whiteColor];
     fen2.font=[UIFont systemFontOfSize:14];
-    fen2.placeholderColor = [UIColor blackColor] ;
     fen2.maxTextLength= 2 ;
     fen2.delegate = self ;
     fen2.tag = 11 ;
-    fen2.textAlignment = NSTextAlignmentLeft ;
+    fen2.keyboardType = UIKeyboardTypeNumberPad;
+    fen2.textAlignment = NSTextAlignmentCenter ;
     [self.view addSubview:fen2];
 
     QMUILabel *name2x = [[QMUILabel alloc] init];
@@ -159,7 +199,7 @@
     name2x.textColor = UIColorWhite ;
     [name2x sizeToFit];
     [bg addSubview:name2x];
-    name2x.origin = CGPointMake(30 , bg.bottom + 5);
+    name2x.origin = CGPointMake((kScreen_Width - name2x.width)/2 , bg.bottom + 10);
 
     QMUILabel *name3 = [[QMUILabel alloc] init];
     name3.text = @"请对你的赛球方的综合素质评分:";
@@ -167,21 +207,27 @@
     name3.textColor = UIColorWhite ;
     [name3 sizeToFit];
     [bg addSubview:name3];
-    name3.origin = CGPointMake((kScreen_Width - name3.size.width)/2 , bg.bottom + 5);
-
+    name3.origin = CGPointMake((kScreen_Width - name3.size.width)/2 , fen2.bottom + 30);
     
-    StepSlider *slider = [[StepSlider alloc] initWithFrame:CGRectMake((kScreen_Width - 300)/2 , fen2.bottom + 40 , 300.f, 44.f)];
-    slider.labels = @[@"1", @"2", @"3", @"4"
-                      , @"5", @"6", @"7", @"8", @"9", @"10"];
-    [slider setMaxCount:10];
-    [slider setIndex:1];
+    PPNumberButton *slider = [PPNumberButton numberButtonWithFrame:CGRectMake((kScreen_Width - 279)/2 , name3.bottom + 40 , 279.f, 44.f)];
+    //设置边框颜色
+    slider.borderColor = [UIColor grayColor];
+    slider.increaseTitle = @"＋";
+    slider.decreaseTitle = @"－";
+    slider.maxValue = 10 ;
+    slider.minValue = 1 ;
+    slider.rawValue = 1 ;
+    slider.resultBlock = ^(NSString *num){
+        NSLog(@"%@",num);
+    };
     [self.view addSubview:slider];
+
     
     
     QMUIButton *button = [[QMUIButton alloc] init];
     button.adjustsButtonWhenHighlighted = YES;
     button.titleLabel.font = UIFontBoldMake(37/2);
-    button.frame = CGRectMake(30 , slider.bottom + 226/2, kScreen_Width - 60 , 40) ;
+    button.frame = CGRectMake(30 , slider.bottom + 100, kScreen_Width - 60 , 40) ;
     [button setTitleColor:UIColorWhite forState:UIControlStateNormal];
     button.backgroundColor = [UIColor colorWithHexString:@"5a70d6"] ;
     button.highlightedBackgroundColor = [UIColor colorWithHexString:@"5a70d6"];    button.layer.cornerRadius = 4;
@@ -193,8 +239,6 @@
 
 -(void)status4{
     
-    
-
 }
 
 -(void)loginAction{
@@ -215,14 +259,24 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)textFieldDidBeginEditing:(UITextField*)textField
-
-{
-    [textField resignFirstResponder];
-    if(textField.tag == 10){
-        
-    }
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder] ;
+    return true;
 }
 
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [fen1 resignFirstResponder];
+    [fen2 resignFirstResponder];
+}
 
 @end

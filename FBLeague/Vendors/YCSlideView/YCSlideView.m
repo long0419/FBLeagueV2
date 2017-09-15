@@ -70,20 +70,18 @@
     CGFloat buttonhight = KTopViewHight - 4;
 
     
-    CGRect topViewFrame = CGRectMake(0, 0, kWindowWidth, KTopViewHight
-                                     );
+    CGRect topViewFrame = CGRectMake(0, 0, kWindowWidth, KTopViewHight);
     
     self.topView = [[UIView alloc]initWithFrame:topViewFrame];
    
 
     [self addSubview:self.topView];
 
-    
     self.slideView = [[UIView alloc] initWithFrame:CGRectMake(0, KTopViewHight - 3, buttonWight, 3)];
     
     [_slideView setBackgroundColor:[UIColor blackColor]];
     
-   [_topView  addSubview:self.slideView];
+    [_topView  addSubview:self.slideView];
  
      //添加按钮
     
@@ -178,17 +176,15 @@
     int pageNum = scrollView.contentOffset.x / kWindowWidth;
     
     for (UIButton * btn in _btnArray) {
-        
         if (btn.tag == pageNum ) {
             
             [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             
         }else{
-        
-             [btn setTitleColor:[UIColor colorWithHexString:@"a7a7a7"] forState:UIControlStateNormal];
-        
+            
+            [btn setTitleColor:[UIColor colorWithHexString:@"a7a7a7"] forState:UIControlStateNormal];
+            
         }
-        
         
     }
     
