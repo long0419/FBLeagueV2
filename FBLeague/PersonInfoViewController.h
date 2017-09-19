@@ -16,5 +16,7 @@
 @property (nonatomic , strong) NSString *psw ;
 @property (nonatomic , strong) NSString *areaStr ;
 @property (nonatomic , strong) NSString *areaCodeStr ;
+@property (nonatomic , strong) NSString *imageUrl ;
+@property (nonatomic , strong) NSString *nickname ;
 
 @end

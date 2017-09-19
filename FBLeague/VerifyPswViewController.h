@@ -12,5 +12,7 @@
 
 @property (nonatomic , strong) NSString *phoneNum ;
 @property (nonatomic , strong) NSString *from ;
+@property (nonatomic , strong) NSString *img ;
+@property (nonatomic , strong) NSString *nikeName ;
 
 @end

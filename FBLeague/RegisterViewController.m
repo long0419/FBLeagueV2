@@ -124,6 +124,8 @@
     VerifyPswViewController *verify = [VerifyPswViewController new];
     verify.phoneNum = tf.text ;
     verify.from = _from ;
+    verify.img = _imageUrl ;
+    verify.nikeName = _nickname ;
     [self.navigationController pushViewController:verify animated:YES];
 }
 

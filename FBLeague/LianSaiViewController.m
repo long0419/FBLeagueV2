@@ -32,8 +32,11 @@
     [super viewWillAppear:animated];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sairesult:) name:@"saiResult" object:nil];
-
+    
+    index_ = 0 ;
+    
     [self getNeedData] ;
+
 }
 
 -(void)sairesult :(NSNotification *)notification{
@@ -51,6 +54,8 @@
 {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"saiResult" object:nil];
+    [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+
 }
 
 
@@ -65,7 +70,7 @@
             adurls = object[@"league"][@"adurls"] ;
             _dataArray = [adurls componentsSeparatedByString:@","];
             leagueId = object[@"league"][@"id"] ;
-            // 配置banner
+            
             [self setupBanner];
             
             [self setRightBottom];
@@ -80,7 +85,7 @@
     [super viewDidLoad];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-
+    
 }
 
 - (void)setRightBottom {
@@ -109,6 +114,7 @@
     self.hidesBottomBarWhenPushed = YES ;
     if (index_ == 0) {
         AddSaiViewController *add = [AddSaiViewController new] ;
+        add.leagueId = leagueId ;
         [self.navigationController pushViewController:add animated:YES];
     }else if(index_ == 1){
         AddSaiTimeViewController *time = [AddSaiTimeViewController new];
@@ -120,20 +126,15 @@
 
 - (void)setupBanner
 {
-    // 初始化
     self.banner = [[ZYBannerView alloc] init];
     self.banner.dataSource = self;
     self.banner.delegate = self;
-    [self.view addSubview:self.banner];
-
-    // 设置frame
-    self.banner.frame = CGRectMake(0,
-                                   64.0,
-                                   kScreen_Width,
-                                   100);
+    self.banner.frame = CGRectMake(0, 64.0, kScreen_Width, 100);
     self.banner.shouldLoop = YES;
     self.banner.autoScroll = NO;
+    [self.view addSubview:self.banner];
     
+
     BaomingViewController *dongtai = [BaomingViewController new] ;
     dongtai.leagueId = leagueId ;
     

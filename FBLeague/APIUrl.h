@@ -73,5 +73,8 @@
 #define listClubSchedules [NSString stringWithFormat:@"%@/%@",API,@"schedule/listClubSchedules"]
 #define getJoinins [NSString stringWithFormat:@"%@/%@",API, @"joinin/getJoinins"]
 #define getJoininDetail [NSString stringWithFormat:@"%@/%@",API, @"schedule/apiinfo"]
+#define joinLeague [NSString stringWithFormat:@"%@/%@",API, @"joinin/join"]
+#define requestMatch [NSString stringWithFormat:@"%@/%@",API, @"schedule/requestMatch"]
+
 
 #endif /* APIUrl_h */

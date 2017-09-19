@@ -10,9 +10,17 @@
 #import "DSLLoginTextField.h"
 #import "ChooseAreaViewController.h"
 #import "RadioButton.h"
+#import "MXWechatPayHandler.h"
+#import "Order.h"
+#import "APAuthV2Info.h"
+#import "RSADataSigner.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface AddSaiViewController (){
     DSLLoginTextField *psw ;
+    NSString *type ;
+    NSString *groupType ;
+    NSString *formatType ;
 }
 
 @end
@@ -61,7 +69,7 @@
     NSMutableArray* buttons = [NSMutableArray arrayWithCapacity:2];
     RadioButton* btn = [[RadioButton alloc] init];
     [btn addTarget:self action:@selector(onRadioButtonValueChanged:) forControlEvents:UIControlEventValueChanged];
-    [btn setTitle:@"女" forState:UIControlStateNormal];
+    [btn setTitle:@"青年组" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:12];
     [btn setImage:[UIImage imageNamed:@"unchecked.png"] forState:UIControlStateNormal];
@@ -70,9 +78,11 @@
     btn.titleEdgeInsets = UIEdgeInsetsMake(0, 6, 0, 0);
     [self.view addSubview:btn];
     
+    groupType = @"1" ;
+    
     RadioButton* btn2 = [[RadioButton alloc] init];
     [btn2 addTarget:self action:@selector(onRadioButtonValueChanged:) forControlEvents:UIControlEventValueChanged];
-    [btn2 setTitle:@"男" forState:UIControlStateNormal];
+    [btn2 setTitle:@"成年组" forState:UIControlStateNormal];
     [btn2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     btn2.titleLabel.font = [UIFont systemFontOfSize:12];
     [btn2 setImage:[UIImage imageNamed:@"unchecked.png"] forState:UIControlStateNormal];
@@ -92,7 +102,7 @@
     [btn2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(psw);
         make.top.mas_equalTo(label3.mas_bottom).with.offset(15);
-        make.width.mas_equalTo(30);
+        make.width.mas_equalTo(60);
     }];
     [buttons addObject:btn2];
     
@@ -114,7 +124,7 @@
     NSMutableArray* buttons2 = [NSMutableArray arrayWithCapacity:3];
     RadioButton* btnx = [[RadioButton alloc] init];
     [btnx addTarget:self action:@selector(onRadioButtonValueChanged:) forControlEvents:UIControlEventValueChanged];
-    [btnx setTitle:@"教练" forState:UIControlStateNormal];
+    [btnx setTitle:@"5人制" forState:UIControlStateNormal];
     [btnx setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     btnx.titleLabel.font = [UIFont systemFontOfSize:12];
     [btnx setImage:[UIImage imageNamed:@"unchecked.png"] forState:UIControlStateNormal];
@@ -126,7 +136,7 @@
     
     RadioButton* btnx2 = [[RadioButton alloc] init];
     [btnx2 addTarget:self action:@selector(onRadioButtonValueChanged:) forControlEvents:UIControlEventValueChanged];
-    [btnx2 setTitle:@"球员" forState:UIControlStateNormal];
+    [btnx2 setTitle:@"8人制" forState:UIControlStateNormal];
     [btnx2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     btnx2.titleLabel.font = [UIFont systemFontOfSize:12];
     [btnx2 setImage:[UIImage imageNamed:@"unchecked.png"] forState:UIControlStateNormal];
@@ -138,7 +148,7 @@
     
     RadioButton* btnx3 = [[RadioButton alloc] init];
     [btnx3 addTarget:self action:@selector(onRadioButtonValueChanged:) forControlEvents:UIControlEventValueChanged];
-    [btnx3 setTitle:@"球迷" forState:UIControlStateNormal];
+    [btnx3 setTitle:@"11人制" forState:UIControlStateNormal];
     [btnx3 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     btnx3.titleLabel.font = [UIFont systemFontOfSize:12];
     [btnx3 setImage:[UIImage imageNamed:@"unchecked.png"] forState:UIControlStateNormal];
@@ -157,17 +167,19 @@
     [btnx2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
         make.top.mas_equalTo(label13.mas_bottom).with.offset(10);
-        make.width.mas_equalTo(44);
+        make.width.mas_equalTo(60);
     }];
     
     [btnx3 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(psw);
         make.top.mas_equalTo(label13.mas_bottom).with.offset(10);
-        make.width.mas_equalTo(44);
+        make.width.mas_equalTo(60);
     }];
     [buttons2[0] setGroupButtons:buttons2];
     [buttons2[0] setSelected:YES];
     
+    formatType = @"5" ;
+
     
     QMUILabel *label14 = [[QMUILabel alloc] init];
     label14.text = @"报名费";
@@ -187,6 +199,7 @@
     money1.textColor = [UIColor blackColor] ;
     money1.font=[UIFont systemFontOfSize:14];
     money1.placeholder=@"500元";
+    money1.enabled = NO ;
     money1.maxTextLength= 11;
     money1.textAlignment = NSTextAlignmentCenter ;
     [self.view addSubview:money1];
@@ -216,6 +229,7 @@
     money12.textColor = [UIColor blackColor] ;
     money12.font=[UIFont systemFontOfSize:14];
     money12.placeholder=@"1000元";
+    money12.enabled = NO ;
     money12.maxTextLength= 11;
     //    money1.delegate = self ;
     //    money1.tag = 10 ;
@@ -268,15 +282,15 @@
         make.top.mas_equalTo(label16.mas_bottom).with.offset(15);
         make.width.mas_equalTo(100);
     }];
-    
     [btn2x mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(psw);
         make.top.mas_equalTo(label16.mas_bottom).with.offset(15);
         make.width.mas_equalTo(45);
     }];
     [buttonsx addObject:btn2x];
+    [buttonsx[0] setGroupButtons:buttonsx];
+    [buttonsx[0] setSelected:YES];
 
-    
     QMUIButton *button = [[QMUIButton alloc] init];
     button.adjustsButtonWhenHighlighted = YES;
     button.titleLabel.font = UIFontBoldMake(37/2);
@@ -284,7 +298,7 @@
     button.backgroundColor = [UIColor blackColor];
     button.highlightedBackgroundColor = [UIColor colorWithHexString:@"5a70d6"];    button.layer.cornerRadius = 4;
     [button addTarget:self action:@selector(baoming) forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"联赛报名" forState:UIControlStateNormal];
+    [button setTitle:@"报名" forState:UIControlStateNormal];
     [self.view addSubview:button];
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(btn2x.mas_bottom).with.offset(20);
@@ -300,13 +314,68 @@
 {
     NSString *text = sender.titleLabel.text ;
     if(sender.selected) {
-        NSLog(@"Selected color: %@", sender.titleLabel.text);
-
+        if ([text isEqualToString:@"支付宝"]) {
+            type = @"支付宝" ;
+        }else if([text isEqualToString:@"微信"]){
+            type = @"微信" ;
+        }
+        
+        if ([text isEqualToString:@"青年组"]) {
+            groupType = @"1" ;
+        }else if([text isEqualToString:@"成年组"]){
+            groupType = @"2" ;
+        }
+        
+        if ([text isEqualToString:@"5人制"]) {
+            formatType = @"5" ;
+        }else if([text isEqualToString:@"8人制"]){
+            formatType = @"8" ;
+        }else if([text isEqualToString:@"11人制"]){
+            formatType = @"11" ;
+        }
     }
 }
 
 -(void)baoming{
-    NSLog(@"xxxx") ;
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *uvo = [cache objectForKey:@"userData"];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
+    NSString *type_ = @"1" ;
+    if ([type isEqualToString:@"微信"]){
+        type_ = @"2" ;
+    }
+    
+    if ([_areaStr isEqualToString:@""] || nil == _areaStr) {
+        hud.mode = MBProgressHUDModeText;
+        hud.removeFromSuperViewOnHide = YES;
+        hud.labelText = @"请选择地区";
+        [hud hide:YES afterDelay:2];
+        
+        return ;
+    }
+    
+    NSArray *area = [_areaCodeStr componentsSeparatedByString:@" "];
+
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , uvo.club , @"clubId" , _leagueId , @"leagueId" , area[2] , @"areaCode" , groupType , @"groupType" , formatType , @"format" , type_ , @"paymentType" , @"21213123" , @"paymentOrder" ,uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:joinLeague parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+            if ([type_ isEqualToString:@"2"]) { //微信
+                [MXWechatPayHandler jumpToWxPay:@"150000" andWithTitle:@"联赛报名"];
+            }else{
+                [self doAlipayPay];
+            }
+        }else{
+            hud.mode = MBProgressHUDModeText;
+            hud.removeFromSuperViewOnHide = YES;
+            hud.labelText = object[@"msg"];
+            [hud hide:YES afterDelay:2];
+
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+
 }
 
 - (void)setRightBottom {
@@ -320,6 +389,92 @@
      forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:sender];
     self.navigationItem.rightBarButtonItem = backItem ;
+}
+
+- (void)doAlipayPay
+{
+    [self generateTradeNO];
+}
+
+- (void)generateTradeNO
+{
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *uvo = [cache objectForKey:@"userData"];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:getRandomId parameters:params success:^(id data) {
+        NSString *rsa2PrivateKey = RSA_PRIVATE;
+        //                         RSA_PRIVATE;
+        NSString *rsaPrivateKey =  @"" ;
+        //                         RSA_PUBLIC ;
+        
+        //将商品信息赋予AlixPayOrder的成员变量
+        Order* order = [Order new];
+        
+        // NOTE: app_id设置
+        order.app_id = PARTNER;
+        
+        // NOTE: 支付接口名称
+        order.method = @"alipay.trade.app.pay";
+        
+        // NOTE: 参数编码格式
+        order.charset = @"utf-8";
+        
+        // NOTE: 当前时间点
+        NSDateFormatter* formatter = [NSDateFormatter new];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        order.timestamp = [formatter stringFromDate:[NSDate date]];
+        
+        // NOTE: 支付版本
+        order.version = @"1.0";
+        
+        // NOTE: sign_type 根据商户设置的私钥来决定
+        order.sign_type = (rsa2PrivateKey.length > 1)?@"RSA2":@"RSA";
+        
+        // NOTE: 商品数据
+        order.biz_content = [BizContent new];
+        order.biz_content.body = @"联赛报名";
+        order.biz_content.subject = @"联赛报名";
+        order.biz_content.out_trade_no = data[@"randomId"] ;
+        order.biz_content.timeout_express = @"30m"; //超时时间设置
+        order.biz_content.total_amount = [NSString stringWithFormat:@"%.2f", 1500.00];
+        
+        
+        YYCache *cache = [YYCache cacheWithName:@"FB"];
+        UserDataVo *vo = [cache objectForKey:@"userData"];
+        
+        order.passback_params = vo.phone ;
+        order.notify_url = zfbPayNotify ;
+        
+        //将商品信息拼接成字符串
+        NSString *orderInfo = [order orderInfoEncoded:NO];
+        NSString *orderInfoEncoded = [order orderInfoEncoded:YES];
+        
+        // NOTE: 获取私钥并将商户信息签名，外部商户的加签过程请务必放在服务端，防止公私钥数据泄露；
+        //       需要遵循RSA签名规范，并将签名字符串base64编码和UrlEncode
+        NSString *signedString = nil;
+        RSADataSigner* signer = [[RSADataSigner alloc] initWithPrivateKey:((rsa2PrivateKey.length > 1)?rsa2PrivateKey:rsaPrivateKey)];
+        if ((rsa2PrivateKey.length > 1)) {
+            signedString = [signer signString:orderInfo withRSA2:YES];
+        } else {
+            signedString = [signer signString:orderInfo withRSA2:NO];
+        }
+        
+        // NOTE: 如果加签成功，则继续执行支付
+        if (signedString != nil) {
+            NSString *appScheme = @"com.mileworks.FLeague";
+            
+            NSString *orderString = [NSString stringWithFormat:@"%@&sign=%@",
+                                     orderInfoEncoded, signedString];
+            
+            [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            }];
+        }
+        [self closeProgressView];
+    } failure:^(NSError *error) {
+        
+    }];
+    
 }
 
 
@@ -361,7 +516,7 @@
         ChooseAreaViewController *area = [[ChooseAreaViewController alloc] init];
         area.isfrom = @"2" ;
         [self.navigationController pushViewController:area animated:YES];
-        self.hidesBottomBarWhenPushed = NO ;
+//        self.hidesBottomBarWhenPushed = NO ;
     }
 }
 

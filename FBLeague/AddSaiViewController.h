@@ -14,5 +14,6 @@
 
 @property (nonatomic , strong) NSString *areaStr ;
 @property (nonatomic , strong) NSString *areaCodeStr ;
+@property (nonatomic , strong) NSString *leagueId ;
 
 @end

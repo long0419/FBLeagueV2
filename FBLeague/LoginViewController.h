@@ -8,5 +8,8 @@
 
 #import <QMUIKit/QMUIKit.h>
 #import "WPAutoSpringTextViewController.h"
-@interface LoginViewController : WPAutoSpringTextViewController<UITextFieldDelegate>
+#import "WXApi.h"
+#import <TencentOpenAPI/TencentOAuth.h>
+
+@interface LoginViewController : WPAutoSpringTextViewController<UITextFieldDelegate,TencentSessionDelegate>
 @end

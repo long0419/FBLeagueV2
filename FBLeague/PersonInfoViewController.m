@@ -50,6 +50,10 @@
     [self.view addSubview:bgView];
     
     bgImg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"head"]];
+    if (_imageUrl != nil || ![_imageUrl isEqualToString:@""]) {
+        [bgImg sd_setImageWithURL:[NSURL URLWithString:_imageUrl] placeholderImage:[UIImage imageNamed:@"head"]];
+    }
+    
     bgImg.layer.cornerRadius= (156/4) ;
     bgImg.layer.masksToBounds=YES;
     bgImg.userInteractionEnabled = YES;
@@ -82,6 +86,9 @@
     tf.maxTextLength= 11;
     tf.returnKeyType = UIReturnKeyGo ;
     tf.textAlignment = NSTextAlignmentCenter ;
+    if (_nickname != nil || ![_nickname isEqualToString:@""]) {
+        tf.text = _nickname ;
+    }
     [self.view addSubview:tf];
     [tf mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo((198+168+90)/2);

@@ -247,7 +247,7 @@
 }
 
 -(void)weixin{
-    //发起微信支付 100000
+    //发起微信支付
     [MXWechatPayHandler jumpToWxPay:@"50000" andWithTitle:@"申请联盟认证费用"];
 }
 

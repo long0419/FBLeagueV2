@@ -110,11 +110,13 @@
         PersonInfoViewController *person = [[PersonInfoViewController alloc] init];
         person.phoneNum = _phoneNum ;
         person.psw = psw.text ;
+        person.imageUrl = _img ;
+        person.nickname = _nikeName ;
         [self.navigationController pushViewController:person animated:YES];
     }else{
         self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
-        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_phoneNum , @"phone" , nil];
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_phoneNum , @"phone" ,_phoneNum , @"token" , nil];
         
         
         [PPNetworkHelper POST:apiupdate parameters:params success:^(id data) {

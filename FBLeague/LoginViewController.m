@@ -15,6 +15,9 @@
 @interface LoginViewController (){
     DSLLoginTextField *tf ;
     DSLLoginTextField *psw ;
+    TencentOAuth *_tencentOAuth;
+    NSMutableArray *_permissionArray;
+
 }
 
 @end
@@ -170,36 +173,40 @@
     qqView.layer.borderWidth = 1;
     qqView.layer.cornerRadius = SYRealValue(128/4) ;
     qqView.layer.borderColor = [[UIColor blackColor] CGColor];
+    UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(qq)];
+    [qqView addGestureRecognizer:tapGesturRecognizer];
     [self.view addSubview:qqView];
     
     UIView *sinaView = [[UIView alloc] init];
     sinaView.layer.borderWidth = 1;
     sinaView.layer.cornerRadius = SYRealValue(128/4) ;
     sinaView.layer.borderColor = [[UIColor blackColor] CGColor];
-    [self.view addSubview:sinaView];
+//    [self.view addSubview:sinaView];  
     
     UIView *wxView = [[UIView alloc] init];
     wxView.layer.borderWidth = 1;
     wxView.layer.cornerRadius = SYRealValue(128/4) ;
     wxView.layer.borderColor = [[UIColor blackColor] CGColor];
+    UITapGestureRecognizer *tapGesturRecognizer2=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(weixin)];
+    [wxView addGestureRecognizer:tapGesturRecognizer2];
     [self.view addSubview:wxView];
     
     [qqView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(30);
+        make.left.mas_equalTo(60);
         make.width.mas_equalTo(SYRealValue(128/2));
         make.height.mas_equalTo(SYRealValue(128/2));
         make.bottom.mas_equalTo(-88/2);
     }];
     
-    [sinaView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.mas_equalTo(SYRealValue(128/2));
-        make.height.mas_equalTo(SYRealValue(128/2));
-        make.centerX.mas_equalTo(self.view);
-        make.bottom.mas_equalTo(-88/2);
-    }];
+//    [sinaView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.width.mas_equalTo(SYRealValue(128/2));
+//        make.height.mas_equalTo(SYRealValue(128/2));
+//        make.centerX.mas_equalTo(self.view);
+//        make.bottom.mas_equalTo(-88/2);
+//    }];
     
     [wxView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(-30);
+        make.right.mas_equalTo(-60);
         make.width.mas_equalTo(SYRealValue(128/2));
         make.height.mas_equalTo(SYRealValue(128/2));
         make.bottom.mas_equalTo(-88/2);
@@ -228,6 +235,24 @@
 
 }
 
+-(void)qq{
+    _tencentOAuth=[[TencentOAuth alloc]initWithAppId:tencentAPPID andDelegate:self];
+    
+    _permissionArray = [NSMutableArray arrayWithObjects: kOPEN_PERMISSION_GET_SIMPLE_USER_INFO,nil];
+    
+    //登录操作
+    [_tencentOAuth authorize:_permissionArray inSafari:NO];
+}
+
+-(void)weixin{
+    if ([WXApi isWXAppInstalled]) {
+        SendAuthReq *req = [[SendAuthReq alloc] init];
+        req.scope = @"snsapi_userinfo";
+        req.state = @"App";
+        [WXApi sendReq:req];
+    }
+}
+
 -(void)on:(NSNotification *) notification{
     RegisterViewController *registerController = [[RegisterViewController alloc] init];
     //    registerController.from = @"1" ;
@@ -244,7 +269,7 @@
     }else{
         registerController.openId = [NSString stringWithFormat:@"tencentID %@" ,tencentAPPID] ; //QQ登录没有返回 则写死appid
     }
-    
+    registerController.from = @"1" ;
     [self.navigationController pushViewController:registerController animated:YES];
 }
 
@@ -353,5 +378,90 @@
     [tf resignFirstResponder];
     [psw resignFirstResponder];
 }
+
+#pragma tencentQQ
+/**
+ * 登录成功后的回调
+ */
+- (void)tencentDidLogin{
+    /** Access Token凭证，用于后续访问各开放接口 */
+    if (_tencentOAuth.accessToken) {
+        [_tencentOAuth getUserInfo];
+    }else{
+        NSLog(@"accessToken 没有获取成功");
+    }
+}
+
+- (void)tencentDidNotLogin:(BOOL)cancelled{
+    if (cancelled) {
+        NSLog(@" 用户点击取消按键,主动退出登录");
+    }else{
+        NSLog(@"其他原因， 导致登录失败");
+    }
+}
+
+- (void)tencentDidNotNetWork{
+    NSLog(@"没有网络了， 怎么登录成功呢");
+}
+
+
+- (BOOL)tencentNeedPerformIncrAuth:(TencentOAuth *)tencentOAuth withPermissions:(NSArray *)permissions{
+    
+    // incrAuthWithPermissions是增量授权时需要调用的登录接口
+    // permissions是需要增量授权的权限列表
+    [tencentOAuth incrAuthWithPermissions:permissions];
+    return NO; // 返回NO表明不需要再回传未授权API接口的原始请求结果；
+    // 否则可以返回YES
+}
+
+- (BOOL)tencentNeedPerformReAuth:(TencentOAuth *)tencentOAuth{
+    return YES;
+}
+
+- (void)tencentDidUpdate:(TencentOAuth *)tencentOAuth{
+    NSLog(@"增量授权完成");
+    if (tencentOAuth.accessToken
+        && 0 != [tencentOAuth.accessToken length])
+    { // 在这里第三方应用需要更新自己维护的token及有效期限等信息
+        // **务必在这里检查用户的openid是否有变更，变更需重新拉取用户的资料等信息** _labelAccessToken.text = tencentOAuth.accessToken;
+    }
+    else
+    {
+        NSLog(@"增量授权不成功，没有获取accesstoken");
+    }
+    
+}
+
+- (void)tencentFailedUpdate:(UpdateFailType)reason{
+    
+    switch (reason)
+    {
+        case kUpdateFailNetwork:
+        {
+            //            _labelTitle.text=@"增量授权失败，无网络连接，请设置网络";
+            NSLog(@"增量授权失败，无网络连接，请设置网络");
+            break;
+        }
+        case kUpdateFailUserCancel:
+        {
+            //            _labelTitle.text=@"增量授权失败，用户取消授权";
+            NSLog(@"增量授权失败，用户取消授权");
+            break;
+        }
+        case kUpdateFailUnknown:
+        default:
+        {
+            NSLog(@"增量授权失败，未知错误");
+            break;
+        }
+    }
+    
+    
+}
+
+- (void)getUserInfoResponse:(APIResponse*) response{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showRegisterView" object:response.jsonResponse];
+}
+
 
 @end

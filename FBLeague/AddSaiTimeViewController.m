@@ -84,13 +84,23 @@
     button.highlightedBackgroundColor = [UIColor colorWithHexString:@"5a70d6"];    button.layer.cornerRadius = 4;
     [button addTarget:self action:@selector(submit) forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"提交发布" forState:UIControlStateNormal];
-    button.frame = CGRectMake(30 , area.bottom + 20 , kScreen_Width - 60 , 40);
+    button.frame = CGRectMake(30 , textView.bottom + 20 , kScreen_Width - 60 , 40);
     [self.view addSubview:button];
 
 }
 
 -(void)submit{
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *uvo = [cache objectForKey:@"userData"];
     
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:requestMatch parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+
 }
 
 -(void)textFieldDidBeginEditing:(UITextField*)textField
@@ -99,7 +109,7 @@
     [textField resignFirstResponder];
     
     if(textField.tag == 10){
-        HcdDateTimePickerView *dateTimePickerView = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerDateHourMinuteMode defaultDateTime:[[NSDate alloc]initWithTimeIntervalSinceNow:0]];
+        HcdDateTimePickerView *dateTimePickerView = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerDateMode defaultDateTime:[[NSDate alloc]initWithTimeIntervalSinceNow:0]];
         dateTimePickerView.clickedOkBtn = ^(NSString * datetimeStr){
             NSLog(@"%@", datetimeStr);
             textField.text = datetimeStr ;

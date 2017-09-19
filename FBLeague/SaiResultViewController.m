@@ -207,9 +207,9 @@
     name3.textColor = UIColorWhite ;
     [name3 sizeToFit];
     [bg addSubview:name3];
-    name3.origin = CGPointMake((kScreen_Width - name3.size.width)/2 , fen2.bottom + 30);
+    name3.origin = CGPointMake((kScreen_Width - name3.size.width)/2 , fen2.bottom + 20);
     
-    PPNumberButton *slider = [PPNumberButton numberButtonWithFrame:CGRectMake((kScreen_Width - 279)/2 , name3.bottom + 40 , 279.f, 44.f)];
+    PPNumberButton *slider = [PPNumberButton numberButtonWithFrame:CGRectMake((kScreen_Width - 280)/2 , name3.bottom + 40 , 280.f, 44.f)];
     //设置边框颜色
     slider.borderColor = [UIColor grayColor];
     slider.increaseTitle = @"＋";
@@ -227,7 +227,7 @@
     QMUIButton *button = [[QMUIButton alloc] init];
     button.adjustsButtonWhenHighlighted = YES;
     button.titleLabel.font = UIFontBoldMake(37/2);
-    button.frame = CGRectMake(30 , slider.bottom + 100, kScreen_Width - 60 , 40) ;
+    button.frame = CGRectMake(30 , slider.bottom + 100 , kScreen_Width - 60 , 40) ;
     [button setTitleColor:UIColorWhite forState:UIControlStateNormal];
     button.backgroundColor = [UIColor colorWithHexString:@"5a70d6"] ;
     button.highlightedBackgroundColor = [UIColor colorWithHexString:@"5a70d6"];    button.layer.cornerRadius = 4;
