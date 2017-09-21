@@ -139,5 +139,6 @@
 #import "UserDataVo.h"
 #import <YYCache/YYCache.h>
 #import "CommonFunc.h"
+#import "WZLBadgeImport.h"
 
 #endif /* CarManager_Prefix_pch */

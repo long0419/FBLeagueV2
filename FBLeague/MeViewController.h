@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "SaiResultViewController.h"
+#import "WZLBadgeImport.h"
+
 
 @interface MeViewController : BaseViewController<UIAlertViewDelegate , UIApplicationDelegate , UIImagePickerControllerDelegate , UINavigationControllerDelegate , UIActionSheetDelegate ,UITableViewDelegate , UITableViewDataSource>
 

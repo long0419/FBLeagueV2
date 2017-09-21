@@ -45,6 +45,7 @@
     self.hidesBottomBarWhenPushed=YES;
     SaiResultViewController *mem = [SaiResultViewController new] ;
     mem.vo = vo ;
+    mem.matchId = vo.matchid ;
     [self.navigationController pushViewController:mem animated:YES];
     self.hidesBottomBarWhenPushed=NO;
     
@@ -118,6 +119,7 @@
         [self.navigationController pushViewController:add animated:YES];
     }else if(index_ == 1){
         AddSaiTimeViewController *time = [AddSaiTimeViewController new];
+        time.leagueId = leagueId ;
         [self.navigationController pushViewController:time animated:YES];
     }
     self.hidesBottomBarWhenPushed = NO ;

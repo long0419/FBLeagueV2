@@ -188,6 +188,11 @@
     next.frame = CGRectMake(kScreen_Width - 30, 26/2 , 20/2, 40/2) ;
     [item addSubview:next];
     
+    UIView *badge = [UIView new] ;
+    badge.frame = CGRectMake(label1.right + 80 , 26/2 , 20/2, 40/2) ;
+    [item addSubview:badge];
+    [badge showBadgeWithStyle:WBadgeStyleNew value:1 animationType:WBadgeAnimTypeShake];
+
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, item.bottom , kScreen_Width, .5)];
     line.backgroundColor = [UIColor colorWithHexString:@"efefef"];
     [item addSubview:line];

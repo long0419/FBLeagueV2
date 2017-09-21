@@ -43,6 +43,7 @@
 + (UITabBarItem *)tabBarItemWithTitle:(NSString *)title image:(UIImage *)image selectedImage:(UIImage *)selectedImage tag:(NSInteger)tag {
     UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTitle:title image:image tag:tag];
     tabBarItem.selectedImage = selectedImage;
+
     return tabBarItem;
 }
 

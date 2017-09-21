@@ -10,7 +10,7 @@
 #import "BaseViewController.h"
 #import "SaiResultViewController.h"
 
-@interface SaiListViewController : BaseViewController
+@interface SaiListViewController : BaseViewController<UITableViewDelegate , UITableViewDataSource>
 
 @property  (nonatomic , strong) UITableView *goodTableView;
 @property (nonatomic , strong) NSString *leagueId ;

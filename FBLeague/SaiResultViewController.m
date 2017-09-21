@@ -17,6 +17,9 @@
     NSString *homeClubPicUrl ;
     DSLLoginTextField *fen1 ;
     DSLLoginTextField *fen2 ;
+    NSString *matchstatus ;
+    PPNumberButton *slider ;
+    NSString *ravalue ;
 }
 
 @end
@@ -37,10 +40,43 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_vo.sid , @"id" ,uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:getJoininDetail parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
+            _vo = [SaiChengVo new] ;
             visitingClubPicUrl = object[@"visitingClubPicUrl"] ;
             homeClubPicUrl = object[@"homeClubPicUrl"] ;
-            [self status1] ;
 
+            _vo.visitingsubmit = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"visitingsubmit"]] ;
+            _vo.matchstatus = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"matchstatus"]] ;
+            _vo.matchid = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"schedule"][@"matchid"]] ;
+            _vo.visitingclub = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"visitingclub"]] ;
+            _vo.homeclubname = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"homeclubname"]] ;
+            _vo.visitingeva = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"visitingeva"]] ;
+            _vo.homesubmit = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"homesubmit"]] ;
+            _vo.field = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"field"]] ;
+            _vo.hasplayed = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"hasplayed"]] ;
+            _vo.visitingclubname = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"visitingclubname"]] ;
+            _vo.challengeid = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"challengeid"]] ;
+            _vo.leagueid = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"leagueid"]] ;
+            _vo.sid = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"id"]] ;
+            _vo.challengeid = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"challengeid"]] ;
+            _vo.visitinggoalcount = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"visitinggoalcount"]] ;
+            _vo.matchname = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"matchname"]] ;
+            _vo.homegoalcount = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"homegoalcount"]] ;
+            _vo.homeclub = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"homeclub"]] ;
+            _vo.remarks = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"remarks"]] ;
+            _vo.matchtime = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"matchtime"]] ;
+            _vo.roundnum = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"roundnum"]] ;
+            _vo.homeeva = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"homeeva"]] ;
+            
+            matchstatus = _vo.matchstatus ;
+            
+            [self status1] ;
+            
+            if ([_vo.hasplayed isEqualToString:@"y"]) {
+                [self status3 : _vo] ;
+            }else{
+                [self status2 : _vo] ;
+            }
+            
         }
     } failure:^(NSError *error) {
         
@@ -54,6 +90,8 @@
     self.view.backgroundColor = [UIColor colorWithHexString:@"323c45"];
     
     [self forbiddenGesture];
+    
+    ravalue = @"0" ;
     
     bg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"liansai-bg"]];
     bg.frame = CGRectMake(0, 0, kScreen_Width, 220) ;
@@ -76,13 +114,6 @@
     [label17 sizeToFit];
     [bg addSubview:label17];
     label17.origin = CGPointMake((kScreen_Width - label17.size.width)/2, 10 + 20 + 44 + 50);
-    
-    
-//    [self status2] ;
-
-    [self status3] ;
-
-//    [self status4] ;
     
 }
 
@@ -116,13 +147,18 @@
     [bg addSubview:name2];
     name2.origin = CGPointMake(kScreen_Width - name.width - 30 , image.bottom + 21);
     
-    
-    
 }
 
--(void)status2{
+-(void)status2 : (SaiChengVo *) vo{
+    NSString *status = @"" ;
+    if ([vo.matchstatus isEqualToString:@"33"]) {
+        status = @"应战" ;
+    }else if([vo.matchstatus isEqualToString:@"22"]){
+        status = @"取消比赛" ;
+    }
+    
     QMUILabel *name2 = [[QMUILabel alloc] init];
-    name2.text = @"比赛状态：";
+    name2.text = [NSString stringWithFormat:@"比赛状态：%@" , status];
     name2.font = UIFontMake(12);
     name2.textColor = UIColorWhite ;
     [name2 sizeToFit];
@@ -130,7 +166,7 @@
     name2.origin = CGPointMake(30 , bg.bottom + 44);
     
     QMUILabel *name3 = [[QMUILabel alloc] init];
-    name3.text = @"比赛时间：";
+    name3.text = [NSString stringWithFormat:@"比赛时间：%@" ,vo.matchtime];
     name3.font = UIFontMake(12);
     name3.textColor = UIColorWhite ;
     [name3 sizeToFit];
@@ -138,12 +174,19 @@
     name3.origin = CGPointMake(30 , name2.bottom + 13);
 
     QMUILabel *name4 = [[QMUILabel alloc] init];
-    name4.text = @"比赛地点：";
+    name4.text = [NSString stringWithFormat:@"比赛地点：%@" , vo.field];
     name4.font = UIFontMake(12);
     name4.textColor = UIColorWhite ;
     [name4 sizeToFit];
     [bg addSubview:name4];
     name4.origin = CGPointMake(30 , name3.bottom + 13);
+
+    NSString *title = @"" ;
+    if ([_vo.matchstatus isEqualToString:@"33"]) { //应战
+        title = @"去迎战" ;
+    }else if([_vo.matchstatus isEqualToString:@"22"]){ //取消比赛
+        title = @"取消比赛" ;
+    }
 
     QMUIButton *button = [[QMUIButton alloc] init];
     button.adjustsButtonWhenHighlighted = YES;
@@ -153,13 +196,13 @@
     button.backgroundColor = [UIColor colorWithHexString:@"5a70d6"] ;
     button.highlightedBackgroundColor = [UIColor colorWithHexString:@"5a70d6"];    button.layer.cornerRadius = 4;
     [button addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"取消比赛" forState:UIControlStateNormal];
+    [button setTitle:title forState:UIControlStateNormal];
     [self.view addSubview:button];
-  
     
 }
 
--(void)status3{
+
+-(void)status3 :(SaiChengVo *) vo{
     QMUILabel *name2 = [[QMUILabel alloc] init];
     name2.text = @"";
     name2.font = UIFontMake(12);
@@ -209,7 +252,7 @@
     [bg addSubview:name3];
     name3.origin = CGPointMake((kScreen_Width - name3.size.width)/2 , fen2.bottom + 20);
     
-    PPNumberButton *slider = [PPNumberButton numberButtonWithFrame:CGRectMake((kScreen_Width - 280)/2 , name3.bottom + 40 , 280.f, 44.f)];
+    slider = [PPNumberButton numberButtonWithFrame:CGRectMake((kScreen_Width - 280)/2 , name3.bottom + 40 , 280.f, 44.f)];
     //设置边框颜色
     slider.borderColor = [UIColor grayColor];
     slider.increaseTitle = @"＋";
@@ -218,11 +261,9 @@
     slider.minValue = 1 ;
     slider.rawValue = 1 ;
     slider.resultBlock = ^(NSString *num){
-        NSLog(@"%@",num);
+        ravalue = num ;
     };
     [self.view addSubview:slider];
-
-    
     
     QMUIButton *button = [[QMUIButton alloc] init];
     button.adjustsButtonWhenHighlighted = YES;
@@ -237,12 +278,59 @@
 
 }
 
--(void)status4{
-    
-}
-
 -(void)loginAction{
-    
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *uvo = [cache objectForKey:@"userData"];
+
+    if ([_vo.hasplayed isEqualToString:@"y"]) { //提交赛过
+        if ([_vo.matchstatus isEqualToString:@"1"]) {
+            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid ,@"scheduleId" , _vo.leagueid , @"leagueId" , uvo.club , @"clubId" , [NSString stringWithFormat:@"%@:%@" , fen1 , fen2] , @"result" , ravalue , @"eva" , uvo.phone ,  @"token", nil];
+            [PPNetworkHelper POST:submitResult parameters:params success:^(id object) {
+                if([object[@"code"] isEqualToString:@"0000"]){
+                    self.HUD.mode = MBProgressHUDModeText;
+                    self.HUD.removeFromSuperViewOnHide = YES;
+                    self.HUD.labelText = @"发布成功";
+                    [self.HUD hide:YES afterDelay:3];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+            } failure:^(NSError *error) {
+                
+            }];
+        }
+    }else{
+        if ([_vo.matchstatus isEqualToString:@"33"]) { //应战
+            
+            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid , @"scheduleId" , _matchId , @"matchId" , uvo.phone ,  @"token", nil];
+            [PPNetworkHelper POST:respondMatch parameters:params success:^(id object) {
+                if([object[@"code"] isEqualToString:@"0000"]){
+                    self.HUD.mode = MBProgressHUDModeText;
+                    self.HUD.removeFromSuperViewOnHide = YES;
+                    self.HUD.labelText = @"发布成功";
+                    [self.HUD hide:YES afterDelay:3];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+            } failure:^(NSError *error) {
+                
+            }];
+
+        }else if([_vo.matchstatus isEqualToString:@"22"]){ //取消比赛
+            
+            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid , @"scheduleId" , uvo.club , @"requestClubId" , uvo.phone ,  @"token", nil];
+            [PPNetworkHelper POST:cancelMatch parameters:params success:^(id object) {
+                if([object[@"code"] isEqualToString:@"0000"]){
+                    self.HUD.mode = MBProgressHUDModeText;
+                    self.HUD.removeFromSuperViewOnHide = YES;
+                    self.HUD.labelText = @"发布成功";
+                    [self.HUD hide:YES afterDelay:3];
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+            } failure:^(NSError *error) {
+                
+            }];
+
+        }
+
+    }
 }
 
 -(void)setBackBottmAndTitle{

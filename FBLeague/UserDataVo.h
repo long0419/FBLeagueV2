@@ -61,4 +61,8 @@
 @property (nonatomic , strong) NSString *openidbywx ;
 @property (nonatomic , strong) NSString *certification ;
 
+@property (nonatomic , strong) NSString *leagueId ;
+@property (nonatomic , strong) NSString *matchId ;
+
+
 @end

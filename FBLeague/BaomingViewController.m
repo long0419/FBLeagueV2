@@ -16,7 +16,7 @@
     UserDataVo *uvo ;
     NSString *pageNO ;
     NSMutableArray *kouList ;
-
+    LianSaiData *model ;
 }
 
 @end
@@ -42,43 +42,23 @@
     
     [self getNeedDatas:pageNO];
     
-    __weak BaomingViewController *weakSelf = self ;
-    [_goodTableView addPullToRefreshWithActionHandler:^{
-        [weakSelf getNeedDatas : @"1"];
-        [weakSelf.goodTableView.pullToRefreshView stopAnimating];
-    }];
-    
-    __weak NSString *no = pageNO ;
-    [_goodTableView addInfiniteScrollingWithActionHandler:^{
-        [weakSelf getNeedDatas : [NSString stringWithFormat:@"%@", no]];
-        [weakSelf.goodTableView.infiniteScrollingView stopAnimating];
-    }];
-    
-    [_goodTableView.pullToRefreshView setTitle:@"下拉刷新..." forState:SVPullToRefreshStateStopped];
-    [_goodTableView.pullToRefreshView setTitle:@"释放更新..." forState:SVPullToRefreshStateTriggered];
-    [_goodTableView.pullToRefreshView setTitle:@"加载中..." forState:SVPullToRefreshStateLoading];
-    
 }
 
 -(void) getNeedDatas : (NSString *) page{
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
-//    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: page , @"page" , uvo.club ,@"club" , _leagueId , @"leagueId" , uvo.phone ,  @"token", nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: page , @"page" , uvo.club ,@"clubId" , _leagueId , @"leagueId" , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:listJoinin parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
             if ([data[@"page"] isEqual:[NSNull null]]) {
                 return ;
             }
-            NSDictionary *list = data[@"page"][@"list"];
-            NSString *currPage = data[@"page"][@"currPage"];
-            NSString *nextPage = data[@"page"][@"nextPage"];
-            LianSaiData *model = nil ;
+            NSDictionary *dic = data[@"match"];
             [kouList removeAllObjects];
 
-            if (![list isEqual:[NSNull null]]) {
-                for (NSDictionary *dic in list) {
+            if (![dic isEqual:[NSNull null]]) {
+//                for (NSDictionary *dic in list) {
                     model = [LianSaiData new];
                     model.lid = [NSString stringWithFormat:@"%@" , dic[@"id"]] ;
                     model.provincename = [NSString stringWithFormat:@"%@" , dic[@"provincename"]] ;
@@ -99,12 +79,13 @@
                     model.number = [NSString stringWithFormat:@"%@" , dic[@"number"]] ;
                     model.bonus = [NSString stringWithFormat:@"%@" , dic[@"bonus"]] ;
                     [kouList addObject:model];
-                }
-                if (currPage.longLongValue == nextPage.longLongValue) {
-                    pageNO =  currPage ;
-                }else{
-                    pageNO =  nextPage ;
-                }
+//                }
+//                if (currPage.longLongValue == nextPage.longLongValue) {
+//                    pageNO =  currPage ;
+//                }else{
+//                    pageNO =  nextPage ;
+//                }
+                
             }else {
                 self.HUD.mode = MBProgressHUDModeText;
                 self.HUD.removeFromSuperViewOnHide = YES;

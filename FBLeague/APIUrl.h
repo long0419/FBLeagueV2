@@ -68,13 +68,17 @@
 /******联赛*******/
 #define liansaidetail [NSString stringWithFormat:@"%@/%@",API,@"league/getDefault"]
 #define joinSave [NSString stringWithFormat:@"%@/%@",API,@"joinin/apisave"]
-#define listJoinin [NSString stringWithFormat:@"%@/%@",API,@"joinin/listJoinin"]
+#define listJoinin [NSString stringWithFormat:@"%@/%@",API,@"joinin/getClubJoinin"]
 #define listSchedules [NSString stringWithFormat:@"%@/%@",API,@"schedule/listSchedules"]
 #define listClubSchedules [NSString stringWithFormat:@"%@/%@",API,@"schedule/listClubSchedules"]
 #define getJoinins [NSString stringWithFormat:@"%@/%@",API, @"joinin/getJoinins"]
 #define getJoininDetail [NSString stringWithFormat:@"%@/%@",API, @"schedule/apiinfo"]
 #define joinLeague [NSString stringWithFormat:@"%@/%@",API, @"joinin/join"]
 #define requestMatch [NSString stringWithFormat:@"%@/%@",API, @"schedule/requestMatch"]
+#define submitResult [NSString stringWithFormat:@"%@/%@",API, @"schedule/submitResult"]
+#define respondMatch [NSString stringWithFormat:@"%@/%@",API, @"schedule/respondMatch"]
+#define cancelMatch [NSString stringWithFormat:@"%@/%@",API, @"schedule/cancelMatch"]
+
 
 
 #endif /* APIUrl_h */

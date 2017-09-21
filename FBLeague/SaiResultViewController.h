@@ -14,5 +14,6 @@
 @interface SaiResultViewController : BaseViewController<UITextFieldDelegate>
 
 @property (nonatomic , strong) SaiChengVo *vo ;
+@property (nonatomic , strong) NSString *matchId ;
 
 @end

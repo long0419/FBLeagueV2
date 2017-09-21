@@ -24,5 +24,6 @@ target 'FBLeague' do
 	pod 'SCLAlertView-Objective-C'
 	pod 'BHBPopView'
 	pod 'HcdDateTimePicker'
+	pod 'WZLBadge'
 end
 

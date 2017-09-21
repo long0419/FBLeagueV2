@@ -11,5 +11,6 @@
 #import "DSLLoginTextField.h"
 
 @interface AddSaiTimeViewController : BaseViewController<QMUITextViewDelegate , UITextFieldDelegate>
+@property (nonatomic , strong) NSString *leagueId ;
 
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-@interface BaomingViewController : BaseViewController
+@interface BaomingViewController : BaseViewController<UITableViewDataSource , UITableViewDelegate>
 
 @property (nonatomic , strong) NSString *leagueId ;
 @property  (nonatomic , strong) UITableView *goodTableView;

@@ -8,6 +8,7 @@
 
 #import "AddSaiTimeViewController.h"
 #import "HcdDateTimePickerView.h"
+#import "LianSaiData.h"
 
 @interface AddSaiTimeViewController (){
     DSLLoginTextField *psw ;
@@ -92,14 +93,59 @@
 -(void)submit{
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone ,  @"token", nil];
-    [PPNetworkHelper POST:requestMatch parameters:params success:^(id object) {
-        if([object[@"code"] isEqualToString:@"0000"]){
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.club ,@"clubId" , _leagueId , @"leagueId" , uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:listJoinin parameters:params success:^(id data) {
+        if([data[@"code"] isEqualToString:@"0000"]){
+            if ([data[@"page"] isEqual:[NSNull null]]) {
+                return ;
+            }
+            NSDictionary *dic = data[@"match"];
+            LianSaiData *model = nil ;
+            if (![dic isEqual:[NSNull null]]) {
+                //                for (NSDictionary *dic in list) {
+                model = [LianSaiData new];
+                model.lid = [NSString stringWithFormat:@"%@" , dic[@"id"]] ;
+                model.provincename = [NSString stringWithFormat:@"%@" , dic[@"provincename"]] ;
+                model.areacode = [NSString stringWithFormat:@"%@" , dic[@"areacode"]] ;
+                model.matchname = [NSString stringWithFormat:@"%@" , dic[@"matchname"]] ;
+                model.leagueid = [NSString stringWithFormat:@"%@" , dic[@"leagueid"]] ;
+                model.isfull = [NSString stringWithFormat:@"%@" , dic[@"isfull"]] ;
+                model.cityname = [NSString stringWithFormat:@"%@" , dic[@"cityname"]] ;
+                model.grouptype = [NSString stringWithFormat:@"%@" , dic[@"grouptype"]] ;
+                model.provincecode = [NSString stringWithFormat:@"%@" , dic[@"provincecode"]] ;
+                model.grouptype = [NSString stringWithFormat:@"%@" , dic[@"grouptype"]] ;
+                model.citycode = [NSString stringWithFormat:@"%@" , dic[@"citycode"]] ;
+                model.enabled = [NSString stringWithFormat:@"%@" , dic[@"enabled"]] ;
+                model.format = [NSString stringWithFormat:@"%@" , dic[@"format"]] ;
+                model.joininCount = [NSString stringWithFormat:@"%@" , dic[@"joininCount"]] ;
+                model.areaname = [NSString stringWithFormat:@"%@" , dic[@"areaname"]] ;
+                model.matchnumber = [NSString stringWithFormat:@"%@" , dic[@"matchnumber"]] ;
+                model.number = [NSString stringWithFormat:@"%@" , dic[@"number"]] ;
+                model.bonus = [NSString stringWithFormat:@"%@" , dic[@"bonus"]] ;
+
+                NSDictionary *tmp = [NSDictionary dictionaryWithObjectsAndKeys: textView.text ,  @"matchPlace" ,psw.text , @"matchTime" , uvo.club , @"clubId" , model.lid , @"matchId" ,  model.leagueid , @"leagueId" , uvo.phone ,  @"token", nil];
+
+                [PPNetworkHelper POST:requestMatch parameters:tmp success:^(id object) {
+                    if([object[@"code"] isEqualToString:@"0000"]){
+                        self.HUD.mode = MBProgressHUDModeText;
+                        self.HUD.removeFromSuperViewOnHide = YES;
+                        self.HUD.labelText = @"发布成功";
+                        [self.HUD hide:YES afterDelay:3];
+                        
+                        [self.navigationController popViewControllerAnimated:YES];
+
+                    }
+                } failure:^(NSError *error) {
+                    
+                }];
+
+                
         }
-    } failure:^(NSError *error) {
-        
-    }];
+    }
+} failure:^(NSError *error) {
+    
+}];
+    
 
 }
 

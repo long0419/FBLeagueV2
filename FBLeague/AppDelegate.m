@@ -83,9 +83,9 @@
     uikitViewController2.hidesBottomBarWhenPushed = NO;
     RTRootNavigationController *uikitNavController2 = [[RTRootNavigationController alloc] initWithRootViewController:uikitViewController2];
     uikitNavController2.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"我" image:[UIImageMake(@"我的") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"我的") tag:3];
+    [uikitNavController2.tabBarItem setBadgeValue:@"1"];
     
-    // window root controller
-    tabBarViewController.viewControllers = @[uikitNavController, componentNavController, labNavController,uikitNavController2];
+    tabBarViewController.viewControllers = @[componentNavController, uikitNavController, labNavController,uikitNavController2];
     self.window.rootViewController = tabBarViewController;
     [self.window makeKeyAndVisible];
 }
