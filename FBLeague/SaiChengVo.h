@@ -31,5 +31,6 @@
 @property (nonatomic , strong) NSString *matchtime ;
 @property (nonatomic , strong) NSString *roundnum ;
 @property (nonatomic , strong) NSString *homeeva ;
+@property (nonatomic , strong) NSString *launchclub ;
 
 @end

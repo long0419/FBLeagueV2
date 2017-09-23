@@ -66,15 +66,28 @@
             _vo.matchtime = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"matchtime"]] ;
             _vo.roundnum = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"roundnum"]] ;
             _vo.homeeva = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"homeeva"]] ;
+            _vo.launchclub = [NSString stringWithFormat:@"%@" , object[@"schedule"][@"launchclub"]] ;
             
             matchstatus = _vo.matchstatus ;
             
             [self status1] ;
             
             if ([_vo.hasplayed isEqualToString:@"y"]) {
-                [self status3 : _vo] ;
+                if (![_vo.homesubmit isEqualToString:@"<null>"] && ![_vo.visitingsubmit isEqualToString:@"<null>"] ) {
+                    [self status3 : _vo] ; //status3 用于只显示提交赛过
+                }
             }else{
-                [self status2 : _vo] ;
+                if ([_vo.matchstatus isEqualToString:@"11"]) {
+                    if (![_vo.homesubmit isEqualToString:@"<null>"] && ![_vo.visitingsubmit isEqualToString:@"<null>"] ) {
+                        [self status3 : _vo] ; //status3 用于只显示提交赛过
+                    }
+                }else{
+                    if (![_vo.homesubmit isEqualToString:@"<null>"] && ![_vo.visitingsubmit isEqualToString:@"<null>"] ) {
+                        [self status3 : _vo] ; //status3 用于只显示提交赛过
+                    }else{
+                        [self status2 : _vo] ;
+                    }
+                }
             }
             
         }
@@ -152,9 +165,12 @@
 -(void)status2 : (SaiChengVo *) vo{
     NSString *status = @"" ;
     if ([vo.matchstatus isEqualToString:@"33"]) {
-        status = @"应战" ;
+
+        status = @"迎战" ;
+        
     }else if([vo.matchstatus isEqualToString:@"22"]){
         status = @"取消比赛" ;
+        
     }
     
     QMUILabel *name2 = [[QMUILabel alloc] init];
@@ -183,9 +199,13 @@
 
     NSString *title = @"" ;
     if ([_vo.matchstatus isEqualToString:@"33"]) { //应战
-        title = @"去迎战" ;
+        if ([_vo.launchclub isEqualToString:_vo.homeclub]) {
+            title = @"去迎战" ;
+        }
     }else if([_vo.matchstatus isEqualToString:@"22"]){ //取消比赛
-        title = @"取消比赛" ;
+        if ([_vo.launchclub isEqualToString:_vo.homeclub]) {
+            title = @"取消比赛" ;
+        }
     }
 
     QMUIButton *button = [[QMUIButton alloc] init];
@@ -195,9 +215,21 @@
     [button setTitleColor:UIColorWhite forState:UIControlStateNormal];
     button.backgroundColor = [UIColor colorWithHexString:@"5a70d6"] ;
     button.highlightedBackgroundColor = [UIColor colorWithHexString:@"5a70d6"];    button.layer.cornerRadius = 4;
-    [button addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:title forState:UIControlStateNormal];
     [self.view addSubview:button];
+
+    if ([_vo.matchstatus isEqualToString:@"33"]) { //应战
+        if ([_vo.launchclub isEqualToString:_vo.homeclub]) {
+            [button addTarget:self action:@selector(yingzhan) forControlEvents:UIControlEventTouchUpInside];
+
+        }
+    }else if([_vo.matchstatus isEqualToString:@"22"]){ //取消比赛
+        if ([_vo.launchclub isEqualToString:_vo.homeclub]) {
+            [button addTarget:self action:@selector(cancelZhan) forControlEvents:UIControlEventTouchUpInside];
+
+        }
+    }
+
     
 }
 
@@ -272,64 +304,80 @@
     [button setTitleColor:UIColorWhite forState:UIControlStateNormal];
     button.backgroundColor = [UIColor colorWithHexString:@"5a70d6"] ;
     button.highlightedBackgroundColor = [UIColor colorWithHexString:@"5a70d6"];    button.layer.cornerRadius = 4;
-    [button addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(submitSaiResult) forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"提交赛果" forState:UIControlStateNormal];
     [self.view addSubview:button];
 
 }
 
--(void)loginAction{
+#pragma mark - 提交赛过
+-(void) submitSaiResult{
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
 
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid ,@"scheduleId" , _vo.leagueid , @"leagueId" , uvo.club , @"clubId" , [NSString stringWithFormat:@"%@:%@" , fen1 , fen2] , @"result" , ravalue , @"eva" , uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:submitResult parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+            self.HUD.mode = MBProgressHUDModeText;
+            self.HUD.removeFromSuperViewOnHide = YES;
+            self.HUD.labelText = @"发布成功";
+            [self.HUD hide:YES afterDelay:3];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+#pragma mark - 应战
+-(void)yingzhan{
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *uvo = [cache objectForKey:@"userData"];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid , @"scheduleId" , _matchId , @"matchId" , uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:respondMatch parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+            self.HUD.mode = MBProgressHUDModeText;
+            self.HUD.removeFromSuperViewOnHide = YES;
+            self.HUD.labelText = @"发布成功";
+            [self.HUD hide:YES afterDelay:3];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+#pragma mark - 取消比赛
+-(void)cancelZhan{
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *uvo = [cache objectForKey:@"userData"];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid , @"scheduleId" , uvo.club , @"requestClubId" , uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:cancelMatch parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+            self.HUD.mode = MBProgressHUDModeText;
+            self.HUD.removeFromSuperViewOnHide = YES;
+            self.HUD.labelText = @"发布成功";
+            [self.HUD hide:YES afterDelay:3];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+-(void)loginAction{
     if ([_vo.hasplayed isEqualToString:@"y"]) { //提交赛过
         if ([_vo.matchstatus isEqualToString:@"1"]) {
-            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid ,@"scheduleId" , _vo.leagueid , @"leagueId" , uvo.club , @"clubId" , [NSString stringWithFormat:@"%@:%@" , fen1 , fen2] , @"result" , ravalue , @"eva" , uvo.phone ,  @"token", nil];
-            [PPNetworkHelper POST:submitResult parameters:params success:^(id object) {
-                if([object[@"code"] isEqualToString:@"0000"]){
-                    self.HUD.mode = MBProgressHUDModeText;
-                    self.HUD.removeFromSuperViewOnHide = YES;
-                    self.HUD.labelText = @"发布成功";
-                    [self.HUD hide:YES afterDelay:3];
-                    [self.navigationController popViewControllerAnimated:YES];
-                }
-            } failure:^(NSError *error) {
-                
-            }];
+            [self submitSaiResult];
         }
     }else{
         if ([_vo.matchstatus isEqualToString:@"33"]) { //应战
-            
-            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid , @"scheduleId" , _matchId , @"matchId" , uvo.phone ,  @"token", nil];
-            [PPNetworkHelper POST:respondMatch parameters:params success:^(id object) {
-                if([object[@"code"] isEqualToString:@"0000"]){
-                    self.HUD.mode = MBProgressHUDModeText;
-                    self.HUD.removeFromSuperViewOnHide = YES;
-                    self.HUD.labelText = @"发布成功";
-                    [self.HUD hide:YES afterDelay:3];
-                    [self.navigationController popViewControllerAnimated:YES];
-                }
-            } failure:^(NSError *error) {
-                
-            }];
-
+            [self yingzhan];
         }else if([_vo.matchstatus isEqualToString:@"22"]){ //取消比赛
-            
-            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid , @"scheduleId" , uvo.club , @"requestClubId" , uvo.phone ,  @"token", nil];
-            [PPNetworkHelper POST:cancelMatch parameters:params success:^(id object) {
-                if([object[@"code"] isEqualToString:@"0000"]){
-                    self.HUD.mode = MBProgressHUDModeText;
-                    self.HUD.removeFromSuperViewOnHide = YES;
-                    self.HUD.labelText = @"发布成功";
-                    [self.HUD hide:YES afterDelay:3];
-                    [self.navigationController popViewControllerAnimated:YES];
-                }
-            } failure:^(NSError *error) {
-                
-            }];
-
+            [self cancelZhan];
         }
-
     }
 }
 
