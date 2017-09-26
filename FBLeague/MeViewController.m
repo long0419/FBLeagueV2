@@ -36,9 +36,9 @@
     [self.view addSubview:header];
     
     UIImageView *head ;
-    if (nil == uvo.headpicurl || [@"" isEqualToString:uvo.headpicurl]) {
+    if (nil == uvo.headpicurl || [uvo.headpicurl isEqual:[NSNull null]]) {
         head = [[UIImageView alloc]
-                initWithImage:[UIImage imageNamed:@"defaulthead"]];
+                initWithImage:[UIImage imageNamed:@"head"]];
     }else{
         head = [[UIImageView alloc] init];
         [head sd_setImageWithURL:[NSURL URLWithString:uvo.headpicurl] placeholderImage:nil];

@@ -55,7 +55,7 @@
     [self.view addSubview:header];
     
     UIImageView *head ;
-    if (nil == _clubVo.logourl || [@"" isEqualToString:_clubVo.logourl]) {
+    if (nil == _clubVo.logourl || [@"<null>" isEqualToString:_clubVo.logourl]) {
         head = [[UIImageView alloc]
                 initWithImage:[UIImage imageNamed:@"head"]];
     }else{
@@ -79,7 +79,7 @@
     titleLabel.font = [UIFont systemFontOfSize:10];
     titleLabel.numberOfLines = 0;//多行显示，计算高度
     titleLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
-    NSString *desc = @"武汉体育学院代表队" ;
+    NSString *desc = _clubVo.desc ;
     CGSize titleSize = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc];
     titleLabel.size = titleSize;
     titleLabel.text = desc ;
@@ -91,8 +91,10 @@
     titleLabel2.font = [UIFont systemFontOfSize:10];
     titleLabel2.numberOfLines = 0;//多行显示，计算高度
     titleLabel2.textColor = [UIColor colorWithHexString:@"ffffff"];
-    //    NSString *desc =  [CommonFunc textFromBase64String:vo.desc];
-    NSString *desc2 = @"咖盟认证号：123456789" ;
+    NSString *desc2 = [NSString stringWithFormat:@"%@" ,@"咖盟未认证" ];
+    if (![_clubVo.certification isEqualToString:@"<null>"]) {
+        desc2 = [NSString stringWithFormat:@"咖盟认证号：%@" , _clubVo.certification];
+    }
     CGSize titleSize2 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc2];
     titleLabel2.size = titleSize2;
     titleLabel2.text = desc2 ;
@@ -104,9 +106,8 @@
     titleLabel3.font = [UIFont systemFontOfSize:10];
     titleLabel3.numberOfLines = 0;//多行显示，计算高度
     titleLabel3.textColor = [UIColor colorWithHexString:@"ffffff"];
-    //    NSString *desc =  [CommonFunc textFromBase64String:vo.desc];
     NSString *desc3 = @"关注：200     粉丝：200" ;
-    CGSize titleSize3 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc2];
+    CGSize titleSize3 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc3];
     titleLabel3.size = titleSize3;
     titleLabel3.text = desc3 ;
     titleLabel3.x = (kScreen_Width - titleSize3.width)/2 ;
