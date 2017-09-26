@@ -158,7 +158,7 @@
     titleLabel3.textColor = [UIColor colorWithHexString:@"000"];
     //    NSString *desc =  [CommonFunc textFromBase64String:vo.desc];
     NSString *desc3 = @"关注：200     粉丝：200" ;
-    CGSize titleSize3 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc2];
+    CGSize titleSize3 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc3];
     titleLabel3.size = titleSize3;
     titleLabel3.text = desc3 ;
     titleLabel3.x = nameLabel.left ;

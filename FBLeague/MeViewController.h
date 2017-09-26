@@ -12,6 +12,6 @@
 #import "WZLBadgeImport.h"
 
 
-@interface MeViewController : BaseViewController<UIAlertViewDelegate , UIApplicationDelegate , UIImagePickerControllerDelegate , UINavigationControllerDelegate , UIActionSheetDelegate ,UITableViewDelegate , UITableViewDataSource>
+@interface MeViewController : BaseViewController<UIAlertViewDelegate , UIImagePickerControllerDelegate , UINavigationControllerDelegate , UIActionSheetDelegate >
 
 @end

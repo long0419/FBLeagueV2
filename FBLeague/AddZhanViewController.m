@@ -14,7 +14,8 @@
     UITextField *bussiness ;
     UITextField *address ;
     UITextField *contact ;
-    
+    UserDataVo *uvo ;
+    YYCache *cache ;
     UIView *julebu ;
     UIActionSheet *myActionSheet;
     NSString *picUrl ;
@@ -83,7 +84,35 @@
     exit.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:exit];
 
+    UIButton *exit2 = [[UIButton alloc] initWithFrame:CGRectMake(0 , exit.bottom + 20 , kScreen_Width , 82/2)];
+    [exit2 setTitle:@"退出咖盟" forState:UIControlStateNormal];
+    exit2.titleLabel.font = [UIFont systemFontOfSize: 15];
+    [exit2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [exit2 addTarget:self action:@selector(exit) forControlEvents:UIControlEventTouchUpInside];
+    exit2.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:exit];
+
 }
+
+-(void)exit{
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"确定注销当前账号？" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex ==1){
+        [self exitApplication];
+    }
+    
+}
+
+- (void)exitApplication {
+    cache = [YYCache cacheWithName:@"FB"];
+    [cache removeObjectForKey:@"userData"] ;
+    [((AppDelegate *)[UIApplication sharedApplication].delegate) showMsg];
+}
+
 
 -(void)setBackBottmAndTitle{
     
@@ -94,11 +123,6 @@
           forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
     self.navigationItem.leftBarButtonItem = backItem ;
-}
-
-
--(void)exit{
-    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

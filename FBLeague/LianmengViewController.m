@@ -27,6 +27,7 @@
 @implementation LianmengViewController
 
 -(void)viewWillAppear:(BOOL)animated{
+
 }
 
 - (void)viewDidLoad {

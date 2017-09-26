@@ -37,6 +37,24 @@
     
     [self getNeedData] ;
 
+    //获取红点数据
+    [self getRedPotData];
+}
+
+-(void)getRedPotData{
+    cache = [YYCache cacheWithName:@"FB"];
+    uvo = [cache objectForKey:@"userData"];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:liansaidetail parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:@"showspot" object:self] ;
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+
 }
 
 -(void)sairesult :(NSNotification *)notification{

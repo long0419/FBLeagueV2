@@ -19,7 +19,9 @@
 #import "FirstLoginViewController.h"
 #import <AlipaySDK/AlipaySDK.h>
 
-@interface AppDelegate ()
+@interface AppDelegate (){
+    RTRootNavigationController *uikitNavController2 ;
+}
 
 @end
 
@@ -39,17 +41,18 @@
     
     //注册 登录
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(createTabBarController) name:@"verifyLoginStatus" object:nil];
-        
+    
+    //红点
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showsRedSpot:) name:@"showspot" object:nil];
+    
     // 界面
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self showMsg];
     
     [WXApi registerApp:@"wxa8c4fb497943e690"];
 
-    
     // 启动动画
     [self startLaunchingAnimation];
-    
     
     return YES;
 }
@@ -60,6 +63,9 @@
     [self.window setRootViewController:nv];
 }
 
+-(void)showsRedSpot:(NSNotification *)notification{
+    [uikitNavController2.tabBarItem setBadgeValue:@"1"];
+}
 
 - (void)createTabBarController {
     QDTabBarViewController *tabBarViewController = [[QDTabBarViewController alloc] init];
@@ -81,9 +87,8 @@
     
     MeViewController *uikitViewController2 = [[MeViewController alloc] init];
     uikitViewController2.hidesBottomBarWhenPushed = NO;
-    RTRootNavigationController *uikitNavController2 = [[RTRootNavigationController alloc] initWithRootViewController:uikitViewController2];
+    uikitNavController2 = [[RTRootNavigationController alloc] initWithRootViewController:uikitViewController2];
     uikitNavController2.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"我" image:[UIImageMake(@"我的") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"我的") tag:3];
-    [uikitNavController2.tabBarItem setBadgeValue:@"1"];
     
     tabBarViewController.viewControllers = @[componentNavController, uikitNavController, labNavController,uikitNavController2];
     self.window.rootViewController = tabBarViewController;

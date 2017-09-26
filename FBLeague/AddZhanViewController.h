@@ -11,9 +11,11 @@
 #import "BeginTouView.h"
 #import "ACActionSheet.h"
 #import "MeView.h"
+#import "AppDelegate.h"
 
 @interface AddZhanViewController : BaseViewController<BeginTouTapDelegate ,
-UITextViewDelegate , UITextFieldDelegate , UIImagePickerControllerDelegate , UINavigationControllerDelegate , UIActionSheetDelegate>
+UITextViewDelegate , UITextFieldDelegate , UIImagePickerControllerDelegate , UINavigationControllerDelegate , UIActionSheetDelegate,UIAlertViewDelegate , UIApplicationDelegate , UIImagePickerControllerDelegate , UINavigationControllerDelegate ,UITableViewDelegate , UITableViewDataSource>
+
 
 @property (nonatomic , strong) NSString *club ;
 
