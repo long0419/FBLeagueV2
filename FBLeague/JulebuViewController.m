@@ -47,7 +47,17 @@
                 clubVo.cityname = object[@"club"][@"cityname"] ;
                 clubVo.creator = object[@"club"][@"creator"] ;
                 clubVo.areaname = object[@"club"][@"areaname"] ;
-                clubVo.name = object[@"club"][@"name"] ;
+                clubVo.name = object[@"club"][@"name"];
+                clubVo.cid = object[@"club"][@"id"] ;
+                clubVo.provincecode = object[@"club"][@"provincecode"] ;
+                clubVo.cid = object[@"club"][@"id"] ;
+                clubVo.creator = object[@"club"][@"creator"] ;
+                clubVo.hasfocus = object[@"club"][@"hasfocus"] ;
+                clubVo.citycode = object[@"club"][@"citycode"] ;
+                clubVo.areaname = object[@"club"][@"areaname"] ;
+                clubVo.certification = object[@"club"][@"certification"] ;
+                clubVo.createdate = object[@"club"][@"createdate"] ;
+                clubVo.areaname = object[@"club"][@"areaname"] ;
                 
                 [self setJulebuView : clubVo];
             }
@@ -122,8 +132,7 @@
     titleLabel.font = [UIFont systemFontOfSize:10];
     titleLabel.numberOfLines = 0;//多行显示，计算高度
     titleLabel.textColor = [UIColor colorWithHexString:@"000"];
-    NSString *desc =  [CommonFunc textFromBase64String:clubVo.description];
-//    NSString *desc = @"不错 不错" ;
+    NSString *desc =  [CommonFunc textFromBase64String:clubVo.desc];
     CGSize titleSize = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc];
     titleLabel.size = titleSize;
     titleLabel.text = desc ;
@@ -135,14 +144,13 @@
     titleLabel2.font = [UIFont systemFontOfSize:10];
     titleLabel2.numberOfLines = 0;//多行显示，计算高度
     titleLabel2.textColor = [UIColor colorWithHexString:@"000"];
-    //    NSString *desc =  [CommonFunc textFromBase64String:vo.desc];
-    NSString *desc2 = @"口号：备战特步大学生足球联赛" ;
+    NSString *desc2 = [NSString stringWithFormat:@"%@ %@" , clubVo.cityname , clubVo.areaname] ;
     CGSize titleSize2 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc2];
     titleLabel2.size = titleSize2;
     titleLabel2.text = desc2 ;
     titleLabel2.x = nameLabel.left ;
     titleLabel2.y = titleLabel.bottom + 5 ;
-//    [header addSubview:titleLabel2];
+    [header addSubview:titleLabel2];
 
     UILabel *titleLabel3 = [UILabel new];
     titleLabel3.font = [UIFont systemFontOfSize:10];
@@ -155,7 +163,7 @@
     titleLabel3.text = desc3 ;
     titleLabel3.x = nameLabel.left ;
     titleLabel3.y = titleLabel2.bottom + 5 ;
-//    [header addSubview:titleLabel3];
+    [header addSubview:titleLabel3];
 
     DongtaiViewController *dongtai = [DongtaiViewController new] ;
     dongtai.type = @"2" ;
