@@ -52,6 +52,8 @@
 #define crxClub [NSString stringWithFormat:@"%@/%@",API,@"club/apisave"]
 #define getUsersByClubId [NSString stringWithFormat:@"%@/%@",API,@"club/getUsersByClubId"]
 #define searchClubs [NSString stringWithFormat:@"%@/%@",API,@"club/searchClubs"]
+#define focusClub [NSString stringWithFormat:@"%@/%@",API,@"fans/apisave"]
+#define unfocusClub [NSString stringWithFormat:@"%@/%@",API,@"fans/apisave"]
 
 /*******保证金********/
 #define getDepositProtocol [NSString stringWithFormat:@"%@/%@",API,@"ht/user/getDepositProtocol"]

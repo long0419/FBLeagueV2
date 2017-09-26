@@ -100,11 +100,9 @@
 -(void)apply:(UITapGestureRecognizer *)sender{
     sender.self.view.backgroundColor = [UIColor blackColor];
     UILabel *label = [sender.self.view viewWithTag:12];
-    label.text = @"同意审核" ;
+    label.text = @"已关注" ;
     label.textColor = [UIColor colorWithHexString:@"ffffff"];
-
     [self.delegate sendapply:label.accessibilityHint andWith:@""];
-
 }
 
 -(void) setPhoneContactCellByImageName :(NSString *) imageName andWithName :(NSString *) name andWithPhoneNum : (NSString *) num  andWithindex :(NSInteger) indexPath andWithRole :(NSString *)role andPosition : (NSString *) position {
@@ -174,7 +172,7 @@
     phoneLabel.text = roleName ;
     [bg addSubview:phoneLabel];
         
-    UIView *line = [[UIView alloc] initWithFrame:CGRectMake( 32 /2 , bg.bottom , kScreen_Width - 32 , .5)] ;
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(32 /2 , bg.bottom , kScreen_Width - 32 , .5)] ;
     line.backgroundColor = [UIColor colorWithHexString:@"dddddd"];
     [bg addSubview:line];
 }
@@ -346,29 +344,31 @@
     UIView *focus = [[UIView alloc] initWithFrame:CGRectMake(bg.right - 20 - 134/2, (bg.height - 58/2)/2, 134/2, 58/2)] ;
     [[focus layer]setCornerRadius:58/4];
     focus.tag = indexPath ;
-    focus.accessibilityHint = tel ;
     UILabel *focusLabel = nil ;
     if ([use isEqualToString:@"no"]) {
         focus.backgroundColor = [UIColor whiteColor];
         focus.layer.borderWidth = 1;
         focus.layer.borderColor = [UIColor colorWithHexString:@"000000"].CGColor ;
         
-        CGSize focusSize = [NSString getStringContentSizeWithFontSize:14 andContent:@"申请加入"];
+        CGSize focusSize = [NSString getStringContentSizeWithFontSize:14 andContent:@"未关注"];
         focusLabel = [[UILabel alloc] initWithFrame:CGRectMake((focus.width - focusSize.width)/2 , (focus.height - focusSize.height)/2, focusSize.width, focusSize.height)];
         focusLabel.font = [UIFont systemFontOfSize:14];
         focusLabel.textColor = [UIColor colorWithHexString:@"000"];
-        focusLabel.text = @"申请加入" ;
+        focusLabel.text = @"未关注" ;
+        focusLabel.accessibilityHint = tel ;
         focusLabel.tag = 12 ;
         focus.userInteractionEnabled = YES;
         [focus addGestureRecognizer:singleTap4];
+        
     }else{
+        
         focus.backgroundColor = [UIColor colorWithHexString:@"000"];
         
-        CGSize focusSize = [NSString getStringContentSizeWithFontSize:14 andContent:@"已加入"];
+        CGSize focusSize = [NSString getStringContentSizeWithFontSize:14 andContent:@"已关注"];
         focusLabel = [[UILabel alloc] initWithFrame:CGRectMake((focus.width - focusSize.width)/2 , (focus.height - focusSize.height)/2, focusSize.width, focusSize.height)];
         focusLabel.font = [UIFont systemFontOfSize:14];
         focusLabel.textColor = [UIColor whiteColor];
-        focusLabel.text = @"已加入" ;
+        focusLabel.text = @"已关注" ;
         focusLabel.tag = 12 ;
         
         focus.userInteractionEnabled = NO ;

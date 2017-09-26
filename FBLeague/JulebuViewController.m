@@ -294,20 +294,22 @@
 }
 
 -(void) sendapply : (NSString *)clubid andWith :(NSString *)phone {
+    cache = [YYCache cacheWithName:@"FB"];
+    uvo = [cache objectForKey:@"userData"];
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: clubid , @"clubId" , uvo.phone , @"phone" ,uvo.phone , @"token", nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: clubid , @"famousphone" , @"2" , @"famoustype" , uvo.phone , @"fanphone" ,uvo.phone , @"token", nil];
 
-    [PPNetworkHelper POST:applyClub parameters:params success:^(id object) {
+    [PPNetworkHelper POST:focusClub parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
             hud.mode = MBProgressHUDModeText;
             hud.removeFromSuperViewOnHide = YES;
-            hud.labelText = @"申请成功";
+            hud.labelText = @"关注成功";
             [hud hide:YES afterDelay:2];
         }
     } failure:^(NSError *error) {
         
-    }];    
+    }];
 }
 
 -(void)forward : (NSNotification *) notification {

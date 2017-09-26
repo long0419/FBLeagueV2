@@ -57,7 +57,7 @@
     UIImageView *head ;
     if (nil == _clubVo.logourl || [@"" isEqualToString:_clubVo.logourl]) {
         head = [[UIImageView alloc]
-                initWithImage:[UIImage imageNamed:@"defaulthead"]];
+                initWithImage:[UIImage imageNamed:@"head"]];
     }else{
         head = [[UIImageView alloc] init];
         [head sd_setImageWithURL:[NSURL URLWithString:_clubVo.logourl] placeholderImage:nil];
