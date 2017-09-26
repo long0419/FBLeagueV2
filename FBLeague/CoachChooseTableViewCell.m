@@ -198,7 +198,7 @@
         [imageView setImage:image];
 
     }else{
-        [imageView sd_setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:nil];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:[UIImage imageNamed:@"管理"]];
     }
     [bg addSubview:imageView];
     
@@ -318,7 +318,7 @@
     UIImage *image = nil ;
     if ([imageName isEqual:[NSNull null]] || [imageName isEqualToString:@""]
         || [imageName isEqualToString:@"<null>"]) {
-        imageName = @"defaulthead" ;
+        imageName = @"head" ;
         image = [UIImage imageNamed:imageName];
         [imageView setImage:image];
         

@@ -84,8 +84,9 @@
 		FD5018DF1F3C62F10077C418 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5018DE1F3C62F10077C418 /* CoreTelephony.framework */; };
 		FD5018E11F3C62F80077C418 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5018E01F3C62F80077C418 /* SystemConfiguration.framework */; };
 		FD5018E31F3C62FE0077C418 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FD5018E21F3C62FE0077C418 /* libz.tbd */; };
-		FD5018E61F3D52040077C418 /* ClubVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5018E51F3D52040077C418 /* ClubVo.m */; };
 		FD50C4251F5D1A9A00010C88 /* SaiResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD50C4241F5D1A9A00010C88 /* SaiResultViewController.m */; };
+		FD58AFF91F7A223500AB6EAE /* ClubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD58AFF81F7A223500AB6EAE /* ClubDetailViewController.m */; };
+		FD58AFFF1F7A2C5C00AB6EAE /* ClubOBJ.m in Sources */ = {isa = PBXBuildFile; fileRef = FD58AFFE1F7A2C5C00AB6EAE /* ClubOBJ.m */; };
 		FD71DD741F21D5E0006242B4 /* ReadDetailContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD71DD731F21D5E0006242B4 /* ReadDetailContentViewController.m */; };
 		FD75D22E1F23518800306F77 /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D22D1F23518800306F77 /* NullSafe.m */; };
 		FD75D2321F25835200306F77 /* MemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D2311F25835200306F77 /* MemberViewController.m */; };
@@ -401,6 +402,10 @@
 		FD5018E51F3D52040077C418 /* ClubVo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClubVo.m; sourceTree = "<group>"; };
 		FD50C4231F5D1A9A00010C88 /* SaiResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaiResultViewController.h; sourceTree = "<group>"; };
 		FD50C4241F5D1A9A00010C88 /* SaiResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaiResultViewController.m; sourceTree = "<group>"; };
+		FD58AFF71F7A223400AB6EAE /* ClubDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClubDetailViewController.h; sourceTree = "<group>"; };
+		FD58AFF81F7A223500AB6EAE /* ClubDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClubDetailViewController.m; sourceTree = "<group>"; };
+		FD58AFFD1F7A2C5C00AB6EAE /* ClubOBJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClubOBJ.h; sourceTree = "<group>"; };
+		FD58AFFE1F7A2C5C00AB6EAE /* ClubOBJ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClubOBJ.m; sourceTree = "<group>"; };
 		FD71DD721F21D5E0006242B4 /* ReadDetailContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadDetailContentViewController.h; sourceTree = "<group>"; };
 		FD71DD731F21D5E0006242B4 /* ReadDetailContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadDetailContentViewController.m; sourceTree = "<group>"; };
 		FD75D22D1F23518800306F77 /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
@@ -943,6 +948,8 @@
 			children = (
 				FD75D2301F25835200306F77 /* MemberViewController.h */,
 				FD75D2311F25835200306F77 /* MemberViewController.m */,
+				FD58AFF71F7A223400AB6EAE /* ClubDetailViewController.h */,
+				FD58AFF81F7A223500AB6EAE /* ClubDetailViewController.m */,
 			);
 			name = "已创建俱乐部";
 			sourceTree = "<group>";
@@ -1172,6 +1179,8 @@
 				FDEAC8301F623EE200AB25B2 /* SaiChengVo.m */,
 				FDEAC8351F626EEA00AB25B2 /* JiFenVo.h */,
 				FDEAC8361F626EEA00AB25B2 /* JiFenVo.m */,
+				FD58AFFD1F7A2C5C00AB6EAE /* ClubOBJ.h */,
+				FD58AFFE1F7A2C5C00AB6EAE /* ClubOBJ.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1702,7 +1711,6 @@
 				FD4F6AF91F57B4B900DC1C10 /* UIView+Extension.m in Sources */,
 				FD50C4251F5D1A9A00010C88 /* SaiResultViewController.m in Sources */,
 				FD352FCE1F1FA43F00EA2A60 /* BaseTableViewController.m in Sources */,
-				FD5018E61F3D52040077C418 /* ClubVo.m in Sources */,
 				FD1F2C541F0490DF00063765 /* QDUIHelper.m in Sources */,
 				FDC0D1F91F17C545008B5551 /* SearchJiaoLianViewController.m in Sources */,
 				FDF6B0091F0A8F740074CB39 /* DSLLoginTextField.m in Sources */,
@@ -1718,6 +1726,7 @@
 				FD265A9E1F29E0BF00F92316 /* UIResponder+FirstResponder.m in Sources */,
 				FD396B2F1F343EEE00265CF7 /* AddZhanViewController.m in Sources */,
 				FDA8EE591F07F21B00F3A01A /* FirstLoginViewController.m in Sources */,
+				FD58AFFF1F7A2C5C00AB6EAE /* ClubOBJ.m in Sources */,
 				FDAA379B1DD2BCF80038658F /* AppDelegate.m in Sources */,
 				FDEAC8311F623EE200AB25B2 /* SaiChengVo.m in Sources */,
 				FDD24CC61F0BEDF800DA16FC /* CityVo.m in Sources */,
@@ -1771,6 +1780,7 @@
 				FDFAE5F61F10EE82008DF0BB /* FocusViewController.m in Sources */,
 				FDD3AF6D1F21C9B700EA7C23 /* VerifyClubViewController.m in Sources */,
 				FD75D22E1F23518800306F77 /* NullSafe.m in Sources */,
+				FD58AFF91F7A223500AB6EAE /* ClubDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

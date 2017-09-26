@@ -41,7 +41,6 @@
     
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     kouList = [[NSMutableArray alloc] init];
@@ -54,6 +53,7 @@
 
 -(void)setHeader{
     self.titleName = @"" ;
+    scrollIndex= 0 ;
     
     UIView *headerBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0 ,kScreen_Width, 44 + 22)];
     headerBar.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
@@ -88,11 +88,11 @@
     soPic.backgroundColor = [UIColor clearColor];
     [searchBar addSubview:soPic];
     
-    CGSize placeholderSize = [NSString getStringContentSizeWithFontSize:14 andContent:@"请输入人名或地区名"];
+    CGSize placeholderSize = [NSString getStringContentSizeWithFontSize:14 andContent:@"请输入城市名或地区名"];
     searchTxt = [[UITextField alloc] initWithFrame:CGRectMake(soPic.right + 6 , (searchBar.height - placeholderSize.height)/2, searchBar.width - 16, placeholderSize.height)];
     searchTxt.delegate = self ;
     UIColor *color = [UIColor colorWithHexString:@"000" andAlpha:.4];
-    searchTxt.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入人名或地区名" attributes:@{NSForegroundColorAttributeName: color}];
+    searchTxt.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"请输入城市名或地区名" attributes:@{NSForegroundColorAttributeName: color}];
     searchTxt.font = SystemFontOfSize(14);
     searchTxt.textColor = [UIColor colorWithHexString:@"000"];
     searchTxt.textAlignment = NSTextAlignmentLeft ;
@@ -112,7 +112,7 @@
     coach = [SearchCoachViewController new];
 
     NSArray *viewControllers = @[@{@"俱乐部":club}, @{@"教练员":coach}];
-    view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, headerBar.bottom , kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
+    view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, headerBar.bottom , kScreen_Width, kScreen_Height - 20 - 50) WithViewControllers:viewControllers] ;
     view.delegate = self ;
     [self.view addSubview:view];
 }
@@ -135,23 +135,34 @@
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , soText , @"queryName" , @"1" , @"page" , uvo.phone , @"token"  , nil];
-    [PPNetworkHelper POST:getCoaches parameters:params success:^(id object) {
+    NSString *url = searchClubs ;
+    if (scrollIndex == 1) {
+        url = searchCoaches ;
+    }
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone" , @"1" , @"page" , soText , @"cityOrArea" , uvo.phone , @"token"  , nil];
+    [PPNetworkHelper POST:url parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
-            NSDictionary *list = object[@"page"][@"list"];
+            NSDictionary *list = object[@"page"];
             CoachVo *model = nil ;
             [kouList removeAllObjects];
             
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
                     model = [CoachVo new];
-                    model.cityName = [NSString stringWithFormat:@"%@" , dic[@"cityname"]] ;
-                    model.firstLetter = [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]] ;
                     model.hasFocus = [NSString stringWithFormat:@"%@" ,dic[@"hasfocus"]] ;
-                    model.level = [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
-                    model.name = [NSString stringWithFormat:@"%@" ,[CommonFunc textFromBase64String:dic[@"nickname"]]]  ;
-                    model.phone =  [NSString stringWithFormat:@"%@" ,dic[@"phone"]]  ;
-                    model.headerUrl =  [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]]  ;
+                    model.cityName = [NSString stringWithFormat:@"%@ %@" , dic[@"cityname"] , dic[@"areaname"]] ;
+
+                    if (scrollIndex == 0) {
+                        model.headerUrl =  [NSString stringWithFormat:@"%@" ,dic[@"logourl"]]  ;
+                        model.name = [NSString stringWithFormat:@"%@" ,[CommonFunc textFromBase64String:dic[@"name"]]]  ;
+                        model.clubId = [NSString stringWithFormat:@"%@" , dic[@"id"]] ;
+                    }else{
+                        model.headerUrl =  [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]]  ;
+                        model.name = [NSString stringWithFormat:@"%@" ,[CommonFunc textFromBase64String:dic[@"nickname"]]]  ;
+                        model.clubId = [NSString stringWithFormat:@"%@" , dic[@"club"]] ;
+                    }
+                    
                     [kouList addObject:model];
                 }
                 

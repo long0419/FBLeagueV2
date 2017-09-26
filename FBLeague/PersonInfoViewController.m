@@ -305,8 +305,8 @@
                             nickname , @"nickname",
                             role , @"role" ,
                             sex , @"sex" ,
-                            [areas objectAtIndex:0] , @"provincecode" ,
-                            [areas objectAtIndex:1] , @"citycode" ,
+                            [areas objectAtIndex:1] , @"provincecode" ,
+                            [areas objectAtIndex:0] , @"citycode" ,
                             [areas objectAtIndex:2] , @"areacode" ,
                             url , @"headpicurl" , nil];
     

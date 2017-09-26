@@ -320,6 +320,12 @@
     }
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [tf resignFirstResponder];
+    [psw resignFirstResponder];
+    [timeTxt resignFirstResponder];
+    [moto resignFirstResponder];
+}
 
 -(void)addPic{
     myActionSheet = [[UIActionSheet alloc]

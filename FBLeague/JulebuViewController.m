@@ -10,6 +10,9 @@
 #import "CoachVo.h"
 #import "SVPullToRefresh.h"
 #import "SaiListViewController.h"
+#import "ClubDetailViewController.h"
+#import "CommonFunc.h"
+
 @interface JulebuViewController (){
     NSMutableArray *kouList ;
     YYCache *cache ;
@@ -37,7 +40,7 @@
         NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.club , @"id" ,uvo.phone ,  @"token", nil];
         [PPNetworkHelper POST:clubDetail parameters:params success:^(id object) {
             if([object[@"code"] isEqualToString:@"0000"]){
-                ClubVo *clubVo = [ClubVo new] ;
+                ClubOBJ *clubVo = [ClubOBJ new] ;
                 clubVo.desc = object[@"club"][@"description"] ;
                 clubVo.areacode = object[@"club"][@"areacode"] ;
                 clubVo.logourl = object[@"club"][@"logourl"] ;
@@ -60,7 +63,7 @@
         [self getNeedDatas : @"1"];
         pageNO = @"1" ;
         
-        self.soTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,  20 + 44 , kScreen_Width, kScreen_Height)];
+        self.soTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,  20 + 44 , kScreen_Width, kScreen_Height - 20 - 44 - 30)];
         _soTableView.delegate = self ;
         _soTableView.dataSource = self;
         _soTableView.backgroundColor = [UIColor clearColor];
@@ -83,9 +86,6 @@
         [_soTableView.pullToRefreshView setTitle:@"释放更新..." forState:SVPullToRefreshStateTriggered];
         [_soTableView.pullToRefreshView setTitle:@"加载中..." forState:SVPullToRefreshStateLoading];
     }
-    
-//    [self setRightBottom];
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -96,19 +96,13 @@
 
 
 #pragma mark - 有俱乐部的情况
--(void)setJulebuView :(ClubVo *) clubVo{
+-(void)setJulebuView :(ClubOBJ *) clubVo{
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 40 + 22 , kScreen_Width,  230/2)];
     header.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:header];
     
-    UIImageView *head ;
-    if (nil == clubVo.logourl || [@"" isEqualToString:clubVo.logourl]) {
-        head = [[UIImageView alloc]
-                initWithImage:[UIImage imageNamed:@"defaulthead"]];
-    }else{
-        head = [[UIImageView alloc] init];
-        [head sd_setImageWithURL:[NSURL URLWithString:clubVo.logourl] placeholderImage:nil];
-    }
+    UIImageView *head = [[UIImageView alloc] init];
+    [head sd_setImageWithURL:[NSURL URLWithString:clubVo.logourl] placeholderImage:[UIImage imageNamed:@"defaulthead"]];
     head.frame = CGRectMake(30, 25 , 140/2, 140/2) ;
     head.layer.masksToBounds =YES;
     head.layer.cornerRadius = 10 ;
@@ -128,7 +122,7 @@
     titleLabel.font = [UIFont systemFontOfSize:10];
     titleLabel.numberOfLines = 0;//多行显示，计算高度
     titleLabel.textColor = [UIColor colorWithHexString:@"000"];
-    NSString *desc =  [CommonFunc textFromBase64String:clubVo.desc];
+    NSString *desc =  [CommonFunc textFromBase64String:clubVo.description];
 //    NSString *desc = @"不错 不错" ;
     CGSize titleSize = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc];
     titleLabel.size = titleSize;
@@ -187,18 +181,27 @@
         
         if([object[@"code"] isEqualToString:@"0000"]){
             NSDictionary *list = object[@"page"][@"list"];
-            CoachVo *model = nil ;
+            ClubOBJ *model = nil ;
             [kouList removeAllObjects];
             
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
-                    model = [CoachVo new];
-                    model.cityName = [NSString stringWithFormat:@"%@ %@" , dic[@"cityname"] , dic[@"areaname"]] ;
-                    model.hasFocus = [NSString stringWithFormat:@"%@" ,dic[@"hasfocus"]] ;
-                    model.level = [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
-                    model.name = [CommonFunc textFromBase64String:dic[@"name"]] ;
-                    model.phone =  [NSString stringWithFormat:@"%@" ,dic[@"phone"]]  ;
-                    model.headerUrl =  [NSString stringWithFormat:@"%@" ,dic[@"logourl"]]  ;
+                    model = [ClubOBJ new];
+                    
+                    model.desc = [NSString stringWithFormat:@"%@" , dic[@"cityname"]] ;
+                    model.cid = [NSString stringWithFormat:@"%@" , dic[@"id"]] ;
+                    model.areacode = [NSString stringWithFormat:@"%@" , dic[@"areacode"]] ;
+                    model.logourl = [NSString stringWithFormat:@"%@" , dic[@"logourl"]] ;
+                    model.cityname = [NSString stringWithFormat:@"%@" , dic[@"cityname"]] ;
+                    model.provincecode = [NSString stringWithFormat:@"%@" , dic[@"provincecode"]] ;
+                    model.creator = [NSString stringWithFormat:@"%@" , dic[@"creator"]] ;
+                    model.hasfocus = [NSString stringWithFormat:@"%@" , dic[@"hasfocus"]] ;
+                    model.citycode = [NSString stringWithFormat:@"%@" , dic[@"citycode"]] ;
+                    model.areaname = [NSString stringWithFormat:@"%@" , dic[@"areaname"]] ;
+                    model.certification = [NSString stringWithFormat:@"%@" , dic[@"certification"]] ;
+                    model.createdate = [NSString stringWithFormat:@"%@" , dic[@"createdate"]] ;
+                    model.name = [NSString stringWithFormat:@"%@" , [CommonFunc textFromBase64String:dic[@"name"]]] ;
+                    
                     [kouList addObject:model];
                 }
                 [_soTableView reloadData];
@@ -261,9 +264,9 @@
     
     CoachChooseTableViewCell *cell = [[CoachChooseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Categorys];
     if (kouList.count > 0){
-        CoachVo *vo = [kouList objectAtIndex:indexPath.row];
+        ClubOBJ *vo = [kouList objectAtIndex:indexPath.row];
         
-        [cell setPhoneApplyCellByImageName:vo.headerUrl andWithName:vo.name andWithPhoneNum:vo.cityName andWithTel : vo.clubId andWithChoose:vo.hasFocus andWithindex:indexPath.section];
+        [cell setPhoneApplyCellByImageName:vo.logourl andWithName:vo.name andWithPhoneNum:vo.cityname andWithTel : vo.cid andWithChoose:vo.hasfocus andWithindex:indexPath.section];
         cell.delegate =  self ;
     }
     
@@ -282,10 +285,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    CoachVo *vo = [kouList objectAtIndex:indexPath.section];
+    ClubOBJ *vo = [kouList objectAtIndex:indexPath.section];
     
-    MemberViewController *detail = [[MemberViewController alloc] init];
-//    detail.coachPhone = vo.phone ;
+    ClubDetailViewController *detail = [[ClubDetailViewController alloc] init];
+    detail.clubVo = vo ;
     [self.navigationController pushViewController:detail animated:YES];
     
 }

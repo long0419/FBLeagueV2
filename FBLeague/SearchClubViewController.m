@@ -23,13 +23,12 @@
     [super viewDidLoad];
     kouList = [[NSMutableArray alloc] init] ;
     
-    self.soTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0 , kScreen_Width, kScreen_Height - (20+44) - 36)];
+    self.soTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0 , kScreen_Width, kScreen_Height - (20+44) - 50)];
     _soTableView.delegate = self ;
     _soTableView.dataSource = self;
     _soTableView.backgroundColor = [UIColor clearColor];
     _soTableView.separatorStyle = NO ;
     [self.view addSubview:_soTableView];
-
 }
 
 -(void) searchClubByContent :(NSArray *) contents  {

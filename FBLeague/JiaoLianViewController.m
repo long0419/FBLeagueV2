@@ -31,8 +31,7 @@
     pageNO = @"1" ;
     
     coachList = [[NSMutableArray alloc] init] ;
-
-    _coachTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height)];
+    _coachTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height - 20 - 44 - 50)];
     _coachTableView.delegate = self ;
     _coachTableView.dataSource = self;
     _coachTableView.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
@@ -77,7 +76,7 @@
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
                     model = [CoachVo new];
-                    model.cityName = [NSString stringWithFormat:@"%@" , dic[@"cityname"]] ;
+                    model.cityName = [NSString stringWithFormat:@"%@ %@" , dic[@"cityname"] , dic[@"areaname"]] ;
                     model.headerUrl = [NSString stringWithFormat:@"%@" , dic[@"headpicurl"]] ;
                     model.firstLetter = [NSString stringWithFormat:@"%@" ,dic[@"firstLetter"]] ;
                     model.hasFocus = [NSString stringWithFormat:@"%@" ,dic[@"hasfocus"]] ;

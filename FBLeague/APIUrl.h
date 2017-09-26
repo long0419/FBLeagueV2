@@ -44,12 +44,14 @@
 #define getApplyTrainee [NSString stringWithFormat:@"%@/%@",API,@"user/getApplyTrainee"]
 #define clubDetail [NSString stringWithFormat:@"%@/%@",API,@"club/apiinfo"]
 #define applyClub [NSString stringWithFormat:@"%@/%@",API,@"user/apply"]
-
+#define listCoaches [NSString stringWithFormat:@"%@/%@",API, @"user/listCoaches"]
+#define searchCoaches [NSString stringWithFormat:@"%@/%@",API, @"user/searchCoaches"]
 
 /*******俱乐部********/
 #define listClubs [NSString stringWithFormat:@"%@/%@",API,@"club/listClubs"]
 #define crxClub [NSString stringWithFormat:@"%@/%@",API,@"club/apisave"]
 #define getUsersByClubId [NSString stringWithFormat:@"%@/%@",API,@"club/getUsersByClubId"]
+#define searchClubs [NSString stringWithFormat:@"%@/%@",API,@"club/searchClubs"]
 
 /*******保证金********/
 #define getDepositProtocol [NSString stringWithFormat:@"%@/%@",API,@"ht/user/getDepositProtocol"]
@@ -78,7 +80,6 @@
 #define submitResult [NSString stringWithFormat:@"%@/%@",API, @"schedule/submitResult"]
 #define respondMatch [NSString stringWithFormat:@"%@/%@",API, @"schedule/respondMatch"]
 #define cancelMatch [NSString stringWithFormat:@"%@/%@",API, @"schedule/cancelMatch"]
-
 
 
 #endif /* APIUrl_h */
