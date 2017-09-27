@@ -208,6 +208,7 @@
                     model.areaname = [NSString stringWithFormat:@"%@" , dic[@"areaname"]] ;
                     model.certification = [NSString stringWithFormat:@"%@" , dic[@"certification"]] ;
                     model.createdate = [NSString stringWithFormat:@"%@" , dic[@"createdate"]] ;
+                    model.fansCount = [NSString stringWithFormat:@"%@" , dic[@"fansCount"]] ;
                     model.name = [NSString stringWithFormat:@"%@" , [CommonFunc textFromBase64String:dic[@"name"]]] ;
                     
                     [kouList addObject:model];

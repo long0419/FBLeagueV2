@@ -23,5 +23,6 @@
 @property (nonatomic , strong) NSString *createdate ;
 @property (nonatomic , strong) NSString *name ;
 @property (nonatomic , strong) NSString *cid ;
+@property (nonatomic , strong) NSString *fansCount ;
 
 @end

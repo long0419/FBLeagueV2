@@ -28,5 +28,6 @@
 @property (nonatomic , strong) NSString *hasAuth ;
 @property (nonatomic , strong) NSString *clubId ;
 @property (nonatomic , strong) NSString *coachId ;
+@property (nonatomic , strong) NSString *fansCount ;
 
 @end

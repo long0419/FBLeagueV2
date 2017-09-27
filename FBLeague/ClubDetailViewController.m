@@ -106,7 +106,7 @@
     titleLabel3.font = [UIFont systemFontOfSize:10];
     titleLabel3.numberOfLines = 0;//多行显示，计算高度
     titleLabel3.textColor = [UIColor colorWithHexString:@"ffffff"];
-    NSString *desc3 = @"关注：200     粉丝：200" ;
+    NSString *desc3 = [NSString stringWithFormat:@"粉丝：%@" , _clubVo.fansCount] ;
     CGSize titleSize3 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc3];
     titleLabel3.size = titleSize3;
     titleLabel3.text = desc3 ;

@@ -64,7 +64,8 @@
 }
 
 -(void)showsRedSpot:(NSNotification *)notification{
-    [uikitNavController2.tabBarItem setBadgeValue:@"1"];
+    NSLog(@"%@",notification.userInfo[@"textOne"]);
+    [uikitNavController2.tabBarItem setBadgeValue:notification.userInfo[@"textOne"]];
 }
 
 - (void)createTabBarController {

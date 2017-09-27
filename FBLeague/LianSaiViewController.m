@@ -45,11 +45,25 @@
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone ,  @"token", nil];
-    [PPNetworkHelper POST:liansaidetail parameters:params success:^(id object) {
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone" , uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:getUnreadCount parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
-            [[NSNotificationCenter defaultCenter]
-             postNotificationName:@"showspot" object:self] ;
+            
+            NSString *likeCount = object[@"unreadCount"][@"likeCount"];
+            NSString *followCount = object[@"unreadCount"][@"followCount"];
+            NSString *atCount = object[@"unreadCount"][@"atCount"];
+            
+            NSInteger total = likeCount.integerValue + followCount.integerValue + atCount.integerValue ;
+            
+            NSDictionary *dict =[[NSDictionary alloc]initWithObjectsAndKeys:[NSString stringWithFormat:@"%ld" , total] ,@"textOne",nil];
+
+            if (total > 0) {
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:@"showspot" object:nil userInfo:dict] ;
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:@"shownew" object:nil userInfo:dict] ;
+                
+            }
         }
     } failure:^(NSError *error) {
         

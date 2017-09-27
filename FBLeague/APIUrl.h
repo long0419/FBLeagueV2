@@ -33,6 +33,8 @@
 #define clubTheme [NSString stringWithFormat:@"%@/%@",API,@"theme/clubTheme"]
 #define userTheme [NSString stringWithFormat:@"%@/%@",API,@"theme/userTheme"]
 #define focusTheme [NSString stringWithFormat:@"%@/%@",API,@"theme/focusTheme"]
+#define getUnread [NSString stringWithFormat:@"%@/%@",API,@"theme/getUnread"]
+#define getUnreadCount [NSString stringWithFormat:@"%@/%@",API,@"theme/getUnreadCount"]
 
 /*******教练或球员相关********/
 #define focusPerson [NSString stringWithFormat:@"%@/%@",API,@"fans/apisave"]

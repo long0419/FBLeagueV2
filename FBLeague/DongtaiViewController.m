@@ -23,14 +23,6 @@
 
 @implementation DongtaiViewController
 
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -40,6 +32,7 @@
     isload = true ; //标识当前 第一次进来
     
     [self refresh];
+    
     
 }
 
@@ -58,6 +51,13 @@
     }else if([_type isEqualToString:@"4"]){
         params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" , uvo.phone ,@"phone",uvo.phone ,@"token" , nil];
         url = focusTheme ;
+    }else if([_type isEqualToString:@"5"]){
+        params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone ,@"phone",uvo.phone ,@"token" , nil];
+        url = getUnread ;
+        
+        self.title = @"@我的" ;
+        [self setBackBottmAndTitle];
+        
     }
     
     [PPNetworkHelper POST:url parameters:params success:^(id object) {
@@ -128,6 +128,22 @@
         } failure:^(NSError *error) {
     }];
 }
+
+-(void)setBackBottmAndTitle{
+    UIButton *backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backViewBtn.frame = CGRectMake(0, 0, 22, 17);
+    [backViewBtn setImage:[UIImage imageNamed:@"back2"] forState:UIControlStateNormal];
+    [backViewBtn addTarget:self action: @selector(back)
+          forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
+    self.navigationItem.leftBarButtonItem = backItem ;
+    self.navigationItem.rightBarButtonItem.customView.hidden=YES;
+}
+
+-(void)back{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 -(void) processData :(NSString *) phone andWithName :(NSString *) name andWithText :(NSString *)text andWithItemId :(NSString *) itemId andWithCommentId :(NSString *) commentId{
     YYCache *cache = [YYCache cacheWithName:@"FB"];

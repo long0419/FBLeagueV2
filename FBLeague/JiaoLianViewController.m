@@ -79,14 +79,13 @@
                     model.cityName = [NSString stringWithFormat:@"%@ %@" , dic[@"cityname"] , dic[@"areaname"]] ;
                     model.headerUrl = [NSString stringWithFormat:@"%@" , dic[@"headpicurl"]] ;
                     model.firstLetter = [NSString stringWithFormat:@"%@" ,dic[@"firstLetter"]] ;
+                    model.fansCount = [NSString stringWithFormat:@"%@" ,dic[@"fansCount"]] ;
                     model.hasFocus = [NSString stringWithFormat:@"%@" ,dic[@"hasfocus"]] ;
                     model.level = [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
                     model.name = [CommonFunc textFromBase64String:[NSString stringWithFormat:@"%@" ,dic[@"nickname"]]] ;
                     model.phone =  [NSString stringWithFormat:@"%@" ,dic[@"phone"]]  ;
                     [coachList addObject:model];
                 }
-                
-//                [self processCoachData];
                 
                 [_coachTableView reloadData];
             }
@@ -200,23 +199,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 20 ;
 }
-
-//-(void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
-//
-//{
-//    
-//    view.tintColor = [UIColor whiteColor];
-//    
-//    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
-//    
-//    header.contentView.backgroundColor= [UIColor colorWithHexString:@"f6f6f6"];
-//    
-//    header.textLabel.textAlignment=NSTextAlignmentLeft;
-//    
-//    header.textLabel.font = [UIFont systemFontOfSize:13];
-//    
-//    [header.textLabel setTextColor:[UIColor colorWithHexString:@"333333"]];
-//}
 
 
 @end

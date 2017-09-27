@@ -152,6 +152,7 @@
                     model = [CoachVo new];
                     model.hasFocus = [NSString stringWithFormat:@"%@" ,dic[@"hasfocus"]] ;
                     model.cityName = [NSString stringWithFormat:@"%@ %@" , dic[@"cityname"] , dic[@"areaname"]] ;
+                    model.fansCount = [NSString stringWithFormat:@"%@" , dic[@"fansCount"]] ;
 
                     if (scrollIndex == 0) {
                         model.headerUrl =  [NSString stringWithFormat:@"%@" ,dic[@"logourl"]]  ;

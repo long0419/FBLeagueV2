@@ -11,16 +11,22 @@
 #import "MyDataImportViewController.h"
 #import "MyQiuYuanViewController.h"
 #import "AddZhanViewController.h"
+#import "DongtaiViewController.h"
 
 @interface MeViewController (){
     UserDataVo *uvo ;
     YYCache *cache ;
+    UIView *badge ;
 }
 
 @end
 
 @implementation MeViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shownew) name:@"shownew" object:nil];
+
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -87,16 +93,26 @@
     
     UIView *atme ;
     UIView *atme2 ;
+    UIView *atme3 ;
+
+    atme3 = [self getItemViewByPic:@"@" andWithName:@"@我的"];
+    atme3.origin = CGPointMake(0, header.bottom + 20);
+    atme3.tag = 13 ;
+    UITapGestureRecognizer *tapGesturRecognizerx=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(atMe)];
+    [atme3 addGestureRecognizer:tapGesturRecognizerx];
+    [self.view addSubview:atme3];
+
     atme = [self getItemViewByPic:@"图层-3" andWithName:@"我的数据"];
-    atme.origin = CGPointMake(0, header.bottom + 20);
+    atme.origin = CGPointMake(0, atme3.bottom + 5);
     atme.tag = 11 ;
     UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
     [atme addGestureRecognizer:tapGesturRecognizer];
     [self.view addSubview:atme];
+    
 
     if([uvo.role isEqualToString: @"1"]){
         atme2 = [self getItemViewByPic:@"图层-3" andWithName:@"球员数据"];
-        atme2.origin = CGPointMake(0, atme.bottom + .5);
+        atme2.origin = CGPointMake(0, atme.bottom + 5);
         atme2.tag = 22 ;
         UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction2)];
         [atme2 addGestureRecognizer:tapGesturRecognizer];
@@ -112,6 +128,14 @@
     [exit setBackgroundColor:[UIColor colorWithHexString:@"111111" andAlpha:.5]];
 //    [self.view addSubview:exit];
     
+}
+
+-(void)atMe{
+    self.hidesBottomBarWhenPushed=YES;
+    DongtaiViewController *add = [DongtaiViewController new] ;
+    add.type = @"5" ;
+    [self.navigationController pushViewController:add animated:YES];
+    self.hidesBottomBarWhenPushed=NO ;
 }
 
 -(void)detail{
@@ -159,13 +183,14 @@
 
 
 -(UIView *)getItemViewByPic : (NSString *)pic andWithName : (NSString *)name {
+    
     UIView *item = [[UIView alloc] init];
     item.size = CGSizeMake(kScreen_Width, 44);
     item.backgroundColor = [UIColor whiteColor];
     
     UIImageView *head = [[UIImageView alloc]
                 initWithImage:[UIImage imageNamed:pic]];
-    head.frame = CGRectMake(30, 30/2 , 40/2, 30/2) ;
+    head.frame = CGRectMake(30, 30/2 , 40/2, 40/2) ;
     [item addSubview:head];
     
     QMUILabel *label1 = [[QMUILabel alloc] init];
@@ -184,16 +209,21 @@
     next.frame = CGRectMake(kScreen_Width - 30, 26/2 , 20/2, 40/2) ;
     [item addSubview:next];
     
-    UIView *badge = [UIView new] ;
-    badge.frame = CGRectMake(label1.right + 80 , 26/2 , 20/2, 40/2) ;
-    [item addSubview:badge];
-    [badge showBadgeWithStyle:WBadgeStyleNew value:1 animationType:WBadgeAnimTypeShake];
-
+    if ([name isEqualToString:@"@我的"]) {
+        badge = [UIView new] ;
+        badge.frame = CGRectMake(label1.right + 70 , 26/2 , 20/2, 40/2) ;
+        [item addSubview:badge];
+    }
+    
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, item.bottom , kScreen_Width, .5)];
     line.backgroundColor = [UIColor colorWithHexString:@"efefef"];
     [item addSubview:line];
     
     return item ;
+}
+
+-(void)shownew{
+    [badge showBadgeWithStyle:WBadgeStyleNew value:1 animationType:WBadgeAnimTypeShake];
 }
 
 
