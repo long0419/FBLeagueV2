@@ -192,7 +192,7 @@
                         if([vo.cid isEqualToString:commentId]){
                             commentItem.replyUserId = vo.phone;
                             commentItem.replyUserNick = vo.name ;
-                            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: itemId , @"themeid" , uvo.phone , @"phone" , [CommonFunc base64StringFromText:text] , @"contents" ,vo.name , @"targetname" ,vo.phone ,@"targetphone", uvo.phone , @"token",nil];
+                            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: itemId , @"themeid" , uvo.phone , @"phone" , [CommonFunc base64StringFromText:text] , @"contents" ,vo.name , @"targetname" , dong.phone , @"themephone" ,vo.phone ,@"targetphone", uvo.phone , @"token",nil];
                             [PPNetworkHelper POST:apicmsave parameters:params success:^(id object) {
                                 commentItem.commentId = object[@"id"] ;
                                 [self addCommentItem:commentItem itemId:itemId replyCommentId:commentId];

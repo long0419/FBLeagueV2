@@ -25,8 +25,8 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shownew) name:@"shownew" object:nil];
-
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -126,7 +126,7 @@
     exit.layer.cornerRadius = 12 ;
     [exit addTarget:self action:@selector(exit) forControlEvents:UIControlEventTouchUpInside];
     [exit setBackgroundColor:[UIColor colorWithHexString:@"111111" andAlpha:.5]];
-//    [self.view addSubview:exit];
+//    [self.view addSubview:exit]   ;
     
 }
 
