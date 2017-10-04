@@ -25,5 +25,6 @@ target 'FBLeague' do
 	pod 'BHBPopView'
 	pod 'HcdDateTimePicker'
 	pod 'WZLBadge'
+	pod 'MGSwipeTableCell'
 end
 
