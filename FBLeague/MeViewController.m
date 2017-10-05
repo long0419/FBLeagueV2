@@ -12,11 +12,13 @@
 #import "MyQiuYuanViewController.h"
 #import "AddZhanViewController.h"
 #import "DongtaiViewController.h"
+#import "UpdateUserInfoViewController.h"
 
 @interface MeViewController (){
     UserDataVo *uvo ;
     YYCache *cache ;
     UIView *badge ;
+    NSString *desc ;
 }
 
 @end
@@ -26,7 +28,6 @@
 -(void)viewWillAppear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shownew) name:@"shownew" object:nil];
 }
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -66,8 +67,7 @@
     titleLabel.font = [UIFont systemFontOfSize:10];
     titleLabel.numberOfLines = 0;//多行显示，计算高度
     titleLabel.textColor = [UIColor colorWithHexString:@"000"];
-    //    NSString *desc =  [CommonFunc textFromBase64String:vo.desc];
-    NSString *desc = uvo.areacode ;
+    desc = [NSString stringWithFormat:@"%@ %@" , uvo.areaname , uvo.cityName] ;
     CGSize titleSize = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc];
     titleLabel.size = titleSize;
     titleLabel.text = desc ;
@@ -140,7 +140,7 @@
 
 -(void)detail{
     self.hidesBottomBarWhenPushed=YES;
-    AddZhanViewController *add = [AddZhanViewController new] ;
+    UpdateUserInfoViewController *add = [UpdateUserInfoViewController new] ;
     [self.navigationController pushViewController:add animated:YES];
     self.hidesBottomBarWhenPushed=NO ;
 }

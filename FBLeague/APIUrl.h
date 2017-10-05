@@ -48,6 +48,7 @@
 #define applyClub [NSString stringWithFormat:@"%@/%@",API,@"user/apply"]
 #define listCoaches [NSString stringWithFormat:@"%@/%@",API, @"user/listCoaches"]
 #define searchCoaches [NSString stringWithFormat:@"%@/%@",API, @"user/searchCoaches"]
+#define changeNicknameHeadPic [NSString stringWithFormat:@"%@/%@",API, @"user/changeNicknameHeadPic"]
 
 /*******俱乐部********/
 #define listClubs [NSString stringWithFormat:@"%@/%@",API,@"club/listClubs"]

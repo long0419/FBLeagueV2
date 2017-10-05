@@ -310,33 +310,50 @@
                             [areas objectAtIndex:2] , @"areacode" ,
                             url , @"headpicurl" , nil];
     
-    [PPNetworkHelper POST:registerUser parameters:params success:^(id data) {
-        if([data[@"code"] isEqualToString:@"0000"]){
-            UserDataVo *uvo = [UserDataVo new];
-            uvo.nickname = tf.text ;
-            uvo.phone = _phoneNum ;
-            uvo.pwd = _psw ;
+    [PPNetworkHelper POST:registerUser parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+            UserDataVo *user = [UserDataVo new];
+            user.nickname = tf.text ;
+            user.phone = _phoneNum ;
+            user.pwd = _psw ;
             
-            uvo.rongyun_token = data[@"rongyun_token"] ;
-            uvo.token = data[@"token"] ;
-            uvo.pwd = data[@"user"][@"pwd"] ;
-            uvo.phone = data[@"user"][@"phone"];
-            uvo.role = data[@"user"][@"role"];
-            uvo.realname = data[@"user"][@"realname"];
-            uvo.level = data[@"user"][@"level"];
-            uvo.club = data[@"user"][@"club"];
-            uvo.headpicurl = data[@"user"][@"headpicurl"];
-            uvo.hasAuth = data[@"user"][@"hasAuth"] ;
-            uvo.hasfocus = data[@"user"][@"hasfocus"] ;
+            user.rongyun_token = object[@"rongyun_token"] ;
+            user.token = object[@"token"] ;
+            
+            user.registrationid = object[@"user"][@"registrationid"] ;
+            user.areacode = object[@"user"][@"areacode"];
+            user.cityName = object[@"user"][@"cityname"];
+            user.position = object[@"user"][@"realname"];
+            user.regtime = object[@"user"][@"regtime"];
+            user.team = object[@"user"][@"team"];
+            user.areaname = object[@"user"][@"areaname"];
+            user.sex = object[@"user"][@"sex"] ;
+            user.fansCount = object[@"user"][@"fansCount"] ;
+            user.nickname = [CommonFunc textFromBase64String:object[@"user"][@"nickname"]] ;
+            user.realname = object[@"user"][@"realname"] ;
+            user.openidbyqq = object[@"user"][@"openidbyqq"] ;
+            user.openidbywx = object[@"user"][@"openidbywx"] ;
+            user.firstletter = object[@"user"][@"firstletter"] ;
+            user.level = object[@"user"][@"level"] ;
+            user.pwd = object[@"user"][@"pwd"] ;
+            user.phone = object[@"user"][@"phone"] ;
+            user.headpicurl = object[@"user"][@"headpicurl"] ;
+            user.provincecode = object[@"user"][@"provincecode"] ;
+            user.role = object[@"user"][@"role"] ;
+            user.citycode = object[@"user"][@"citycode"] ;
+            user.club = object[@"user"][@"club"] ;
+            user.brithday = object[@"user"][@"brithday"] ;
+            user.certification = object[@"user"][@"certification"] ;
+            user.desc = object[@"user"][@"description"] ;
             
             YYCache *cache = [YYCache cacheWithName:@"FB"];
-            [cache setObject:uvo forKey:@"userData"];
+            [cache setObject:user forKey:@"userData"];
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"verifyLoginStatus" object:self];
 
             [self closeProgressView];
 
-        }else if([data[@"code"] isEqualToString:@"0002"]){
+        }else if([object[@"code"] isEqualToString:@"0002"]){
             self.HUD.mode = MBProgressHUDModeText;
             self.HUD.removeFromSuperViewOnHide = YES;
             self.HUD.labelText = @"当前用户已经注册,返回登录界面登录";

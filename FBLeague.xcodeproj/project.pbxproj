@@ -36,6 +36,7 @@
 		FD352FC81F1FA3DB00EA2A60 /* CoachChooseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FD352FC71F1FA3DB00EA2A60 /* CoachChooseTableViewCell.m */; };
 		FD352FCE1F1FA43F00EA2A60 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD352FCD1F1FA43F00EA2A60 /* BaseTableViewController.m */; };
 		FD352FD11F1FA4AA00EA2A60 /* CoachVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD352FD01F1FA4AA00EA2A60 /* CoachVo.m */; };
+		FD38A5BE1F84E6C9007CAF28 /* UpdateUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD38A5BD1F84E6C9007CAF28 /* UpdateUserInfoViewController.m */; };
 		FD396B2F1F343EEE00265CF7 /* AddZhanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD396B2E1F343EEE00265CF7 /* AddZhanViewController.m */; };
 		FD4269641F6B6468006B7C56 /* PPNumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4269631F6B6468006B7C56 /* PPNumberButton.m */; };
 		FD4F6AF81F57B4B900DC1C10 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6AF21F57B4B900DC1C10 /* NSDate+Extension.m */; };
@@ -245,6 +246,8 @@
 		FD352FCD1F1FA43F00EA2A60 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
 		FD352FCF1F1FA4AA00EA2A60 /* CoachVo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoachVo.h; sourceTree = "<group>"; };
 		FD352FD01F1FA4AA00EA2A60 /* CoachVo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoachVo.m; sourceTree = "<group>"; };
+		FD38A5BC1F84E6C9007CAF28 /* UpdateUserInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateUserInfoViewController.h; sourceTree = "<group>"; };
+		FD38A5BD1F84E6C9007CAF28 /* UpdateUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateUserInfoViewController.m; sourceTree = "<group>"; };
 		FD396B2D1F343EEE00265CF7 /* AddZhanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddZhanViewController.h; sourceTree = "<group>"; };
 		FD396B2E1F343EEE00265CF7 /* AddZhanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddZhanViewController.m; sourceTree = "<group>"; };
 		FD4269621F6B6468006B7C56 /* PPNumberButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPNumberButton.h; sourceTree = "<group>"; };
@@ -1291,6 +1294,8 @@
 		FDC497A11F29AB1F002E7105 /* me */ = {
 			isa = PBXGroup;
 			children = (
+				FD38A5BC1F84E6C9007CAF28 /* UpdateUserInfoViewController.h */,
+				FD38A5BD1F84E6C9007CAF28 /* UpdateUserInfoViewController.m */,
 				FD396B2D1F343EEE00265CF7 /* AddZhanViewController.h */,
 				FD396B2E1F343EEE00265CF7 /* AddZhanViewController.m */,
 				FD8F08F21F3418B60067AF4C /* MyQiuYuanViewController.h */,
@@ -1776,6 +1781,7 @@
 				FD50185A1F3C4E180077C418 /* MXWechatPayHandler.m in Sources */,
 				FD75D23C1F2583E400306F77 /* MemeberDataViewController.m in Sources */,
 				FDC497BB1F29AF1A002E7105 /* ACActionSheet.m in Sources */,
+				FD38A5BE1F84E6C9007CAF28 /* UpdateUserInfoViewController.m in Sources */,
 				FD4269641F6B6468006B7C56 /* PPNumberButton.m in Sources */,
 				FDFAE5F61F10EE82008DF0BB /* FocusViewController.m in Sources */,
 				FDD3AF6D1F21C9B700EA7C23 /* VerifyClubViewController.m in Sources */,
