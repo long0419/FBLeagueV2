@@ -58,10 +58,9 @@
             NSDictionary *dict =[[NSDictionary alloc]initWithObjectsAndKeys:[NSString stringWithFormat:@"%ld" , total] ,@"textOne",nil];
 
             if (total > 0) {
+
                 [[NSNotificationCenter defaultCenter]
                  postNotificationName:@"showspot" object:nil userInfo:dict] ;
-                [[NSNotificationCenter defaultCenter]
-                 postNotificationName:@"shownew" object:nil userInfo:dict] ;
                 
             }
         }

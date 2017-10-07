@@ -20,7 +20,6 @@
 #import <AlipaySDK/AlipaySDK.h>
 
 @interface AppDelegate (){
-    RTRootNavigationController *uikitNavController2 ;
 }
 
 @end
@@ -44,7 +43,9 @@
     
     //红点
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showsRedSpot:) name:@"showspot" object:nil];
-    
+    //去掉红点
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(removespot) name:@"removespot" object:nil];
+
     // 界面
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self showMsg];
@@ -64,8 +65,11 @@
 }
 
 -(void)showsRedSpot:(NSNotification *)notification{
-    NSLog(@"%@",notification.userInfo[@"textOne"]);
-    [uikitNavController2.tabBarItem setBadgeValue:notification.userInfo[@"textOne"]];
+    [_uikitNavController2.tabBarItem showBadgeWithStyle:WBadgeStyleNumber value:notification.userInfo[@"textOne"] animationType:WBadgeAnimTypeShake];
+}
+
+-(void)removespot{
+    [_uikitNavController2.tabBarItem clearBadge];
 }
 
 - (void)createTabBarController {
@@ -88,12 +92,13 @@
     
     MeViewController *uikitViewController2 = [[MeViewController alloc] init];
     uikitViewController2.hidesBottomBarWhenPushed = NO;
-    uikitNavController2 = [[RTRootNavigationController alloc] initWithRootViewController:uikitViewController2];
-    uikitNavController2.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"我" image:[UIImageMake(@"我的") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"我的") tag:3];
+    _uikitNavController2 = [[RTRootNavigationController alloc] initWithRootViewController:uikitViewController2];
+    _uikitNavController2.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"我" image:[UIImageMake(@"我的") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"我的") tag:3];
     
-    tabBarViewController.viewControllers = @[componentNavController, uikitNavController, labNavController,uikitNavController2];
+    tabBarViewController.viewControllers = @[componentNavController, uikitNavController, labNavController , _uikitNavController2];
     self.window.rootViewController = tabBarViewController;
     [self.window makeKeyAndVisible];
+
 }
 
 - (void)startLaunchingAnimation {

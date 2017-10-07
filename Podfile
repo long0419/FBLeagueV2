@@ -26,5 +26,6 @@ target 'FBLeague' do
 	pod 'HcdDateTimePicker'
 	pod 'WZLBadge'
 	pod 'MGSwipeTableCell'
+	pod 'KVOController'
 end
 

@@ -26,11 +26,16 @@
 @implementation MeViewController
 
 -(void)viewWillAppear:(BOOL)animated{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shownew) name:@"shownew" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showNew:) name:@"shownew" object:nil];
+    
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self getRedPotData];
+
     self.title = @"我" ;
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
@@ -111,7 +116,7 @@
     
 
     if([uvo.role isEqualToString: @"1"]){
-        atme2 = [self getItemViewByPic:@"图层-3" andWithName:@"球员数据"];
+        atme2 = [self getItemViewByPic:@"加油" andWithName:@"球员数据"];
         atme2.origin = CGPointMake(0, atme.bottom + 5);
         atme2.tag = 22 ;
         UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction2)];
@@ -130,7 +135,40 @@
     
 }
 
+-(void)getRedPotData{
+    cache = [YYCache cacheWithName:@"FB"];
+    uvo = [cache objectForKey:@"userData"];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone" , uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:getUnreadCount parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+            
+            NSString *likeCount = object[@"unreadCount"][@"likeCount"];
+            NSString *followCount = object[@"unreadCount"][@"followCount"];
+            NSString *atCount = object[@"unreadCount"][@"atCount"];
+            
+            NSInteger total = likeCount.integerValue + followCount.integerValue + atCount.integerValue ;
+            
+            NSDictionary *dict =[[NSDictionary alloc]initWithObjectsAndKeys:[NSString stringWithFormat:@"%ld" , total] ,@"textOne",nil];
+            
+            if (total > 0) {
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:@"shownew" object:nil userInfo:nil]  ;
+                
+            }
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+    
+}
+
 -(void)atMe{
+    [badge clearBadge];
+    
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:@"removespot" object:nil userInfo:nil]  ;
+    
     self.hidesBottomBarWhenPushed=YES;
     DongtaiViewController *add = [DongtaiViewController new] ;
     add.type = @"5" ;
@@ -190,7 +228,7 @@
     
     UIImageView *head = [[UIImageView alloc]
                 initWithImage:[UIImage imageNamed:pic]];
-    head.frame = CGRectMake(30, 30/2 , 40/2, 40/2) ;
+    head.frame = CGRectMake(30, 30/2 , 37/2, 32/2) ;
     [item addSubview:head];
     
     QMUILabel *label1 = [[QMUILabel alloc] init];
@@ -222,7 +260,7 @@
     return item ;
 }
 
--(void)shownew{
+-(void)showNew:(NSNotification *)notification{
     [badge showBadgeWithStyle:WBadgeStyleNew value:1 animationType:WBadgeAnimTypeShake];
 }
 

@@ -17,6 +17,7 @@
 
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) RTRootNavigationController *uikitNavController2 ;
 
 -(void)showMsg ;
 
