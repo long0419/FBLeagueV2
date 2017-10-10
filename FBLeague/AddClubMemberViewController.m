@@ -1,27 +1,25 @@
 //
-//  ClassesViewController.m
+//  AddClubMemberViewController.m
 //  FBLeague
 //
-//  Created by long-laptop on 2017/7/24.
+//  Created by long-laptop on 2017/10/9.
 //  Copyright © 2017年 long-laptop. All rights reserved.
 //
 
-#import "ClassesViewController.h"
+#import "AddClubMemberViewController.h"
 #import "SVPullToRefresh.h"
 #import "CoachVo.h"
-#import "MemberViewController.h"
 
-@interface ClassesViewController (){
+@interface AddClubMemberViewController (){
     NSMutableArray *kouList ;
     YYCache *cache ;
     UserDataVo *uvo ;
     NSString *pageNO ;
-
 }
 
 @end
 
-@implementation ClassesViewController
+@implementation AddClubMemberViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,10 +30,8 @@
     [self getNeedDatas : @"1"];
     pageNO = @"1" ;
     
-    if ([_type isEqualToString:@"2"]) {
         [self setBackBottmAndTitle];
         self.title =@"俱乐部成员" ;
-    }
     
     self.soTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,  0 , kScreen_Width, kScreen_Height)];
     _soTableView.delegate = self ;
@@ -44,7 +40,7 @@
     _soTableView.separatorStyle = NO ;
     [self.view addSubview:_soTableView];
     
-    __weak ClassesViewController *weakSelf = self ;
+    __weak AddClubMemberViewController *weakSelf = self ;
     [_soTableView addPullToRefreshWithActionHandler:^{
         [weakSelf getNeedDatas : @"1"];
         [weakSelf.soTableView.pullToRefreshView stopAnimating];
@@ -127,15 +123,43 @@
 
 #pragma mark返回每行的单元格
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *Categorys = @"Categorys";
     
-    CoachChooseTableViewCell *cell = [[CoachChooseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Categorys];
+    static NSString * reuseIdentifier = @"programmaticCell";
+    MGSwipeTableCell * cell = cell = [[MGSwipeTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     if (kouList.count > 0){
         UserDataVo *vo = [kouList objectAtIndex:indexPath.section];
-        [cell setPhoneContactCellByImageName:vo.headpicurl andWithName:vo.nickname andWithPhoneNum:vo.phone andWithindex:indexPath.section andWithRole:vo.role andPosition:vo.position];
+        cell.textLabel.text = [CommonFunc textFromBase64String:vo.nickname] ;
+        NSString *role = @"球员" ;
+        if ([vo.role isEqualToString:@"1"]) {
+            role = @"教练" ;
+        }
+        cell.detailTextLabel.text = role ;
+        cell.delegate = self;
+        cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"添加" backgroundColor:[UIColor blueColor]]];
+        cell.rightSwipeSettings.transition = MGSwipeTransitionDrag;
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone ;
+    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+
     return cell ;
+    
+}
+
+#pragma mark - swipe
+-(BOOL) swipeTableCell:(nonnull MGSwipeTableCell*) cell tappedButtonAtIndex:(NSInteger) index direction:(MGSwipeDirection)direction fromExpansion:(BOOL) fromExpansion{
+    UserDataVo *vo = [kouList objectAtIndex:index];
+
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"coachPhone" , [NSArray arrayWithObject:vo.phone], @"phones", uvo.phone , @"token" , nil];
+    [PPNetworkHelper POST:joinTeam parameters:params success:^(id object) {
+        
+        if([object[@"code"] isEqualToString:@"0000"]){
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    return true ;
 }
 
 #pragma mark - 代理方法
@@ -151,7 +175,7 @@
     UserDataVo *vo = [kouList objectAtIndex:indexPath.section];
     
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"forwardDetail" object:vo userInfo:nil]];
-
+    
 }
 
 -(void)setBackBottmAndTitle{
@@ -164,5 +188,8 @@
     self.navigationItem.leftBarButtonItem = backItem ;
 }
 
+-(void)back{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

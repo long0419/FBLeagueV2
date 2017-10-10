@@ -383,8 +383,6 @@
     
 }
 
-
-
 -(NSUInteger) unicodeLengthOfString: (NSString *) text {
     NSUInteger asciiLength = 0;
     for (NSUInteger i = 0; i < text.length; i++) {

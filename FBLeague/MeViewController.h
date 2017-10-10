@@ -10,7 +10,7 @@
 #import "BaseViewController.h"
 #import "SaiResultViewController.h"
 #import "WZLBadgeImport.h"
-
+#import "ManageClubViewController.h"
 
 @interface MeViewController : BaseViewController<UIAlertViewDelegate , UIImagePickerControllerDelegate , UINavigationControllerDelegate , UIActionSheetDelegate >
 

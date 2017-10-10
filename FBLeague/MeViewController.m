@@ -99,6 +99,7 @@
     UIView *atme ;
     UIView *atme2 ;
     UIView *atme3 ;
+    UIView *atme4 ;
 
     atme3 = [self getItemViewByPic:@"@" andWithName:@"@我的"];
     atme3.origin = CGPointMake(0, header.bottom + 20);
@@ -122,6 +123,15 @@
         UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction2)];
         [atme2 addGestureRecognizer:tapGesturRecognizer];
         [self.view addSubview:atme2];
+        
+        if(![uvo.club isEqualToString:@""] || uvo.club != nil){
+            atme4 = [self getItemViewByPic:@"管理" andWithName:@"俱乐部管理"];
+            atme4.origin = CGPointMake(0, atme2.bottom + 5);
+            atme4.tag = 24 ;
+            UITapGestureRecognizer *julebuorg=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(orgi)];
+            [atme4 addGestureRecognizer:julebuorg];
+            [self.view addSubview:atme4];
+        }
     }
     
     UIButton *exit = [[UIButton alloc] initWithFrame:CGRectMake(kScreen_Width - 60 - 1 , header.top + 5  , 60 + 12 , 24)];
@@ -133,6 +143,13 @@
     [exit setBackgroundColor:[UIColor colorWithHexString:@"111111" andAlpha:.5]];
 //    [self.view addSubview:exit]   ;
     
+}
+
+-(void)orgi{
+    self.hidesBottomBarWhenPushed=YES;
+    ManageClubViewController *manage = [ManageClubViewController new];
+    [self.navigationController pushViewController:manage animated:YES];
+    self.hidesBottomBarWhenPushed=NO;
 }
 
 -(void)getRedPotData{
@@ -169,9 +186,9 @@
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"removespot" object:nil userInfo:nil]  ;
     
-    self.hidesBottomBarWhenPushed=YES;
+    self.hidesBottomBarWhenPushed=YES ;
     DongtaiViewController *add = [DongtaiViewController new] ;
-    add.type = @"5" ;
+    add.type = @"1" ;
     [self.navigationController pushViewController:add animated:YES];
     self.hidesBottomBarWhenPushed=NO ;
 }

@@ -98,6 +98,15 @@
 		FD76CB3E1F0B87AE0047C0FE /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76CB391F0B87AE0047C0FE /* RegisterViewController.m */; };
 		FD8F08F41F3418B60067AF4C /* MyQiuYuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8F08F31F3418B60067AF4C /* MyQiuYuanViewController.m */; };
 		FD979CC91F09473700F5BFBB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD979CC81F09473700F5BFBB /* LoginViewController.m */; };
+		FD9A527C1F8B38D800A64E6D /* TaoBaPublishAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9A52791F8B38D700A64E6D /* TaoBaPublishAlertView.m */; };
+		FD9A527D1F8B38D800A64E6D /* FCListViewSingle.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9A527A1F8B38D800A64E6D /* FCListViewSingle.m */; };
+		FD9A52801F8B390200A64E6D /* FCListVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9A527E1F8B390200A64E6D /* FCListVo.m */; };
+		FD9A52831F8B394100A64E6D /* SponsorVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9A52811F8B394000A64E6D /* SponsorVo.m */; };
+		FD9A52861F8B399F00A64E6D /* PicButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9A52841F8B399E00A64E6D /* PicButton.m */; };
+		FD9A53D01F8B44E600A64E6D /* ManageClubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9A53CF1F8B44E600A64E6D /* ManageClubViewController.m */; };
+		FD9A53D61F8B4E8D00A64E6D /* MemberClubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9A53D51F8B4E8D00A64E6D /* MemberClubViewController.m */; };
+		FD9A53D91F8B4FB000A64E6D /* AddClubMemberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9A53D81F8B4FB000A64E6D /* AddClubMemberViewController.m */; };
+		FD9A53DC1F8B70F600A64E6D /* ApplyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9A53DB1F8B70F600A64E6D /* ApplyListViewController.m */; };
 		FDA1166C1F01FC67007F253C /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA116691F01FC67007F253C /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FDA1166D1F01FC67007F253C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FDA1166B1F01FC67007F253C /* README.md */; };
 		FDA572AA1F035A780072DF95 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FDA572A61F035A780072DF95 /* LICENSE */; };
@@ -428,6 +437,24 @@
 		FD8F08F31F3418B60067AF4C /* MyQiuYuanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyQiuYuanViewController.m; sourceTree = "<group>"; };
 		FD979CC71F09473700F5BFBB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		FD979CC81F09473700F5BFBB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		FD9A52781F8B38D700A64E6D /* TaoBaPublishAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaoBaPublishAlertView.h; sourceTree = "<group>"; };
+		FD9A52791F8B38D700A64E6D /* TaoBaPublishAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaoBaPublishAlertView.m; sourceTree = "<group>"; };
+		FD9A527A1F8B38D800A64E6D /* FCListViewSingle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCListViewSingle.m; sourceTree = "<group>"; };
+		FD9A527B1F8B38D800A64E6D /* FCListViewSingle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCListViewSingle.h; sourceTree = "<group>"; };
+		FD9A527E1F8B390200A64E6D /* FCListVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FCListVo.m; sourceTree = "<group>"; };
+		FD9A527F1F8B390200A64E6D /* FCListVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FCListVo.h; sourceTree = "<group>"; };
+		FD9A52811F8B394000A64E6D /* SponsorVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SponsorVo.m; sourceTree = "<group>"; };
+		FD9A52821F8B394000A64E6D /* SponsorVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SponsorVo.h; sourceTree = "<group>"; };
+		FD9A52841F8B399E00A64E6D /* PicButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PicButton.m; sourceTree = "<group>"; };
+		FD9A52851F8B399E00A64E6D /* PicButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PicButton.h; sourceTree = "<group>"; };
+		FD9A53CE1F8B44E600A64E6D /* ManageClubViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ManageClubViewController.h; sourceTree = "<group>"; };
+		FD9A53CF1F8B44E600A64E6D /* ManageClubViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ManageClubViewController.m; sourceTree = "<group>"; };
+		FD9A53D41F8B4E8C00A64E6D /* MemberClubViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberClubViewController.h; sourceTree = "<group>"; };
+		FD9A53D51F8B4E8D00A64E6D /* MemberClubViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MemberClubViewController.m; sourceTree = "<group>"; };
+		FD9A53D71F8B4FB000A64E6D /* AddClubMemberViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddClubMemberViewController.h; sourceTree = "<group>"; };
+		FD9A53D81F8B4FB000A64E6D /* AddClubMemberViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddClubMemberViewController.m; sourceTree = "<group>"; };
+		FD9A53DA1F8B70F500A64E6D /* ApplyListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApplyListViewController.h; sourceTree = "<group>"; };
+		FD9A53DB1F8B70F600A64E6D /* ApplyListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ApplyListViewController.m; sourceTree = "<group>"; };
 		FDA062371DD2CD2D00CEBAA0 /* FBLeague-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FBLeague-Prefix.pch"; sourceTree = "<group>"; };
 		FDA116681F01FC67007F253C /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		FDA116691F01FC67007F253C /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
@@ -693,6 +720,12 @@
 		FD352FC51F1FA3A700EA2A60 /* shouye */ = {
 			isa = PBXGroup;
 			children = (
+				FD9A52851F8B399E00A64E6D /* PicButton.h */,
+				FD9A52841F8B399E00A64E6D /* PicButton.m */,
+				FD9A527B1F8B38D800A64E6D /* FCListViewSingle.h */,
+				FD9A527A1F8B38D800A64E6D /* FCListViewSingle.m */,
+				FD9A52781F8B38D700A64E6D /* TaoBaPublishAlertView.h */,
+				FD9A52791F8B38D700A64E6D /* TaoBaPublishAlertView.m */,
 				FD352FC61F1FA3DB00EA2A60 /* CoachChooseTableViewCell.h */,
 				FD352FC71F1FA3DB00EA2A60 /* CoachChooseTableViewCell.m */,
 			);
@@ -1168,6 +1201,10 @@
 		FDAA38251DD2BDEA0038658F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FD9A52821F8B394000A64E6D /* SponsorVo.h */,
+				FD9A52811F8B394000A64E6D /* SponsorVo.m */,
+				FD9A527F1F8B390200A64E6D /* FCListVo.h */,
+				FD9A527E1F8B390200A64E6D /* FCListVo.m */,
 				FD352FCF1F1FA4AA00EA2A60 /* CoachVo.h */,
 				FD352FD01F1FA4AA00EA2A60 /* CoachVo.m */,
 				FDA8EE5B1F07F3B800F3A01A /* UserDataVo.h */,
@@ -1240,7 +1277,6 @@
 				FDA116671F01FC67007F253C /* GTMBase64-master */,
 				FDA572A51F035A780072DF95 /* MBProgressHUD */,
 				FDAA38621DD2BF3D0038658F /* QHNavSliderMenuView */,
-				FDAA386F1DD2BF3D0038658F /* SVPTRView */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -1282,13 +1318,6 @@
 			children = (
 			);
 			path = resource;
-			sourceTree = "<group>";
-		};
-		FDAA386F1DD2BF3D0038658F /* SVPTRView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SVPTRView;
 			sourceTree = "<group>";
 		};
 		FDC497A11F29AB1F002E7105 /* me */ = {
@@ -1342,6 +1371,14 @@
 				FDD3AF691F21B01900EA7C23 /* CreateClubViewController.m */,
 				FDD3AF6B1F21C9B700EA7C23 /* VerifyClubViewController.h */,
 				FDD3AF6C1F21C9B700EA7C23 /* VerifyClubViewController.m */,
+				FD9A53CE1F8B44E600A64E6D /* ManageClubViewController.h */,
+				FD9A53CF1F8B44E600A64E6D /* ManageClubViewController.m */,
+				FD9A53D41F8B4E8C00A64E6D /* MemberClubViewController.h */,
+				FD9A53D51F8B4E8D00A64E6D /* MemberClubViewController.m */,
+				FD9A53D71F8B4FB000A64E6D /* AddClubMemberViewController.h */,
+				FD9A53D81F8B4FB000A64E6D /* AddClubMemberViewController.m */,
+				FD9A53DA1F8B70F500A64E6D /* ApplyListViewController.h */,
+				FD9A53DB1F8B70F600A64E6D /* ApplyListViewController.m */,
 			);
 			name = julebu;
 			sourceTree = "<group>";
@@ -1673,6 +1710,7 @@
 			files = (
 				FD4F6B961F5A73A300DC1C10 /* ZRGridViewCell.m in Sources */,
 				FD242A761F5FF9DF0039A8A4 /* SaiListViewController.m in Sources */,
+				FD9A53D61F8B4E8D00A64E6D /* MemberClubViewController.m in Sources */,
 				FD5018C71F3C4E3E0077C418 /* base64.m in Sources */,
 				FD265AA71F29E87200F92316 /* CommonFunc.h in Sources */,
 				FD352FC41F1FA38000EA2A60 /* JiaoLianViewController.m in Sources */,
@@ -1687,6 +1725,7 @@
 				FD4F6B951F5A73A300DC1C10 /* ZRGridView.m in Sources */,
 				FD4F6B511F59A18B00DC1C10 /* DHGifImageOperation.m in Sources */,
 				FD1F2C681F0490EC00063765 /* QDCommonTableViewController.m in Sources */,
+				FD9A52801F8B390200A64E6D /* FCListVo.m in Sources */,
 				FD5018CB1F3C4E3E0077C418 /* RSADataVerifier.m in Sources */,
 				FDAA38191DD2BDA40038658F /* NSObject+Common.m in Sources */,
 				FD5018C61F3C4E3E0077C418 /* Order.m in Sources */,
@@ -1695,6 +1734,7 @@
 				FDA572AB1F035A780072DF95 /* MBProgressHUD+Add.m in Sources */,
 				FDEAC8371F626EEA00AB25B2 /* JiFenVo.m in Sources */,
 				FD242A791F601B150039A8A4 /* AddSaiViewController.m in Sources */,
+				FD9A52831F8B394100A64E6D /* SponsorVo.m in Sources */,
 				FDAA38321DD2BE1F0038658F /* JulebuViewController.m in Sources */,
 				FDC497B11F29AEE4002E7105 /* MeView.m in Sources */,
 				FDEAC8341F625F9A00AB25B2 /* AddSaiTimeViewController.m in Sources */,
@@ -1704,6 +1744,7 @@
 				FD265AA61F29E20600F92316 /* LianSaiViewController.m in Sources */,
 				FD352FD11F1FA4AA00EA2A60 /* CoachVo.m in Sources */,
 				FD4F6B8B1F5A6B1000DC1C10 /* JiFenViewController.m in Sources */,
+				FD9A53D01F8B44E600A64E6D /* ManageClubViewController.m in Sources */,
 				FD5018CA1F3C4E3E0077C418 /* RSADataSigner.m in Sources */,
 				FDAA381E1DD2BDA40038658F /* UIImage+Common.m in Sources */,
 				FDAA381C1DD2BDA40038658F /* UIButton+Block.m in Sources */,
@@ -1718,16 +1759,19 @@
 				FD352FCE1F1FA43F00EA2A60 /* BaseTableViewController.m in Sources */,
 				FD1F2C541F0490DF00063765 /* QDUIHelper.m in Sources */,
 				FDC0D1F91F17C545008B5551 /* SearchJiaoLianViewController.m in Sources */,
+				FD9A527D1F8B38D800A64E6D /* FCListViewSingle.m in Sources */,
 				FDF6B0091F0A8F740074CB39 /* DSLLoginTextField.m in Sources */,
 				FDF6FD1D1F20EAF300B4FB73 /* SearchCoachViewController.m in Sources */,
 				FD352FC81F1FA3DB00EA2A60 /* CoachChooseTableViewCell.m in Sources */,
 				FDAA381A1DD2BDA40038658F /* NSString+Common.m in Sources */,
 				FD1F2C691F0490EC00063765 /* QDCommonViewController.m in Sources */,
+				FD9A527C1F8B38D800A64E6D /* TaoBaPublishAlertView.m in Sources */,
 				FDC497A81F29AE5D002E7105 /* MyDataImportViewController.m in Sources */,
 				FD242AA71F60E62F0039A8A4 /* JHChart.m in Sources */,
 				FD71DD741F21D5E0006242B4 /* ReadDetailContentViewController.m in Sources */,
 				FDAA38181DD2BDA40038658F /* MWLocalDataTool.m in Sources */,
 				FD4F6B971F5A73A300DC1C10 /* ZRGridViewHeader.m in Sources */,
+				FD9A53DC1F8B70F600A64E6D /* ApplyListViewController.m in Sources */,
 				FD265A9E1F29E0BF00F92316 /* UIResponder+FirstResponder.m in Sources */,
 				FD396B2F1F343EEE00265CF7 /* AddZhanViewController.m in Sources */,
 				FDA8EE591F07F21B00F3A01A /* FirstLoginViewController.m in Sources */,
@@ -1735,6 +1779,7 @@
 				FDAA379B1DD2BCF80038658F /* AppDelegate.m in Sources */,
 				FDEAC8311F623EE200AB25B2 /* SaiChengVo.m in Sources */,
 				FDD24CC61F0BEDF800DA16FC /* CityVo.m in Sources */,
+				FD9A52861F8B399F00A64E6D /* PicButton.m in Sources */,
 				FDAA381F1DD2BDA40038658F /* UIImage+SCImage.m in Sources */,
 				FD75D2431F26491C00306F77 /* CommentVo.m in Sources */,
 				FDAA37981DD2BCF80038658F /* main.m in Sources */,
@@ -1782,6 +1827,7 @@
 				FD75D23C1F2583E400306F77 /* MemeberDataViewController.m in Sources */,
 				FDC497BB1F29AF1A002E7105 /* ACActionSheet.m in Sources */,
 				FD38A5BE1F84E6C9007CAF28 /* UpdateUserInfoViewController.m in Sources */,
+				FD9A53D91F8B4FB000A64E6D /* AddClubMemberViewController.m in Sources */,
 				FD4269641F6B6468006B7C56 /* PPNumberButton.m in Sources */,
 				FDFAE5F61F10EE82008DF0BB /* FocusViewController.m in Sources */,
 				FDD3AF6D1F21C9B700EA7C23 /* VerifyClubViewController.m in Sources */,

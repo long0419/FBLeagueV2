@@ -54,15 +54,12 @@
     }else if([_type isEqualToString:@"5"]){
         params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone ,@"phone",uvo.phone ,@"token" , nil];
         url = getUnread ;
-        
         self.title = @"@我的" ;
         [self setBackBottmAndTitle];
-        
     }
-    
+
     [PPNetworkHelper POST:url parameters:params success:^(id object) {
             if([object[@"code"] isEqualToString:@"0000"]){
-                
                 if ([object[@"page"] isEqual:[NSNull null]]) {
                     return ;
                 }

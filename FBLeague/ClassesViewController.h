@@ -14,5 +14,6 @@
 @interface ClassesViewController : BaseViewController<UIAlertViewDelegate,UITableViewDelegate , UITableViewDataSource>
 
 @property (nonatomic , strong) UITableView *soTableView;
+@property (nonatomic , strong) NSString *type; //2.从我里面进入 
 
 @end
