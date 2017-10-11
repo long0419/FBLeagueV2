@@ -69,7 +69,7 @@
     NSMutableArray* buttons = [NSMutableArray arrayWithCapacity:2];
     RadioButton* btn = [[RadioButton alloc] init];
     [btn addTarget:self action:@selector(onRadioButtonValueChanged:) forControlEvents:UIControlEventValueChanged];
-    [btn setTitle:@"青年组" forState:UIControlStateNormal];
+    [btn setTitle:@"青少年组" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:12];
     [btn setImage:[UIImage imageNamed:@"unchecked.png"] forState:UIControlStateNormal];

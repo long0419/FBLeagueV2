@@ -7,6 +7,7 @@
 //
 
 #import "UpdateUserInfoViewController.h"
+#import "AppDelegate.h"
 
 @interface UpdateUserInfoViewController (){
     UIActionSheet *myActionSheet;
@@ -192,16 +193,47 @@
 //    [self.view addSubview:use5];
     
     
-    UIButton *exit = [[UIButton alloc] initWithFrame:CGRectMake((kScreen_Width - kScreen_Width + 24)/2, use3.bottom + 20 , kScreen_Width - 24 , 82/2)];
+    UIButton *exit = [[UIButton alloc] initWithFrame:CGRectMake(0, use3.bottom + 20 , kScreen_Width , 82/2)];
     [exit setTitle:@"确认修改" forState:UIControlStateNormal];
-    exit.titleLabel.font = [UIFont systemFontOfSize: 34/2];
+    exit.titleLabel.font = [UIFont systemFontOfSize: 15];
+    [exit setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [exit addTarget:self action:@selector(goAction) forControlEvents:UIControlEventTouchUpInside];
     [exit.layer setCornerRadius:4]; //设置矩形四个圆角半径
-    exit.backgroundColor = [UIColor colorWithHexString:@"000000"];
+    exit.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:exit];
+    
+    
+    UIButton *exit2 = [[UIButton alloc] initWithFrame:CGRectMake(0 , exit.bottom + 20 , kScreen_Width , 82/2)];
+    [exit2 setTitle:@"退出咖盟" forState:UIControlStateNormal];
+    exit2.titleLabel.font = [UIFont systemFontOfSize: 15];
+    [exit2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [exit2 addTarget:self action:@selector(exit) forControlEvents:UIControlEventTouchUpInside];
+    exit2.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:exit2];
 
     
 }
+
+-(void)exit{
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"确定注销当前账号？" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex ==1){
+        [self exitApplication];
+    }
+    
+}
+
+- (void)exitApplication {
+    cache = [YYCache cacheWithName:@"FB"];
+    [cache removeObjectForKey:@"userData"] ;
+    [((AppDelegate *)[UIApplication sharedApplication].delegate) showMsg];
+}
+
+
 
 -(void)goAction  {
     

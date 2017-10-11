@@ -50,10 +50,10 @@
     atme4.tag = 11 ;
     UITapGestureRecognizer *tapGesturRecognizer21=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction2)];
     [atme4 addGestureRecognizer:tapGesturRecognizer21];
-    [self.view addSubview:atme4];
+//    [self.view addSubview:atme4];
 
     UIView *atme5 = [self getItemViewByPic:@"图层-3" andWithName:@"注销俱乐部"];
-    atme5.origin = CGPointMake(0, atme4.bottom + 5);
+    atme5.origin = CGPointMake(0, atme2.bottom + 5);
     atme5.tag = 11 ;
     UITapGestureRecognizer *tapGesturRecognizer22=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction2)];
     [atme5 addGestureRecognizer:tapGesturRecognizer22];

@@ -196,6 +196,7 @@
 -(void)detail{
     self.hidesBottomBarWhenPushed=YES;
     UpdateUserInfoViewController *add = [UpdateUserInfoViewController new] ;
+//    AddZhanViewController *add = [AddZhanViewController new] ;
     [self.navigationController pushViewController:add animated:YES];
     self.hidesBottomBarWhenPushed=NO ;
 }
