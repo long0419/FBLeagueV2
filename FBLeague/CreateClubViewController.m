@@ -80,6 +80,7 @@
     tf.placeholderColor=[UIColor colorWithHexString:@"cdcdcd"];
     tf.font=[UIFont systemFontOfSize:14];
     tf.placeholder=@"俱乐部名称";
+    tf.delegate = self ;
     tf.maxTextLength= 11;
     tf.returnKeyType = UIReturnKeyGo ;
     tf.textAlignment = NSTextAlignmentCenter ;
@@ -116,7 +117,7 @@
     timeTxt.font=[UIFont systemFontOfSize:14];
     timeTxt.placeholder=@"成立时间";
     timeTxt.maxTextLength= 11;
-//    timeTxt.delegate = self ;
+    timeTxt.delegate = self ;
     timeTxt.textAlignment = NSTextAlignmentCenter ;
     [self.view addSubview:timeTxt];
     [timeTxt mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -133,7 +134,7 @@
     moto.font=[UIFont systemFontOfSize:14];
     moto.placeholder=@"俱乐部口号";
     moto.maxTextLength= 11;
-//    moto.delegate = self ;
+    moto.delegate = self ;
     moto.textAlignment = NSTextAlignmentCenter ;
     [self.view addSubview:moto];
     [moto mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -305,10 +306,16 @@
     self.hidesBottomBarWhenPushed=NO;
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [tf resignFirstResponder];
+    [psw resignFirstResponder];
+    [timeTxt resignFirstResponder];
+    [moto resignFirstResponder];
+    
+}
 
--(void)textFieldDidBeginEditing:(UITextField*)textField
-
-{
+-(void)textFieldDidBeginEditing:(UITextField*)textField {
+    
     [textField resignFirstResponder];
     
     if(textField.tag == 10){
@@ -318,13 +325,6 @@
         [self.navigationController pushViewController:area animated:YES];
         self.hidesBottomBarWhenPushed=NO;
     }
-}
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    [tf resignFirstResponder];
-    [psw resignFirstResponder];
-    [timeTxt resignFirstResponder];
-    [moto resignFirstResponder];
 }
 
 -(void)addPic{

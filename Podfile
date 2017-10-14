@@ -28,5 +28,6 @@ target 'FBLeague' do
 	pod 'MGSwipeTableCell'
 	pod 'KVOController'
 	pod 'IQKeyboardManager'
+	pod 'SVProgressHUD'
 end
 

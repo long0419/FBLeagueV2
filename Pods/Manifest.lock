@@ -107,6 +107,7 @@ DEPENDENCIES:
   - RongCloudIM/IMLib
   - RTRootNavigationController
   - SCLAlertView-Objective-C
+  - SVProgressHUD
   - SVPullToRefresh_Bell
   - TPKeyboardAvoiding
   - TYMProgressBarView
@@ -155,6 +156,6 @@ SPEC CHECKSUMS:
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   ZYBannerView: 477bcb8c38bb0b2a45bae014f9e4fa8357809023
 
-PODFILE CHECKSUM: 9798a18588dbbe11ef812c6d4457ae9c6adbd361
+PODFILE CHECKSUM: fc82d878f1fe8f4cd1a9beb358cab22ffaa1afe7
 
 COCOAPODS: 1.3.0.beta.2

@@ -11,6 +11,7 @@
 #import "RadioButton.h"
 #import "UserDataVo.h"
 #import "CommonFunc.h"
+#import "SVProgressHUD.h"
 
 @interface PersonInfoViewController (){
     UIImageView *bgImg ;
@@ -288,21 +289,21 @@
 }
 
 -(void)finish{
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
+    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     if([tf.text isEqualToString:@""]){
-        self.HUD.mode = MBProgressHUDModeText;
-        self.HUD.removeFromSuperViewOnHide = YES;
-        self.HUD.labelText = @"请输入昵称";
-        [self.HUD hide:YES afterDelay:3];
+        HUD.mode = MBProgressHUDModeText;
+        HUD.removeFromSuperViewOnHide = YES;
+        HUD.labelText = @"请输入昵称";
+        [HUD hide:YES afterDelay:3];
         return ;
     }
 
     if([psw.text isEqualToString:@""]){
-        self.HUD.mode = MBProgressHUDModeText;
-        self.HUD.removeFromSuperViewOnHide = YES;
-        self.HUD.labelText = @"请输入地区";
-        [self.HUD hide:YES afterDelay:3];
+        HUD.mode = MBProgressHUDModeText;
+        HUD.removeFromSuperViewOnHide = YES;
+        HUD.labelText = @"请输入地区";
+        [HUD hide:YES afterDelay:3];
         return ;
     }
     
@@ -365,13 +366,10 @@
             [self closeProgressView];
 
         }else if([object[@"code"] isEqualToString:@"0002"]){
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"当前用户已经注册,返回登录界面登录";
-            [self.HUD hide:YES afterDelay:6];
-            
-            [NSThread sleepForTimeInterval:6];
-            
+            [SVProgressHUD showInfoWithStatus: @"当前用户已经注册,返回登录界面登录"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleLight];
+            [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+
             [self.navigationController popToRootViewControllerAnimated:YES];
         }else{
             [self closeProgressView];
