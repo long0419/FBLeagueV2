@@ -12,6 +12,7 @@
 #import "SaiListViewController.h"
 #import "ClubDetailViewController.h"
 #import "CommonFunc.h"
+#import "UpdateClubInfoViewController.h"
 
 @interface JulebuViewController (){
     NSMutableArray *kouList ;
@@ -27,7 +28,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
+    
     self.tabBarController.tabBar.hidden = NO ;
     
     if (nil != self.view.subviews.count) {
@@ -35,7 +36,7 @@
             [[self.view.subviews objectAtIndex:i] removeFromSuperview];
         }
     }
-    
+
     kouList = [[NSMutableArray alloc] init];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forward:) name:@"forwardDetail" object:nil];
@@ -113,6 +114,8 @@
 {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"forwardDetail" object:nil];
+    
+    
 }
 
 
@@ -132,8 +135,7 @@
 
     [header addSubview:head];
     
-    NSString *name =  [CommonFunc textFromBase64String:clubVo.name];
-//    NSString *name = @"武汉体育学院足协代表队" ;
+    NSString *name =  clubVo.name ;
     CGSize nameSize = [NSString getStringContentSizeWithFontSize:34/2 andContent:name];
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(head.right + 12 , head.top , nameSize.width, nameSize.height)];
     nameLabel.font = [UIFont systemFontOfSize:30/2];
@@ -145,13 +147,13 @@
     titleLabel.font = [UIFont systemFontOfSize:10];
     titleLabel.numberOfLines = 0;//多行显示，计算高度
     titleLabel.textColor = [UIColor colorWithHexString:@"000"];
-    NSString *desc =  [CommonFunc textFromBase64String:clubVo.desc];
+    NSString *desc = clubVo.desc ;
     CGSize titleSize = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc];
     titleLabel.size = titleSize;
     titleLabel.text = desc ;
     titleLabel.x = nameLabel.left ;
     titleLabel.y = nameLabel.bottom + 5 ;
-    [header addSubview:titleLabel];
+//    [header addSubview:titleLabel];
     
     UILabel *titleLabel2 = [UILabel new];
     titleLabel2.font = [UIFont systemFontOfSize:10];
@@ -169,7 +171,6 @@
     titleLabel3.font = [UIFont systemFontOfSize:10];
     titleLabel3.numberOfLines = 0;//多行显示，计算高度
     titleLabel3.textColor = [UIColor colorWithHexString:@"000"];
-    //    NSString *desc =  [CommonFunc textFromBase64String:vo.desc];
     NSString *desc3 = clubVo.desc ;
     CGSize titleSize3 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc3];
     titleLabel3.size = titleSize3;
@@ -191,8 +192,30 @@
     YCSlideView * view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, header.bottom, kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
     [self.view addSubview:view];
 
+    [self setRightBottom : clubVo.cid];
 }
 
+- (void)setRightBottom :(NSString *) cid{
+    CGSize size = [NSString getStringContentSizeWithFontSize:15 andContent:@"更新"] ;
+    UIButton *backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backViewBtn.frame = CGRectMake(0, 0, size.width , size.height);
+    [backViewBtn setTitle:@"更新" forState:UIControlStateNormal];
+    backViewBtn.titleLabel.font = [UIFont systemFontOfSize: 15];
+    [backViewBtn setTitleColor:[UIColor colorWithHexString:@"ffffff"]forState:UIControlStateNormal];
+    [backViewBtn addTarget:self action: @selector(update:)
+          forControlEvents:UIControlEventTouchUpInside];
+    backViewBtn.accessibilityHint = cid ;
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
+    self.navigationItem.rightBarButtonItem = backItem ;
+}
+
+-(void)update : (UIButton *) sender{
+    self.hidesBottomBarWhenPushed = YES ;
+    UpdateClubInfoViewController *update = [UpdateClubInfoViewController new];
+    update.clubId = sender.accessibilityHint ;
+    [self.navigationController pushViewController:update animated:YES];
+    self.hidesBottomBarWhenPushed = NO ;
+}
 
 #pragma mark - 没有俱乐部的情况
 -(void)getNeedDatas :(NSString *) page{
@@ -246,16 +269,6 @@
           forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
     self.navigationItem.leftBarButtonItem = backItem ;
-}
-
-- (void)setRightBottom {
-    UIButton *backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backViewBtn.frame = CGRectMake(0, 0, 17, 17);
-    [backViewBtn setImage:[UIImage imageNamed:@"搜索"] forState:UIControlStateNormal];
-    [backViewBtn addTarget:self action: @selector(goAction)
-          forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
-    self.navigationItem.rightBarButtonItem = backItem ;
 }
 
 -(void)goAction{

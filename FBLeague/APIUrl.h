@@ -63,6 +63,7 @@
 #define joinTrainee [NSString stringWithFormat:@"%@/%@",API,@"user/joinTrainee"]
 #define joinTeam [NSString stringWithFormat:@"%@/%@",API,@"user/joinTeam"]
 #define exitTeam [NSString stringWithFormat:@"%@/%@",API,@"user/exitTeam"]
+#define updateClub [NSString stringWithFormat:@"%@/%@",API,@"club/apiupdate"]
 
 /*******保证金********/
 #define getDepositProtocol [NSString stringWithFormat:@"%@/%@",API,@"ht/user/getDepositProtocol"]

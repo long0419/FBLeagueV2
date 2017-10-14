@@ -54,13 +54,10 @@
     [self.view addSubview:header];
     
     UIImageView *head ;
-    if (nil == _userVo.headpicurl || [@"" isEqualToString:_userVo.headpicurl]) {
-        head = [[UIImageView alloc]
-                initWithImage:[UIImage imageNamed:@"defaulthead"]];
-    }else{
+//    if (nil != _userVo.headpicurl || ![@"" isEqualToString:_userVo.headpicurl]) {
         head = [[UIImageView alloc] init];
-        [head sd_setImageWithURL:[NSURL URLWithString:_userVo.headpicurl] placeholderImage:nil];
-    }
+        [head sd_setImageWithURL:[NSURL URLWithString:_userVo.headpicurl] placeholderImage:[UIImage imageNamed:@"defaulthead"]];
+//    }
     head.frame = CGRectMake((kScreen_Width - 120/2)/2, 5 , 120/2, 120/2) ;
     head.layer.masksToBounds =YES;
     head.layer.cornerRadius = 120/4 ;

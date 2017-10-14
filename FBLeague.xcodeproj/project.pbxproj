@@ -97,6 +97,7 @@
 		FD75D2431F26491C00306F77 /* CommentVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D2421F26491C00306F77 /* CommentVo.m */; };
 		FD76CB3E1F0B87AE0047C0FE /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76CB391F0B87AE0047C0FE /* RegisterViewController.m */; };
 		FD8F08F41F3418B60067AF4C /* MyQiuYuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8F08F31F3418B60067AF4C /* MyQiuYuanViewController.m */; };
+		FD92B0161F9265FE006DBE65 /* UpdateClubInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD92B0151F9265FE006DBE65 /* UpdateClubInfoViewController.m */; };
 		FD979CC91F09473700F5BFBB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD979CC81F09473700F5BFBB /* LoginViewController.m */; };
 		FD9A527C1F8B38D800A64E6D /* TaoBaPublishAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9A52791F8B38D700A64E6D /* TaoBaPublishAlertView.m */; };
 		FD9A527D1F8B38D800A64E6D /* FCListViewSingle.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9A527A1F8B38D800A64E6D /* FCListViewSingle.m */; };
@@ -435,6 +436,8 @@
 		FD76CB391F0B87AE0047C0FE /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		FD8F08F21F3418B60067AF4C /* MyQiuYuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyQiuYuanViewController.h; sourceTree = "<group>"; };
 		FD8F08F31F3418B60067AF4C /* MyQiuYuanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyQiuYuanViewController.m; sourceTree = "<group>"; };
+		FD92B0141F9265FD006DBE65 /* UpdateClubInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateClubInfoViewController.h; sourceTree = "<group>"; };
+		FD92B0151F9265FE006DBE65 /* UpdateClubInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateClubInfoViewController.m; sourceTree = "<group>"; };
 		FD979CC71F09473700F5BFBB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		FD979CC81F09473700F5BFBB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		FD9A52781F8B38D700A64E6D /* TaoBaPublishAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaoBaPublishAlertView.h; sourceTree = "<group>"; };
@@ -982,6 +985,8 @@
 		FD75D22F1F25832400306F77 /* 已创建俱乐部 */ = {
 			isa = PBXGroup;
 			children = (
+				FD92B0141F9265FD006DBE65 /* UpdateClubInfoViewController.h */,
+				FD92B0151F9265FE006DBE65 /* UpdateClubInfoViewController.m */,
 				FD75D2301F25835200306F77 /* MemberViewController.h */,
 				FD75D2311F25835200306F77 /* MemberViewController.m */,
 				FD58AFF71F7A223400AB6EAE /* ClubDetailViewController.h */,
@@ -1744,6 +1749,7 @@
 				FD76CB3E1F0B87AE0047C0FE /* RegisterViewController.m in Sources */,
 				FD265AA61F29E20600F92316 /* LianSaiViewController.m in Sources */,
 				FD352FD11F1FA4AA00EA2A60 /* CoachVo.m in Sources */,
+				FD92B0161F9265FE006DBE65 /* UpdateClubInfoViewController.m in Sources */,
 				FD4F6B8B1F5A6B1000DC1C10 /* JiFenViewController.m in Sources */,
 				FD9A53D01F8B44E600A64E6D /* ManageClubViewController.m in Sources */,
 				FD5018CA1F3C4E3E0077C418 /* RSADataSigner.m in Sources */,

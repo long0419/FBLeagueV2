@@ -1,15 +1,14 @@
 //
-//  UpdateUserInfoViewController.m
+//  UpdateClubInfoViewController.m
 //  FBLeague
 //
-//  Created by long-laptop on 2017/3/10.
+//  Created by long-laptop on 2017/3/9.
 //  Copyright © 2017年 long-laptop. All rights reserved.
 //
 
-#import "UpdateUserInfoViewController.h"
-#import "AppDelegate.h"
+#import "UpdateClubInfoViewController.h"
 
-@interface UpdateUserInfoViewController (){
+@interface UpdateClubInfoViewController (){
     UIActionSheet *myActionSheet;
     UIView *julebu ;
     UIView *use ;
@@ -22,13 +21,17 @@
     NSString *picUrl ;
     UIView *header ;
     UITextField *txtField  ;
+    UITextField *txtField2  ;
     YYCache *cache ;
     UserDataVo *uvo ;
+
+    
 }
+
 
 @end
 
-@implementation UpdateUserInfoViewController
+@implementation UpdateClubInfoViewController
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -47,7 +50,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"更新用户信息" ;
+    self.title = @"更新俱乐部信息" ;
     self.view.backgroundColor = [UIColor colorWithHexString:@"f5f6f7"];
     
     [self setBackBottmAndTitle];
@@ -117,10 +120,10 @@
     updatebtn.titleLabel.font = [UIFont systemFontOfSize: 15];
     [updatebtn setTitleColor:[UIColor colorWithHexString:@"ffffff"]forState:UIControlStateNormal];
     [updatebtn addTarget:self action: @selector(goAction)
-          forControlEvents:UIControlEventTouchUpInside];
+        forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem2 = [[UIBarButtonItem alloc] initWithCustomView:updatebtn];
-//    self.navigationItem.rightBarButtonItem = backItem2 ;
-//    [self.view addSubview:updatebtn];
+    //    self.navigationItem.rightBarButtonItem = backItem2 ;
+    //    [self.view addSubview:updatebtn];
 }
 
 -(void)back{
@@ -131,7 +134,7 @@
     header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, 20 + 44)];
     header.backgroundColor = [UIColor colorWithHexString:@"4cc07f"];
     [self.view addSubview:header];
-
+    
     UIButton *backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backViewBtn.frame = CGRectMake(12, 22 + 12 , 17, 17);
     [backViewBtn setImage:[UIImage imageNamed:@"back2"] forState:UIControlStateNormal];
@@ -141,59 +144,44 @@
     
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(sendlogo)];
     BeginTouView *beginView = [[BeginTouView alloc] init];
-    julebu = [beginView getBeginTouPic:@"用户Logo" andWithPic:@"extend" andWithEndImage:@"extend" andWithImageSize:CGSizeMake(15/2, 14) andPoint:CGPointMake(0, header.bottom + 12)];
+    julebu = [beginView getBeginTouPic:@"俱乐部Logo" andWithPic:@"extend" andWithEndImage:@"extend" andWithImageSize:CGSizeMake(15/2, 14) andPoint:CGPointMake(0, header.bottom + 12)];
     [julebu setUserInteractionEnabled:YES];
     [julebu addGestureRecognizer:singleTap];
     [self.view addSubview:julebu];
     
-    BeginTouView *beginView2 = [[BeginTouView alloc] init];
-    UITapGestureRecognizer *singleTap2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(sendname)];
-    use = [beginView2 getBeginTouView:@"创建人姓名" andWithTintTitle:@"" andWithEndImage:@"extend" andWithImageSize:CGSizeMake(15/2, 14) andPoint:CGPointMake(0, julebu.bottom + 12) andWithTag:2];
-    [use setUserInteractionEnabled:YES];
-    [use addGestureRecognizer:singleTap2];
-    //    [self.view addSubview:use];
-    
-    UITapGestureRecognizer *singleTaps = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(area)];
-    BeginTouView *beginView3 = [[BeginTouView alloc] init];
-    use2 = [beginView3 getBeginTouView:@"注册省市" andWithTintTitle:@"" andWithEndImage:@"extend" andWithImageSize:CGSizeMake(15/2, 14) andPoint:CGPointMake(0, julebu.bottom + 12) andWithTag:2];
-    [use2 setUserInteractionEnabled:YES];
-    [use2 addGestureRecognizer:singleTaps];
-    //    [self.view addSubview:use2];
-    
-    UITapGestureRecognizer *singleTap3 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(julebuname)];
     BeginTouView *beginView4 = [[BeginTouView alloc] init];
-    use3 = [beginView4 getBeginTouView:@"用户名称" andWithTintTitle:@"" andWithEndImage:@"extend" andWithImageSize:CGSizeMake(15/2, 14) andPoint:CGPointMake(0, julebu.bottom + 12) andWithTag:2];
+    use3 = [beginView4 getBeginTouView:@"俱乐部名称" andWithTintTitle:@"" andWithEndImage:@"extend" andWithImageSize:CGSizeMake(15/2, 14) andPoint:CGPointMake(0, julebu.bottom + 12) andWithTag:2];
     [use3 setUserInteractionEnabled:YES];
-//    [use3 addGestureRecognizer:singleTap3];
     
     txtField = [[UITextField alloc] initWithFrame:CGRectMake(80  , 0 ,  kScreen_Width - 110 ,45)];
     txtField.tintColor = [UIColor colorWithHexString:@"cccccc"];
     txtField.userInteractionEnabled = YES ;
     txtField.font = SystemFontOfSize(14);
     txtField.tag = 31 ;
-//    txtField.backgroundColor = [UIColor blueColor] ;
     txtField.tintColor = [UIColor colorWithHexString:@"3f3f3f"];
     txtField.textColor = [UIColor colorWithHexString:@"3f3f3f"];
     txtField.textAlignment = NSTextAlignmentRight ;
     [use3 addSubview:txtField];
     [self.view addSubview:use3];
     
-    UITapGestureRecognizer *singleTap4 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(time)];
-    BeginTouView *beginView5 = [[BeginTouView alloc] init];
-    use4 = [beginView5 getBeginTouView:@"成立时间" andWithTintTitle:@"" andWithEndImage:@"extend" andWithImageSize:CGSizeMake(15/2, 14) andPoint:CGPointMake(0, use3.bottom) andWithTag:2];
+    BeginTouView *beginView41 = [[BeginTouView alloc] init];
+    use4 = [beginView41 getBeginTouView:@"俱乐部口号" andWithTintTitle:@"" andWithEndImage:@"extend" andWithImageSize:CGSizeMake(15/2, 14) andPoint:CGPointMake(0, use3.bottom + 12) andWithTag:2];
     [use4 setUserInteractionEnabled:YES];
-    [use4 addGestureRecognizer:singleTap4];
-    //    [self.view addSubview:use4];
     
-    UITapGestureRecognizer *singleTap5 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(jianj)];
-    BeginTouView *beginView6 = [[BeginTouView alloc] init];
-    use5 = [beginView6 getBeginTouPic:@"简介" andWithContent: @"" andWithEndImage:@"extend" andWithImageSize:CGSizeMake(15/2, 14) andPoint:CGPointMake(0, use3.bottom)];
-    [use5 setUserInteractionEnabled:YES];
-    [use5 addGestureRecognizer:singleTap5];
-//    [self.view addSubview:use5];
+    txtField2 = [[UITextField alloc] initWithFrame:CGRectMake(80  , 0 ,  kScreen_Width - 110 ,45)];
+    txtField2.tintColor = [UIColor colorWithHexString:@"cccccc"];
+    txtField2.userInteractionEnabled = YES ;
+    txtField2.font = SystemFontOfSize(14);
+    txtField2.tag = 32 ;
+    txtField2.tintColor = [UIColor colorWithHexString:@"3f3f3f"];
+    txtField2.textColor = [UIColor colorWithHexString:@"3f3f3f"];
+    txtField2.textAlignment = NSTextAlignmentRight ;
+    [use4 addSubview:txtField2];
+    [self.view addSubview:use4];
+
     
     
-    UIButton *exit = [[UIButton alloc] initWithFrame:CGRectMake(0, use3.bottom + 20 , kScreen_Width , 82/2)];
+    UIButton *exit = [[UIButton alloc] initWithFrame:CGRectMake(0, use4.bottom + 20 , kScreen_Width , 82/2)];
     [exit setTitle:@"确认修改" forState:UIControlStateNormal];
     exit.titleLabel.font = [UIFont systemFontOfSize: 15];
     [exit setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -202,38 +190,7 @@
     exit.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:exit];
     
-    
-    UIButton *exit2 = [[UIButton alloc] initWithFrame:CGRectMake(0 , exit.bottom + 20 , kScreen_Width , 82/2)];
-    [exit2 setTitle:@"退出咖盟" forState:UIControlStateNormal];
-    exit2.titleLabel.font = [UIFont systemFontOfSize: 15];
-    [exit2 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [exit2 addTarget:self action:@selector(exit) forControlEvents:UIControlEventTouchUpInside];
-    exit2.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:exit2];
-
-    
 }
-
--(void)exit{
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"确定注销当前账号？" message:@"" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定",nil];
-    [alert show];
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if(buttonIndex ==1){
-        [self exitApplication];
-    }
-    
-}
-
-- (void)exitApplication {
-    cache = [YYCache cacheWithName:@"FB"];
-    [cache removeObjectForKey:@"userData"] ;
-    [((AppDelegate *)[UIApplication sharedApplication].delegate) showMsg];
-}
-
-
 
 -(void)goAction  {
     
@@ -246,9 +203,9 @@
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[CommonFunc base64StringFromText:txtField.text] , @"nickname" , uvo.phone , @"phone" ,picUrl , @"headpicurl" , uvo.phone  , @"token" , nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: txtField2.text , @"description" , txtField.text , @"name" , _clubId , @"id" ,  uvo.phone  , @"token" , picUrl , @"logourl" , nil];
     
-    [PPNetworkHelper POST:changeNicknameHeadPic parameters:params success:^(id data) {
+    [PPNetworkHelper POST:updateClub parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
             self.HUD.mode = MBProgressHUDModeText;
             self.HUD.removeFromSuperViewOnHide = YES;
@@ -262,12 +219,12 @@
             self.HUD.labelText = @"系统错误";
             [self.HUD hide:YES afterDelay:3];
         }
-
+        
     }failure:^(NSError *error) {
         
     }];
     [self closeProgressView];
-
+    
 }
 
 
@@ -278,9 +235,9 @@
 }
 
 -(void)jianj{
-//    [self hideTabBottom];
-//    CreateJianJieViewController *createName = [[CreateJianJieViewController alloc] init];
-//    [self.navigationController pushViewController:createName animated:YES];
+    //    [self hideTabBottom];
+    //    CreateJianJieViewController *createName = [[CreateJianJieViewController alloc] init];
+    //    [self.navigationController pushViewController:createName animated:YES];
 }
 
 -(void)sendlogo{
@@ -379,6 +336,4 @@
 //当用户选取完成后调用
 -(void) imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [picker dismissViewControllerAnimated:YES completion:^{}];
-}
-
-@end
+}@end
