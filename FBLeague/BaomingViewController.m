@@ -47,6 +47,10 @@
 -(void) getNeedDatas : (NSString *) page{
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
+    
+    if ([uvo.club isEqual:[NSNull null]] || [uvo.club isEqualToString:@""]) {
+        return ;
+    }
 
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: page , @"page" , uvo.club ,@"clubId" , _leagueId , @"leagueId" , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:listJoinin parameters:params success:^(id data) {
@@ -79,12 +83,6 @@
                     model.number = [NSString stringWithFormat:@"%@" , dic[@"number"]] ;
                     model.bonus = [NSString stringWithFormat:@"%@" , dic[@"bonus"]] ;
                     [kouList addObject:model];
-//                }
-//                if (currPage.longLongValue == nextPage.longLongValue) {
-//                    pageNO =  currPage ;
-//                }else{
-//                    pageNO =  nextPage ;
-//                }
                 
             }else {
                 self.HUD.mode = MBProgressHUDModeText;
@@ -94,7 +92,6 @@
             }
             [_goodTableView reloadData];
         }
-//        [self closeProgressView];
 
     } failure:^(NSError *error) {
         

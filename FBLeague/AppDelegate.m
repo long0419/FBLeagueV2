@@ -18,6 +18,7 @@
 #import "QDNavigationController.h"
 #import "FirstLoginViewController.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import "UMMobClick/MobClick.h"
 
 @interface AppDelegate (){
 }
@@ -54,6 +55,11 @@
 
     // 启动动画
     [self startLaunchingAnimation];
+    
+    UMConfigInstance.appKey = @"58c637f75312dd6ca8000c75";
+    UMConfigInstance.channelId = @"App Store";
+    UMConfigInstance.bCrashReportEnabled = YES ;
+    [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK
     
     return YES;
 }

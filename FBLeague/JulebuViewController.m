@@ -25,18 +25,24 @@
 
 @implementation JulebuViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    if (self.view.subviews.count != nil && self.view.subviews.count > 1) {
+        for(int i = 0;i  < [self.view.subviews count];i++){
+            [[self.view.subviews objectAtIndex:i] removeFromSuperview];
+        }
+    }
+    
     kouList = [[NSMutableArray alloc] init];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forward:) name:@"forwardDetail" object:nil];
-
     
     self.title = @"俱乐部" ;
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
     
-    if(![uvo.club isEqual:[NSNull null]]){
+    if(![uvo.club isEqual:[NSNull null]] && ![uvo.club isEqualToString:@""]){
         NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.club , @"id" ,uvo.phone ,  @"token", nil];
         [PPNetworkHelper POST:clubDetail parameters:params success:^(id object) {
             if([object[@"code"] isEqualToString:@"0000"]){
@@ -58,8 +64,10 @@
                 clubVo.certification = object[@"club"][@"certification"] ;
                 clubVo.createdate = object[@"club"][@"createdate"] ;
                 clubVo.areaname = object[@"club"][@"areaname"] ;
-                
+                self.navigationItem.rightBarButtonItem.customView.hidden = YES;
+
                 [self setJulebuView : clubVo];
+
             }
         } failure:^(NSError *error) {
             
@@ -67,6 +75,7 @@
         
     }else{
         if([uvo.role isEqualToString:@"1"]){
+            self.navigationItem.leftBarButtonItem.customView.hidden = NO ;
             [self setBackBottmAndTitle];
         }
         
@@ -107,6 +116,8 @@
 
 #pragma mark - 有俱乐部的情况
 -(void)setJulebuView :(ClubOBJ *) clubVo{
+    self.navigationItem.leftBarButtonItem.customView.hidden = YES;
+
     UIView *header = [[UIView alloc] initWithFrame:CGRectMake(0, 40 + 22 , kScreen_Width,  230/2)];
     header.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:header];
@@ -149,7 +160,7 @@
     titleLabel2.size = titleSize2;
     titleLabel2.text = desc2 ;
     titleLabel2.x = nameLabel.left ;
-    titleLabel2.y = titleLabel.bottom + 5 ;
+    titleLabel2.y = nameLabel.bottom + 5 ;
     [header addSubview:titleLabel2];
 
     UILabel *titleLabel3 = [UILabel new];
@@ -157,7 +168,7 @@
     titleLabel3.numberOfLines = 0;//多行显示，计算高度
     titleLabel3.textColor = [UIColor colorWithHexString:@"000"];
     //    NSString *desc =  [CommonFunc textFromBase64String:vo.desc];
-    NSString *desc3 = @"关注：200     粉丝：200" ;
+    NSString *desc3 = clubVo.desc ;
     CGSize titleSize3 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc3];
     titleLabel3.size = titleSize3;
     titleLabel3.text = desc3 ;
@@ -211,7 +222,9 @@
                     model.fansCount = [NSString stringWithFormat:@"%@" , dic[@"fansCount"]] ;
                     model.name = [NSString stringWithFormat:@"%@" , [CommonFunc textFromBase64String:dic[@"name"]]] ;
                     
-                    [kouList addObject:model];
+                    if (![uvo.club isEqualToString:model.cid]) {
+                        [kouList addObject:model];
+                    }
                 }
                 [_soTableView reloadData];
             }
@@ -294,11 +307,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    ClubOBJ *vo = [kouList objectAtIndex:indexPath.section];
+    ClubOBJ *vo = [kouList objectAtIndex:indexPath.row];
     
+    self.hidesBottomBarWhenPushed = YES ;
     ClubDetailViewController *detail = [[ClubDetailViewController alloc] init];
     detail.clubVo = vo ;
     [self.navigationController pushViewController:detail animated:YES];
+    self.hidesBottomBarWhenPushed = NO ;
     
 }
 

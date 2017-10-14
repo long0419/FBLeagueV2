@@ -67,7 +67,7 @@
     head.layer.cornerRadius = 120/4 ;
     [header addSubview:head];
     
-    NSString *name = [NSString stringWithFormat:@"%@ %@" , _clubVo.name , _clubVo.areaname] ;
+    NSString *name = [NSString stringWithFormat:@"%@" , _clubVo.name] ;
     CGSize nameSize = [NSString getStringContentSizeWithFontSize:34/2 andContent:name];
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake((kScreen_Width - nameSize.width)/2 , head.bottom + 5 , nameSize.width, nameSize.height)];
     nameLabel.font = [UIFont systemFontOfSize:30/2];
@@ -79,7 +79,7 @@
     titleLabel.font = [UIFont systemFontOfSize:10];
     titleLabel.numberOfLines = 0;//多行显示，计算高度
     titleLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
-    NSString *desc = _clubVo.desc ;
+    NSString *desc = [NSString stringWithFormat:@"%@ %@" , _clubVo.desc ,_clubVo.areaname]  ;
     CGSize titleSize = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc];
     titleLabel.size = titleSize;
     titleLabel.text = desc ;

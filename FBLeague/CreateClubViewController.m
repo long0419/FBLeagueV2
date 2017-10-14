@@ -8,7 +8,8 @@
 
 #import "CreateClubViewController.h"
 #import "DSLLoginTextField.h"
-//#import "SCLAlertView.h"
+#import "HcdDateTimePickerView.h"
+#import "SVProgressHUD.h"
 
 @interface CreateClubViewController (){
     UIImageView *bgImg ;
@@ -21,6 +22,7 @@
     YYCache *cache ;
     UserDataVo *uvo ;
     UIView *alertView ;
+    NSString *time ;
 }
 
 @end
@@ -116,7 +118,8 @@
     timeTxt.font=[UIFont systemFontOfSize:14];
     timeTxt.placeholder=@"成立时间";
     timeTxt.maxTextLength= 11;
-//    timeTxt.delegate = self ;
+    timeTxt.delegate = self ;
+    timeTxt.tag = 11 ;
     timeTxt.textAlignment = NSTextAlignmentCenter ;
     [self.view addSubview:timeTxt];
     [timeTxt mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -132,8 +135,8 @@
     moto.placeholderColor=[UIColor colorWithHexString:@"cdcdcd"];
     moto.font=[UIFont systemFontOfSize:14];
     moto.placeholder=@"俱乐部口号";
-    moto.maxTextLength= 11;
-//    moto.delegate = self ;
+    moto.maxTextLength= 30 ;
+    //    moto.delegate = self ;
     moto.textAlignment = NSTextAlignmentCenter ;
     [self.view addSubview:moto];
     [moto mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -163,7 +166,7 @@
     }];
     
     [self loadAlertView];
-
+    
 }
 
 -(void)loadAlertView{
@@ -181,7 +184,7 @@
     tmp.layer.cornerRadius = 5;
     tmp.layer.masksToBounds = YES;
     [alertView addSubview:tmp];
-
+    
     UIImageView *right = [[UIImageView alloc] initWithFrame:CGRectMake((300 - 40)/2, 36/2, 40, 40)];
     right.backgroundColor = [UIColor whiteColor];
     right.image = [UIImage imageNamed:@"完成"];
@@ -198,7 +201,7 @@
     titleLabel3.x = (tmp.width - titleSize3.width)/2 ;
     titleLabel3.y = right.bottom + 10 ;
     [tmp addSubview:titleLabel3];
-
+    
     UILabel *tl = [UILabel new];
     tl.font = [UIFont systemFontOfSize:14];
     tl.numberOfLines = 0;//多行显示，计算高度
@@ -210,7 +213,7 @@
     tl.x = (tmp.width - tl3.width)/2 ;
     tl.y = titleLabel3.bottom + 74/2 ;
     [tmp addSubview:tl];
-
+    
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, tl.bottom + 46/2 , kScreen_Width - 20 , .5)];
     line.backgroundColor = [UIColor colorWithHexString:@"e3e3e3"];
     [tmp addSubview:line];
@@ -229,7 +232,7 @@
     UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(baoming)];
     [tl2 addGestureRecognizer:labelTapGestureRecognizer];
     [tmp addSubview:tl2];
-
+    
     UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(10, tl2.bottom + 32/2 , kScreen_Width - 20 , .5)];
     line2.backgroundColor = [UIColor colorWithHexString:@"e3e3e3"];
     [tmp addSubview:line2];
@@ -248,7 +251,7 @@
     tl4.x = (tmp.width - tl213.width)/2 ;
     tl4.y = line2.bottom + 32/2 ;
     [tmp addSubview:tl4];
-
+    
 }
 
 -(void)setBackBottmAndTitle{
@@ -269,7 +272,7 @@
     self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
-
+    
     NSArray *areas = [_areaCodeStr componentsSeparatedByString:@" "];
     NSDictionary *params = [NSDictionary
                             dictionaryWithObjectsAndKeys:
@@ -277,6 +280,7 @@
                             [CommonFunc base64StringFromText:tf.text] , @"name" ,
                             moto.text ,@"description" ,
                             uvo.phone ,  @"token",
+                            time , @"createdate" ,
                             [areas objectAtIndex:0] , @"citycode" ,
                             [areas objectAtIndex:1] , @"provincecode" ,
                             [areas objectAtIndex:2] , @"areacode" ,
@@ -284,7 +288,16 @@
                             nil];
     [PPNetworkHelper POST:crxClub parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
-            alertView.hidden = NO ;
+            //            alertView.hidden = NO ;
+            uvo.club = object[@"club"][@"id"] ;
+            [cache setObject:uvo forKey:@"userData"];
+
+            [SVProgressHUD showSuccessWithStatus: @"恭喜你，俱乐部已创建成功"];
+            [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            
+            self.hidesBottomBarWhenPushed=NO;
+
         }
         
     } failure:^(NSError *error) {
@@ -335,6 +348,15 @@
         area.isfrom = @"1" ;
         [self.navigationController pushViewController:area animated:YES];
         self.hidesBottomBarWhenPushed=NO;
+    }else if(textField.tag == 11){
+        HcdDateTimePickerView *dateTimePickerView = [[HcdDateTimePickerView alloc] initWithDatePickerMode:DatePickerDateMode defaultDateTime:[[NSDate alloc]initWithTimeIntervalSinceNow:0]];
+        dateTimePickerView.clickedOkBtn = ^(NSString * datetimeStr){
+            NSLog(@"%@", datetimeStr);
+            timeTxt.text = datetimeStr ;
+            time = datetimeStr ;
+        };
+        [self.view addSubview:dateTimePickerView];
+        [dateTimePickerView showHcdDateTimePicker];
     }
 }
 
@@ -421,3 +443,4 @@
 }
 
 @end
+

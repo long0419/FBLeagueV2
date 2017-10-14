@@ -338,7 +338,7 @@
             user.provincecode = object[@"user"][@"provincecode"] ;
             user.role = object[@"user"][@"role"] ;
             user.citycode = object[@"user"][@"citycode"] ;
-            user.club = object[@"user"][@"club"] ;
+            user.club = object[@"user"][@"club"] ;            
             user.brithday = object[@"user"][@"brithday"] ;
             user.certification = object[@"user"][@"certification"] ;
             user.desc = object[@"user"][@"description"] ;
