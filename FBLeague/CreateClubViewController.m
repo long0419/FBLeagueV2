@@ -293,7 +293,7 @@
             [cache setObject:uvo forKey:@"userData"];
 
             [SVProgressHUD showSuccessWithStatus: @"恭喜你，俱乐部已创建成功"];
-            [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
             [self.navigationController popToRootViewControllerAnimated:YES];
         }
         

@@ -28,8 +28,9 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    self.tabBarController.tabBar.hidden = YES ;
-    if (self.view.subviews.count != nil && self.view.subviews.count > 1) {
+    self.tabBarController.tabBar.hidden = NO ;
+    
+    if (nil != self.view.subviews.count) {
         for(int i = 0;i  < [self.view.subviews count];i++){
             [[self.view.subviews objectAtIndex:i] removeFromSuperview];
         }
