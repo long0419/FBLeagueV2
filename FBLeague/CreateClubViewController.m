@@ -295,9 +295,6 @@
             [SVProgressHUD showSuccessWithStatus: @"恭喜你，俱乐部已创建成功"];
             [SVProgressHUD setBackgroundColor:[UIColor whiteColor]];
             [self.navigationController popToRootViewControllerAnimated:YES];
-            
-            self.hidesBottomBarWhenPushed=NO;
-
         }
         
     } failure:^(NSError *error) {
