@@ -27,5 +27,6 @@ target 'FBLeague' do
 	pod 'WZLBadge'
 	pod 'MGSwipeTableCell'
 	pod 'KVOController'
+	pod 'IQKeyboardManager'
 end
 

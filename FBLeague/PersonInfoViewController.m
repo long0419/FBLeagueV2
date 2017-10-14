@@ -257,9 +257,20 @@
 
 }
 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField;{
+    
+    [tf resignFirstResponder];
+    [psw resignFirstResponder];
+    
+    return YES ;
+
+}
+
+
 -(void)textFieldDidBeginEditing:(UITextField*)textField
 
 {
+
     [textField resignFirstResponder];
     
     if(textField.tag == 10){
@@ -362,6 +373,8 @@
             [NSThread sleepForTimeInterval:6];
             
             [self.navigationController popToRootViewControllerAnimated:YES];
+        }else{
+            [self closeProgressView];
         }
         
     } failure:^(NSError *error) {

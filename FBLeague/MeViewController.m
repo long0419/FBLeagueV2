@@ -19,6 +19,8 @@
     YYCache *cache ;
     UIView *badge ;
     NSString *desc ;
+    UILabel *titleLabel ;
+    UILabel *titleLabel2 ;
 }
 
 @end
@@ -36,6 +38,8 @@
     
     [self getRedPotData];
 
+    [self getPersonInfo] ;
+    
     self.title = @"我" ;
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
@@ -68,7 +72,7 @@
     nameLabel.text = name ;
     [header addSubview:nameLabel];
     
-    UILabel *titleLabel = [UILabel new];
+    titleLabel = [UILabel new];
     titleLabel.font = [UIFont systemFontOfSize:10];
     titleLabel.numberOfLines = 0;//多行显示，计算高度
     titleLabel.textColor = [UIColor colorWithHexString:@"000"];
@@ -80,7 +84,7 @@
     titleLabel.y = nameLabel.bottom + 5 ;
     [header addSubview:titleLabel];
     
-    UILabel *titleLabel2 = [UILabel new];
+    titleLabel2 = [UILabel new];
     titleLabel2.font = [UIFont systemFontOfSize:10];
     titleLabel2.numberOfLines = 0;//多行显示，计算高度
     titleLabel2.textColor = [UIColor colorWithHexString:@"000"];
@@ -143,6 +147,30 @@
     [exit setBackgroundColor:[UIColor colorWithHexString:@"111111" andAlpha:.5]];
 //    [self.view addSubview:exit]   ;
     
+}
+
+-(void)getPersonInfo{
+    cache = [YYCache cacheWithName:@"FB"];
+    uvo = [cache objectForKey:@"userData"];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone" , uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:getCBDetail parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+            titleLabel.text = [NSString stringWithFormat:@"%@ %@" , object[@"user"][@"cityname"] , object[@"user"][@"areaname"] ] ;
+            CGSize titleSize = [NSString getMultiStringContentSizeWithFontSize:10 andContent:titleLabel.text];
+            titleLabel.size = titleSize;
+
+            NSString *desc =  @"联盟认证号：暂无" ;
+            titleLabel2.text = desc ;
+            if ([object[@"user"][@"certification"] isEqualToString:@"<null>"]) {
+                titleLabel2.text = [NSString stringWithFormat:@"%@" , object[@"user"][@"certification"]];
+            }
+
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+
 }
 
 -(void)orgi{
