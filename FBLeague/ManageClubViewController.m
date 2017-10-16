@@ -36,10 +36,10 @@
     atme.tag = 11 ;
     UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction)];
     [atme addGestureRecognizer:tapGesturRecognizer];
-    [self.view addSubview:atme];
+//    [self.view addSubview:atme];
     
     UIView *atme2 = [self getItemViewByPic:@"图层-3" andWithName:@"申请审核"];
-    atme2.origin = CGPointMake(0, atme.bottom + 5);
+    atme2.origin = CGPointMake(0, atme3.bottom + 5);
     atme2.tag = 11 ;
     UITapGestureRecognizer *tapGesturRecognizer2=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction2)];
     [atme2 addGestureRecognizer:tapGesturRecognizer2];

@@ -43,7 +43,7 @@
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
                     model = [JiFenVo new];
-                    model.clubname = [NSString stringWithFormat:@"%@" , dic[@"clubname"]] ;
+                    model.clubname = [NSString stringWithFormat:@"%@" , [CommonFunc textFromBase64String:dic[@"clubname"]]] ;
                     model.jid = [NSString stringWithFormat:@"%@" , dic[@"id"]] ;
                     model.paymentorder = [NSString stringWithFormat:@"%@" , dic[@"paymentorder"]] ;
                     model.eva = [NSString stringWithFormat:@"%@" , dic[@"eva"]] ;

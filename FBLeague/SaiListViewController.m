@@ -136,10 +136,9 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentifier  = @"cell";
     SaiChengVo *vo = [kouList objectAtIndex:indexPath.section];
-    NSString *content = [NSString stringWithFormat:@"%@ vs %@" , vo.homeclubname , vo.visitingclubname];
-    
+    NSString *content = [NSString stringWithFormat:@"%@ vs %@" , [CommonFunc textFromBase64String:vo.homeclubname] , [CommonFunc textFromBase64String:vo.visitingclubname]];
     if(![vo.matchstatus isEqualToString:@"3"]){
-        content = [NSString stringWithFormat:@"%@ %@ - %@ %@" ,vo.homeclubname ,vo.homegoalcount ,vo.visitinggoalcount , vo.visitingclubname];
+        content = [NSString stringWithFormat:@"%@  %@ - %@  %@" ,[CommonFunc textFromBase64String:vo.homeclubname] ,vo.homegoalcount ,vo.visitinggoalcount , [CommonFunc textFromBase64String:vo.visitingclubname]];
     }
     
     LianSaiView *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];

@@ -20,6 +20,8 @@
     NSString *matchstatus ;
     PPNumberButton *slider ;
     NSString *ravalue ;
+    UserDataVo *uvo ;
+    YYCache *cache ;
 }
 
 @end
@@ -34,8 +36,8 @@
 
 -(void)getNeedData {
     
-    YYCache *cache = [YYCache cacheWithName:@"FB"];
-    UserDataVo *uvo = [cache objectForKey:@"userData"];
+    cache = [YYCache cacheWithName:@"FB"];
+    uvo = [cache objectForKey:@"userData"];
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_vo.sid , @"id" ,uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:getJoininDetail parameters:params success:^(id object) {
@@ -131,21 +133,21 @@
 }
 
 -(void)status1{
-    UIImageView *image = [[UIImageView alloc] initWithImage: [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:visitingClubPicUrl]]]];
+    UIImageView *image = [[UIImageView alloc] initWithImage: [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:homeClubPicUrl]]]];
     image.frame = CGRectMake(45, label16.bottom + 25, 50, 50);
     image.layer.cornerRadius = 4 ;
     image.layer.masksToBounds = true ;
 
     [bg addSubview:image];
     
-    UIImageView *image2 = [[UIImageView alloc] initWithImage: [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:homeClubPicUrl]]]];
+    UIImageView *image2 = [[UIImageView alloc] initWithImage: [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:visitingClubPicUrl]]]];
     image2.frame = CGRectMake(kScreen_Width - 50 - 45 , label16.bottom + 25, 50, 50);
     image2.layer.cornerRadius = 4 ;
     image2.layer.masksToBounds = true ;
     [bg addSubview:image2];
      
     QMUILabel *name = [[QMUILabel alloc] init];
-    name.text = _vo.homeclubname ;
+    name.text = [CommonFunc textFromBase64String:_vo.homeclubname];
     name.font = UIFontMake(12);
     name.textColor = UIColorWhite ;
     [name sizeToFit];
@@ -153,7 +155,7 @@
     name.origin = CGPointMake(30 , image.bottom + 21);
     
     QMUILabel *name2 = [[QMUILabel alloc] init];
-    name2.text = _vo.visitingclubname ;
+    name2.text = [CommonFunc textFromBase64String: _vo.visitingclubname] ;
     name2.font = UIFontMake(12);
     name2.textColor = UIColorWhite ;
     [name2 sizeToFit];
@@ -198,12 +200,12 @@
     name4.origin = CGPointMake(30 , name3.bottom + 13);
 
     NSString *title = @"提交赛果" ;
-    if ([_vo.matchstatus isEqualToString:@"33"]) { //应战
-        if ([_vo.launchclub isEqualToString:_vo.homeclub]) {
-            title = @"去迎战" ;
+    if ([_vo.matchstatus isEqualToString:@"33"]) { //迎战
+        if ([_vo.launchclub isEqualToString:_vo.homeclub] || [_vo.launchclub isEqualToString:_vo.visitingclub]) {
+            title = @"迎 战" ;
         }
     }else if([_vo.matchstatus isEqualToString:@"22"]){ //取消比赛
-        if ([_vo.launchclub isEqualToString:_vo.homeclub]) {
+        if ([_vo.launchclub isEqualToString:uvo.club]) {
             title = @"取消比赛" ;
         }
     }
@@ -219,7 +221,7 @@
     [self.view addSubview:button];
 
     if ([_vo.matchstatus isEqualToString:@"33"]) { //应战
-        if ([_vo.launchclub isEqualToString:_vo.homeclub]) {
+        if ([_vo.launchclub isEqualToString:_vo.homeclub] || [_vo.launchclub isEqualToString:_vo.visitingclub]) {
             [button addTarget:self action:@selector(yingzhan) forControlEvents:UIControlEventTouchUpInside];
 
         }
@@ -337,10 +339,9 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid , @"scheduleId" , _matchId , @"matchId" , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:respondMatch parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"发布成功";
-            [self.HUD hide:YES afterDelay:3];
+            [SVProgressHUD showSuccessWithStatus:@"迎战成功"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+
             [self.navigationController popViewControllerAnimated:YES];
         }
     } failure:^(NSError *error) {
