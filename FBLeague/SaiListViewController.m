@@ -166,8 +166,11 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     SaiChengVo *vo = [kouList objectAtIndex:indexPath.section];
-    
-    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"saiResult" object:vo userInfo:nil]];
+    uvo = [cache objectForKey:@"userData"];
+
+    if ([uvo.club isEqualToString:vo.homeclub] || [uvo.club isEqualToString:vo.visitingclub]) {
+        [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"saiResult" object:vo userInfo:nil]];
+    }
 
 }
 

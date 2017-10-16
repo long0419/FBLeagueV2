@@ -121,9 +121,6 @@
     [updatebtn setTitleColor:[UIColor colorWithHexString:@"ffffff"]forState:UIControlStateNormal];
     [updatebtn addTarget:self action: @selector(goAction)
         forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem2 = [[UIBarButtonItem alloc] initWithCustomView:updatebtn];
-    //    self.navigationItem.rightBarButtonItem = backItem2 ;
-    //    [self.view addSubview:updatebtn];
 }
 
 -(void)back{
@@ -203,8 +200,7 @@
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: txtField2.text , @"description" , txtField.text , @"name" , _clubId , @"id" ,  uvo.phone  , @"token" , picUrl , @"logourl" , nil];
-    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: txtField2.text , @"description" , [CommonFunc base64StringFromText:txtField.text] , @"name" , _clubId , @"id" ,  uvo.phone  , @"token" , picUrl , @"logourl" , nil];
     [PPNetworkHelper POST:updateClub parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
             self.HUD.mode = MBProgressHUDModeText;

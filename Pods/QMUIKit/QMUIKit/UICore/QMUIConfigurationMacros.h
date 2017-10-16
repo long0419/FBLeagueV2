@@ -135,6 +135,7 @@
 #define SearchBarTintColor                              [QMUICMI searchBarTintColor]
 #define SearchBarTextColor                              [QMUICMI searchBarTextColor]
 #define SearchBarPlaceholderColor                       [QMUICMI searchBarPlaceholderColor]
+#define SearchBarFont                                   [QMUICMI searchBarFont]
 #define SearchBarSearchIconImage                        [QMUICMI searchBarSearchIconImage]
 #define SearchBarClearIconImage                         [QMUICMI searchBarClearIconImage]
 #define SearchBarTextFieldCornerRadius                  [QMUICMI searchBarTextFieldCornerRadius]
@@ -164,8 +165,6 @@
 #define TableViewSectionFooterFont                 [QMUICMI tableViewSectionFooterFont]
 #define TableViewSectionHeaderTextColor            [QMUICMI tableViewSectionHeaderTextColor]
 #define TableViewSectionFooterTextColor            [QMUICMI tableViewSectionFooterTextColor]
-#define TableViewSectionHeaderHeight               [QMUICMI tableViewSectionHeaderHeight]               // 列表sectionheader的高度
-#define TableViewSectionFooterHeight               [QMUICMI tableViewSectionFooterHeight]               // 列表sectionheader的高度
 #define TableViewSectionHeaderContentInset         [QMUICMI tableViewSectionHeaderContentInset]
 #define TableViewSectionFooterContentInset         [QMUICMI tableViewSectionFooterContentInset]
 
@@ -173,8 +172,8 @@
 #define TableViewGroupedSectionFooterFont          [QMUICMI tableViewGroupedSectionFooterFont]
 #define TableViewGroupedSectionHeaderTextColor     [QMUICMI tableViewGroupedSectionHeaderTextColor]
 #define TableViewGroupedSectionFooterTextColor     [QMUICMI tableViewGroupedSectionFooterTextColor]
-#define TableViewGroupedSectionHeaderHeight        [QMUICMI tableViewGroupedSectionHeaderHeight]
-#define TableViewGroupedSectionFooterHeight        [QMUICMI tableViewGroupedSectionFooterHeight]
+#define TableViewGroupedSectionHeaderDefaultHeight [QMUICMI tableViewGroupedSectionHeaderDefaultHeight]
+#define TableViewGroupedSectionFooterDefaultHeight [QMUICMI tableViewGroupedSectionFooterDefaultHeight]
 #define TableViewGroupedSectionHeaderContentInset  [QMUICMI tableViewGroupedSectionHeaderContentInset]
 #define TableViewGroupedSectionFooterContentInset  [QMUICMI tableViewGroupedSectionFooterContentInset]
 
@@ -192,6 +191,5 @@
 #define StatusbarStyleLightInitially                    [QMUICMI statusbarStyleLightInitially]      // 默认的状态栏内容是否使用白色，默认为NO，也即黑色
 #define NeedsBackBarButtonItemTitle                     [QMUICMI needsBackBarButtonItemTitle]       // 全局是否需要返回按钮的title，不需要则只显示一个返回image
 #define HidesBottomBarWhenPushedInitially               [QMUICMI hidesBottomBarWhenPushedInitially] // QMUICommonViewController.hidesBottomBarWhenPushed 的初始值，默认为 NO，以保持与系统默认值一致，但通常建议改为 YES，因为一般只有 tabBar 首页那几个界面要求为 NO
-#define NavigationBarHiddenStateUsable                  [QMUICMI navigationBarHiddenStateUsable]    // NavigationBarHiddenStateUsable : 是否使用 navigationBarHiddenState 来管理导航栏的显示隐藏的初始值，默认为NO
-#define NavigationBarHiddenStateInitially               [QMUICMI navigationBarHiddenStateInitially] // NavigationBarHiddenStateInitially : preferredNavigationBarHiddenState 的初始值，默认为QMUINavigationBarHiddenStateShowWithAnimated
+#define NavigationBarHiddenInitially                    [QMUICMI navigationBarHiddenInitially]      // NavigationBarHiddenInitially : preferredNavigationBarHidden 的初始值，默认为NO
 

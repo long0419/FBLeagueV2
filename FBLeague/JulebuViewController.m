@@ -58,6 +58,7 @@
                 clubVo.areaname = object[@"club"][@"areaname"] ;
                 clubVo.name = object[@"club"][@"name"];
                 clubVo.cid = object[@"club"][@"id"] ;
+                clubVo.fansCount = object[@"club"][@"fansCount"] ;
                 clubVo.provincecode = object[@"club"][@"provincecode"] ;
                 clubVo.cid = object[@"club"][@"id"] ;
                 clubVo.creator = object[@"club"][@"creator"] ;
@@ -132,28 +133,15 @@
     head.frame = CGRectMake(30, 25 , 140/2, 140/2) ;
     head.layer.masksToBounds =YES;
     head.layer.cornerRadius = 10 ;
-
     [header addSubview:head];
     
-    NSString *name =  clubVo.name ;
+    NSString *name = [CommonFunc textFromBase64String: clubVo.name] ;
     CGSize nameSize = [NSString getStringContentSizeWithFontSize:34/2 andContent:name];
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(head.right + 12 , head.top , nameSize.width, nameSize.height)];
     nameLabel.font = [UIFont systemFontOfSize:30/2];
     nameLabel.textColor = [UIColor colorWithHexString:@"000"];
     nameLabel.text = name ;
     [header addSubview:nameLabel];
-    
-    UILabel *titleLabel = [UILabel new];
-    titleLabel.font = [UIFont systemFontOfSize:10];
-    titleLabel.numberOfLines = 0;//多行显示，计算高度
-    titleLabel.textColor = [UIColor colorWithHexString:@"000"];
-    NSString *desc = clubVo.desc ;
-    CGSize titleSize = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc];
-    titleLabel.size = titleSize;
-    titleLabel.text = desc ;
-    titleLabel.x = nameLabel.left ;
-    titleLabel.y = nameLabel.bottom + 5 ;
-//    [header addSubview:titleLabel];
     
     UILabel *titleLabel2 = [UILabel new];
     titleLabel2.font = [UIFont systemFontOfSize:10];
@@ -166,6 +154,18 @@
     titleLabel2.x = nameLabel.left ;
     titleLabel2.y = nameLabel.bottom + 5 ;
     [header addSubview:titleLabel2];
+    
+    UILabel *titleLabel = [UILabel new];
+    titleLabel.font = [UIFont systemFontOfSize:10];
+    titleLabel.numberOfLines = 0;//多行显示，计算高度
+    titleLabel.textColor = [UIColor colorWithHexString:@"000"];
+    CGSize titleSize = [NSString getMultiStringContentSizeWithFontSize:10 andContent:[NSString stringWithFormat:@"粉丝：%@" ,  clubVo.fansCount]];
+    titleLabel.size = titleSize;
+    titleLabel.text = [NSString stringWithFormat:@"粉丝：%@" ,  clubVo.fansCount] ;
+    titleLabel.x = nameLabel.left ;
+    titleLabel.y = titleLabel2.bottom + 5 ;
+    [header addSubview:titleLabel];
+
 
     UILabel *titleLabel3 = [UILabel new];
     titleLabel3.font = [UIFont systemFontOfSize:10];
@@ -176,7 +176,7 @@
     titleLabel3.size = titleSize3;
     titleLabel3.text = desc3 ;
     titleLabel3.x = nameLabel.left ;
-    titleLabel3.y = titleLabel2.bottom + 5 ;
+    titleLabel3.y = titleLabel.bottom + 5 ;
     [header addSubview:titleLabel3];
 
     DongtaiViewController *dongtai = [DongtaiViewController new] ;

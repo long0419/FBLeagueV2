@@ -9,10 +9,8 @@
 #import "QMUIConfiguration.h"
 #import "QMUICore.h"
 #import "UIImage+QMUI.h"
-#import "QMUIButton.h"
 #import "NSString+QMUI.h"
-#import "QMUITabBarViewController.h"
-#import "QMUINavigationController.h"
+#import "UIViewController+QMUI.h"
 
 @implementation QMUIConfiguration
 
@@ -21,17 +19,17 @@
     static QMUIConfiguration *sharedInstance = nil;
     
     // 检查是否有在某些类的 +load 方法里调用 QMUICMI，因为在 [QMUIConfiguration init] 方法里会操作到 UI 的东西，例如 [UINavigationBar appearance] xxx 等，这些操作不能太早（+load 里就太早了）执行，否则会 crash，所以加这个检测
-#ifdef DEBUG
-    BOOL shouldCheckCallStack = NO;
-    if (shouldCheckCallStack) {
-        for (NSString *symbol in [NSThread callStackSymbols]) {
-            if ([symbol qmui_includesString:@" load]"]) {
-                NSAssert(NO, @"不应该在 + load 方法里调用 %s", __func__);
-                return nil;
-            }
-        }
-    }
-#endif
+//#ifdef DEBUG
+//    BOOL shouldCheckCallStack = NO;
+//    if (shouldCheckCallStack) {
+//        for (NSString *symbol in [NSThread callStackSymbols]) {
+//            if ([symbol qmui_includesString:@" load]"]) {
+//                NSAssert(NO, @"不应该在 + load 方法里调用 %s", __func__);
+//                return nil;
+//            }
+//        }
+//    }
+//#endif
     
     dispatch_once(&pred, ^{
         sharedInstance = [[QMUIConfiguration alloc] init];
@@ -157,6 +155,7 @@
     self.searchBarTintColor = nil;
     self.searchBarTextColor = nil;
     self.searchBarPlaceholderColor = self.placeholderColor;
+    self.searchBarFont = nil;
     self.searchBarSearchIconImage = nil;
     self.searchBarClearIconImage = nil;
     self.searchBarTextFieldCornerRadius = 2.0;
@@ -187,8 +186,6 @@
     self.tableViewSectionFooterFont = UIFontBoldMake(12);
     self.tableViewSectionHeaderTextColor = self.grayDarkenColor;
     self.tableViewSectionFooterTextColor = self.grayColor;
-    self.tableViewSectionHeaderHeight = 20;
-    self.tableViewSectionFooterHeight = 0;
     self.tableViewSectionHeaderContentInset = UIEdgeInsetsMake(4, 15, 4, 15);
     self.tableViewSectionFooterContentInset = UIEdgeInsetsMake(4, 15, 4, 15);
     
@@ -196,8 +193,8 @@
     self.tableViewGroupedSectionFooterFont = UIFontMake(12);
     self.tableViewGroupedSectionHeaderTextColor = self.grayDarkenColor;
     self.tableViewGroupedSectionFooterTextColor = self.grayColor;
-    self.tableViewGroupedSectionHeaderHeight = 15;
-    self.tableViewGroupedSectionFooterHeight = 1;
+    self.tableViewGroupedSectionHeaderDefaultHeight = UITableViewAutomaticDimension;
+    self.tableViewGroupedSectionFooterDefaultHeight = UITableViewAutomaticDimension;
     self.tableViewGroupedSectionHeaderContentInset = UIEdgeInsetsMake(16, 15, 8, 15);
     self.tableViewGroupedSectionFooterContentInset = UIEdgeInsetsMake(8, 15, 2, 15);
     
@@ -212,8 +209,17 @@
     self.statusbarStyleLightInitially = NO;
     self.needsBackBarButtonItemTitle = NO;
     self.hidesBottomBarWhenPushedInitially = NO;
-    self.navigationBarHiddenStateUsable = NO;
-    self.navigationBarHiddenStateInitially = QMUINavigationBarHiddenStateShowWithAnimated;
+    self.navigationBarHiddenInitially = NO;
+}
+
+- (void)setNavBarButtonFont:(UIFont *)navBarButtonFont {
+    _navBarButtonFont = navBarButtonFont;
+    // by molice 2017-08-04 只要用 appearence 的方式修改 UIBarButtonItem 的 font，就会导致界面切换时 UIBarButtonItem 抖动，系统的问题，所以暂时不修改 appearance。
+//    if (navBarButtonFont) {
+//        UIBarButtonItem *barButtonItemAppearance = [UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil];
+//        [barButtonItemAppearance setTitleTextAttributes:@{NSFontAttributeName: navBarButtonFont} forState:UIControlStateNormal];
+//        [barButtonItemAppearance setTitleTextAttributes:[barButtonItemAppearance titleTextAttributesForState:UIControlStateNormal] forState:UIControlStateHighlighted];
+//    }
 }
 
 - (void)setNavBarTintColor:(UIColor *)navBarTintColor {
@@ -277,7 +283,7 @@
         UINavigationBar *navigationBar = [QMUIHelper visibleViewController].navigationController.navigationBar;
         
         // 返回按钮的图片frame是和系统默认的返回图片的大小一致的（13, 21），所以用自定义返回箭头时要保证图片大小与系统的箭头大小一样，否则无法对齐
-        CGSize systemBackIndicatorImageSize = CGSizeMake(13, 21); // 在iOS9上实际测量得到
+        CGSize systemBackIndicatorImageSize = CGSizeMake(13, 21); // 在iOS 8-11 上实际测量得到
         CGSize customBackIndicatorImageSize = _navBarBackIndicatorImage.size;
         if (!CGSizeEqualToSize(customBackIndicatorImageSize, systemBackIndicatorImageSize)) {
             CGFloat imageExtensionVerticalFloat = CGFloatGetCenter(systemBackIndicatorImageSize.height, customBackIndicatorImageSize.height);

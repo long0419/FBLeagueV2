@@ -349,11 +349,9 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"verifyLoginStatus" object:self];
             
         }else{
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = object[@"message"];
-            [self.HUD hide:YES afterDelay:3];
-        }
+            [SVProgressHUD showErrorWithStatus:object[@"msg"]];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+       }
         
         [self closeProgressView];
     } failure:^(NSError *error) {

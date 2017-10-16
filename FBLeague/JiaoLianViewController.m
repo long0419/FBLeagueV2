@@ -189,11 +189,8 @@
 #pragma mark 点击行
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
     CoachVo *vo = [coachList objectAtIndex:indexPath.section];
-    
     [self.delegate gotoDetail:vo.phone];
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

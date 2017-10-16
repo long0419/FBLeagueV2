@@ -49,22 +49,34 @@
     
 }
 
+-(void)setBackBottmAndTitle{
+    UIButton *backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backViewBtn.frame = CGRectMake(0, 0, 17, 17);
+    [backViewBtn setImage:[UIImage imageNamed:@"back2"] forState:UIControlStateNormal];
+    [backViewBtn addTarget:self action: @selector(back)
+          forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
+    self.navigationItem.leftBarButtonItem = backItem ;
+}
+
+
 -(void) sendapply : (NSString *)clubid andWith :(NSString *)phone {
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: clubid ,  @"clubId" , phone , @"phone",uvo.phone ,  @"token", nil];
     
-    [PPNetworkHelper POST:getApplyTrainee parameters:params success:^(id object) {
+    [PPNetworkHelper POST:joinTrainee parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"同意申请";
+            [SVProgressHUD showSuccessWithStatus: @"同意申请"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+            
             [self.HUD hide:YES afterDelay:3];
         }else {
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"系统错误";
+            [SVProgressHUD showErrorWithStatus: @"系统错误"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+            
+            
             [self.HUD hide:YES afterDelay:3];
         }
     } failure:^(NSError *error) {
@@ -81,7 +93,7 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.club , @"clubId"  , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:getApplyTrainee parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
-            NSDictionary *list = object[@"users"];
+            NSDictionary *list = object[@"applicants"];
             UserDataVo *vo = nil ;
             [coachList removeAllObjects];
             

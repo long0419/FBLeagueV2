@@ -169,29 +169,19 @@ extern NSString *const _Nonnull QMUIResourcesQQEmotionBundleName;
 + (CGAffineTransform)transformWithInterfaceOrientation:(UIInterfaceOrientation)orientation;
 @end
 
-@interface QMUIHelper (ViewController)
-
-/**
- * 获取当前应用里最顶层的可见viewController
- * @warning 注意返回值可能为nil，要做好保护
- */
-+ (nullable UIViewController *)visibleViewController;
-
-@end
-
 @interface QMUIHelper (UIApplication)
 
 /**
- * 更改状态栏内容颜色为深色
+ *  更改状态栏内容颜色为深色
  *
- * @warning 需在Info.plist文件内设置字段“View controller-based status bar appearance”的值为“NO”才能生效
+ *  @warning 需在项目的 Info.plist 文件内设置字段 “View controller-based status bar appearance” 的值为 NO 才能生效，如果不设置，或者值为 YES，则请通过系统的 - UIViewController preferredStatusBarStyle 方法来修改
  */
 + (void)renderStatusBarStyleDark;
 
 /**
- * 更改状态栏内容颜色为浅色
+ *  更改状态栏内容颜色为浅色
  *
- * @warning 需在Info.plist文件内设置字段“View controller-based status bar appearance”的值为“NO”才能生效
+ *  @warning 需在项目的 Info.plist 文件内设置字段 “View controller-based status bar appearance” 的值为 NO 才能生效，如果不设置，或者值为 YES，则请通过系统的 - UIViewController preferredStatusBarStyle 方法来修改
  */
 + (void)renderStatusBarStyleLight;
 

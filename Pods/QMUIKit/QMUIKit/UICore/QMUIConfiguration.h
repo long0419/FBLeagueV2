@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "QMUINavigationController.h"
 
 /**
  *  维护项目全局 UI 配置的单例，通过业务项目自己的 QMUIConfigurationTemplate 来为这个单例赋值，而业务代码里则通过 QMUIConfigurationMacros.h 文件里的宏来使用这些值。
@@ -121,6 +120,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong, nullable) UIColor  *searchBarTintColor;
 @property(nonatomic, strong, nullable) UIColor  *searchBarTextColor;
 @property(nonatomic, strong, nullable) UIColor  *searchBarPlaceholderColor;
+@property(nonatomic, strong, nullable) UIFont   *searchBarFont;
 /// 搜索框放大镜icon的图片，大小必须为13x13pt，否则会失真（系统的限制）
 @property(nonatomic, strong, nullable) UIImage  *searchBarSearchIconImage;
 @property(nonatomic, strong, nullable) UIImage  *searchBarClearIconImage;
@@ -152,8 +152,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong, nullable) UIFont   *tableViewSectionFooterFont;
 @property(nonatomic, strong, nullable) UIColor  *tableViewSectionHeaderTextColor;
 @property(nonatomic, strong, nullable) UIColor  *tableViewSectionFooterTextColor;
-@property(nonatomic, assign) CGFloat            tableViewSectionHeaderHeight;
-@property(nonatomic, assign) CGFloat            tableViewSectionFooterHeight;
 @property(nonatomic, assign) UIEdgeInsets       tableViewSectionHeaderContentInset;
 @property(nonatomic, assign) UIEdgeInsets       tableViewSectionFooterContentInset;
 
@@ -161,8 +159,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong, nullable) UIFont   *tableViewGroupedSectionFooterFont;
 @property(nonatomic, strong, nullable) UIColor  *tableViewGroupedSectionHeaderTextColor;
 @property(nonatomic, strong, nullable) UIColor  *tableViewGroupedSectionFooterTextColor;
-@property(nonatomic, assign) CGFloat            tableViewGroupedSectionHeaderHeight;
-@property(nonatomic, assign) CGFloat            tableViewGroupedSectionFooterHeight;
+@property(nonatomic, assign) CGFloat            tableViewGroupedSectionHeaderDefaultHeight;
+@property(nonatomic, assign) CGFloat            tableViewGroupedSectionFooterDefaultHeight;
 @property(nonatomic, assign) UIEdgeInsets       tableViewGroupedSectionHeaderContentInset;
 @property(nonatomic, assign) UIEdgeInsets       tableViewGroupedSectionFooterContentInset;
 
@@ -178,8 +176,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign) BOOL               statusbarStyleLightInitially;
 @property(nonatomic, assign) BOOL               needsBackBarButtonItemTitle;
 @property(nonatomic, assign) BOOL               hidesBottomBarWhenPushedInitially;
-@property(nonatomic, assign) BOOL               navigationBarHiddenStateUsable;
-@property(nonatomic, assign) QMUINavigationBarHiddenState navigationBarHiddenStateInitially;
+@property(nonatomic, assign) BOOL               navigationBarHiddenInitially;
 
 NS_ASSUME_NONNULL_END
 

@@ -34,24 +34,31 @@
         self.lineBreakMode = NSLineBreakByClipping;
         self.clipsToBounds = YES;// 显示非英文字符时，滚动的时候字符会稍微露出两端，所以这里直接裁剪掉
         
-        self.speed = .5;
-        self.pauseDurationWhenMoveToEdge = 2.5;
-        self.spacingBetweenHeadToTail = 40;
-        self.automaticallyValidateVisibleFrame = YES;
-        self.fadeWidth = 20;
-        self.fadeStartColor = UIColorMakeWithRGBA(255, 255, 255, 1);
-        self.fadeEndColor = UIColorMakeWithRGBA(255, 255, 255, 0);
-        self.shouldFadeAtEdge = YES;
-        self.textStartAfterFade = NO;
-        
-        self.isFirstDisplay = YES;
-        self.textRepeatCount = 2;
-        
-        self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(handleDisplayLink:)];
-        self.displayLink.paused = YES;
-        
+        [self didInitialized];
     }
     return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        [self didInitialized];
+    }
+    return self;
+}
+
+- (void)didInitialized {
+    self.speed = .5;
+    self.pauseDurationWhenMoveToEdge = 2.5;
+    self.spacingBetweenHeadToTail = 40;
+    self.automaticallyValidateVisibleFrame = YES;
+    self.fadeWidth = 20;
+    self.fadeStartColor = UIColorMakeWithRGBA(255, 255, 255, 1);
+    self.fadeEndColor = UIColorMakeWithRGBA(255, 255, 255, 0);
+    self.shouldFadeAtEdge = YES;
+    self.textStartAfterFade = NO;
+    
+    self.isFirstDisplay = YES;
+    self.textRepeatCount = 2;
 }
 
 - (void)dealloc {
@@ -62,9 +69,11 @@
 - (void)didMoveToWindow {
     [super didMoveToWindow];
     if (self.window) {
+        self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(handleDisplayLink:)];
         [self.displayLink addToRunLoop:[NSRunLoop currentRunLoop] forMode:NSRunLoopCommonModes];
     } else {
         [self.displayLink invalidate];
+        self.displayLink = nil;
     }
     self.offsetX = 0;
     self.displayLink.paused = ![self shouldPlayDisplayLink];
@@ -168,7 +177,7 @@
 }
 
 - (BOOL)shouldPlayDisplayLink {
-    BOOL result = self.window && CGRectGetWidth(self.bounds) > 0 && self.textWidth > CGRectGetWidth(self.bounds);
+    BOOL result = self.window && CGRectGetWidth(self.bounds) > 0 && self.textWidth > (CGRectGetWidth(self.bounds) - ((self.shouldFadeAtEdge && self.textStartAfterFade) ? self.fadeWidth : 0));
     
     // 如果 label.frame 在 window 可视区域之外，也视为不可见，暂停掉 displayLink
     if (result && self.automaticallyValidateVisibleFrame) {

@@ -113,22 +113,55 @@
     titleLabel3.x = (kScreen_Width - titleSize3.width)/2 ;
     titleLabel3.y = titleLabel2.bottom + 5 ;
     [header addSubview:titleLabel3];
-    
-    MemeberDataViewController *dongtai = [MemeberDataViewController new] ;
-    
+        
     DongtaiViewController *focus = [DongtaiViewController new];
     focus.type = @"3" ;
     focus.phone = _clubVo.areacode ;
     
     ClassesViewController *jiaolian = [ClassesViewController new] ;
     
+    //这里做不了 他的赛程 由于leagueid 没有
     NSArray *viewControllers = @[
-                                 @{@"他的动态":focus},
-                                 @{@"他的数据":jiaolian}];
+                                 @{@"俱乐部动态":focus},
+                                 @{@"俱乐部成员":jiaolian}];
     
-    YCSlideView * view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, header.bottom, kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
+    YCSlideView * view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, header.bottom, kScreen_Width, kScreen_Height - 20 - 44 - 40) WithViewControllers:viewControllers] ;
     [self.view addSubview:view];
     
+    UIButton *exit = [[UIButton alloc] initWithFrame:CGRectMake(-1 , kScreen_Height - 40 , kScreen_Width +2 , 40)];
+    [exit setTitle:@"申请加入" forState:UIControlStateNormal];
+    exit.titleLabel.font = [UIFont systemFontOfSize: 15];
+    [exit setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [exit addTarget:self action:@selector(apply) forControlEvents:UIControlEventTouchUpInside];
+    exit.backgroundColor = [UIColor whiteColor];
+    [exit.layer setBorderColor:[UIColor blackColor].CGColor];
+    [exit.layer setBorderWidth:0.5];
+    [self.view addSubview:exit];
+
+
+}
+
+-(void)apply{
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *uvo = [cache objectForKey:@"userData"];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _clubVo.cid , @"clubId" , uvo.phone , @"phone" ,  uvo.phone  , @"token" , nil];
+    [PPNetworkHelper POST:applyClub parameters:params success:^(id data) {
+        if([data[@"code"] isEqualToString:@"0000"]){
+            [SVProgressHUD showSuccessWithStatus: @"申请成功"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }else {
+            
+            [SVProgressHUD showErrorWithStatus: data[@"msg"]];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        }
+        
+    }failure:^(NSError *error) {
+        
+    }];
+
 }
 
 @end

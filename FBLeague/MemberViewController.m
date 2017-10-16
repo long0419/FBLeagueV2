@@ -94,19 +94,19 @@
     titleLabel2.text = desc2 ;
     titleLabel2.x = (kScreen_Width - titleSize2.width)/2 ;
     titleLabel2.y = titleLabel.bottom + 5 ;
-    [header addSubview:titleLabel2];
+//    [header addSubview:titleLabel2];
     
     UILabel *titleLabel3 = [UILabel new];
     titleLabel3.font = [UIFont systemFontOfSize:10];
     titleLabel3.numberOfLines = 0;//多行显示，计算高度
     titleLabel3.textColor = [UIColor colorWithHexString:@"ffffff"];
     //    NSString *desc =  [CommonFunc textFromBase64String:vo.desc];
-    NSString *desc3 = @"关注：200     粉丝：200" ;
-    CGSize titleSize3 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc2];
+    NSString *desc3 = [NSString stringWithFormat:@"粉丝：%@" , _userVo.fansCount] ;
+    CGSize titleSize3 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc3];
     titleLabel3.size = titleSize3;
     titleLabel3.text = desc3 ;
     titleLabel3.x = (kScreen_Width - titleSize3.width)/2 ;
-    titleLabel3.y = titleLabel2.bottom + 5 ;
+    titleLabel3.y = titleLabel.bottom + 5 ;
     [header addSubview:titleLabel3];
     
     MemeberDataViewController *dongtai = [MemeberDataViewController new] ;

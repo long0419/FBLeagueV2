@@ -78,7 +78,7 @@
                 }
             }else{
                 if ([_vo.matchstatus isEqualToString:@"11"]) {
-                    if (![_vo.homesubmit isEqualToString:@"<null>"] && ![_vo.visitingsubmit isEqualToString:@"<null>"] ) {
+                    if ([_vo.homesubmit isEqualToString:@"<null>"] ||[_vo.visitingsubmit isEqualToString:@"<null>"] ) {
                         [self status3 : _vo] ; //status3 用于只显示提交赛过
                     }
                 }else{
@@ -197,7 +197,7 @@
     [bg addSubview:name4];
     name4.origin = CGPointMake(30 , name3.bottom + 13);
 
-    NSString *title = @"" ;
+    NSString *title = @"提交赛果" ;
     if ([_vo.matchstatus isEqualToString:@"33"]) { //应战
         if ([_vo.launchclub isEqualToString:_vo.homeclub]) {
             title = @"去迎战" ;
@@ -291,7 +291,7 @@
     slider.decreaseTitle = @"－";
     slider.maxValue = 10 ;
     slider.minValue = 1 ;
-    slider.rawValue = 1 ;
+    slider.rawValue = 5 ;
     slider.resultBlock = ^(NSString *num){
         ravalue = num ;
     };

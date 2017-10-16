@@ -102,7 +102,7 @@
                     vo.openidbyqq = dic[@"openidbyqq"] ;
                     vo.openidbywx = dic[@"openidbywx"] ;
                     vo.certification = dic[@"certification"] ;
-                    
+                    vo.fansCount = dic[@"fansCount"] ;
                     [kouList addObject:vo];
                 }
             }

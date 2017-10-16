@@ -96,6 +96,8 @@
 		FD75D2401F26486200306F77 /* DongtaiVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D23F1F26486200306F77 /* DongtaiVo.m */; };
 		FD75D2431F26491C00306F77 /* CommentVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D2421F26491C00306F77 /* CommentVo.m */; };
 		FD76CB3E1F0B87AE0047C0FE /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76CB391F0B87AE0047C0FE /* RegisterViewController.m */; };
+		FD85D4F91F94BA7E005BD767 /* QiuYuanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD85D4F81F94BA7E005BD767 /* QiuYuanDetailViewController.m */; };
+		FD85D4FF1F94BB22005BD767 /* QiuYuanVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD85D4FE1F94BB22005BD767 /* QiuYuanVo.m */; };
 		FD8F08F41F3418B60067AF4C /* MyQiuYuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8F08F31F3418B60067AF4C /* MyQiuYuanViewController.m */; };
 		FD92B0161F9265FE006DBE65 /* UpdateClubInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD92B0151F9265FE006DBE65 /* UpdateClubInfoViewController.m */; };
 		FD979CC91F09473700F5BFBB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD979CC81F09473700F5BFBB /* LoginViewController.m */; };
@@ -434,6 +436,12 @@
 		FD75D2421F26491C00306F77 /* CommentVo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentVo.m; sourceTree = "<group>"; };
 		FD76CB381F0B87AE0047C0FE /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		FD76CB391F0B87AE0047C0FE /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		FD85D4F71F94BA7E005BD767 /* QiuYuanDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiuYuanDetailViewController.h; sourceTree = "<group>"; };
+		FD85D4F81F94BA7E005BD767 /* QiuYuanDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiuYuanDetailViewController.m; sourceTree = "<group>"; };
+		FD85D4FB1F94BB05005BD767 /* ExplainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExplainView.m; sourceTree = "<group>"; };
+		FD85D4FC1F94BB05005BD767 /* ExplainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExplainView.h; sourceTree = "<group>"; };
+		FD85D4FD1F94BB22005BD767 /* QiuYuanVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiuYuanVo.h; sourceTree = "<group>"; };
+		FD85D4FE1F94BB22005BD767 /* QiuYuanVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiuYuanVo.m; sourceTree = "<group>"; };
 		FD8F08F21F3418B60067AF4C /* MyQiuYuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyQiuYuanViewController.h; sourceTree = "<group>"; };
 		FD8F08F31F3418B60067AF4C /* MyQiuYuanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyQiuYuanViewController.m; sourceTree = "<group>"; };
 		FD92B0141F9265FD006DBE65 /* UpdateClubInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateClubInfoViewController.h; sourceTree = "<group>"; };
@@ -1002,8 +1010,19 @@
 				FD75D2381F2583C200306F77 /* ClassesViewController.m */,
 				FD75D23A1F2583E400306F77 /* MemeberDataViewController.h */,
 				FD75D23B1F2583E400306F77 /* MemeberDataViewController.m */,
+				FD85D4F71F94BA7E005BD767 /* QiuYuanDetailViewController.h */,
+				FD85D4F81F94BA7E005BD767 /* QiuYuanDetailViewController.m */,
 			);
 			name = "教练员详情";
+			sourceTree = "<group>";
+		};
+		FD85D4FA1F94BAF9005BD767 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				FD85D4FC1F94BB05005BD767 /* ExplainView.h */,
+				FD85D4FB1F94BB05005BD767 /* ExplainView.m */,
+			);
+			name = common;
 			sourceTree = "<group>";
 		};
 		FDA116671F01FC67007F253C /* GTMBase64-master */ = {
@@ -1206,6 +1225,8 @@
 		FDAA38251DD2BDEA0038658F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FD85D4FD1F94BB22005BD767 /* QiuYuanVo.h */,
+				FD85D4FE1F94BB22005BD767 /* QiuYuanVo.m */,
 				FD9A52821F8B394000A64E6D /* SponsorVo.h */,
 				FD9A52811F8B394000A64E6D /* SponsorVo.m */,
 				FD9A527F1F8B390200A64E6D /* FCListVo.h */,
@@ -1233,6 +1254,7 @@
 		FDAA38261DD2BDF10038658F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FD85D4FA1F94BAF9005BD767 /* common */,
 				FD242A6A1F5FDD8A0039A8A4 /* liansai */,
 				FDC497AB1F29AE85002E7105 /* me */,
 				FD352FC51F1FA3A700EA2A60 /* shouye */,
@@ -1657,11 +1679,6 @@
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/QMUIKit/QMUIKit/UIResources/QMUIResources.bundle",
 				"${PODS_ROOT}/QMUIKit/QMUIKit/UIResources/QMUI_QQEmotion.bundle",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RongCloud.bundle",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/en.lproj",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/zh-Hans.lproj",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/Emoji.plist",
-				"${PODS_ROOT}/RongCloudIM/RongCloudIM/RCConfig.plist",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
 				"${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle",
 			);
@@ -1769,6 +1786,7 @@
 				FD9A527D1F8B38D800A64E6D /* FCListViewSingle.m in Sources */,
 				FDF6B0091F0A8F740074CB39 /* DSLLoginTextField.m in Sources */,
 				FDF6FD1D1F20EAF300B4FB73 /* SearchCoachViewController.m in Sources */,
+				FD85D4FF1F94BB22005BD767 /* QiuYuanVo.m in Sources */,
 				FD352FC81F1FA3DB00EA2A60 /* CoachChooseTableViewCell.m in Sources */,
 				FDAA381A1DD2BDA40038658F /* NSString+Common.m in Sources */,
 				FD1F2C691F0490EC00063765 /* QDCommonViewController.m in Sources */,
@@ -1835,6 +1853,7 @@
 				FDC497BB1F29AF1A002E7105 /* ACActionSheet.m in Sources */,
 				FD38A5BE1F84E6C9007CAF28 /* UpdateUserInfoViewController.m in Sources */,
 				FD9A53D91F8B4FB000A64E6D /* AddClubMemberViewController.m in Sources */,
+				FD85D4F91F94BA7E005BD767 /* QiuYuanDetailViewController.m in Sources */,
 				FD4269641F6B6468006B7C56 /* PPNumberButton.m in Sources */,
 				FDFAE5F61F10EE82008DF0BB /* FocusViewController.m in Sources */,
 				FDD3AF6D1F21C9B700EA7C23 /* VerifyClubViewController.m in Sources */,
@@ -2048,6 +2067,7 @@
 				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FBLeague;
 				PRODUCT_NAME = "咖盟";
+				VALID_ARCHS = "arm64 armv7 armv7s armv6";
 			};
 			name = Debug;
 		};
@@ -2112,6 +2132,7 @@
 				OTHER_LDFLAGS = "${inherited}";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FBLeague;
 				PRODUCT_NAME = "咖盟";
+				VALID_ARCHS = "arm64 armv7 armv7s armv6";
 			};
 			name = Release;
 		};

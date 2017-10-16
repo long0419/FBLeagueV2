@@ -29,12 +29,12 @@
         UILabel *focusLabel = nil ;
         focus.backgroundColor = [UIColor whiteColor];
         focus.layer.borderWidth = 1;
-        focus.layer.borderColor = [UIColor colorWithHexString:@"2eb66a"].CGColor ;
+        focus.layer.borderColor = [UIColor colorWithHexString:@"000"].CGColor ;
             
         CGSize focusSize = [NSString getStringContentSizeWithFontSize:14 andContent:@"审核通过"];
         focusLabel = [[UILabel alloc] initWithFrame:CGRectMake((focus.width - focusSize.width)/2 , (focus.height - focusSize.height)/2, focusSize.width, focusSize.height)];
         focusLabel.font = [UIFont systemFontOfSize:14];
-        focusLabel.textColor = [UIColor colorWithHexString:@"2eb66a"];
+        focusLabel.textColor = [UIColor colorWithHexString:@"000"];
         focusLabel.text = @"审核通过" ;
         focusLabel.tag = 12 ;
         focusLabel.accessibilityHint = num ;
@@ -67,18 +67,16 @@
         image = [UIImage imageNamed:imageName];
         [imageView setImage:image];
     }else{
-//        NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:imageName]];
-//        image = [UIImage imageWithData:data];
-        [imageView sd_setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:nil];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:imageName] placeholderImage:[UIImage imageNamed:@"defaulthead"]];
 
     }
     [bg addSubview:imageView];
     
-    CGSize nameSize = [NSString getStringContentSizeWithFontSize:32/2 andContent:[NSString stringWithFormat:@"%@" , name]];
+    CGSize nameSize = [NSString getStringContentSizeWithFontSize:32/2 andContent:[NSString stringWithFormat:@"%@" , [CommonFunc textFromBase64String:name]]];
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.right + 32/2 , imageView.top , nameSize.width, nameSize.height)];
     nameLabel.font = [UIFont systemFontOfSize:32/2];
     nameLabel.textColor = [UIColor colorWithHexString:@"333333"];
-    nameLabel.text = [NSString stringWithFormat:@"%@" , name] ;
+    nameLabel.text = [NSString stringWithFormat:@"%@" , [CommonFunc textFromBase64String:name]] ;
     [bg addSubview:nameLabel];
     
     NSString *roleName = @"教练员";
@@ -100,7 +98,9 @@
 -(void)apply:(UITapGestureRecognizer *)sender{
     sender.self.view.backgroundColor = [UIColor blackColor];
     UILabel *label = [sender.self.view viewWithTag:12];
-    label.text = @"已关注" ;
+    label.text = @"已通过" ;
+    CGSize textSize = [NSString getStringContentSizeWithFontSize:14 andContent:@"已通过"];
+    label.size = textSize ;
     label.textColor = [UIColor colorWithHexString:@"ffffff"];
     [self.delegate sendapply:label.accessibilityHint andWith:@""];
 }
