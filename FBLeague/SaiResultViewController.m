@@ -357,10 +357,13 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid , @"scheduleId" , uvo.club , @"requestClubId" , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:cancelMatch parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"发布成功";
-            [self.HUD hide:YES afterDelay:3];
+            
+            
+            [SVProgressHUD showSuccessWithStatus:@"取消比赛成功"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+            
+
+            
             [self.navigationController popViewControllerAnimated:YES];
         }
     } failure:^(NSError *error) {
