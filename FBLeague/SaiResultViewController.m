@@ -226,7 +226,7 @@
 
         }
     }else if([_vo.matchstatus isEqualToString:@"22"]){ //取消比赛
-        if ([_vo.launchclub isEqualToString:_vo.homeclub]) {
+        if ([_vo.launchclub isEqualToString:uvo.club]) {
             [button addTarget:self action:@selector(cancelZhan) forControlEvents:UIControlEventTouchUpInside];
 
         }
