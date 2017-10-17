@@ -243,6 +243,17 @@
     return  [content boundingRectWithSize:CGSizeMake(kScreen_Width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:size]} context:nil].size;
 }
 
++(NSString*)removeFloatAllZero:(NSString*)string
+
+{
+    NSString * testNumber = string;
+    
+    NSString * outNumber = [NSString stringWithFormat:@"%@",@(testNumber.floatValue)];
+    return outNumber;
+    
+}
+
+
 + (BOOL)validateIDCardNumber:(NSString *)identityCard {
     BOOL flag;
     

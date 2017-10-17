@@ -70,20 +70,38 @@
         
         if([object[@"code"] isEqualToString:@"0000"]){
             NSDictionary *list = object[@"page"][@"list"];
-            CoachVo *model = nil ;
+            UserDataVo *model = nil ;
             [coachList removeAllObjects];
             
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
-                    model = [CoachVo new];
-                    model.cityName = [NSString stringWithFormat:@"%@ %@" , dic[@"cityname"] , dic[@"areaname"]] ;
-                    model.headerUrl = [NSString stringWithFormat:@"%@" , dic[@"headpicurl"]] ;
-                    model.firstLetter = [NSString stringWithFormat:@"%@" ,dic[@"firstLetter"]] ;
-                    model.fansCount = [NSString stringWithFormat:@"%@" ,dic[@"fansCount"]] ;
-                    model.hasFocus = [NSString stringWithFormat:@"%@" ,dic[@"hasfocus"]] ;
-                    model.level = [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
-                    model.name = [CommonFunc textFromBase64String:[NSString stringWithFormat:@"%@" ,dic[@"nickname"]]] ;
+                    model = [UserDataVo new];
+                    model.registrationid =  [NSString stringWithFormat:@"%@" ,dic[@"registrationid"]]  ;
+                    model.areacode =  [NSString stringWithFormat:@"%@" ,dic[@"areacode"]]  ;
+                    model.cityName =  [NSString stringWithFormat:@"%@" ,dic[@"cityname"]]  ;
+                    model.position =  [NSString stringWithFormat:@"%@" ,dic[@"position"]]  ;
+                    model.regtime =  [NSString stringWithFormat:@"%@" ,dic[@"regtime"]]  ;
+                    model.team =  [NSString stringWithFormat:@"%@" ,dic[@"team"]]  ;
+                    model.areaname =  [NSString stringWithFormat:@"%@" ,dic[@"areaname"]]  ;
+                    model.nickname =  [NSString stringWithFormat:@"%@" ,dic[@"nickname"]]  ;
+                    model.sex =  [NSString stringWithFormat:@"%@" ,dic[@"sex"]]  ;
+                    model.fansCount =  [NSString stringWithFormat:@"%@" ,dic[@"fansCount"]]  ;
+                    model.hasfocus =  [NSString stringWithFormat:@"%@" ,dic[@"hasfocus"]]  ;
+                    model.realname =  [NSString stringWithFormat:@"%@" ,dic[@"realname"]]  ;
+                    model.openidbyqq =  [NSString stringWithFormat:@"%@" ,dic[@"openidbyqq"]]  ;
+                    model.openidbywx =  [NSString stringWithFormat:@"%@" ,dic[@"openidbywx"]]  ;
+                    model.firstletter =  [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]]  ;
+                    model.level =  [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
                     model.phone =  [NSString stringWithFormat:@"%@" ,dic[@"phone"]]  ;
+                    model.headpicurl =  [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]]  ;
+                    model.provincecode =  [NSString stringWithFormat:@"%@" ,dic[@"provincecode"]]  ;
+                    model.role =  [NSString stringWithFormat:@"%@" ,dic[@"role"]]  ;
+                    model.citycode =  [NSString stringWithFormat:@"%@" ,dic[@"citycode"]]  ;
+                    model.club =  [NSString stringWithFormat:@"%@" ,dic[@"club"]]  ;
+                    model.brithday =  [NSString stringWithFormat:@"%@" ,dic[@"brithday"]]  ;
+                    model.certification =  [NSString stringWithFormat:@"%@" ,dic[@"certification"]]  ;
+                    model.desc =  [NSString stringWithFormat:@"%@" ,dic[@"description"]]  ;
+
                     [coachList addObject:model];
                 }
                 
@@ -107,8 +125,8 @@
 -(void)processCoachData{
     
     NSMutableArray *tmp = [[NSMutableArray alloc] init];
-    for (CoachVo *vo in coachList) {
-        [tmp addObject:[NSString stringWithFormat:@"%@" , vo.name]];
+    for (UserDataVo *vo in coachList) {
+        [tmp addObject:[NSString stringWithFormat:@"%@" , vo.nickname]];
     }
     
     self.indexArray = [ChineseString IndexArray:tmp];
@@ -132,9 +150,9 @@
     
     CoachChooseTableViewCell *cell = [[CoachChooseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Categorys];
     if (coachList.count > 0){
-        CoachVo *vo = [coachList objectAtIndex:indexPath.section];
+        UserDataVo *vo = [coachList objectAtIndex:indexPath.section];
 
-        [cell setPhoneContactCellByImageName:vo.headerUrl andWithName:vo.name andWithPhoneNum:vo.cityName andWithChoose:vo.hasFocus andWithindex:indexPath.section];
+        [cell setPhoneContactCellByImageName:vo.headpicurl andWithName:vo.nickname andWithPhoneNum:[NSString stringWithFormat:@"%@ %@" , vo.areaname , vo.cityName] andWithChoose:vo.hasfocus andWithindex:indexPath.section];
         
         cell.delegate =  self ;
         
@@ -149,8 +167,6 @@
     UserDataVo *uvo = [cache objectForKey:@"userData"];
     
     CoachVo *vo = [coachList objectAtIndex:view.tag];
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone , @"fanphone" , vo.phone , @"famousphone" , @"1", @"famoustype", uvo.phone , @"token" , nil];
     
     [PPNetworkHelper POST:focusPerson parameters:params success:^(id object) {
@@ -163,16 +179,12 @@
             focusLabel.text = @"已关注" ;
             view.userInteractionEnabled = NO ;
             
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"关注成功";
-            [self.HUD hide:YES afterDelay:3];
+            [SVProgressHUD showSuccessWithStatus:@"关注成功"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
             
         }else {
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"系统错误";
-            [self.HUD hide:YES afterDelay:3];
+            [SVProgressHUD showSuccessWithStatus:@"系统错误"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
         }
     } failure:^(NSError *error) {
         
@@ -189,8 +201,11 @@
 #pragma mark 点击行
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    CoachVo *vo = [coachList objectAtIndex:indexPath.section];
-    [self.delegate gotoDetail:vo.phone];
+    UserDataVo *vo = [coachList objectAtIndex:indexPath.section];
+
+    MemberViewController *mem = [MemberViewController new] ;
+    mem.userVo = vo ;
+    [self.navigationController pushViewController:mem animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

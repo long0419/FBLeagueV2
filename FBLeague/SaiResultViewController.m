@@ -145,14 +145,14 @@
     image2.layer.cornerRadius = 4 ;
     image2.layer.masksToBounds = true ;
     [bg addSubview:image2];
-     
+    
     QMUILabel *name = [[QMUILabel alloc] init];
     name.text = [CommonFunc textFromBase64String:_vo.homeclubname];
     name.font = UIFontMake(12);
     name.textColor = UIColorWhite ;
     [name sizeToFit];
     [bg addSubview:name];
-    name.origin = CGPointMake(30 , image.bottom + 21);
+    name.origin = CGPointMake(image.left , image.bottom + 21);
     
     QMUILabel *name2 = [[QMUILabel alloc] init];
     name2.text = [CommonFunc textFromBase64String: _vo.visitingclubname] ;
@@ -160,19 +160,17 @@
     name2.textColor = UIColorWhite ;
     [name2 sizeToFit];
     [bg addSubview:name2];
-    name2.origin = CGPointMake(kScreen_Width - name.width - 30 , image.bottom + 21);
+    name2.origin = CGPointMake(image2.left , image.bottom + 21);
     
 }
 
 -(void)status2 : (SaiChengVo *) vo{
     NSString *status = @"" ;
     if ([vo.matchstatus isEqualToString:@"33"]) {
-
         status = @"迎战" ;
         
     }else if([vo.matchstatus isEqualToString:@"22"]){
         status = @"取消比赛" ;
-        
     }
     
     QMUILabel *name2 = [[QMUILabel alloc] init];

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ClassesViewController.h"
 #import "MemeberDataViewController.h"
 #import "YCSlideView.h"
 #import "BaseViewController.h"
 #import "DongtaiViewController.h"
+#import "QiuYuanDataDetailViewController.h"
 
 @interface MemberViewController : BaseViewController
 

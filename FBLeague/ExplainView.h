@@ -12,9 +12,6 @@
 
 -(UIView *) showTipByText : (NSString *) txt andWithRect : (CGRect) rect ;
 
-@property (nonatomic , strong) UIImageView *tipShow ;
-@property (nonatomic , strong) UIView *tip ;
-
 -(UIView *) uploadPicAndTip : (NSString *)txt andWithRect : (CGRect) rect ;
 
 -(void) setTipShowPhoto :(NSString *) name withSize :(CGSize) size ;
@@ -28,6 +25,9 @@
 
 +(UIView *) metricDetail : (NSString *) title
               andWithNum :(CGFloat) num andWithColor : (NSString *) color andRight : (BOOL) isright ;
+
+@property (nonatomic , strong) UIImageView *tipShow ;
+@property (nonatomic , strong) UIView *tip ;
 
 
 @end

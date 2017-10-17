@@ -46,7 +46,6 @@
     dongtai2.height = self.view.frame.size.height - 20 - 44 - 98/2 - 36 - 10 ;
     
     jiaolian = [JiaoLianViewController new] ;
-    jiaolian.delegate = self ;
 
     NSArray *viewControllers = @[
                 @{@"全部动态":dongtai},

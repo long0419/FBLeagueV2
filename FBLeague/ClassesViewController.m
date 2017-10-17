@@ -80,6 +80,7 @@
                     vo.areacode = [NSString stringWithFormat:@"%@" , dic[@"areacode"]] ;
                     vo.brithday = [NSString stringWithFormat:@"%@" ,dic[@"brithday"]] ;
                     vo.citycode = [NSString stringWithFormat:@"%@" ,dic[@"citycode"]] ;
+                    vo.cityName = [NSString stringWithFormat:@"%@" ,dic[@"cityname"]] ;
                     vo.club = [NSString stringWithFormat:@"%@" ,dic[@"club"]]  ;
                     vo.desc = [NSString stringWithFormat:@"%@" ,dic[@"description"]]  ;
                     vo.firstletter =  [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]]  ;
@@ -99,6 +100,7 @@
                     vo.cityName = dic[@"cityname"] ;
                     vo.areaname = dic[@"areaname"] ;
                     vo.sex = dic[@"sex"] ;
+                    vo.team = dic[@"team"] ;
                     vo.openidbyqq = dic[@"openidbyqq"] ;
                     vo.openidbywx = dic[@"openidbywx"] ;
                     vo.certification = dic[@"certification"] ;

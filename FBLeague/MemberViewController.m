@@ -75,7 +75,7 @@
     titleLabel.font = [UIFont systemFontOfSize:10];
     titleLabel.numberOfLines = 0;//多行显示，计算高度
     titleLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
-    NSString *desc = @"武汉体育学院代表队" ;
+    NSString *desc = [CommonFunc textFromBase64String:_userVo.club] ;
     CGSize titleSize = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc];
     titleLabel.size = titleSize;
     titleLabel.text = desc ;
@@ -115,12 +115,12 @@
     focus.type = @"3" ;
     focus.phone = _userVo.phone ;
     
-    ClassesViewController *jiaolian = [ClassesViewController new] ;
+    QiuYuanDataDetailViewController *data = [QiuYuanDataDetailViewController new] ;
+    data.qPhone = _userVo.phone ;
     
     NSArray *viewControllers = @[
-//                                 @{@"他的课程":dongtai},
                                  @{@"他的动态":focus},
-                                 @{@"他的数据":jiaolian}];
+                                 @{@"他的数据":data}];
     
     YCSlideView * view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, header.bottom, kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
     [self.view addSubview:view];

@@ -11,6 +11,7 @@
 #import "BaseViewController.h"
 #import "CoachChooseTableViewCell.h"
 #import "BaseTableViewController.h"
+#import "MemberViewController.h"
 
 @protocol goToJiaoLianDetail <NSObject>
 

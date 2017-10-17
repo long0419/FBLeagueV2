@@ -96,7 +96,6 @@
 		FD75D2401F26486200306F77 /* DongtaiVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D23F1F26486200306F77 /* DongtaiVo.m */; };
 		FD75D2431F26491C00306F77 /* CommentVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD75D2421F26491C00306F77 /* CommentVo.m */; };
 		FD76CB3E1F0B87AE0047C0FE /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD76CB391F0B87AE0047C0FE /* RegisterViewController.m */; };
-		FD85D4F91F94BA7E005BD767 /* QiuYuanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD85D4F81F94BA7E005BD767 /* QiuYuanDetailViewController.m */; };
 		FD85D4FF1F94BB22005BD767 /* QiuYuanVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD85D4FE1F94BB22005BD767 /* QiuYuanVo.m */; };
 		FD8F08F41F3418B60067AF4C /* MyQiuYuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD8F08F31F3418B60067AF4C /* MyQiuYuanViewController.m */; };
 		FD92B0161F9265FE006DBE65 /* UpdateClubInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD92B0151F9265FE006DBE65 /* UpdateClubInfoViewController.m */; };
@@ -153,6 +152,9 @@
 		FDD3AF6A1F21B01900EA7C23 /* CreateClubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD3AF691F21B01900EA7C23 /* CreateClubViewController.m */; };
 		FDD3AF6D1F21C9B700EA7C23 /* VerifyClubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD3AF6C1F21C9B700EA7C23 /* VerifyClubViewController.m */; };
 		FDD7E3F11F1F271600D05FE4 /* UserDataVo.h in Sources */ = {isa = PBXBuildFile; fileRef = FDA8EE5B1F07F3B800F3A01A /* UserDataVo.h */; };
+		FDE1538A1F95FD3B00099B2E /* QiuYuanDataDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE153891F95FD3B00099B2E /* QiuYuanDataDetailViewController.m */; };
+		FDE1538F1F96015800099B2E /* ExplainView.h in Sources */ = {isa = PBXBuildFile; fileRef = FDE1538E1F96011700099B2E /* ExplainView.h */; };
+		FDE153901F96015800099B2E /* ExplainView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE1538D1F96011700099B2E /* ExplainView.m */; };
 		FDEAC8141F60FB4000AB25B2 /* qq.png in Resources */ = {isa = PBXBuildFile; fileRef = FDEAC8111F60FB4000AB25B2 /* qq.png */; };
 		FDEAC8151F60FB4000AB25B2 /* qq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDEAC8121F60FB4000AB25B2 /* qq@2x.png */; };
 		FDEAC8161F60FB4000AB25B2 /* qq@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDEAC8131F60FB4000AB25B2 /* qq@3x.png */; };
@@ -436,10 +438,6 @@
 		FD75D2421F26491C00306F77 /* CommentVo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentVo.m; sourceTree = "<group>"; };
 		FD76CB381F0B87AE0047C0FE /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		FD76CB391F0B87AE0047C0FE /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		FD85D4F71F94BA7E005BD767 /* QiuYuanDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiuYuanDetailViewController.h; sourceTree = "<group>"; };
-		FD85D4F81F94BA7E005BD767 /* QiuYuanDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiuYuanDetailViewController.m; sourceTree = "<group>"; };
-		FD85D4FB1F94BB05005BD767 /* ExplainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExplainView.m; sourceTree = "<group>"; };
-		FD85D4FC1F94BB05005BD767 /* ExplainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExplainView.h; sourceTree = "<group>"; };
 		FD85D4FD1F94BB22005BD767 /* QiuYuanVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiuYuanVo.h; sourceTree = "<group>"; };
 		FD85D4FE1F94BB22005BD767 /* QiuYuanVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiuYuanVo.m; sourceTree = "<group>"; };
 		FD8F08F21F3418B60067AF4C /* MyQiuYuanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyQiuYuanViewController.h; sourceTree = "<group>"; };
@@ -552,6 +550,10 @@
 		FDD3AF691F21B01900EA7C23 /* CreateClubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateClubViewController.m; sourceTree = "<group>"; };
 		FDD3AF6B1F21C9B700EA7C23 /* VerifyClubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyClubViewController.h; sourceTree = "<group>"; };
 		FDD3AF6C1F21C9B700EA7C23 /* VerifyClubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyClubViewController.m; sourceTree = "<group>"; };
+		FDE153881F95FD3B00099B2E /* QiuYuanDataDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiuYuanDataDetailViewController.h; sourceTree = "<group>"; };
+		FDE153891F95FD3B00099B2E /* QiuYuanDataDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiuYuanDataDetailViewController.m; sourceTree = "<group>"; };
+		FDE1538D1F96011700099B2E /* ExplainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExplainView.m; sourceTree = "<group>"; };
+		FDE1538E1F96011700099B2E /* ExplainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExplainView.h; sourceTree = "<group>"; };
 		FDEAC8111F60FB4000AB25B2 /* qq.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qq.png; sourceTree = "<group>"; };
 		FDEAC8121F60FB4000AB25B2 /* qq@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qq@2x.png"; sourceTree = "<group>"; };
 		FDEAC8131F60FB4000AB25B2 /* qq@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qq@3x.png"; sourceTree = "<group>"; };
@@ -1010,8 +1012,8 @@
 				FD75D2381F2583C200306F77 /* ClassesViewController.m */,
 				FD75D23A1F2583E400306F77 /* MemeberDataViewController.h */,
 				FD75D23B1F2583E400306F77 /* MemeberDataViewController.m */,
-				FD85D4F71F94BA7E005BD767 /* QiuYuanDetailViewController.h */,
-				FD85D4F81F94BA7E005BD767 /* QiuYuanDetailViewController.m */,
+				FDE153881F95FD3B00099B2E /* QiuYuanDataDetailViewController.h */,
+				FDE153891F95FD3B00099B2E /* QiuYuanDataDetailViewController.m */,
 			);
 			name = "教练员详情";
 			sourceTree = "<group>";
@@ -1019,8 +1021,8 @@
 		FD85D4FA1F94BAF9005BD767 /* common */ = {
 			isa = PBXGroup;
 			children = (
-				FD85D4FC1F94BB05005BD767 /* ExplainView.h */,
-				FD85D4FB1F94BB05005BD767 /* ExplainView.m */,
+				FDE1538E1F96011700099B2E /* ExplainView.h */,
+				FDE1538D1F96011700099B2E /* ExplainView.m */,
 			);
 			name = common;
 			sourceTree = "<group>";
@@ -1731,6 +1733,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDE1538F1F96015800099B2E /* ExplainView.h in Sources */,
+				FDE153901F96015800099B2E /* ExplainView.m in Sources */,
 				FD4F6B961F5A73A300DC1C10 /* ZRGridViewCell.m in Sources */,
 				FD242A761F5FF9DF0039A8A4 /* SaiListViewController.m in Sources */,
 				FD9A53D61F8B4E8D00A64E6D /* MemberClubViewController.m in Sources */,
@@ -1806,6 +1810,7 @@
 				FDD24CC61F0BEDF800DA16FC /* CityVo.m in Sources */,
 				FD9A52861F8B399F00A64E6D /* PicButton.m in Sources */,
 				FDAA381F1DD2BDA40038658F /* UIImage+SCImage.m in Sources */,
+				FDE1538A1F95FD3B00099B2E /* QiuYuanDataDetailViewController.m in Sources */,
 				FD75D2431F26491C00306F77 /* CommentVo.m in Sources */,
 				FDAA37981DD2BCF80038658F /* main.m in Sources */,
 				FD1F2C671F0490EC00063765 /* QDCommonListViewController.m in Sources */,
@@ -1853,7 +1858,6 @@
 				FDC497BB1F29AF1A002E7105 /* ACActionSheet.m in Sources */,
 				FD38A5BE1F84E6C9007CAF28 /* UpdateUserInfoViewController.m in Sources */,
 				FD9A53D91F8B4FB000A64E6D /* AddClubMemberViewController.m in Sources */,
-				FD85D4F91F94BA7E005BD767 /* QiuYuanDetailViewController.m in Sources */,
 				FD4269641F6B6468006B7C56 /* PPNumberButton.m in Sources */,
 				FDFAE5F61F10EE82008DF0BB /* FocusViewController.m in Sources */,
 				FDD3AF6D1F21C9B700EA7C23 /* VerifyClubViewController.m in Sources */,
