@@ -106,7 +106,7 @@
     
     [self forbiddenGesture];
     
-    ravalue = @"0" ;
+    ravalue = @"5" ;
     
     bg = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"liansai-bg"]];
     bg.frame = CGRectMake(0, 0, kScreen_Width, 220) ;
@@ -152,7 +152,8 @@
     name.textColor = UIColorWhite ;
     [name sizeToFit];
     [bg addSubview:name];
-    name.origin = CGPointMake(image.left , image.bottom + 21);
+    name.origin = CGPointMake(image.left - 8 , image.bottom + 21);
+    name.centerX = image.centerX ;
     
     QMUILabel *name2 = [[QMUILabel alloc] init];
     name2.text = [CommonFunc textFromBase64String: _vo.visitingclubname] ;
@@ -160,34 +161,19 @@
     name2.textColor = UIColorWhite ;
     [name2 sizeToFit];
     [bg addSubview:name2];
-    name2.origin = CGPointMake(image2.left , image.bottom + 21);
+    name2.centerX = image2.centerX ;
+    name2.origin = CGPointMake(image2.left - 8 , image.bottom + 21);
     
 }
 
 -(void)status2 : (SaiChengVo *) vo{
-    NSString *status = @"" ;
-    if ([vo.matchstatus isEqualToString:@"33"]) {
-        status = @"迎战" ;
-        
-    }else if([vo.matchstatus isEqualToString:@"22"]){
-        status = @"取消比赛" ;
-    }
-    
-    QMUILabel *name2 = [[QMUILabel alloc] init];
-    name2.text = [NSString stringWithFormat:@"比赛状态：%@" , status];
-    name2.font = UIFontMake(12);
-    name2.textColor = UIColorWhite ;
-    [name2 sizeToFit];
-    [bg addSubview:name2];
-    name2.origin = CGPointMake(30 , bg.bottom + 44);
-    
     QMUILabel *name3 = [[QMUILabel alloc] init];
     name3.text = [NSString stringWithFormat:@"比赛时间：%@" ,vo.matchtime];
     name3.font = UIFontMake(12);
     name3.textColor = UIColorWhite ;
     [name3 sizeToFit];
     [bg addSubview:name3];
-    name3.origin = CGPointMake(30 , name2.bottom + 13);
+    name3.origin = CGPointMake(30 , bg.bottom + 24);
 
     QMUILabel *name4 = [[QMUILabel alloc] init];
     name4.text = [NSString stringWithFormat:@"比赛地点：%@" , vo.field];
@@ -197,17 +183,6 @@
     [bg addSubview:name4];
     name4.origin = CGPointMake(30 , name3.bottom + 13);
 
-    NSString *title = @"提交赛果" ;
-    if ([_vo.matchstatus isEqualToString:@"33"]) { //迎战
-        if ([_vo.launchclub isEqualToString:_vo.homeclub] || [_vo.launchclub isEqualToString:_vo.visitingclub]) {
-            title = @"迎 战" ;
-        }
-    }else if([_vo.matchstatus isEqualToString:@"22"]){ //取消比赛
-        if ([_vo.launchclub isEqualToString:uvo.club]) {
-            title = @"取消比赛" ;
-        }
-    }
-
     QMUIButton *button = [[QMUIButton alloc] init];
     button.adjustsButtonWhenHighlighted = YES;
     button.titleLabel.font = UIFontBoldMake(37/2);
@@ -215,19 +190,24 @@
     [button setTitleColor:UIColorWhite forState:UIControlStateNormal];
     button.backgroundColor = [UIColor colorWithHexString:@"5a70d6"] ;
     button.highlightedBackgroundColor = [UIColor colorWithHexString:@"5a70d6"];    button.layer.cornerRadius = 4;
-    [button setTitle:title forState:UIControlStateNormal];
     [self.view addSubview:button];
-
-    if ([_vo.matchstatus isEqualToString:@"33"]) { //应战
+    NSString *title = @"提交赛果" ;
+    if ([_vo.matchstatus isEqualToString:@"33"]) { //迎战
         if ([_vo.launchclub isEqualToString:_vo.homeclub] || [_vo.launchclub isEqualToString:_vo.visitingclub]) {
-            [button addTarget:self action:@selector(yingzhan) forControlEvents:UIControlEventTouchUpInside];
-
+            title = @"迎 战" ;
+            [button addTarget:self action:@selector(yingzhan)
+               forControlEvents:UIControlEventTouchUpInside];
         }
     }else if([_vo.matchstatus isEqualToString:@"22"]){ //取消比赛
         if ([_vo.launchclub isEqualToString:uvo.club]) {
-            [button addTarget:self action:@selector(cancelZhan) forControlEvents:UIControlEventTouchUpInside];
+            button.hidden = YES ;
+            name3.hidden = YES ;
+            name4.hidden = YES ;
+            [self status4:vo];
         }
     }
+    [button setTitle:title forState:UIControlStateNormal];
+
 }
 
 
@@ -307,6 +287,97 @@
 
 }
 
+#pragma mark - 自己提交赛果 并且取消比赛
+-(void)status4 :(SaiChengVo *) vo{
+    QMUILabel *name2 = [[QMUILabel alloc] init];
+    name2.text = @"";
+    name2.font = UIFontMake(12);
+    name2.textColor = UIColorWhite ;
+    [name2 sizeToFit];
+    [bg addSubview:name2];
+    name2.origin = CGPointMake(30 , bg.bottom + 5);
+    
+    fen1=[[DSLLoginTextField alloc]init];
+    fen1.frame = CGRectMake(50 , name2.bottom + 30 , 40, 40) ;
+    fen1.textColor = [UIColor blackColor] ;
+    fen1.backgroundColor = [UIColor whiteColor] ;
+    fen1.font=[UIFont systemFontOfSize:14];
+    fen1.maxTextLength= 2 ;
+    fen1.delegate = self ;
+    fen1.keyboardType = UIKeyboardTypeNumberPad;
+    fen1.tag = 10 ;
+    fen1.textAlignment = NSTextAlignmentCenter ;
+    [self.view addSubview:fen1];
+    
+    
+    fen2=[[DSLLoginTextField alloc]init];
+    fen2.frame = CGRectMake(kScreen_Width - 40 - 50 , name2.bottom + 30 , 40, 40) ;
+    fen2.textColor = [UIColor blackColor] ;
+    fen2.backgroundColor = [UIColor whiteColor];
+    fen2.font=[UIFont systemFontOfSize:14];
+    fen2.maxTextLength= 2 ;
+    fen2.delegate = self ;
+    fen2.tag = 11 ;
+    fen2.keyboardType = UIKeyboardTypeNumberPad;
+    fen2.textAlignment = NSTextAlignmentCenter ;
+    [self.view addSubview:fen2];
+    
+    QMUILabel *name2x = [[QMUILabel alloc] init];
+    name2x.text = @"比分";
+    name2x.font = UIFontMake(12);
+    name2x.textColor = UIColorWhite ;
+    [name2x sizeToFit];
+    [bg addSubview:name2x];
+    name2x.origin = CGPointMake((kScreen_Width - name2x.width)/2 , bg.bottom + 10);
+    
+    QMUILabel *name3 = [[QMUILabel alloc] init];
+    name3.text = @"请对你的赛球方的综合素质评分:";
+    name3.font = UIFontMake(12);
+    name3.textColor = UIColorWhite ;
+    [name3 sizeToFit];
+    [bg addSubview:name3];
+    name3.origin = CGPointMake((kScreen_Width - name3.size.width)/2 , fen2.bottom + 20);
+    
+    slider = [PPNumberButton numberButtonWithFrame:CGRectMake((kScreen_Width - 280)/2 , name3.bottom + 40 , 280.f, 44.f)];
+    //设置边框颜色
+    slider.borderColor = [UIColor grayColor];
+    slider.increaseTitle = @"＋";
+    slider.decreaseTitle = @"－";
+    slider.maxValue = 10 ;
+    slider.minValue = 1 ;
+    slider.rawValue = 5 ;
+    slider.resultBlock = ^(NSString *num){
+        ravalue = num ;
+    };
+    [self.view addSubview:slider];
+    
+    QMUIButton *button = [[QMUIButton alloc] init];
+    button.adjustsButtonWhenHighlighted = YES;
+    button.titleLabel.font = UIFontBoldMake(37/2);
+    button.frame = CGRectMake(30 , slider.bottom + 85 , kScreen_Width - 60 , 40) ;
+    [button setTitleColor:UIColorWhite forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor colorWithHexString:@"5a70d6"] ;
+    button.highlightedBackgroundColor = [UIColor colorWithHexString:@"5a70d6"];    button.layer.cornerRadius = 4;
+    [button addTarget:self action:@selector(submitSaiResult) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"提交赛果" forState:UIControlStateNormal];
+    [self.view addSubview:button];
+    
+    
+    QMUIButton *button2 = [[QMUIButton alloc] init];
+    button2.adjustsButtonWhenHighlighted = YES;
+    button2.titleLabel.font = UIFontBoldMake(37/2);
+    button2.frame = CGRectMake(30 , button.bottom + 5, kScreen_Width - 60 , 40) ;
+    [button2 setTitleColor:UIColorWhite forState:UIControlStateNormal];
+    button2.backgroundColor = [UIColor colorWithHexString:@"5a70d6"] ;
+    button2.highlightedBackgroundColor = [UIColor colorWithHexString:@"5a70d6"];    button.layer.cornerRadius = 4;
+    [self.view addSubview:button2];
+    [button2 addTarget:self action:@selector(cancelZhan) forControlEvents:UIControlEventTouchUpInside];
+    [button2 setTitle:@"取消比赛" forState:UIControlStateNormal];
+
+
+    
+}
+
 #pragma mark - 提交赛过
 -(void) submitSaiResult{
     YYCache *cache = [YYCache cacheWithName:@"FB"];
@@ -315,10 +386,8 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid ,@"scheduleId" , _vo.leagueid , @"leagueId" , uvo.club , @"clubId" , [NSString stringWithFormat:@"%@:%@" , fen1.text , fen2.text] , @"result" , ravalue , @"eva" , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:submitResult parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"发布成功";
-            [self.HUD hide:YES afterDelay:3];
+            [SVProgressHUD showSuccessWithStatus:@"赛果提交成功"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
             [self.navigationController popViewControllerAnimated:YES];
         }
     } failure:^(NSError *error) {
@@ -352,13 +421,8 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid , @"scheduleId" , uvo.club , @"requestClub" , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:cancelMatch parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
-            
-            
             [SVProgressHUD showSuccessWithStatus:@"取消比赛成功"];
             [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-            
-
-            
             [self.navigationController popViewControllerAnimated:YES];
         }
     } failure:^(NSError *error) {

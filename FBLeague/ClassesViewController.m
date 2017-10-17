@@ -85,6 +85,7 @@
                     vo.desc = [NSString stringWithFormat:@"%@" ,dic[@"description"]]  ;
                     vo.firstletter =  [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]]  ;
                     vo.headpicurl =  [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]]  ;
+                    vo.clubName =  [NSString stringWithFormat:@"%@" ,dic[@"clubname"]]  ;
                     vo.firstletter =  [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]]  ;
                     vo.level =  [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
                     vo.nickname = dic[@"nickname"]  ;

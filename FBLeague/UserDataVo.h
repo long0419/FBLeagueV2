@@ -33,8 +33,7 @@
 @property (nonatomic , strong) NSString *skillCount ;
 @property (nonatomic , strong) NSString *status ;
 @property (nonatomic , strong) NSString *fansCount ;
-
-
+@property (nonatomic , strong) NSString *clubName ;
 @property (nonatomic , strong) NSString *speed ;
 @property (nonatomic , strong) NSString *stimulate ;
 @property (nonatomic , strong) NSString *strength ;
