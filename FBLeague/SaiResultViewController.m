@@ -228,11 +228,8 @@
     }else if([_vo.matchstatus isEqualToString:@"22"]){ //取消比赛
         if ([_vo.launchclub isEqualToString:uvo.club]) {
             [button addTarget:self action:@selector(cancelZhan) forControlEvents:UIControlEventTouchUpInside];
-
         }
     }
-
-    
 }
 
 
@@ -317,7 +314,7 @@
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
 
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid ,@"scheduleId" , _vo.leagueid , @"leagueId" , uvo.club , @"clubId" , [NSString stringWithFormat:@"%@:%@" , fen1 , fen2] , @"result" , ravalue , @"eva" , uvo.phone ,  @"token", nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid ,@"scheduleId" , _vo.leagueid , @"leagueId" , uvo.club , @"clubId" , [NSString stringWithFormat:@"%@:%@" , fen1.text , fen2.text] , @"result" , ravalue , @"eva" , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:submitResult parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
             self.HUD.mode = MBProgressHUDModeText;
@@ -354,7 +351,7 @@
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid , @"scheduleId" , uvo.club , @"requestClubId" , uvo.phone ,  @"token", nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid , @"scheduleId" , uvo.club , @"requestClub" , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:cancelMatch parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
             
