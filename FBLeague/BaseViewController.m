@@ -13,7 +13,6 @@
 @end
 
 @implementation BaseViewController
-@synthesize HUD;
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -30,14 +29,6 @@
     NSDictionary *attributes=[NSDictionary dictionaryWithObjectsAndKeys:[UIColor colorWithHexString:@"ffffff"],NSForegroundColorAttributeName ,[UIFont systemFontOfSize:18] ,NSFontAttributeName ,nil];
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
     self.view.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
-
-    // HUD View
-    UIWindow *window = [[[UIApplication sharedApplication] delegate] window];
-    HUD = [[MBProgressHUD alloc] initWithWindow:window];
-    self.HUD.yOffset = -44;
-    self.HUD.delegate = self;
-    self.HUD.animationType = MBProgressHUDAnimationZoom;
-    self.HUD.labelText = @"加载中";
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -50,23 +41,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-}
-
-- (void)showProgressViewWithTitle:(NSString *)msg {
-    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
-    [self.HUD setLabelText:msg];
-    [window addSubview:self.HUD];
-    [self.HUD show:YES];
-}
-
-- (void)showProgressView {
-    [self showProgressViewWithTitle:@"加载中"];
-}
-
-- (void)closeProgressView {
-    if (self.HUD) {
-        [self.HUD hide:YES];
-    }
 }
 
 - (void)didReceiveMemoryWarning {

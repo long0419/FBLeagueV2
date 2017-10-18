@@ -127,10 +127,9 @@
 
                 [PPNetworkHelper POST:requestMatch parameters:tmp success:^(id object) {
                     if([object[@"code"] isEqualToString:@"0000"]){
-                        self.HUD.mode = MBProgressHUDModeText;
-                        self.HUD.removeFromSuperViewOnHide = YES;
-                        self.HUD.labelText = @"发布成功";
-                        [self.HUD hide:YES afterDelay:3];
+                     
+                        [SVProgressHUD showSuccessWithStatus:@"发布成功"];
+                        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
                         
                         [self.navigationController popViewControllerAnimated:YES];
 

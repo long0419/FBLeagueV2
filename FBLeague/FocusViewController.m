@@ -59,9 +59,7 @@
     
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
-    
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
+        
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" ,
                             uvo.phone , @"phone"  , uvo.phone , @"token" , nil];
     
@@ -88,17 +86,16 @@
                 [_coachTableView reloadData];
             }
         }else {
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"系统错误";
-            [self.HUD hide:YES afterDelay:3];
+            [SVProgressHUD showErrorWithStatus:@"系统错误"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+            
+
         }
         
     } failure:^(NSError *error) {
         
     }];
     
-    [self closeProgressView];
 }
 
 
@@ -145,7 +142,6 @@
     UserDataVo *uvo = [cache objectForKey:@"userData"];
     
     CoachVo *vo = [coachList objectAtIndex:view.tag];
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone , @"fanPhone" , vo.phone , @"famousPhone" , @"1", @"famousType", nil];
     [PPNetworkHelper POST:focusPerson parameters:params success:^(id object) {
@@ -159,17 +155,14 @@
             
             view.userInteractionEnabled = NO ;
             
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"关注成功";
-            [self.HUD hide:YES afterDelay:3];
-            
+            [SVProgressHUD showSuccessWithStatus:@"系统错误"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
             
         }else {
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"系统错误";
-            [self.HUD hide:YES afterDelay:3];
+            [SVProgressHUD showErrorWithStatus:@"系统错误"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+            
+
         }
     } failure:^(NSError *error) {
         

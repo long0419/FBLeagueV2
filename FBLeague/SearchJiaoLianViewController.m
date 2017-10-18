@@ -38,7 +38,6 @@
     
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
-    [self closeProgressView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forward:) name:@"forwardSeDetail" object:nil];
 

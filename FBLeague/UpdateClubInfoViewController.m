@@ -191,8 +191,6 @@
 
 -(void)goAction  {
     
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
     if (txtField.text == nil) {
         txtField.text = @"" ;
     }
@@ -203,23 +201,19 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: txtField2.text , @"description" , [CommonFunc base64StringFromText:txtField.text] , @"name" , _clubId , @"id" ,  uvo.phone  , @"token" , picUrl , @"logourl" , nil];
     [PPNetworkHelper POST:updateClub parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"更新成功";
-            [self.HUD hide:YES afterDelay:3];
+            [SVProgressHUD showSuccessWithStatus:@"更新成功"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
             
             [self.navigationController popViewControllerAnimated:YES];
         }else {
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"系统错误";
-            [self.HUD hide:YES afterDelay:3];
+            [SVProgressHUD showErrorWithStatus:@"更新成功"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+            
         }
         
     }failure:^(NSError *error) {
         
     }];
-    [self closeProgressView];
     
 }
 
@@ -303,7 +297,6 @@
             picUrl = data[@"URL"] ;
             [self showImage:picUrl];
         }
-        [self closeProgressView];
     } failure:^(NSError *error) {
         
     }];

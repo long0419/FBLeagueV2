@@ -111,8 +111,6 @@
 		FD9A53DC1F8B70F600A64E6D /* ApplyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9A53DB1F8B70F600A64E6D /* ApplyListViewController.m */; };
 		FDA1166C1F01FC67007F253C /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA116691F01FC67007F253C /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FDA1166D1F01FC67007F253C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FDA1166B1F01FC67007F253C /* README.md */; };
-		FDA572AA1F035A780072DF95 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FDA572A61F035A780072DF95 /* LICENSE */; };
-		FDA572AB1F035A780072DF95 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA572A81F035A780072DF95 /* MBProgressHUD+Add.m */; };
 		FDA8EE591F07F21B00F3A01A /* FirstLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA8EE581F07F21B00F3A01A /* FirstLoginViewController.m */; };
 		FDA8EE5D1F07F3B800F3A01A /* UserDataVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA8EE5C1F07F3B800F3A01A /* UserDataVo.m */; };
 		FDAA37981DD2BCF80038658F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37971DD2BCF80038658F /* main.m */; };
@@ -469,10 +467,6 @@
 		FDA116691F01FC67007F253C /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		FDA1166A1F01FC67007F253C /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		FDA1166B1F01FC67007F253C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		FDA572A61F035A780072DF95 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		FDA572A71F035A780072DF95 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
-		FDA572A81F035A780072DF95 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
-		FDA572A91F035A780072DF95 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
 		FDA8EE571F07F21B00F3A01A /* FirstLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLoginViewController.h; sourceTree = "<group>"; };
 		FDA8EE581F07F21B00F3A01A /* FirstLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstLoginViewController.m; sourceTree = "<group>"; };
 		FDA8EE5B1F07F3B800F3A01A /* UserDataVo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataVo.h; sourceTree = "<group>"; };
@@ -1039,17 +1033,6 @@
 			path = "GTMBase64-master/GTMBase64-master";
 			sourceTree = "<group>";
 		};
-		FDA572A51F035A780072DF95 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				FDA572A61F035A780072DF95 /* LICENSE */,
-				FDA572A71F035A780072DF95 /* MBProgressHUD+Add.h */,
-				FDA572A81F035A780072DF95 /* MBProgressHUD+Add.m */,
-				FDA572A91F035A780072DF95 /* README.mdown */,
-			);
-			path = MBProgressHUD;
-			sourceTree = "<group>";
-		};
 		FDA8EE561F07F1FC00F3A01A /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -1304,7 +1287,6 @@
 				FDF6B0061F0A8F740074CB39 /* loginTextField */,
 				FD1F2C491F048DA600063765 /* QMUIConfigurationTemplate */,
 				FDA116671F01FC67007F253C /* GTMBase64-master */,
-				FDA572A51F035A780072DF95 /* MBProgressHUD */,
 				FDAA38621DD2BF3D0038658F /* QHNavSliderMenuView */,
 			);
 			path = Vendors;
@@ -1611,7 +1593,6 @@
 				FDEAC82E1F610D7600AB25B2 /* weixin-拷贝@3x.png in Resources */,
 				FDEAC81A1F60FB5000AB25B2 /* wechat.png in Resources */,
 				FD4F6B731F59A33500DC1C10 /* adImage1.jpg in Resources */,
-				FDA572AA1F035A780072DF95 /* LICENSE in Resources */,
 				FD4F6B761F59A33500DC1C10 /* adImage4.gif in Resources */,
 				FDC497BA1F29AF1A002E7105 /* ACActionSheet.bundle in Resources */,
 				FDEAC8201F60FB5E00AB25B2 /* friend.png in Resources */,
@@ -1757,7 +1738,6 @@
 				FD5018C61F3C4E3E0077C418 /* Order.m in Sources */,
 				FDFAE5F91F10F4F4008DF0BB /* YCSlideView.m in Sources */,
 				FD1F2C661F0490EC00063765 /* QDCommonGroupListViewController.m in Sources */,
-				FDA572AB1F035A780072DF95 /* MBProgressHUD+Add.m in Sources */,
 				FDEAC8371F626EEA00AB25B2 /* JiFenVo.m in Sources */,
 				FD242A791F601B150039A8A4 /* AddSaiViewController.m in Sources */,
 				FD9A52831F8B394100A64E6D /* SponsorVo.m in Sources */,

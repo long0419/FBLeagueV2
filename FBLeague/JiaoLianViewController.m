@@ -62,8 +62,6 @@
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
     
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" , uvo.phone , @"phone"  , uvo.phone , @"token" , nil];
     
     [PPNetworkHelper POST:getCoaches parameters:params success:^(id object) {
@@ -108,17 +106,16 @@
                 [_coachTableView reloadData];
             }
         }else {
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"系统错误";
-            [self.HUD hide:YES afterDelay:3];
+            [SVProgressHUD showWithStatus:@"系统错误"] ;
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+            [SVProgressHUD dismissWithDelay:1];
+
         }
 
     } failure:^(NSError *error) {
         
     }];
 
-    [self closeProgressView];
 }
 
 

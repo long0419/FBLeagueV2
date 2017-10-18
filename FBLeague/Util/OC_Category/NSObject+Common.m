@@ -10,7 +10,6 @@
 #define kPath_ImageSizeDict @"ImageSizeDict"
 
 #import "NSObject+Common.h"
-#import "MBProgressHUD+Add.h"
 
 @implementation NSObject (Common)
 
@@ -39,22 +38,6 @@
         return tipStr;
     }
     return nil;
-}
-
-- (void)showError:(NSError *)error{
-    NSString *tipStr = [self tipFromError:error];
-    [self showHudTipStr:tipStr];
-}
-
-- (void)showHudTipStr:(NSString *)tipStr{
-    if (tipStr && tipStr.length > 0) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
-        hud.mode = MBProgressHUDModeText;
-        hud.labelText = tipStr;
-        hud.margin = 10.f;
-        hud.removeFromSuperViewOnHide = YES;
-        [hud hide:YES afterDelay:1.0];
-    }
 }
 
 - (void)refreshStatusBar{

@@ -63,12 +63,6 @@
     [self showProgressViewWithTitle:@"加载中"];
 }
 
-- (void)closeProgressView {
-    if (self.HUD) {
-        [self.HUD hide:YES];
-    }
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

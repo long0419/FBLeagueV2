@@ -72,7 +72,6 @@
 }
 
 -(void)getNeedDatas{
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_code , @"provinceCode" , nil];
     
@@ -94,16 +93,14 @@
             }
             [_goodTableView reloadData];
         }else {
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"系统错误";
-            [self.HUD hide:YES afterDelay:3];
+
+             [SVProgressHUD showErrorWithStatus:@"系统错误"];
+             [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+
         }
     } failure:^(NSError *error) {
         
     }];
-
-    [self closeProgressView];
     
 }
 

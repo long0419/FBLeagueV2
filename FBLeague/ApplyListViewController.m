@@ -71,13 +71,11 @@
             [SVProgressHUD showSuccessWithStatus: @"同意申请"];
             [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
             
-            [self.HUD hide:YES afterDelay:3];
         }else {
             [SVProgressHUD showErrorWithStatus: @"系统错误"];
             [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
             
             
-            [self.HUD hide:YES afterDelay:3];
         }
     } failure:^(NSError *error) {
         
@@ -85,8 +83,6 @@
 }
 
 -(void)getCoachDatas : (NSString *) page {
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
     
@@ -113,16 +109,12 @@
                 [_coachTableView reloadData];
             }
         }else {
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"系统错误";
-            [self.HUD hide:YES afterDelay:3];
+            [SVProgressHUD showErrorWithStatus: @"系统错误"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
         }
     } failure:^(NSError *error) {
          
     }];
-    [self closeProgressView];
-
 }
 
 #pragma mark 返回分组数

@@ -181,7 +181,6 @@
     
     [self.navigationController popViewControllerAnimated:YES];
     
-    [self closeProgressView];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -227,21 +226,7 @@
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     NSData *datas = UIImageJPEGRepresentation(image, 0.4);
     NSString *_encodedImageStr = [datas base64Encoding];
-    
-//    APIClient *client = [APIClient sharedJsonClient];
-//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_encodedImageStr , @"base64file" , nil];
-//    [client requestJsonDataWithPath:uploadPic withParams:params withMethodType:Post andBlock:^(id data, NSError *error) {
-//        if([data[@"code"] isEqualToString:@"0000"]){
-//            NSString *url = data[@"URL"] ;
-//            picUrl = url ;
-//            //添加图片界面上
-//            [self showImage : url];
-//            
-//        }
-//        [self closeProgressView];
-//    }];
-    
-}
+    }
 
 -(void)showImage : (NSString *) url{
     UIImageView *logo = [julebu viewWithTag:12];

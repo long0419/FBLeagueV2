@@ -239,7 +239,6 @@
             [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
             }];
         }
-        [self closeProgressView];
     } failure:^(NSError *error) {
         
     }];

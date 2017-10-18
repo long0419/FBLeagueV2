@@ -284,21 +284,19 @@
 }
 
 -(void)loginAction{
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     if ([@"" isEqualToString:tf.text]|| nil == tf.text) {
-        self.HUD.mode = MBProgressHUDModeText;
-        self.HUD.removeFromSuperViewOnHide = YES;
-        self.HUD.labelText = @"请输入手机号";
-        [self.HUD hide:YES afterDelay:3];
+
+        [SVProgressHUD showErrorWithStatus: @"请输入手机号"];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+
         return ;
     }
     
     if ([@"" isEqualToString:psw.text] || nil == psw.text) {
-        self.HUD.mode = MBProgressHUDModeText;
-        self.HUD.removeFromSuperViewOnHide = YES;
-        self.HUD.labelText = @"请输入密码";
-        [self.HUD hide:YES afterDelay:3];
+        [SVProgressHUD showErrorWithStatus: @"请输入密码"];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+
         return ;
     }
     
@@ -353,7 +351,6 @@
             [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
        }
         
-        [self closeProgressView];
     } failure:^(NSError *error) {
         
     }];

@@ -289,21 +289,18 @@
 }
 
 -(void)finish{
-    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
     if([tf.text isEqualToString:@""]){
-        HUD.mode = MBProgressHUDModeText;
-        HUD.removeFromSuperViewOnHide = YES;
-        HUD.labelText = @"请输入昵称";
-        [HUD hide:YES afterDelay:3];
+        [SVProgressHUD showErrorWithStatus:@"请输入昵称"];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+
         return ;
     }
 
     if([psw.text isEqualToString:@""]){
-        HUD.mode = MBProgressHUDModeText;
-        HUD.removeFromSuperViewOnHide = YES;
-        HUD.labelText = @"请输入地区";
-        [HUD hide:YES afterDelay:3];
+        [SVProgressHUD showErrorWithStatus:@"请输入地区"];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        
         return ;
     }
     
@@ -363,7 +360,6 @@
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"verifyLoginStatus" object:self];
 
-            [self closeProgressView];
 
         }else if([object[@"code"] isEqualToString:@"0002"]){
             [SVProgressHUD showInfoWithStatus: @"当前用户已经注册,返回登录界面登录"];
@@ -371,10 +367,7 @@
             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
 
             [self.navigationController popToRootViewControllerAnimated:YES];
-        }else{
-            [self closeProgressView];
         }
-        
     } failure:^(NSError *error) {
         NSLog(@"%@" , error) ;
     }];
@@ -475,7 +468,6 @@
             url = data[@"URL"] ;
             [bgImg  sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil];
         }
-        [self closeProgressView];
     } failure:^(NSError *error) {
         
     }];

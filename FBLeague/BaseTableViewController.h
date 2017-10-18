@@ -23,7 +23,6 @@
 
 - (void)showProgressViewWithTitle:(NSString *)msg;
 - (void)showProgressView;
-- (void)closeProgressView;
 
 - (void)tabBarItemClicked;
 

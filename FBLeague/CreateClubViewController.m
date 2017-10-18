@@ -269,7 +269,6 @@
 }
 
 -(void)ctx{
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
     
@@ -299,7 +298,6 @@
         
     } failure:^(NSError *error) {
     }];
-    [self closeProgressView] ;
 }
 
 -(void)back2{
@@ -432,7 +430,6 @@
             url = data[@"URL"] ;
             [bgImg  sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:nil];
         }
-        [self closeProgressView];
     } failure:^(NSError *error) {
         
     }];

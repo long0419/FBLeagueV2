@@ -77,10 +77,8 @@
             NSString *cid = data[@"user"][@"club"] ;
             [self getCoachDatas:cid];
         }else {
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"系统错误";
-            [self.HUD hide:YES afterDelay:3];
+            [SVProgressHUD showErrorWithStatus: @"系统错误"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
         }
         
     } failure:^(NSError *error) {
@@ -104,8 +102,6 @@
 }
 
 -(void)getCoachDatas : (NSString *) clubid {
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: clubid ,  @"id" , uvo.phone , @"token" , nil];
     [PPNetworkHelper POST:getUsersByClubId parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
@@ -154,15 +150,13 @@
                     [_coachTableView reloadData];
                 }
             }else {
-                self.HUD.mode = MBProgressHUDModeText;
-                self.HUD.removeFromSuperViewOnHide = YES;
-                self.HUD.labelText = @"系统错误";
-                [self.HUD hide:YES afterDelay:3];
+                [SVProgressHUD showErrorWithStatus: @"系统错误"];
+                [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+
         }
     } failure:^(NSError *error) {
         
     }];
-    [self closeProgressView];
 }
 
 #pragma mark 返回分组数

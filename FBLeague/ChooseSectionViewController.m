@@ -88,8 +88,6 @@
 }
 
 -(void)getNeedDatas{
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_cityCode , @"cityCode" , nil];
     
     [PPNetworkHelper POST:getAreas parameters:params success:^(id data) {
@@ -110,17 +108,14 @@
             }
             [_goodTableView reloadData];
         }else {
-            self.HUD.mode = MBProgressHUDModeText;
-            self.HUD.removeFromSuperViewOnHide = YES;
-            self.HUD.labelText = @"系统错误";
-            [self.HUD hide:YES afterDelay:3];
+            [SVProgressHUD showErrorWithStatus: @"系统错误"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+
         }
     } failure:^(NSError *error) {
         
     }];
-    
-    [self closeProgressView];
-    
+        
 }
 
 #pragma mark 返回分组数

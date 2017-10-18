@@ -11,18 +11,14 @@
 #import "UIView+Common.h"
 #import "NSObject+Common.h"
 #import "UIImage+Common.h"
-#import "MBProgressHUD.h"
 #import "Masonry.h"
 #import "NSString+Common.h"
 #import "UINavigationController+FDFullscreenPopGesture.h"
 
-@interface BaseViewController : UIViewController<MBProgressHUDDelegate ,UIGestureRecognizerDelegate>
-
-@property (nonatomic, retain) MBProgressHUD     *HUD;
+@interface BaseViewController : UIViewController<UIGestureRecognizerDelegate>
 
 - (void)showProgressViewWithTitle:(NSString *)msg;
 - (void)showProgressView;
-- (void)closeProgressView;
 
 - (void)tabBarItemClicked;
 

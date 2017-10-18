@@ -87,25 +87,19 @@
 }
 
 -(void)goinfo{
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
     if([@"" isEqualToString:psw.text] ||[@"" isEqualToString:psw.text]){
-        self.HUD.mode = MBProgressHUDModeText;
-        self.HUD.removeFromSuperViewOnHide = YES;
-        self.HUD.labelText = @"请输入相应密码";
-        [self.HUD hide:YES afterDelay:3];
+        [SVProgressHUD showErrorWithStatus: @"请输入相应密码"];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+
         return ;
     }
     
     if(![tf.text isEqualToString:psw.text]){
-        self.HUD.mode = MBProgressHUDModeText;
-        self.HUD.removeFromSuperViewOnHide = YES;
-        self.HUD.labelText = @"两次密码不一致";
-        [self.HUD hide:YES afterDelay:3];
+        [SVProgressHUD showErrorWithStatus: @"两次密码不一致"];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+
         return ;
     }
-    [self closeProgressView];
-
     if ([self.from isEqualToString:@"1"]) {
         PersonInfoViewController *person = [[PersonInfoViewController alloc] init];
         person.phoneNum = _phoneNum ;
@@ -114,11 +108,7 @@
         person.nickname = _nikeName ;
         [self.navigationController pushViewController:person animated:YES];
     }else{
-        self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        
         NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_phoneNum , @"phone" ,_phoneNum , @"token" , nil];
-        
-        
         [PPNetworkHelper POST:apiupdate parameters:params success:^(id data) {
             if([data[@"code"] isEqualToString:@"0000"]){
                 UserDataVo *uvo = [UserDataVo new];
@@ -131,13 +121,10 @@
 
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"verifyLoginStatus" object:self];
                 
-                [self closeProgressView];
-                
             }else {
-                self.HUD.mode = MBProgressHUDModeText;
-                self.HUD.removeFromSuperViewOnHide = YES;
-                self.HUD.labelText = @"系统错误";
-                [self.HUD hide:YES afterDelay:3];
+                [SVProgressHUD showErrorWithStatus: @"系统错误"];
+                [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+
             }
 
             
@@ -145,8 +132,6 @@
             
         }];
         
-        [self closeProgressView];
-
     }
     
     

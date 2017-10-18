@@ -71,7 +71,6 @@
 }
 
 -(void)getUserInfo{
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
 
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.phone ,  @"phone" , uvo.phone , @"token" , nil];
     [PPNetworkHelper POST:getCBDetail parameters:params success:^(id data) {
@@ -100,15 +99,15 @@
                     [self dataImport];
         
                 }else {
-                    self.HUD.mode = MBProgressHUDModeText;
-                    self.HUD.removeFromSuperViewOnHide = YES;
-                    self.HUD.labelText = @"系统错误";
-                    [self.HUD hide:YES afterDelay:3];
+                    
+                    [SVProgressHUD showErrorWithStatus:@"系统错误"];
+                    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+                    
+
                 }
     } failure:^(NSError *error) {
         
     }];
-    [self closeProgressView];
 
 }
 
@@ -185,16 +184,14 @@
     + [stronghand integerValue] + [compete integerValue] + [stimulate integerValue];
     
     if (num > [limitSkill integerValue]) {
-        self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        self.HUD.mode = MBProgressHUDModeText;
-        self.HUD.removeFromSuperViewOnHide = YES;
-        self.HUD.labelText = [NSString stringWithFormat:@"能力值设置有误，请重新调整后再提交"];
-        [self.HUD hide:YES afterDelay:3];
+        
+        [SVProgressHUD showErrorWithStatus:@"能力值设置有误，请重新调整后再提交"];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        
         return ;
     }
 
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"1" , @"type"  , _vo.phone ,  @"phone" ,
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"1" , @"type"  , _vo.phone ,  @"phone" ,
                                 skill , @"skill" , control ,@"control",
                                 counterattack , @"counterattack" ,
                                 stronghand ,@"stronghand" ,
@@ -203,22 +200,16 @@
 
     [PPNetworkHelper POST:getCBDetail parameters:params success:^(id data) {
                 if([data[@"code"] isEqualToString:@"0000"]){
-                    self.HUD.mode = MBProgressHUDModeText;
-                    self.HUD.removeFromSuperViewOnHide = YES;
-                    self.HUD.labelText = @"设置成功";
-                    [self.HUD hide:YES afterDelay:5];
-                    [self.navigationController popViewControllerAnimated:YES];
+                    [SVProgressHUD showErrorWithStatus:@"设置成功"];
+                    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];               [self.navigationController popViewControllerAnimated:YES];
                 }else {
-                    self.HUD.mode = MBProgressHUDModeText;
-                    self.HUD.removeFromSuperViewOnHide = YES;
-                    self.HUD.labelText = @"系统错误";
-                    [self.HUD hide:YES afterDelay:5];
+                    [SVProgressHUD showErrorWithStatus:@"系统错误"];
+                    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
                 }
 
     } failure:^(NSError *error) {
         
     }];
-    [self closeProgressView];
     
 }
 
@@ -440,12 +431,10 @@
     
     
     if (num > [limitSkill integerValue]) {
-        self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        self.HUD.mode = MBProgressHUDModeText;
-        self.HUD.removeFromSuperViewOnHide = YES;
-        self.HUD.labelText = [NSString stringWithFormat:@"当前设置已经超过总的能力值%@" ,limitSkill];
-        [self.HUD hide:YES afterDelay:3];
-
+        
+        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"当前设置已经超过总的能力值%@" ,limitSkill]];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        
         NSString *text = [NSString stringWithFormat:@"剩余点数：%ld" , leftnum] ;
         NSMutableAttributedString *str =
         [[NSMutableAttributedString alloc] initWithString : [NSString stringWithFormat:@"剩余点数：%ld" , leftnum]];

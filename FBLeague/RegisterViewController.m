@@ -111,13 +111,11 @@
 }
 
 -(void) verifycode{
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     if (![valiCode isEqualToString:psw.text]) {
-        self.HUD.mode = MBProgressHUDModeText;
-        self.HUD.removeFromSuperViewOnHide = YES;
-        self.HUD.labelText = @"输入验证码不正确";
-        [self.HUD hide:YES afterDelay:3];
+        [SVProgressHUD showErrorWithStatus:@"验证码输入不正确"];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        
         return ;
     }
 
@@ -156,13 +154,11 @@
 }
 
 -(void)codeBtnVerification{
-    self.HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     if ([@"" isEqualToString:tf.text]|| nil == tf.text) {
-        self.HUD.mode = MBProgressHUDModeText;
-        self.HUD.removeFromSuperViewOnHide = YES;
-        self.HUD.labelText = @"请输入手机号";
-        [self.HUD hide:YES afterDelay:3];
+        [SVProgressHUD showErrorWithStatus:@"请输入手机号"];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        
         return ;
     }
     
@@ -174,7 +170,6 @@
     [PPNetworkHelper POST:sms parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
             [button setUserInteractionEnabled:YES];
-            [self closeProgressView];
         }else if ([data[@"code"] isEqualToString:@"1"]) {
             [codeBtn timeFailBeginFrom:1];
         }

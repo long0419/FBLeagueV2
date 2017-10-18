@@ -356,13 +356,14 @@
     [PPNetworkHelper POST:joinLeague parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
             if ([type_ isEqualToString:@"2"]) { //微信
-                [MXWechatPayHandler jumpToWxPay:@"150000" andWithTitle:@"联赛报名"];
+                [MXWechatPayHandler jumpToWxPay:@"1" andWithTitle:@"联赛报名"];
             }else{
                 [self doAlipayPay];
             }
         }else{
             [SVProgressHUD showWithStatus:object[@"msg"]] ;
             [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+            [SVProgressHUD dismissWithDelay:1];
         }
     } failure:^(NSError *error) {
         
