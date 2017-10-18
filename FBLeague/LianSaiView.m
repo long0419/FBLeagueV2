@@ -53,6 +53,8 @@
         colorname = @"f8845c" ;
     }else if([type isEqualToString:@"22"]){
         colorname = @"5b73d4" ;
+    }else if([type isEqualToString:@"1"]){
+        colorname = @"179387" ;
     }
     
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, 80/2)];

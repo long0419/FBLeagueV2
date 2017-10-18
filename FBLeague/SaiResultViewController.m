@@ -75,17 +75,21 @@
             [self status1] ;
             
             if ([_vo.hasplayed isEqualToString:@"y"]) {
-                if (![_vo.homesubmit isEqualToString:@"<null>"] && ![_vo.visitingsubmit isEqualToString:@"<null>"] ) {
-                    [self status3 : _vo] ; //status3 用于只显示提交赛过
+                if([_vo.matchstatus isEqualToString:@"1"]){
+                    if ([_vo.homesubmit isEqualToString:@"<null>"] && [_vo.homeclub isEqualToString:uvo.club]) {
+                        [self status3 : _vo] ; //status3 用于只显示提交赛果
+                    }else if([_vo.visitingsubmit isEqualToString:@"<null>"] && [_vo.visitingclub isEqualToString:uvo.club]){
+                        [self status3 : _vo] ; //status3 用于只显示提交赛果
+                    }
                 }
             }else{
                 if ([_vo.matchstatus isEqualToString:@"11"]) {
                     if ([_vo.homesubmit isEqualToString:@"<null>"] ||[_vo.visitingsubmit isEqualToString:@"<null>"] ) {
-                        [self status3 : _vo] ; //status3 用于只显示提交赛过
+                        [self status3 : _vo] ; //status3 用于只显示提交赛果
                     }
                 }else{
                     if (![_vo.homesubmit isEqualToString:@"<null>"] && ![_vo.visitingsubmit isEqualToString:@"<null>"] ) {
-                        [self status3 : _vo] ; //status3 用于只显示提交赛过
+                        [self status3 : _vo] ; //status3 用于只显示提交赛果
                     }else{
                         [self status2 : _vo] ;
                     }
@@ -389,6 +393,9 @@
             [SVProgressHUD showSuccessWithStatus:@"赛果提交成功"];
             [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
             [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            [SVProgressHUD showErrorWithStatus:object[@"msg"]];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
         }
     } failure:^(NSError *error) {
         
