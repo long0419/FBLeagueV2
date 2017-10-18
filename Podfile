@@ -27,7 +27,7 @@ target 'FBLeague' do
 	pod 'WZLBadge'
 	pod 'MGSwipeTableCell'
 	pod 'KVOController'
-	pod 'IQKeyboardManager'
+	#pod 'IQKeyboardManager'
 	pod 'SVProgressHUD'
 	pod 'UMengAnalytics-NO-IDFA'
 end
