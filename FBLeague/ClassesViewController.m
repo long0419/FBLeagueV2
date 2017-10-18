@@ -71,6 +71,7 @@
         
         if([object[@"code"] isEqualToString:@"0000"]){
             NSDictionary *list = object[@"users"];
+            NSString *clubName = object[@"clubName"] ;
             UserDataVo *vo = nil ;
             [kouList removeAllObjects];
             
@@ -78,6 +79,7 @@
                 for (NSDictionary *dic in list) {
                     vo = [UserDataVo new];
                     vo.areacode = [NSString stringWithFormat:@"%@" , dic[@"areacode"]] ;
+                    vo.clubName = [CommonFunc textFromBase64String:clubName] ;
                     vo.brithday = [NSString stringWithFormat:@"%@" ,dic[@"brithday"]] ;
                     vo.citycode = [NSString stringWithFormat:@"%@" ,dic[@"citycode"]] ;
                     vo.cityName = [NSString stringWithFormat:@"%@" ,dic[@"cityname"]] ;
@@ -85,7 +87,6 @@
                     vo.desc = [NSString stringWithFormat:@"%@" ,dic[@"description"]]  ;
                     vo.firstletter =  [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]]  ;
                     vo.headpicurl =  [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]]  ;
-                    vo.clubName =  [NSString stringWithFormat:@"%@" ,dic[@"clubname"]]  ;
                     vo.firstletter =  [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]]  ;
                     vo.level =  [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
                     vo.nickname = dic[@"nickname"]  ;
@@ -98,7 +99,6 @@
                     vo.registrationid = dic[@"registrationid"]  ;
                     vo.regtime = dic[@"regtime"]  ;
                     vo.role = dic[@"role"]  ;
-                    vo.cityName = dic[@"cityname"] ;
                     vo.areaname = dic[@"areaname"] ;
                     vo.sex = dic[@"sex"] ;
                     vo.team = dic[@"team"] ;

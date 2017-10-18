@@ -152,7 +152,7 @@
     if (coachList.count > 0){
         UserDataVo *vo = [coachList objectAtIndex:indexPath.section];
 
-        [cell setPhoneContactCellByImageName:vo.headpicurl andWithName:vo.nickname andWithPhoneNum:[NSString stringWithFormat:@"%@ %@" , vo.areaname , vo.cityName] andWithChoose:vo.hasfocus andWithindex:indexPath.section];
+        [cell setPhoneContactCellByImageName:vo.headpicurl andWithName:[CommonFunc textFromBase64String:vo.nickname] andWithPhoneNum:[NSString stringWithFormat:@"%@ %@" , vo.areaname , vo.cityName] andWithChoose:vo.hasfocus andWithindex:indexPath.section];
         
         cell.delegate =  self ;
         
@@ -203,9 +203,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     UserDataVo *vo = [coachList objectAtIndex:indexPath.section];
 
-    MemberViewController *mem = [MemberViewController new] ;
-    mem.userVo = vo ;
-    [self.navigationController pushViewController:mem animated:YES];
+//    MemberViewController *mem = [MemberViewController new] ;
+//    mem.userVo = vo ;
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"forwardQiuDetail" object:vo userInfo:nil]];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{

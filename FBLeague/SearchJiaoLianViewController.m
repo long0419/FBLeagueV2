@@ -14,6 +14,7 @@
 #import "SearchClubViewController.h"
 #import "SearchCoachViewController.h"
 #import "YCSlideView.h"
+#import "MemberViewController.h"
 
 @interface SearchJiaoLianViewController (){
     UITextField  *searchTxt;
@@ -39,7 +40,18 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
     [self closeProgressView];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forward:) name:@"forwardSeDetail" object:nil];
+
 }
+
+-(void)forward : (NSNotification *) notification {
+    CoachVo *vo = [notification object];
+    MemberViewController *mem = [MemberViewController new] ;
+    mem.userVo = vo ;
+    [self.navigationController pushViewController:mem animated:YES];
+        
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -143,27 +155,40 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone" , @"1" , @"page" , soText , @"cityOrArea" , uvo.phone , @"token"  , nil];
     [PPNetworkHelper POST:url parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
-            NSDictionary *list = object[@"page"];
-            CoachVo *model = nil ;
+            NSDictionary *list = object[@"user"];
+            NSString *clubName = object[@"clubName"];
+            UserDataVo *model = nil ;
             [kouList removeAllObjects];
             
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
-                    model = [CoachVo new];
-                    model.hasFocus = [NSString stringWithFormat:@"%@" ,dic[@"hasfocus"]] ;
-                    model.cityName = [NSString stringWithFormat:@"%@ %@" , dic[@"cityname"] , dic[@"areaname"]] ;
-                    model.fansCount = [NSString stringWithFormat:@"%@" , dic[@"fansCount"]] ;
-
-                    if (scrollIndex == 0) {
-                        model.headerUrl =  [NSString stringWithFormat:@"%@" ,dic[@"logourl"]]  ;
-                        model.name = [NSString stringWithFormat:@"%@" ,[CommonFunc textFromBase64String:dic[@"name"]]]  ;
-                        model.clubId = [NSString stringWithFormat:@"%@" , dic[@"id"]] ;
-                    }else{
-                        model.headerUrl =  [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]]  ;
-                        model.name = [NSString stringWithFormat:@"%@" ,[CommonFunc textFromBase64String:dic[@"nickname"]]]  ;
-                        model.clubId = [NSString stringWithFormat:@"%@" , dic[@"club"]] ;
-                    }
-                    
+                    model = [UserDataVo new];
+                    model.registrationid =  [NSString stringWithFormat:@"%@" ,dic[@"registrationid"]]  ;
+                    model.areacode =  [NSString stringWithFormat:@"%@" ,dic[@"areacode"]]  ;
+                    model.cityName =  [NSString stringWithFormat:@"%@" ,dic[@"cityname"]]  ;
+                    model.position =  [NSString stringWithFormat:@"%@" ,dic[@"position"]]  ;
+                    model.regtime =  [NSString stringWithFormat:@"%@" ,dic[@"regtime"]]  ;
+                    model.team =  [NSString stringWithFormat:@"%@" ,dic[@"team"]]  ;
+                    model.areaname =  [NSString stringWithFormat:@"%@" ,dic[@"areaname"]]  ;
+                    model.nickname =  [NSString stringWithFormat:@"%@" ,dic[@"nickname"]]  ;
+                    model.sex =  [NSString stringWithFormat:@"%@" ,dic[@"sex"]]  ;
+                    model.fansCount =  [NSString stringWithFormat:@"%@" ,dic[@"fansCount"]]  ;
+                    model.hasfocus =  [NSString stringWithFormat:@"%@" ,dic[@"hasfocus"]]  ;
+                    model.realname =  [NSString stringWithFormat:@"%@" ,dic[@"realname"]]  ;
+                    model.openidbyqq =  [NSString stringWithFormat:@"%@" ,dic[@"openidbyqq"]]  ;
+                    model.openidbywx =  [NSString stringWithFormat:@"%@" ,dic[@"openidbywx"]]  ;
+                    model.firstletter =  [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]]  ;
+                    model.level =  [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
+                    model.phone =  [NSString stringWithFormat:@"%@" ,dic[@"phone"]]  ;
+                    model.headpicurl =  [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]]  ;
+                    model.provincecode =  [NSString stringWithFormat:@"%@" ,dic[@"provincecode"]]  ;
+                    model.role =  [NSString stringWithFormat:@"%@" ,dic[@"role"]]  ;
+                    model.citycode =  [NSString stringWithFormat:@"%@" ,dic[@"citycode"]]  ;
+                    model.club =  [NSString stringWithFormat:@"%@" ,dic[@"club"]]  ;
+                    model.brithday =  [NSString stringWithFormat:@"%@" ,dic[@"brithday"]]  ;
+                    model.certification =  [NSString stringWithFormat:@"%@" ,dic[@"certification"]]  ;
+                    model.desc =  [NSString stringWithFormat:@"%@" ,dic[@"description"]]  ;
+                    model.clubName = clubName ;
                     [kouList addObject:model];
                 }
                 

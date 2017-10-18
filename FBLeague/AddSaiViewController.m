@@ -339,19 +339,14 @@
 -(void)baoming{
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-
     NSString *type_ = @"1" ;
     if ([type isEqualToString:@"微信"]){
         type_ = @"2" ;
     }
     
     if ([_areaStr isEqualToString:@""] || nil == _areaStr) {
-        hud.mode = MBProgressHUDModeText;
-        hud.removeFromSuperViewOnHide = YES;
-        hud.labelText = @"请选择地区";
-        [hud hide:YES afterDelay:2];
-        
+        [SVProgressHUD showWithStatus:@"请选择地区"] ;
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
         return ;
     }
     
@@ -366,11 +361,8 @@
                 [self doAlipayPay];
             }
         }else{
-            hud.mode = MBProgressHUDModeText;
-            hud.removeFromSuperViewOnHide = YES;
-            hud.labelText = object[@"msg"];
-            [hud hide:YES afterDelay:2];
-
+            [SVProgressHUD showWithStatus:object[@"msg"]] ;
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
         }
     } failure:^(NSError *error) {
         
@@ -404,9 +396,7 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:getRandomId parameters:params success:^(id data) {
         NSString *rsa2PrivateKey = RSA_PRIVATE;
-        //                         RSA_PRIVATE;
         NSString *rsaPrivateKey =  @"" ;
-        //                         RSA_PUBLIC ;
         
         //将商品信息赋予AlixPayOrder的成员变量
         Order* order = [Order new];
@@ -470,7 +460,6 @@
             [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
             }];
         }
-        [self closeProgressView];
     } failure:^(NSError *error) {
         
     }];
@@ -516,7 +505,6 @@
         ChooseAreaViewController *area = [[ChooseAreaViewController alloc] init];
         area.isfrom = @"2" ;
         [self.navigationController pushViewController:area animated:YES];
-//        self.hidesBottomBarWhenPushed = NO ;
     }
 }
 

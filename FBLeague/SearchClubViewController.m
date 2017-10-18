@@ -52,9 +52,9 @@
     
     CoachChooseTableViewCell *cell = [[CoachChooseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Categorys];
     if (kouList.count > 0){
-        CoachVo *vo = [kouList objectAtIndex:indexPath.row];
+        UserDataVo *vo = [kouList objectAtIndex:indexPath.row];
         
-        [cell setPhoneContactCellByImageName:vo.headerUrl andWithName:vo.name andWithPhoneNum:vo.cityName andWithChoose:vo.hasFocus andWithindex:indexPath.section];
+        [cell setPhoneContactCellByImageName:vo.headpicurl andWithName:[CommonFunc textFromBase64String:vo.nickname] andWithPhoneNum:vo.cityName andWithChoose:vo.hasfocus andWithindex:indexPath.section];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone ;
     return cell ;
@@ -70,8 +70,6 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    CoachVo *vo = [kouList objectAtIndex:indexPath.section];
-
 }
 
 @end

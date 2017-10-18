@@ -27,6 +27,7 @@
 @implementation LianmengViewController
 
 -(void)viewWillAppear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forward:) name:@"forwardQiuDetail" object:nil];
 
 }
 
@@ -56,6 +57,13 @@
     [self.view addSubview:view];
     
 }
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"forwardQiuDetail" object:nil];
+}
+
 
 -(void)setBackBottmAndTitle{
     UIButton *backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -176,6 +184,18 @@
 #pragma mark - 发送朋友圈结果
 -(void) onSendTextImage:(NSString *) text images:(NSArray *)images{
     [dongtai onFCTextImage:text images:images];
+}
+
+-(void)forward : (NSNotification *) notification {
+    UserDataVo *vo = [notification object];
+    self.hidesBottomBarWhenPushed=YES;
+    
+    MemberViewController *mem = [MemberViewController new] ;
+    mem.userVo = vo ;
+    [self.navigationController pushViewController:mem animated:YES];
+    
+    self.hidesBottomBarWhenPushed=NO;
+    
 }
 
 

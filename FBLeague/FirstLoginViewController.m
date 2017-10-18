@@ -71,14 +71,14 @@
     [left mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(30);
         make.bottom.mas_equalTo(-82/2);
-        make.height.mas_equalTo(SYRealValue(30));
+        make.height.mas_equalTo(SYRealValue(40));
         make.width.mas_equalTo(SYRealValue(105));
     }];
     
     [right mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(-30);
         make.bottom.mas_equalTo(-82/2);
-        make.height.mas_equalTo(SYRealValue(30));
+        make.height.mas_equalTo(SYRealValue(40));
         make.width.mas_equalTo(SYRealValue(105));
     }] ;
 

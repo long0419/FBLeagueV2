@@ -53,11 +53,8 @@
     header.backgroundColor = [UIColor colorWithHexString:@"252525"];
     [self.view addSubview:header];
     
-    UIImageView *head ;
-//    if (nil != _userVo.headpicurl || ![@"" isEqualToString:_userVo.headpicurl]) {
-        head = [[UIImageView alloc] init];
-        [head sd_setImageWithURL:[NSURL URLWithString:_userVo.headpicurl] placeholderImage:[UIImage imageNamed:@"defaulthead"]];
-//    }
+    UIImageView *head = [[UIImageView alloc] init];
+    [head sd_setImageWithURL:[NSURL URLWithString:_userVo.headpicurl] placeholderImage:[UIImage imageNamed:@"defaulthead"]];
     head.frame = CGRectMake((kScreen_Width - 120/2)/2, 5 , 120/2, 120/2) ;
     head.layer.masksToBounds =YES;
     head.layer.cornerRadius = 120/4 ;
@@ -75,7 +72,7 @@
     titleLabel.font = [UIFont systemFontOfSize:10];
     titleLabel.numberOfLines = 0;//多行显示，计算高度
     titleLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
-    NSString *desc = [CommonFunc textFromBase64String:_userVo.club] ;
+    NSString *desc = _userVo.clubName ;
     CGSize titleSize = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc];
     titleLabel.size = titleSize;
     titleLabel.text = desc ;
@@ -100,7 +97,6 @@
     titleLabel3.font = [UIFont systemFontOfSize:10];
     titleLabel3.numberOfLines = 0;//多行显示，计算高度
     titleLabel3.textColor = [UIColor colorWithHexString:@"ffffff"];
-    //    NSString *desc =  [CommonFunc textFromBase64String:vo.desc];
     NSString *desc3 = [NSString stringWithFormat:@"粉丝：%@" , _userVo.fansCount] ;
     CGSize titleSize3 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc3];
     titleLabel3.size = titleSize3;
