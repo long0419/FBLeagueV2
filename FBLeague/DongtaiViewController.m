@@ -56,6 +56,7 @@
         url = getUnread ;
         self.title = @"@我的" ;
         [self setBackBottmAndTitle];
+
     }
 
     [PPNetworkHelper POST:url parameters:params success:^(id object) {
@@ -158,6 +159,18 @@
                 for (NSDictionary *dic in list) {
                     model = [DongtaiVo new];
                     model.did = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
+                    model.pubtime = [NSString stringWithFormat:@"%@" ,dic[@"pubtime"]] ;
+                    model.phone = [NSString stringWithFormat:@"%@" ,dic[@"phone"]] ;
+                    model.picurl = [NSString stringWithFormat:@"%@" ,dic[@"picurl"]] ;
+                    model.viewscount = [NSString stringWithFormat:@"%@" ,dic[@"viewscount"]] ;
+                    model.likescount = [NSString stringWithFormat:@"%@" ,dic[@"likescount"]] ;
+                    model.headpicurl = [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]] ;
+                    model.commentscount = [NSString stringWithFormat:@"%@" ,dic[@"commentscount"]] ;
+                    model.role = [NSString stringWithFormat:@"%@" ,dic[@"role"]] ;
+                    model.contents = [NSString stringWithFormat:@"%@" ,dic[@"contents"]] ;
+                    model.clubid = [NSString stringWithFormat:@"%@" ,dic[@"clubid"]] ;
+                    model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]] ;
+
                     NSMutableArray *cmlist = [NSMutableArray new] ;
                     for (NSDictionary *cm in dic[@"comments"]) {
                             cmv = [CommentVo new];

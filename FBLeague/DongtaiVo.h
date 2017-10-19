@@ -20,5 +20,9 @@
 @property (nonatomic , strong) NSString *contents ;
 @property (nonatomic , strong) NSString *name ;
 @property (nonatomic , strong) NSArray *comments ;
+@property (nonatomic , strong) NSString *viewscount ;
+@property (nonatomic , strong) NSString *likescount ;
+@property (nonatomic , strong) NSString *commentscount ;
+@property (nonatomic , strong) NSString *clubid ;
 
 @end
