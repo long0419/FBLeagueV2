@@ -13,6 +13,8 @@
 #import "AddZhanViewController.h"
 #import "DongtaiViewController.h"
 #import "UpdateUserInfoViewController.h"
+#import "LianmengViewController.h"
+#import "UnReadViewController.h"
 
 @interface MeViewController (){
     UserDataVo *uvo ;
@@ -215,16 +217,15 @@
      postNotificationName:@"removespot" object:nil userInfo:nil]  ;
     
     self.hidesBottomBarWhenPushed=YES ;
-    DongtaiViewController *add = [DongtaiViewController new] ;
-    add.type = @"1" ;
+    UnReadViewController *add = [UnReadViewController new] ;
     [self.navigationController pushViewController:add animated:YES];
     self.hidesBottomBarWhenPushed=NO ;
+    
 }
 
 -(void)detail{
     self.hidesBottomBarWhenPushed=YES;
     UpdateUserInfoViewController *add = [UpdateUserInfoViewController new] ;
-//    AddZhanViewController *add = [AddZhanViewController new] ;
     [self.navigationController pushViewController:add animated:YES];
     self.hidesBottomBarWhenPushed=NO ;
 }

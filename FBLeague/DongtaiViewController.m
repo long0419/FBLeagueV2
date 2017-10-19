@@ -9,7 +9,6 @@
 #import "DongtaiViewController.h"
 
 @interface DongtaiViewController (){
-//    DongtaiViewController *dongtai ;
     NSString *picUrl ;
     NSMutableArray *kouList ;
     NSMutableArray *tmpList ;
@@ -54,9 +53,6 @@
     }else if([_type isEqualToString:@"5"]){
         params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone ,@"phone",uvo.phone ,@"token" , nil];
         url = getUnread ;
-        self.title = @"@我的" ;
-        [self setBackBottmAndTitle];
-
     }
 
     [PPNetworkHelper POST:url parameters:params success:^(id object) {
@@ -103,7 +99,6 @@
                                 [cmlist addObject:cmv];
                             }
                             model.comments = cmlist ;
-                            
                             [kouList addObject:model];
                             
                         }
@@ -196,7 +191,6 @@
                 commentItem.userId = uvo.phone;
                 commentItem.userNick = uvo.nickname ;
                 commentItem.text = text ;
-                
                 for(DongtaiVo *dong in tmpList){
                     for(CommentVo *vo in dong.comments){
                         if([vo.cid isEqualToString:commentId]){
@@ -241,7 +235,6 @@
             }
         }
         textImageItem.ts = [self timeSwitchTimestamp:dt.pubtime];
-//            [[NSDate date] timeIntervalSince1970]*1000;
         
         DFLineLikeItem *likeItem = nil ;
         DFLineCommentItem *commentItem = nil ;
@@ -332,6 +325,7 @@
         NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: itemId , @"themeid" , uvo.phone , @"phone" , @"praise" ,@"headpicurl", uvo.phone , @"token" , nil];
         [PPNetworkHelper POST:apicmsave parameters:params success:^(id object) {
         } failure:^(NSError *error) {
+            
         }];
     }
 }
