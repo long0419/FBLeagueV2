@@ -227,7 +227,8 @@
                 textImageItem.thumbImages = images;
             }
         }
-        textImageItem.ts = [[NSDate date] timeIntervalSince1970]*1000;
+        textImageItem.ts = [self timeSwitchTimestamp:dt.pubtime];
+//            [[NSDate date] timeIntervalSince1970]*1000;
         
         DFLineLikeItem *likeItem = nil ;
         DFLineCommentItem *commentItem = nil ;
@@ -257,6 +258,18 @@
         [self addItem:textImageItem];
         
     }
+}
+
+-(NSInteger)timeSwitchTimestamp:(NSString *)formatTime{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Beijing"];
+    [formatter setTimeZone:timeZone];
+    NSDate* date = [formatter dateFromString:formatTime];
+    NSInteger timeSp = [[NSNumber numberWithDouble:[date timeIntervalSince1970]] integerValue];
+    return timeSp * 1000;
 }
 
 -(void)onCommentCreate:(NSString *)commentId text:(NSString *)text itemId:(NSString *) itemId

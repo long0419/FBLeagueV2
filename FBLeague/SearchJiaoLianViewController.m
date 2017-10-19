@@ -44,7 +44,7 @@
 }
 
 -(void)forward : (NSNotification *) notification {
-    CoachVo *vo = [notification object];
+    UserDataVo *vo = [notification object];
     MemberViewController *mem = [MemberViewController new] ;
     mem.userVo = vo ;
     [self.navigationController pushViewController:mem animated:YES];
