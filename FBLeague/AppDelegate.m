@@ -189,23 +189,9 @@
     return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]] ;
 }
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    
-    // Required
-    //    [JPUSHService registerDeviceToken:deviceToken];
-}
-
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    
-    // Required,For systems with less than or equal to iOS6
-    //    [JPUSHService handleRemoteNotification:userInfo];
-}
-
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
     // IOS 7 Support Required
-    //    [JPUSHService handleRemoteNotification:userInfo];
     completionHandler(UIBackgroundFetchResultNewData);
 }
 
