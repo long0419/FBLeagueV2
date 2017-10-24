@@ -14,7 +14,6 @@
 #import "Order.h"
 #import "APAuthV2Info.h"
 #import "RSADataSigner.h"
-#import <AlipaySDK/AlipaySDK.h>
 
 @interface AddSaiViewController (){
     DSLLoginTextField *psw ;
@@ -337,37 +336,39 @@
 }
 
 -(void)baoming{
-    YYCache *cache = [YYCache cacheWithName:@"FB"];
-    UserDataVo *uvo = [cache objectForKey:@"userData"];
-    NSString *type_ = @"1" ;
-    if ([type isEqualToString:@"微信"]){
-        type_ = @"2" ;
-    }
+//    YYCache *cache = [YYCache cacheWithName:@"FB"];
+//    UserDataVo *uvo = [cache objectForKey:@"userData"];
+//    NSString *type_ = @"1" ;
+//    if ([type isEqualToString:@"微信"]){
+//        type_ = @"2" ;
+//    }
+//
+//    if ([_areaStr isEqualToString:@""] || nil == _areaStr) {
+//        [SVProgressHUD showWithStatus:@"请选择地区"] ;
+//        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+//        return ;
+//    }
+//
+//    NSArray *area = [_areaCodeStr componentsSeparatedByString:@" "];
+//
+//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , uvo.club , @"clubId" , _leagueId , @"leagueId" , area[2] , @"areaCode" , groupType , @"groupType" , formatType , @"format" , type_ , @"paymentType" , @"21213123" , @"paymentOrder" ,uvo.phone ,  @"token", nil];
+//    [PPNetworkHelper POST:joinLeague parameters:params success:^(id object) {
+//        if([object[@"code"] isEqualToString:@"0000"]){
+//            if ([type_ isEqualToString:@"2"]) { //微信
+//                [MXWechatPayHandler jumpToWxPay:@"1" andWithTitle:@"联赛报名"];
+//            }else{
+//                [self doAlipayPay];
+//            }
+//        }else{
+//            [SVProgressHUD showWithStatus:object[@"msg"]] ;
+//            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+//            [SVProgressHUD dismissWithDelay:1];
+//        }
+//    } failure:^(NSError *error) {
+//
+//    }];
     
-    if ([_areaStr isEqualToString:@""] || nil == _areaStr) {
-        [SVProgressHUD showWithStatus:@"请选择地区"] ;
-        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-        return ;
-    }
-    
-    NSArray *area = [_areaCodeStr componentsSeparatedByString:@" "];
-
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , uvo.club , @"clubId" , _leagueId , @"leagueId" , area[2] , @"areaCode" , groupType , @"groupType" , formatType , @"format" , type_ , @"paymentType" , @"21213123" , @"paymentOrder" ,uvo.phone ,  @"token", nil];
-    [PPNetworkHelper POST:joinLeague parameters:params success:^(id object) {
-        if([object[@"code"] isEqualToString:@"0000"]){
-            if ([type_ isEqualToString:@"2"]) { //微信
-                [MXWechatPayHandler jumpToWxPay:@"1" andWithTitle:@"联赛报名"];
-            }else{
-                [self doAlipayPay];
-            }
-        }else{
-            [SVProgressHUD showWithStatus:object[@"msg"]] ;
-            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-            [SVProgressHUD dismissWithDelay:1];
-        }
-    } failure:^(NSError *error) {
-        
-    }];
+    [self share];
     
 }
 
@@ -479,17 +480,81 @@
 }
 
 -(void)share{
-    //添加popview
-    [BHBPopView showToView:self.view
-                 andImages:@[@"wechat.png",
-                             @"qq.png",
-                             @"friend.png"]
-                 andTitles:
-                    @[@"微信",@"QQ",@"朋友圈"]
-            andSelectBlock:^(BHBItem *item) {
-                NSLog(@"%@" , item.title) ;
-            }
-     ];
+    
+//    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"jpg"];
+//    NSData *imgData = [NSData dataWithContentsOfFile:filePath];
+//    QQApiImageObject *imgObj = [QQApiImageObject objectWithData:imgData
+//                                               previewImageData:imgData
+//                                                          title:@"title"
+//                                                   description :@"description"];
+//
+//    SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:imgObj];
+//    QQApiSendResultCode sent = [QQApiInterface sendReq:req];
+    
+    
+    if (![TencentOAuth iphoneQQInstalled]) {
+        NSLog(@"请移步App Store去下载腾讯QQ客户端");
+    }else {
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"jpg"];
+        NSData *imgData = [NSData dataWithContentsOfFile:filePath];
+
+        QQApiImageObject *imgObj = [QQApiImageObject
+                                          objectWithData:
+                                                  imgData
+                                           previewImageData:
+                                               UIImagePNGRepresentation(                                                [UIImage imageNamed:@"QR"])
+                                           title:@"报名成功"
+                                           description:@"咖盟报名成功"];
+
+        SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:imgObj];
+        [QQApiInterface sendReq:req];
+    
+    }
+    
+    
+    
+//    [BHBPopView showToView:self.view
+//                 andImages:@[@"wechat.png",
+//                             @"qq.png",
+//                             @"friend.png"]
+//                 andTitles:
+//                    @[@"微信",@"QQ",@"朋友圈"]
+//            andSelectBlock:^(BHBItem *item) {
+//                if ([item.title isEqualToString:@"微信"]) {
+//                    WXMediaMessage *message = [WXMediaMessage message];
+//                    [message setThumbImage:[UIImage imageNamed:@"150876415"]];
+//                    WXImageObject *imageObject = [WXImageObject object];
+//
+//                    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"jpg"];
+//                    imageObject.imageData = [NSData dataWithContentsOfFile:filePath];
+//                    message.mediaObject = imageObject ;
+//
+//                    SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
+//                    req.bText = NO ;
+//                    req.message = message ;
+//                    req.scene = WXSceneSession ;
+//                    [WXApi sendReq :req];
+//
+//                }else if([item.title isEqualToString:@"QQ"]){
+
+//                }else if([item.title isEqualToString:@"朋友圈"]){
+//                    WXMediaMessage *message = [WXMediaMessage message];
+//                    [message setThumbImage:[UIImage imageNamed:@"150876415"]];
+//                    WXImageObject *imageObject = [WXImageObject object];
+//
+//                    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"jpg"];
+//                    imageObject.imageData = [NSData dataWithContentsOfFile:filePath];
+//                    message.mediaObject = imageObject ;
+//
+//                    SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
+//                    req.bText = NO ;
+//                    req.message = message ;
+//                    req.scene = WXSceneTimeline ;
+//                    [WXApi sendReq :req];
+//
+//                }
+//            }
+//     ];
 }
 
 -(void)back{

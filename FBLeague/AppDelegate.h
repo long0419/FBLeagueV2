@@ -7,10 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WXApi.h"
-#import <TencentOpenAPI/TencentOAuth.h>
-#import <TencentOpenAPI/QQApiInterface.h>
-#import "WXApiManager.h"
 #import "DHLaunchAdPageHUD.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, QQApiInterfaceDelegate ,WXApiDelegate>

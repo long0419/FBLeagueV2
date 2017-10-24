@@ -52,6 +52,7 @@
     [self showMsg];
     
     [WXApi registerApp:@"wxa8c4fb497943e690"];
+    [[TencentOAuth alloc] initWithAppId:@"1105889047" andDelegate:nil]; //注册
 
     // 启动动画
     [self startLaunchingAnimation];
@@ -109,14 +110,13 @@
 
 - (void)startLaunchingAnimation {
     
-    NSString *adImageJPGUrl = @"http://p5.image.hiapk.com/uploads/allimg/150112/7730-150112143S3.jpg";
-    NSString *adimageGIFUrl = @"http://img.ui.cn/data/file/3/4/6/210643.gif";
-    NSString *adImageJPGPath = [[NSBundle mainBundle] pathForResource:@"adImage2" ofType:@"jpg"];
-    NSString *adImageGifPath = [[NSBundle mainBundle] pathForResource:@"adImage3" ofType:@"gif"];
+//    NSString *adImageJPGUrl = @"http://p5.image.hiapk.com/uploads/allimg/150112/7730-150112143S3.jpg";
+//    NSString *adimageGIFUrl = @"http://img.ui.cn/data/file/3/4/6/210643.gif";
+    NSString *adImageJPGPath = [[NSBundle mainBundle] pathForResource:@"ad" ofType:@"jpg"];
+//    NSString *adImageGifPath = [[NSBundle mainBundle] pathForResource:@"adImage3" ofType:@"gif"];
     
-    DHLaunchAdPageHUD *launchAd = [[DHLaunchAdPageHUD alloc] initWithFrame:CGRectMake(0, 0, DDScreenW, DDScreenH-100) aDduration:4.0 aDImageUrl:adImageGifPath hideSkipButton:NO launchAdClickBlock:^{
-        NSLog(@"[AppDelegate]:点了广告图片");
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.baidu.com"]];
+    DHLaunchAdPageHUD *launchAd = [[DHLaunchAdPageHUD alloc] initWithFrame:CGRectMake(0, 0, DDScreenW, DDScreenH-100) aDduration:4.0 aDImageUrl:adImageJPGPath hideSkipButton:NO launchAdClickBlock:^{
+//        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.baidu.com"]];
     }];
 
 }
@@ -209,31 +209,37 @@
 //微信原生SDK 回调
 -(void) onResp:(BaseResp*)resp{
     SendAuthResp * resp1 = (SendAuthResp *)resp;
-    if (resp1.errCode ==WXSuccess) {
-        NSString * grantStr =@"grant_type=authorization_code";
-        
-        NSString * tokenUrl =@"https://api.weixin.qq.com/sns/oauth2/access_token?";
-        
-        NSString * tokenUrl1 = [tokenUrl stringByAppendingString:[NSString stringWithFormat:@"appid=%@&",MXWechatAPPID]];
-        
-        NSString * tokenUrl2 = [tokenUrl1 stringByAppendingString:[NSString stringWithFormat:@"secret=%@&",AppSecret]];
-        
-        NSString * tokenUrl3 = [tokenUrl2 stringByAppendingString:[NSString stringWithFormat:@"code=%@&",resp1.code]];
-        NSString * tokenUrlend = [tokenUrl3 stringByAppendingString:grantStr];
-        
-        [PPNetworkHelper POST:tokenUrlend parameters:nil success:^(id data) {
-            NSString * userfulStr = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@" , data[@"access_token"] , data[@"openid"]];
-            [PPNetworkHelper POST:userfulStr parameters:nil success:^(id data) {
-                 [[NSNotificationCenter defaultCenter] postNotificationName:@"showRegisterView" object:data];
+    if([resp isKindOfClass:[SendMessageToWXResp class]] || [resp isKindOfClass:[SendMessageToQQResp class]]){
+        [SVProgressHUD showSuccessWithStatus:@"分享成功"];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+    }else{
+        if (resp1.errCode ==WXSuccess) {
+            NSString * grantStr =@"grant_type=authorization_code";
+            
+            NSString * tokenUrl =@"https://api.weixin.qq.com/sns/oauth2/access_token?";
+            
+            NSString * tokenUrl1 = [tokenUrl stringByAppendingString:[NSString stringWithFormat:@"appid=%@&",MXWechatAPPID]];
+            
+            NSString * tokenUrl2 = [tokenUrl1 stringByAppendingString:[NSString stringWithFormat:@"secret=%@&",AppSecret]];
+            
+            NSString * tokenUrl3 = [tokenUrl2 stringByAppendingString:[NSString stringWithFormat:@"code=%@&",resp1.code]];
+            NSString * tokenUrlend = [tokenUrl3 stringByAppendingString:grantStr];
+            
+            [PPNetworkHelper POST:tokenUrlend parameters:nil success:^(id data) {
+                NSString * userfulStr = [NSString stringWithFormat:@"https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@" , data[@"access_token"] , data[@"openid"]];
+                [PPNetworkHelper POST:userfulStr parameters:nil success:^(id data) {
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"showRegisterView" object:data];
+                    
+                } failure:^(NSError *error) {
+                }];
                 
             } failure:^(NSError *error) {
             }];
+        }
 
-        } failure:^(NSError *error) {
-        }];
-
-        
     }
+    
+    
 }
 
 @end

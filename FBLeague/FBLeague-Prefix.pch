@@ -141,5 +141,10 @@
 #import "CommonFunc.h"
 #import "WZLBadgeImport.h"
 #import "SVProgressHUD.h"
+#import "WXApi.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import <TencentOpenAPI/TencentOAuth.h>
+#import "WXApiManager.h"
 
 #endif /* CarManager_Prefix_pch */

@@ -42,6 +42,9 @@
                 NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
                 break;
         }
+    }else if([resp isKindOfClass:[SendMessageToWXResp class]]){
+        [SVProgressHUD showSuccessWithStatus:@"分享成功"];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
     }else{
         SendAuthResp * resp1 = (SendAuthResp *)resp;
 
