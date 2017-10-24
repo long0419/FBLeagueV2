@@ -159,6 +159,7 @@
     
 }
 
+#pragma mark - error
 -(void) focusContact :(UIView *) view {
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];

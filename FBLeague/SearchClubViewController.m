@@ -52,9 +52,9 @@
     
     CoachChooseTableViewCell *cell = [[CoachChooseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Categorys];
     if (kouList.count > 0){
-        UserDataVo *vo = [kouList objectAtIndex:indexPath.row];
+        ClubOBJ *vo = [kouList objectAtIndex:indexPath.row];
         
-        [cell setPhoneContactCellByImageName:vo.headpicurl andWithName:[CommonFunc textFromBase64String:vo.nickname] andWithPhoneNum:vo.cityName andWithChoose:vo.hasfocus andWithindex:indexPath.section];
+        [cell setPhoneContactCellByImageName:vo.logourl andWithName: vo.name andWithPhoneNum:[NSString stringWithFormat:@"%@ %@" , vo.cityname , vo.areaname] andWithChoose:vo.hasfocus andWithindex:indexPath.section];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone ;
     return cell ;

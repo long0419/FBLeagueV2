@@ -422,8 +422,6 @@
 		FD5018DE1F3C62F10077C418 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		FD5018E01F3C62F80077C418 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FD5018E21F3C62FE0077C418 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		FD5018E41F3D52040077C418 /* ClubVo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClubVo.h; sourceTree = "<group>"; };
-		FD5018E51F3D52040077C418 /* ClubVo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClubVo.m; sourceTree = "<group>"; };
 		FD50C4231F5D1A9A00010C88 /* SaiResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaiResultViewController.h; sourceTree = "<group>"; };
 		FD50C4241F5D1A9A00010C88 /* SaiResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaiResultViewController.m; sourceTree = "<group>"; };
 		FD58AFF71F7A223400AB6EAE /* ClubDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClubDetailViewController.h; sourceTree = "<group>"; };
@@ -1077,19 +1075,6 @@
 			name = login;
 			sourceTree = "<group>";
 		};
-		FDA8EE5A1F07F39E00F3A01A /* model */ = {
-			isa = PBXGroup;
-			children = (
-				FDD24CC71F0BEE1900DA16FC /* ProvinceVo.h */,
-				FDD24CC81F0BEE1900DA16FC /* ProvinceVo.m */,
-				FDD24CC41F0BEDF800DA16FC /* CityVo.h */,
-				FDD24CC51F0BEDF800DA16FC /* CityVo.m */,
-				FD5018E41F3D52040077C418 /* ClubVo.h */,
-				FD5018E51F3D52040077C418 /* ClubVo.m */,
-			);
-			name = model;
-			sourceTree = "<group>";
-		};
 		FDAA378A1DD2BCF80038658F = {
 			isa = PBXGroup;
 			children = (
@@ -1220,7 +1205,6 @@
 		FDAA38241DD2BDD20038658F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				FDA8EE5A1F07F39E00F3A01A /* model */,
 				FDAA38271DD2BDF90038658F /* Controller */,
 				FDAA38261DD2BDF10038658F /* View */,
 				FDAA38251DD2BDEA0038658F /* Model */,
@@ -1231,6 +1215,10 @@
 		FDAA38251DD2BDEA0038658F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FDD24CC71F0BEE1900DA16FC /* ProvinceVo.h */,
+				FDD24CC81F0BEE1900DA16FC /* ProvinceVo.m */,
+				FDD24CC41F0BEDF800DA16FC /* CityVo.h */,
+				FDD24CC51F0BEDF800DA16FC /* CityVo.m */,
 				FD85D4FD1F94BB22005BD767 /* QiuYuanVo.h */,
 				FD85D4FE1F94BB22005BD767 /* QiuYuanVo.m */,
 				FD9A52821F8B394000A64E6D /* SponsorVo.h */,

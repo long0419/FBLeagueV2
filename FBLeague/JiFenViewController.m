@@ -54,7 +54,6 @@
                     model.lostcount = [NSString stringWithFormat:@"%@" , dic[@"lostcount"]] ;
                     model.paymenttype = [NSString stringWithFormat:@"%@" , dic[@"paymenttype"]] ;
                     model.integral = [NSString stringWithFormat:@"%@" , dic[@"integral"]] ;
-                    model.lostcount = [NSString stringWithFormat:@"%@" , dic[@"lostcount"]] ;
                     model.tiedcount = [NSString stringWithFormat:@"%@" , dic[@"tiedcount"]] ;
                     model.woncount = [NSString stringWithFormat:@"%@" , dic[@"woncount"]] ;
                     model.matchid = [NSString stringWithFormat:@"%@" , dic[@"matchid"]] ;
@@ -65,8 +64,8 @@
                                          model.clubname ,
                                          model.playedcount,
                                          model.woncount,
-                                         model.lostcount,
                                          model.tiedcount,
+                                         model.lostcount,
                                          model.goalcount,
                                          model.fumblecount,
                                          model.integral

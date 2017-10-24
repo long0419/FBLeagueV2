@@ -15,6 +15,7 @@
 #import "SearchCoachViewController.h"
 #import "YCSlideView.h"
 #import "MemberViewController.h"
+#import "ClubOBJ.h"
 
 @interface SearchJiaoLianViewController (){
     UITextField  *searchTxt;
@@ -154,46 +155,68 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone" , @"1" , @"page" , soText , @"cityOrArea" , uvo.phone , @"token"  , nil];
     [PPNetworkHelper POST:url parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
-            NSDictionary *list = object[@"user"];
-            NSString *clubName = object[@"clubName"];
-            UserDataVo *model = nil ;
             [kouList removeAllObjects];
-            
-            if (![list isEqual:[NSNull null]]) {
-                for (NSDictionary *dic in list) {
-                    model = [UserDataVo new];
-                    model.registrationid =  [NSString stringWithFormat:@"%@" ,dic[@"registrationid"]]  ;
-                    model.areacode =  [NSString stringWithFormat:@"%@" ,dic[@"areacode"]]  ;
-                    model.cityName =  [NSString stringWithFormat:@"%@" ,dic[@"cityname"]]  ;
-                    model.position =  [NSString stringWithFormat:@"%@" ,dic[@"position"]]  ;
-                    model.regtime =  [NSString stringWithFormat:@"%@" ,dic[@"regtime"]]  ;
-                    model.team =  [NSString stringWithFormat:@"%@" ,dic[@"team"]]  ;
-                    model.areaname =  [NSString stringWithFormat:@"%@" ,dic[@"areaname"]]  ;
-                    model.nickname =  [NSString stringWithFormat:@"%@" ,dic[@"nickname"]]  ;
-                    model.sex =  [NSString stringWithFormat:@"%@" ,dic[@"sex"]]  ;
-                    model.fansCount =  [NSString stringWithFormat:@"%@" ,dic[@"fansCount"]]  ;
-                    model.hasfocus =  [NSString stringWithFormat:@"%@" ,dic[@"hasfocus"]]  ;
-                    model.realname =  [NSString stringWithFormat:@"%@" ,dic[@"realname"]]  ;
-                    model.openidbyqq =  [NSString stringWithFormat:@"%@" ,dic[@"openidbyqq"]]  ;
-                    model.openidbywx =  [NSString stringWithFormat:@"%@" ,dic[@"openidbywx"]]  ;
-                    model.firstletter =  [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]]  ;
-                    model.level =  [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
-                    model.phone =  [NSString stringWithFormat:@"%@" ,dic[@"phone"]]  ;
-                    model.headpicurl =  [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]]  ;
-                    model.provincecode =  [NSString stringWithFormat:@"%@" ,dic[@"provincecode"]]  ;
-                    model.role =  [NSString stringWithFormat:@"%@" ,dic[@"role"]]  ;
-                    model.citycode =  [NSString stringWithFormat:@"%@" ,dic[@"citycode"]]  ;
-                    model.club =  [NSString stringWithFormat:@"%@" ,dic[@"club"]]  ;
-                    model.brithday =  [NSString stringWithFormat:@"%@" ,dic[@"brithday"]]  ;
-                    model.certification =  [NSString stringWithFormat:@"%@" ,dic[@"certification"]]  ;
-                    model.desc =  [NSString stringWithFormat:@"%@" ,dic[@"description"]]  ;
-                    model.clubName = clubName ;
-                    [kouList addObject:model];
-                }
+            if (scrollIndex == 0) {
+                NSDictionary *list = object[@"clubs"];
+                ClubOBJ *model = nil ;
                 
-                if (scrollIndex == 0) {
+                if (![list isEqual:[NSNull null]]) {
+                    for (NSDictionary *dic in list) {
+                        model = [ClubOBJ new];
+                        model.desc = [NSString stringWithFormat:@"%@" , dic[@"cityname"]] ;
+                        model.cid = [NSString stringWithFormat:@"%@" , dic[@"id"]] ;
+                        model.areacode = [NSString stringWithFormat:@"%@" , dic[@"areacode"]] ;
+                        model.logourl = [NSString stringWithFormat:@"%@" , dic[@"logourl"]] ;
+                        model.cityname = [NSString stringWithFormat:@"%@" , dic[@"cityname"]] ;
+                        model.provincecode = [NSString stringWithFormat:@"%@" , dic[@"provincecode"]] ;
+                        model.creator = [NSString stringWithFormat:@"%@" , dic[@"creator"]] ;
+                        model.hasfocus = [NSString stringWithFormat:@"%@" , dic[@"hasfocus"]] ;
+                        model.citycode = [NSString stringWithFormat:@"%@" , dic[@"citycode"]] ;
+                        model.areaname = [NSString stringWithFormat:@"%@" , dic[@"areaname"]] ;
+                        model.certification = [NSString stringWithFormat:@"%@" , dic[@"certification"]] ;
+                        model.createdate = [NSString stringWithFormat:@"%@" , dic[@"createdate"]] ;
+                        model.fansCount = [NSString stringWithFormat:@"%@" , dic[@"fansCount"]] ;
+                        model.name = [NSString stringWithFormat:@"%@" , [CommonFunc textFromBase64String:dic[@"name"]]] ;
+                        [kouList addObject:model];
+                    }
                     [club searchClubByContent:kouList];
-                }else{
+                }
+
+            }else{
+                NSDictionary *list = object[@"coaches"];
+                UserDataVo *model = nil ;
+                
+                if (![list isEqual:[NSNull null]]) {
+                    for (NSDictionary *dic in list) {
+                        model = [UserDataVo new];
+                        model.registrationid =  [NSString stringWithFormat:@"%@" ,dic[@"registrationid"]]  ;
+                        model.areacode =  [NSString stringWithFormat:@"%@" ,dic[@"areacode"]]  ;
+                        model.cityName =  [NSString stringWithFormat:@"%@" ,dic[@"cityname"]]  ;
+                        model.position =  [NSString stringWithFormat:@"%@" ,dic[@"position"]]  ;
+                        model.regtime =  [NSString stringWithFormat:@"%@" ,dic[@"regtime"]]  ;
+                        model.team =  [NSString stringWithFormat:@"%@" ,dic[@"team"]]  ;
+                        model.areaname =  [NSString stringWithFormat:@"%@" ,dic[@"areaname"]]  ;
+                        model.nickname =  [NSString stringWithFormat:@"%@" ,dic[@"nickname"]]  ;
+                        model.sex =  [NSString stringWithFormat:@"%@" ,dic[@"sex"]]  ;
+                        model.fansCount =  [NSString stringWithFormat:@"%@" ,dic[@"fansCount"]]  ;
+                        model.hasfocus =  [NSString stringWithFormat:@"%@" ,dic[@"hasfocus"]]  ;
+                        model.realname =  [NSString stringWithFormat:@"%@" ,dic[@"realname"]]  ;
+                        model.openidbyqq =  [NSString stringWithFormat:@"%@" ,dic[@"openidbyqq"]]  ;
+                        model.openidbywx =  [NSString stringWithFormat:@"%@" ,dic[@"openidbywx"]]  ;
+                        model.firstletter =  [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]]  ;
+                        model.level =  [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
+                        model.phone =  [NSString stringWithFormat:@"%@" ,dic[@"phone"]]  ;
+                        model.headpicurl =  [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]]  ;
+                        model.provincecode =  [NSString stringWithFormat:@"%@" ,dic[@"provincecode"]]  ;
+                        model.role =  [NSString stringWithFormat:@"%@" ,dic[@"role"]]  ;
+                        model.citycode =  [NSString stringWithFormat:@"%@" ,dic[@"citycode"]]  ;
+                        model.club =  [NSString stringWithFormat:@"%@" ,dic[@"club"]]  ;
+                        model.brithday =  [NSString stringWithFormat:@"%@" ,dic[@"brithday"]]  ;
+                        model.certification =  [NSString stringWithFormat:@"%@" ,dic[@"certification"]]  ;
+                        model.desc =  [NSString stringWithFormat:@"%@" ,dic[@"description"]]  ;
+                        model.clubName = [CommonFunc textFromBase64String:dic[@"clubName"]] ;
+                        [kouList addObject:model];
+                    }
                     [coach searchCoachByContent:kouList];
                 }
             }
@@ -210,15 +233,10 @@
 
 
 #pragma mark textarea
-// 设置输入框，是否可以被修改
-// NO-将无法修改，不出现键盘
-// YES-可以修改，默认值
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
     return YES;
 }
 
-// 当点击键盘的返回键（右下角）时，执行该方法。
-// 一般用来隐藏键盘
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     soText = textField.text ;
     [self getNeedDatas];
@@ -226,17 +244,10 @@
     return YES;
 }
 
-// 当输入框获得焦点时，执行该方法。
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
-    NSLog(@"textFieldDidBeginEditing");
-}
-
-// 指定是否允许文本字段结束编辑，允许的话，文本字段会失去first responder
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
     return YES;
 }
 
-// 文本框的文本，是否能被修改
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     return YES;
 }
