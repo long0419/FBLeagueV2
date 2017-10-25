@@ -69,7 +69,7 @@
 #define getDepositProtocol [NSString stringWithFormat:@"%@/%@",API,@"ht/user/getDepositProtocol"]
 #define getCoachProtocol [NSString stringWithFormat:@"%@/%@",API,@"ht/user/getCoachProtocol"]
 #define isAuth [NSString stringWithFormat:@"%@/%@",API,@"api/user/isAuth"]
-
+#define getProtocolURL [NSString stringWithFormat:@"%@/%@",API,@"api/league/getProtocolURL"]
 
 /******支付*******/
 #define getWXPrepayId [NSString stringWithFormat:@"%@/%@",API,@"pay/getWXPrepayId"]

@@ -142,6 +142,7 @@
 -(void)explain{
     self.hidesBottomBarWhenPushed = YES ;
     ReadDetailContentViewController *read = [ReadDetailContentViewController new];
+    read.type = @"1" ;
     [self.navigationController pushViewController:read animated:YES];
     self.hidesBottomBarWhenPushed = NO ;
 }

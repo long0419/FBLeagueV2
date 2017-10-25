@@ -29,7 +29,8 @@
     self.uview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height - 44 - 20)];
     [self.view addSubview:self.uview];
     
-    NSString *urlx = getDepositProtocol ;
+    NSString *urlx = getProtocolURL ;
+//    @"http://120.27.152.254:8081/club/generator/league_protocol.html" ;
     if ([_type isEqualToString:@"2"]) {
         urlx = getCoachProtocol ;
     }
