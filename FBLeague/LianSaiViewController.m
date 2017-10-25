@@ -12,6 +12,7 @@
 #import "JiFenViewController.h"
 #import "BaomingViewController.h"
 #import "SaiListViewController.h"
+#import "ReadDetailContentViewController.h"
 
 @interface LianSaiViewController (){
     NSString *title ;
@@ -139,7 +140,10 @@
 }
 
 -(void)explain{
-    
+    self.hidesBottomBarWhenPushed = YES ;
+    ReadDetailContentViewController *read = [ReadDetailContentViewController new];
+    [self.navigationController pushViewController:read animated:YES];
+    self.hidesBottomBarWhenPushed = NO ;
 }
 
 -(void)goAction{

@@ -224,8 +224,15 @@
         NSMutableArray *images = nil ;
         if(nil != dt.picurl){
             images = [dt.picurl componentsSeparatedByString:@","];
-            textImageItem.srcImages = images;
-            textImageItem.thumbImages = images;
+            if([images count] == 1){
+                NSMutableArray *tmp = [[NSMutableArray alloc] initWithArray:images];
+                [tmp addObject:@"http://www.baidu.com"];
+                textImageItem.srcImages = tmp;
+                textImageItem.thumbImages = tmp;
+            }else{
+                textImageItem.srcImages = images;
+                textImageItem.thumbImages = images;
+            }
         }
         textImageItem.ts = [self timeSwitchTimestamp:dt.pubtime];
         DFLineLikeItem *likeItem = nil ;
