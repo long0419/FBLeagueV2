@@ -106,7 +106,17 @@
             
             [self setupBanner];
             
-            [self setRightBottom];
+//            if (nil == leagueId || [leagueId isEqualToString:@""]) {
+                [self setRightBottom];
+//            }
+
+            explainViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            explainViewBtn.frame = CGRectMake(0, 0, 17, 17);
+            [explainViewBtn setImage:[UIImage imageNamed:@"explain"] forState:UIControlStateNormal];
+            [explainViewBtn addTarget:self action: @selector(explain)
+                     forControlEvents:UIControlEventTouchUpInside];
+            UIBarButtonItem *backItem2 = [[UIBarButtonItem alloc] initWithCustomView:explainViewBtn];
+            self.navigationItem.leftBarButtonItem = backItem2 ;
 
         }
     } failure:^(NSError *error) {
@@ -130,13 +140,6 @@
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
     self.navigationItem.rightBarButtonItem = backItem ;
     
-    explainViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    explainViewBtn.frame = CGRectMake(0, 0, 17, 17);
-    [explainViewBtn setImage:[UIImage imageNamed:@"explain"] forState:UIControlStateNormal];
-    [explainViewBtn addTarget:self action: @selector(explain)
-          forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem2 = [[UIBarButtonItem alloc] initWithCustomView:explainViewBtn];
-    self.navigationItem.leftBarButtonItem = backItem2 ;
 }
 
 -(void)explain{
