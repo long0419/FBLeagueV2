@@ -220,7 +220,6 @@
         make.top.mas_equalTo(money1.mas_bottom).with.offset(20);
     }];
 
-    
     DSLLoginTextField *money12=[[DSLLoginTextField alloc]init];
     money12.frame = CGRectMake(30 , 20 + label15.bottom , kScreen_Width - 60 , 40);
     money12.clearButtonMode=UITextFieldViewModeWhileEditing;
@@ -230,8 +229,6 @@
     money12.placeholder=@"1000元";
     money12.enabled = NO ;
     money12.maxTextLength= 11;
-    //    money1.delegate = self ;
-    //    money1.tag = 10 ;
     money12.textAlignment = NSTextAlignmentCenter ;
     [self.view addSubview:money12];
     [money12 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -346,29 +343,44 @@
     if ([_areaStr isEqualToString:@""] || nil == _areaStr) {
         [SVProgressHUD showWithStatus:@"请选择地区"] ;
         [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        [SVProgressHUD dismissWithDelay:.5] ;
         return ;
+    }
+    
+    if ([type_ isEqualToString:@"2"]) { //微信
+        [MXWechatPayHandler jumpToWxPay:@"1" andWithTitle:@"联赛报名"];
+    }else{
+        [self doAlipayPay];
+    }
+    
+    [self getBaoming];
+    
+}
+
+-(void)getBaoming{
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *uvo = [cache objectForKey:@"userData"];
+    NSString *type_ = @"1" ;
+    if ([type isEqualToString:@"微信"]){
+        type_ = @"2" ;
     }
 
     NSArray *area = [_areaCodeStr componentsSeparatedByString:@" "];
-
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , uvo.club , @"clubId" , _leagueId , @"leagueId" , area[2] , @"areaCode" , groupType , @"groupType" , formatType , @"format" , type_ , @"paymentType" , @"21213123" , @"paymentOrder" ,uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:joinLeague parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
-            if ([type_ isEqualToString:@"2"]) { //微信
-                [MXWechatPayHandler jumpToWxPay:@"1" andWithTitle:@"联赛报名"];
-            }else{
-                [self doAlipayPay];
-            }
+            
         }else{
-            [SVProgressHUD showWithStatus:object[@"msg"]] ;
+            [SVProgressHUD showErrorWithStatus:object[@"msg"]] ;
             [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-            [SVProgressHUD dismissWithDelay:1];
+            [SVProgressHUD dismissWithDelay:2];
         }
     } failure:^(NSError *error) {
-
-    }];
         
+    }];
+
 }
+
 
 - (void)setRightBottom {
     CGSize size = [NSString getStringContentSizeWithFontSize:15 andContent:@"分享"] ;
@@ -458,7 +470,7 @@
                                      orderInfoEncoded, signedString];
             
             [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
-                [self share];
+
             }];
         }
     } failure:^(NSError *error) {
@@ -489,7 +501,7 @@
             andSelectBlock:^(BHBItem *item) {
                 if ([item.title isEqualToString:@"微信"]) {
                     WXMediaMessage *message = [WXMediaMessage message];
-                    [message setThumbImage:[UIImage imageNamed:@"150876415"]];
+                    [message setThumbImage:[UIImage imageNamed:@"QR"]];
                     WXImageObject *imageObject = [WXImageObject object];
 
                     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"jpg"];

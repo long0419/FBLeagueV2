@@ -273,12 +273,6 @@
     [self.navigationController pushViewController:area animated:YES];
 }
 
--(void)jianj{
-//    [self hideTabBottom];
-//    CreateJianJieViewController *createName = [[CreateJianJieViewController alloc] init];
-//    [self.navigationController pushViewController:createName animated:YES];
-}
-
 -(void)sendlogo{
     myActionSheet = [[UIActionSheet alloc]
                      initWithTitle:nil

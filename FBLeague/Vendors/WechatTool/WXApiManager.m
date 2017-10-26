@@ -8,6 +8,8 @@
 
 #import "WXApiManager.h"
 #import "WXApi.h"
+#import "AppDelegate.h"
+#import "AddSaiViewController.h"
 
 @implementation WXApiManager
 
@@ -35,6 +37,13 @@
             case WXSuccess:
                 strMsg = @"支付结果：成功！";
                 NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
+                
+                [SVProgressHUD showSuccessWithStatus:@"报名成功"] ;
+                [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+                [SVProgressHUD dismissWithDelay:1];
+                
+                [self share];
+                
                 break;
                 
             default:
@@ -43,8 +52,13 @@
                 break;
         }
     }else if([resp isKindOfClass:[SendMessageToWXResp class]]){
-        [SVProgressHUD showSuccessWithStatus:@"分享成功"];
-        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        if (resp.errCode == -2) {
+            [SVProgressHUD showErrorWithStatus:@"分享失败"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        }else{
+            [SVProgressHUD showSuccessWithStatus:@"分享成功"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        }
     }else{
         SendAuthResp * resp1 = (SendAuthResp *)resp;
 
@@ -73,6 +87,12 @@
 
 
     }
+}
+
+-(void)share{
+    
+    [((AppDelegate *)[UIApplication sharedApplication].delegate) share];
+
 }
 
 

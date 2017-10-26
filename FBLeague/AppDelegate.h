@@ -16,6 +16,7 @@
 @property (strong, nonatomic) RTRootNavigationController *uikitNavController2 ;
 
 -(void)showMsg ;
+-(void)share ;
 
 @end
 

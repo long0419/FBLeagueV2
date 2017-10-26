@@ -30,5 +30,6 @@ target 'FBLeague' do
 	#pod 'IQKeyboardManager'
 	pod 'SVProgressHUD'
 	pod 'UMengAnalytics-NO-IDFA'
+	pod 'YYKeyboardManager'
 end
 

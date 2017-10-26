@@ -126,7 +126,6 @@
                                                   timestamp:request.timeStamp];
                       // 调用微信
                       [WXApi sendReq:request];
-                      [[AddSaiViewController new] share];
                   }
                   
               } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

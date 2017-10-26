@@ -146,5 +146,6 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "WXApiManager.h"
+#import "BHBPopView.h"
 
 #endif /* CarManager_Prefix_pch */

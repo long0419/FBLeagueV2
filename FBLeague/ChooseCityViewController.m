@@ -139,31 +139,18 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     CityVo *vo = [kouList objectAtIndex:indexPath.section];
     
-//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//    UIView *right = [[cell subviews] objectAtIndex:1] ;
-//    //显示当前的点击效果
-//    [right viewWithTag:11].hidden = ![right viewWithTag:11].hidden ;
-    
-    //去掉之前有勾选的状态
-//    [self cancelChooseStatus:tableView : indexPath];
-    
     chooseProAndCity = [NSString stringWithFormat:@"%@ %@" , _provincename , vo.name];
     proCityCode = [NSString stringWithFormat:@"%@ %@" , vo.provincecode , vo.code];
 
-//    if([_isfrom isEqualToString:@"1"]){
-        self.hidesBottomBarWhenPushed=YES;
-//    }
+    self.hidesBottomBarWhenPushed=YES;
     ChooseSectionViewController *city = [[ChooseSectionViewController alloc] init];
     city.code = proCityCode ;
     city.cityCode = vo.provincecode ;
     city.name = chooseProAndCity ;
     city.isfrom = _isfrom ;
     [self.navigationController pushViewController:city animated:YES];
-//    if([_isfrom isEqualToString:@"1"]){
-        self.hidesBottomBarWhenPushed=NO;
-//    }
+    self.hidesBottomBarWhenPushed=NO;
 
-    
 }
 
 -(void)cancelChooseStatus : (UITableView *)tableView :(NSIndexPath *) indexPath{

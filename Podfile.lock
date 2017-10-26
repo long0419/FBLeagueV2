@@ -261,6 +261,7 @@ PODS:
   - YLGIFImage (0.11)
   - YUChineseSorting (1.0.2)
   - YYCache (1.0.4)
+  - YYKeyboardManager (1.0.1)
   - ZYBannerView (1.1.4)
 
 DEPENDENCIES:
@@ -288,6 +289,7 @@ DEPENDENCIES:
   - WZLBadge
   - YUChineseSorting
   - YYCache
+  - YYKeyboardManager
   - ZYBannerView
 
 SPEC CHECKSUMS:
@@ -327,8 +329,9 @@ SPEC CHECKSUMS:
   YLGIFImage: c0ae132fe80e5282b2762a97d14e23ba71a748ae
   YUChineseSorting: 46bbd4fa0344e21b169a537bb17aafec0980c560
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
+  YYKeyboardManager: ff53d2e80d1808567a7f004028bd200d9469a89f
   ZYBannerView: 477bcb8c38bb0b2a45bae014f9e4fa8357809023
 
-PODFILE CHECKSUM: 925aa1f9bbc8952902b635a5ca1374c121bb3c6e
+PODFILE CHECKSUM: 59fedd8b5391c69f4586d44cd3952488341d1a33
 
 COCOAPODS: 1.3.1
