@@ -96,19 +96,20 @@
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone ,  @"token", nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone ,@"phone" , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:liansaidetail parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
             self.title = object[@"league"][@"name"];
             adurls = object[@"league"][@"adurls"] ;
             _dataArray = [adurls componentsSeparatedByString:@","];
             leagueId = object[@"league"][@"id"] ;
-            
+            NSString *hasJoinin = object[@"hasJoinin"];
+
             [self setupBanner];
             
-//            if (nil == leagueId || [leagueId isEqualToString:@""]) {
+            if ([hasJoinin isEqualToString:@"n"]) {
                 [self setRightBottom];
-//            }
+            }
 
             explainViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             explainViewBtn.frame = CGRectMake(0, 0, 17, 17);
