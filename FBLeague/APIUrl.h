@@ -10,6 +10,7 @@
 #define APIUrl_h
 
 #define API @"http://120.27.152.254:8081/club/api"
+#define IP @"http://120.27.152.254:8081/"
 
 /*******登录注册********/
 #define login [NSString stringWithFormat:@"%@/%@",API,@"login"]
@@ -69,7 +70,8 @@
 #define getDepositProtocol [NSString stringWithFormat:@"%@/%@",API,@"ht/user/getDepositProtocol"]
 #define getCoachProtocol [NSString stringWithFormat:@"%@/%@",API,@"ht/user/getCoachProtocol"]
 #define isAuth [NSString stringWithFormat:@"%@/%@",API,@"api/user/isAuth"]
-#define getProtocolURL [NSString stringWithFormat:@"%@/%@",API,@"api/league/getProtocolURL"]
+#define getProtocolURL [NSString stringWithFormat:@"%@/%@",IP,@"club/league_protocol.html"]
+
 
 /******支付*******/
 #define getWXPrepayId [NSString stringWithFormat:@"%@/%@",API,@"pay/getWXPrepayId"]

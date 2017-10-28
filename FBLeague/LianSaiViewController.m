@@ -107,10 +107,8 @@
 
             [self setupBanner];
             
-            if ([hasJoinin isEqualToString:@"n"]) {
-                [self setRightBottom];
-            }
-
+            [self setRightBottom : hasJoinin];
+            
             explainViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             explainViewBtn.frame = CGRectMake(0, 0, 17, 17);
             [explainViewBtn setImage:[UIImage imageNamed:@"explain"] forState:UIControlStateNormal];
@@ -132,14 +130,18 @@
     
 }
 
-- (void)setRightBottom {
+- (void)setRightBottom :(NSString *) hasJoinin{
     backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backViewBtn.frame = CGRectMake(0, 0, 17, 17);
     [backViewBtn setImage:[UIImage imageNamed:@"addcircle"] forState:UIControlStateNormal];
-    [backViewBtn addTarget:self action: @selector(goAction)
+    [backViewBtn addTarget:self action: @selector(goAction:)
           forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
     self.navigationItem.rightBarButtonItem = backItem ;
+    
+    if ([hasJoinin isEqualToString:@"y"] && index_ == 0) {
+        self.navigationItem.rightBarButtonItem.customView.hidden = YES ;
+    }
     
 }
 

@@ -26,7 +26,7 @@
     [self setBackBottmAndTitle2];
 
     
-    self.uview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height - 44 - 20)];
+    self.uview = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height)];
     [self.view addSubview:self.uview];
     
     NSString *urlx = getProtocolURL ;
