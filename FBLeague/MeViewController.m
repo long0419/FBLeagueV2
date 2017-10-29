@@ -30,16 +30,14 @@
 @implementation MeViewController
 
 -(void)viewWillAppear:(BOOL)animated{
+    [self getRedPotData];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showNew:) name:@"shownew" object:nil];
-    
-    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self getRedPotData];
-
     [self getPersonInfo] ;
     
     self.title = @"我" ;

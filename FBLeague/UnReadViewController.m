@@ -39,8 +39,10 @@
     dongtai2.height = self.view.frame.size.height - 20 - 44  ;
     
     NSArray *viewControllers = @[
-                                 @{@"@我的":dongtai},
-                                 @{@"已关注":dongtai2}];
+                                 @{@"@我的":dongtai}
+                                 ,
+                                 @{@"已关注":dongtai2}
+                                 ];
     
     YCSlideView * view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, 20 + 44, kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
     [self.view addSubview:view];
