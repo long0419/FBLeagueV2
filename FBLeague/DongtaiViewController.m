@@ -32,7 +32,6 @@
     
     [self refresh];
     
-    
 }
 
 -(void)getFCDataByPage :(NSString *) page {
@@ -213,8 +212,10 @@
 }
 
 -(void) initData {
+    DFTextImageLineItem *textImageItem = nil ;
+    
     for(DongtaiVo *dt in kouList){
-        DFTextImageLineItem *textImageItem = [[DFTextImageLineItem alloc] init];
+        textImageItem = [[DFTextImageLineItem alloc] init];
         textImageItem.itemId = dt.did ;
         textImageItem.userId = dt.phone ;
         textImageItem.userAvatar = dt.headpicurl ;
@@ -234,7 +235,9 @@
                 textImageItem.thumbImages = images;
             }
         }
+        
         textImageItem.ts = [self timeSwitchTimestamp:dt.pubtime];
+        
         DFLineLikeItem *likeItem = nil ;
         DFLineCommentItem *commentItem = nil ;
         if(nil != dt.comments && [dt.comments count]>0){
@@ -244,6 +247,7 @@
                     likeItem1_1.userId = cvo.phone;
                     likeItem1_1.userNick = [CommonFunc textFromBase64String:cvo.name];
                     [textImageItem.likes addObject:likeItem1_1];
+                    
                 }else{
                     DFLineCommentItem *commentItem1_1 = [[DFLineCommentItem alloc] init];
                     commentItem1_1.commentId = cvo.cid;
@@ -254,14 +258,12 @@
                     if(![cvo.targetname isEqual:[NSNull null]]) {
                         commentItem1_1.replyUserId = cvo.phone;
                         commentItem1_1.replyUserNick = [CommonFunc textFromBase64String:cvo.name] ;
-
                     }
                     [textImageItem.comments addObject:commentItem1_1];
                 }
             }
         }
-        [self addItem:textImageItem];
-        
+        [self addItem:textImageItem];        
     }
 }
 
