@@ -28,10 +28,10 @@
     [self.view addSubview:lang];
     
     UIImageView *hu = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"虎队徽-统计分数页面"]];
-    hu.frame = CGRectMake(kScreen_Width - 84/2 - 208/2 , 118/2 + 20 + 44, 158/2 , 158/2);
+    hu.frame = CGRectMake(kScreen_Width - 84/2 - 158/2 , 118/2 + 20 + 44, 158/2 , 158/2);
     [self.view addSubview:hu];
     
-    UIImageView *vs = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VS-比分用"]];
+    UIImageView *vs = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VS-队徽用"]];
     vs.frame = CGRectMake((kScreen_Width - 122/2)/2 , 94/2 + 20 + 44 + 15, 122/2 , 160/2);
     [self.view addSubview:vs];
     
