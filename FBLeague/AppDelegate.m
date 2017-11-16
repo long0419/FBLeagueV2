@@ -89,6 +89,7 @@
     uikitNavController.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"动态" image:[UIImageMake(@"首页") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"首页-副本") tag:0];
     
     LianSaiViewController *componentViewController = [[LianSaiViewController alloc] init];
+    componentViewController.type = @"1";
     componentViewController.hidesBottomBarWhenPushed = NO;
     RTRootNavigationController *componentNavController = [[RTRootNavigationController alloc] initWithRootViewController:componentViewController];
     componentNavController.tabBarItem = [QDUIHelper tabBarItemWithTitle:@"联赛" image:[UIImageMake(@"联赛") imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:UIImageMake(@"联赛") tag:1];

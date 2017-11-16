@@ -79,4 +79,46 @@
     return lineView ;
 }
 
++ (UIView *)getDuiView :(NSString *) type andWithNum :(NSString *) num andWithPoint : (CGPoint) point {
+    UIView *duiView = [[UIView alloc] init];
+    duiView.origin = point ;
+    duiView.size = CGSizeMake(236/2, 130/2);
+    duiView.layer.cornerRadius = 5 ;
+    duiView.layer.masksToBounds = YES;
+    duiView.layer.borderWidth = 2 ;
+    duiView.layer.borderColor =[[UIColor whiteColor] CGColor];
+
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0 , 130/4, duiView.width , 2)];
+    line.backgroundColor = [UIColor whiteColor];
+    [duiView addSubview:line];
+    
+    NSString *image = @"首页用狼队底背景" ;
+    NSString *duiText = @"狼队";
+    NSString *numText = [NSString stringWithFormat:@"%@队" , num] ;
+    if ([type isEqualToString:@"2"]) {
+        image = @"首页用虎队底背景" ;
+        duiText = @"虎队";
+    }
+    UIImageView *bg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:image]];
+    bg.frame = CGRectMake(0, 0, duiView.width, duiView.height);
+    [duiView addSubview:bg];
+    
+    CGSize titleSize = [NSString getStringContentSizeWithFontSize:32/2 andContent:duiText];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((duiView.width - titleSize.width)/2 , 7 , titleSize.width, titleSize.height)];
+    titleLabel.font = [UIFont systemFontOfSize:32/2];
+    titleLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
+    titleLabel.text = duiText;
+    [bg addSubview:titleLabel];
+    
+    CGSize numSize = [NSString getStringContentSizeWithFontSize:32/2 andContent:numText];
+    UILabel *numLabel = [[UILabel alloc] initWithFrame:CGRectMake((duiView.width - numSize.width)/2 , 7 + line.bottom , numSize.width, numSize.height)];
+    numLabel.font = [UIFont systemFontOfSize:32/2];
+    numLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
+    numLabel.text = numText;
+    [bg addSubview:numLabel];
+
+    
+    return duiView;
+}
+
 @end

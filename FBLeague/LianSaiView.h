@@ -14,4 +14,6 @@
 
 -(UIView *)getSaiLineView :(NSString *) content andWithType :(NSString *)type;
 
++ (UIView *)getDuiView :(NSString *) type andWithNum :(NSString *) num andWithPoint : (CGPoint) point ;
+
 @end

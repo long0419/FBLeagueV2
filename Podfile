@@ -31,5 +31,6 @@ target 'FBLeague' do
 	pod 'SVProgressHUD'
 	pod 'UMengAnalytics-NO-IDFA'
 	pod 'YYKeyboardManager'
+	pod 'YBPopupMenu'
 end
 

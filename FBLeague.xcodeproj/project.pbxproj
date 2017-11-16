@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD169E881FBDD42F000C1276 /* BeiSaiNumViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD169E871FBDD42F000C1276 /* BeiSaiNumViewController.m */; };
 		FD1F2C4C1F048DA600063765 /* QMUIConfigurationTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C4B1F048DA600063765 /* QMUIConfigurationTemplate.m */; };
 		FD1F2C531F0490DF00063765 /* QDCommonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C4E1F0490DF00063765 /* QDCommonUI.m */; };
 		FD1F2C541F0490DF00063765 /* QDUIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FD1F2C501F0490DF00063765 /* QDUIHelper.m */; };
@@ -211,6 +212,8 @@
 		0D654840A8FAB860BDF22C51 /* libPods-FBLeague.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FBLeague.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32620ACCF1BDE2BDA488716C /* Pods-FBLeague.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBLeague.release.xcconfig"; path = "Pods/Target Support Files/Pods-FBLeague/Pods-FBLeague.release.xcconfig"; sourceTree = "<group>"; };
 		93675E447FFAF16F47BF4878 /* Pods-FBLeague.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FBLeague.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FBLeague/Pods-FBLeague.debug.xcconfig"; sourceTree = "<group>"; };
+		FD169E861FBDD42F000C1276 /* BeiSaiNumViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeiSaiNumViewController.h; sourceTree = "<group>"; };
+		FD169E871FBDD42F000C1276 /* BeiSaiNumViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeiSaiNumViewController.m; sourceTree = "<group>"; };
 		FD1F2C4A1F048DA600063765 /* QMUIConfigurationTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMUIConfigurationTemplate.h; sourceTree = "<group>"; };
 		FD1F2C4B1F048DA600063765 /* QMUIConfigurationTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMUIConfigurationTemplate.m; sourceTree = "<group>"; };
 		FD1F2C4D1F0490DF00063765 /* QDCommonUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QDCommonUI.h; path = Utils/QDCommonUI.h; sourceTree = "<group>"; };
@@ -679,6 +682,15 @@
 				32620ACCF1BDE2BDA488716C /* Pods-FBLeague.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		FD169E7F1FB9EC52000C1276 /* beisai */ = {
+			isa = PBXGroup;
+			children = (
+				FD169E861FBDD42F000C1276 /* BeiSaiNumViewController.h */,
+				FD169E871FBDD42F000C1276 /* BeiSaiNumViewController.m */,
+			);
+			name = beisai;
 			sourceTree = "<group>";
 		};
 		FD1F2C491F048DA600063765 /* QMUIConfigurationTemplate */ = {
@@ -1259,6 +1271,7 @@
 		FDAA38271DD2BDF90038658F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FD169E7F1FB9EC52000C1276 /* beisai */,
 				FD4F6B851F5A69B500DC1C10 /* liansai */,
 				FDC497A11F29AB1F002E7105 /* me */,
 				FDD3AF671F21AFE100EA7C23 /* julebu */,
@@ -1801,6 +1814,7 @@
 				FD396B2F1F343EEE00265CF7 /* AddZhanViewController.m in Sources */,
 				FDA8EE591F07F21B00F3A01A /* FirstLoginViewController.m in Sources */,
 				FD58AFFF1F7A2C5C00AB6EAE /* ClubOBJ.m in Sources */,
+				FD169E881FBDD42F000C1276 /* BeiSaiNumViewController.m in Sources */,
 				FDAA379B1DD2BCF80038658F /* AppDelegate.m in Sources */,
 				FDEAC8311F623EE200AB25B2 /* SaiChengVo.m in Sources */,
 				FDD24CC61F0BEDF800DA16FC /* CityVo.m in Sources */,
