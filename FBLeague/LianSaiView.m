@@ -121,4 +121,41 @@
     return duiView;
 }
 
+-(UIView *)getHeSuiCell :(NSString *) fromSai andToSai :(NSString *)toSai andWithResult :(NSString *)result {
+    UIView *duiView = [[UIView alloc] init];
+    duiView.frame = CGRectMake(0, 0, kScreen_Width, 45);
+    duiView.backgroundColor = [UIColor whiteColor];
+    
+    CGSize VSSize = [NSString getStringContentSizeWithFontSize:15 andContent:result];
+    UILabel *numLabel = [[UILabel alloc] initWithFrame:CGRectMake((duiView.width - VSSize.width)/2 , 0 , VSSize.width, VSSize.height)];
+    numLabel.font = [UIFont systemFontOfSize:15];
+    numLabel.textColor = [UIColor colorWithHexString:@"242424"];
+    numLabel.text = result;
+    [duiView addSubview:numLabel];
+    
+    
+    CGSize FromSize = [NSString getStringContentSizeWithFontSize:15 andContent:fromSai];
+    UILabel *FromLabel = [[UILabel alloc] initWithFrame:CGRectMake(numLabel.left - 50 - FromSize.width , 0 , FromSize.width, FromSize.height)];
+    FromLabel.font = [UIFont systemFontOfSize:15];
+    FromLabel.textColor = [UIColor colorWithHexString:@"242424"];
+    FromLabel.text = fromSai;
+    [duiView addSubview:FromLabel];
+
+    CGSize ToSize = [NSString getStringContentSizeWithFontSize:15 andContent:toSai];
+    UILabel *TOLabel = [[UILabel alloc] initWithFrame:CGRectMake(numLabel.right +50 , 0 , ToSize.width, ToSize.height)];
+    TOLabel.font = [UIFont systemFontOfSize:15];
+    TOLabel.textColor = [UIColor colorWithHexString:@"242424"];
+    TOLabel.text = toSai;
+    [duiView addSubview:TOLabel];
+
+    
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 45/2 - .5, kScreen_Width, .5)];
+    line.backgroundColor = [UIColor colorWithHexString:@"e0e0e0"];
+    [duiView addSubview:line];
+    
+    return duiView ;
+}
+
+
+
 @end

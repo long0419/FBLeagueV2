@@ -14,6 +14,9 @@
 #import "SaiListViewController.h"
 #import "ReadDetailContentViewController.h"
 #import "BeiSaiNumViewController.h"
+#import "LianSaiView.h"
+#import "LangResultListViewController.h"
+#import "HuResultListViewController.h"
 
 #define TITLES @[@"修改", @"删除", @"扫一扫",@"付款"]
 
@@ -42,71 +45,99 @@
     if ([_type isEqualToString:@"1"]) {
         index_ = 0 ;
         [self getNeedData] ;
-    }else{
+    }
+    else{
         self.title = @"虎啸狼吼贺岁杯" ;
         [self setLeftBottom];
-        
-        UIImageView *bg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"首页底背景"]];
-        bg.frame = CGRectMake(0, 0, kScreen_Width, kScreen_Height);
-        [self.view addSubview:bg];
-        
-        UIImageView *lang = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"首页狼队徽"]];
-        lang.frame = CGRectMake(84/2 , 94/2 + 20 + 44 , 208/2, 208/2);
-        [self.view addSubview:lang];
-        
-        UIImageView *hu = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"首页虎队徽"]];
-        hu.frame = CGRectMake(kScreen_Width - 84/2 - 208/2 , 94/2 + 20 + 44, 208/2 , 208/2);
-        [self.view addSubview:hu];
-        
-        UIImageView *vs = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VS-队徽用"]];
-        vs.frame = CGRectMake((kScreen_Width - 122/2)/2 , 94/2 + 20 + 44 + 15, 122/2 , 160/2);
-        [self.view addSubview:vs];
-        
-        UIView *langdui = [LianSaiView getDuiView:@"1" andWithNum:@"1025" andWithPoint:CGPointMake(35, lang.bottom + 20)];
-        [self.view addSubview:langdui];
-        
-        UIView *hudui = [LianSaiView getDuiView:@"2" andWithNum:@"925" andWithPoint:CGPointMake(kScreen_Width - 35 - 236/2, lang.bottom + 20)];
-        [self.view addSubview:hudui];
-        
-        UIImageView *jiangjin = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"奖金池底背景"]];
-        jiangjin.frame = CGRectMake((kScreen_Width - 200)/2, 120/2 + hudui.bottom , 200 , 178/2);
-        [self.view addSubview:jiangjin];
-        
-        CGSize titleSize11 = [NSString getStringContentSizeWithFontSize:36/2 andContent:@"奖金池"];
-        UILabel *titleLabel11 = [[UILabel alloc] initWithFrame:CGRectMake((jiangjin.width - titleSize11.width)/2 , 10 , titleSize11.width, titleSize11.height)];
-        titleLabel11.font = [UIFont systemFontOfSize:36/2];
-        titleLabel11.textColor = [UIColor colorWithHexString:@"ffffff"];
-        titleLabel11.text = @"奖金池";
-        [jiangjin addSubview:titleLabel11];
-
-        CGSize titleSize12 = [NSString getStringContentSizeWithFontSize:36/2 andContent:@"918382元"];
-        UILabel *titleLabel12 = [[UILabel alloc] initWithFrame:CGRectMake((jiangjin.width - titleSize12.width)/2 , 25 + titleLabel11.bottom , titleSize12.width, titleSize12.height)];
-        titleLabel12.font = [UIFont systemFontOfSize:36/2];
-        titleLabel12.textColor = [UIColor colorWithHexString:@"ffffff"];
-        titleLabel12.text = @"918382元";
-        [jiangjin addSubview:titleLabel12];
-
-        UIImageView *btn = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"竞赛章程按钮"]];
-        btn.frame = CGRectMake((kScreen_Width - 200)/2, jiangjin.bottom + 108/2, 200, 185/4) ;
-        [self.view addSubview:btn];
-        btn.userInteractionEnabled = YES;
-        UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-        [btn addGestureRecognizer:singleTap];
-        
-        CGSize titleSize = [NSString getStringContentSizeWithFontSize:36/2 andContent:@"竞赛章程"];
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((btn.width - titleSize.width)/2 , (btn.height - titleSize.height)/2 - 3 , titleSize.width, titleSize.height)];
-        titleLabel.font = [UIFont systemFontOfSize:36/2];
-        titleLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
-        titleLabel.text = @"竞赛章程";
-        [btn addSubview:titleLabel];
-
-
+        [self status2];
     }
     
     //获取红点数据
     [self getRedPotData];
 }
 
+-(void)status2{
+
+    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, 20 + 44 + 130/2 + 82/2 + 78/2 )];
+    bg.backgroundColor = [UIColor colorWithHexString:@"323c45"];
+    [self.view addSubview:bg];
+    
+    UIImageView *vs = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VS-队徽用"]];
+    vs.frame = CGRectMake((kScreen_Width - 122/2)/2 , 68/2 + 44 + 20, 122/2 , 160/2);
+    [bg addSubview:vs];
+    
+    UIView *langdui = [LianSaiView getDuiView:@"1" andWithNum:@"1025" andWithPoint:CGPointMake(20, 78/2 + 20 + 44)];
+    [bg addSubview:langdui];
+    
+    UIView *hudui = [LianSaiView getDuiView:@"2" andWithNum:@"925" andWithPoint:CGPointMake(kScreen_Width - 20 - 236/2,78/2 + 20 + 44)];
+    [bg addSubview:hudui];
+
+    LangResultListViewController *langlist = [LangResultListViewController new];
+    HuResultListViewController *hu =[HuResultListViewController new];
+    
+    NSArray *viewControllers = @[
+                                 @{@"狼队":langlist},
+                                 @{@"虎队":hu}];
+    YCSlideView * view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, 130/2 + 82/2 + 78/2 + 20 + 44, kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
+    [self.view addSubview:view];
+
+}
+
+-(void)status{
+    UIImageView *bg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"首页底背景"]];
+    bg.frame = CGRectMake(0, 0, kScreen_Width, kScreen_Height);
+    [self.view addSubview:bg];
+    
+    UIImageView *lang = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"首页狼队徽"]];
+    lang.frame = CGRectMake(84/2 , 94/2 + 20 + 44 , 208/2, 208/2);
+    [self.view addSubview:lang];
+    
+    UIImageView *hu = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"首页虎队徽"]];
+    hu.frame = CGRectMake(kScreen_Width - 84/2 - 208/2 , 94/2 + 20 + 44, 208/2 , 208/2);
+    [self.view addSubview:hu];
+    
+    UIImageView *vs = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VS-队徽用"]];
+    vs.frame = CGRectMake((kScreen_Width - 122/2)/2 , 94/2 + 20 + 44 + 15, 122/2 , 160/2);
+    [self.view addSubview:vs];
+    
+    UIView *langdui = [LianSaiView getDuiView:@"1" andWithNum:@"1025" andWithPoint:CGPointMake(35, lang.bottom + 20)];
+    [self.view addSubview:langdui];
+    
+    UIView *hudui = [LianSaiView getDuiView:@"2" andWithNum:@"925" andWithPoint:CGPointMake(kScreen_Width - 35 - 236/2, lang.bottom + 20)];
+    [self.view addSubview:hudui];
+    
+    UIImageView *jiangjin = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"奖金池底背景"]];
+    jiangjin.frame = CGRectMake((kScreen_Width - 200)/2, 120/2 + hudui.bottom , 200 , 178/2);
+    [self.view addSubview:jiangjin];
+    
+    CGSize titleSize11 = [NSString getStringContentSizeWithFontSize:36/2 andContent:@"奖金池"];
+    UILabel *titleLabel11 = [[UILabel alloc] initWithFrame:CGRectMake((jiangjin.width - titleSize11.width)/2 , 10 , titleSize11.width, titleSize11.height)];
+    titleLabel11.font = [UIFont systemFontOfSize:36/2];
+    titleLabel11.textColor = [UIColor colorWithHexString:@"ffffff"];
+    titleLabel11.text = @"奖金池";
+    [jiangjin addSubview:titleLabel11];
+    
+    CGSize titleSize12 = [NSString getStringContentSizeWithFontSize:36/2 andContent:@"918382元"];
+    UILabel *titleLabel12 = [[UILabel alloc] initWithFrame:CGRectMake((jiangjin.width - titleSize12.width)/2 , 25 + titleLabel11.bottom , titleSize12.width, titleSize12.height)];
+    titleLabel12.font = [UIFont systemFontOfSize:36/2];
+    titleLabel12.textColor = [UIColor colorWithHexString:@"ffffff"];
+    titleLabel12.text = @"918382元";
+    [jiangjin addSubview:titleLabel12];
+    
+    UIImageView *btn = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"竞赛章程按钮"]];
+    btn.frame = CGRectMake((kScreen_Width - 200)/2, jiangjin.bottom + 108/2, 200, 185/4) ;
+    [self.view addSubview:btn];
+    btn.userInteractionEnabled = YES;
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [btn addGestureRecognizer:singleTap];
+    
+    CGSize titleSize = [NSString getStringContentSizeWithFontSize:36/2 andContent:@"竞赛章程"];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((btn.width - titleSize.width)/2 , (btn.height - titleSize.height)/2 - 3 , titleSize.width, titleSize.height)];
+    titleLabel.font = [UIFont systemFontOfSize:36/2];
+    titleLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
+    titleLabel.text = @"竞赛章程";
+    [btn addSubview:titleLabel];
+}
 
 - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
     

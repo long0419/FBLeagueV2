@@ -119,6 +119,8 @@
 		FD9A53DC1F8B70F600A64E6D /* ApplyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD9A53DB1F8B70F600A64E6D /* ApplyListViewController.m */; };
 		FDA1166C1F01FC67007F253C /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA116691F01FC67007F253C /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FDA1166D1F01FC67007F253C /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = FDA1166B1F01FC67007F253C /* README.md */; };
+		FDA415981FBFDCB200AF6CFE /* LangResultListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA415971FBFDCB200AF6CFE /* LangResultListViewController.m */; };
+		FDA4159B1FBFDCC100AF6CFE /* HuResultListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA4159A1FBFDCC100AF6CFE /* HuResultListViewController.m */; };
 		FDA8EE591F07F21B00F3A01A /* FirstLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA8EE581F07F21B00F3A01A /* FirstLoginViewController.m */; };
 		FDA8EE5D1F07F3B800F3A01A /* UserDataVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FDA8EE5C1F07F3B800F3A01A /* UserDataVo.m */; };
 		FDAA37981DD2BCF80038658F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37971DD2BCF80038658F /* main.m */; };
@@ -483,6 +485,10 @@
 		FDA116691F01FC67007F253C /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		FDA1166A1F01FC67007F253C /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		FDA1166B1F01FC67007F253C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FDA415961FBFDCB200AF6CFE /* LangResultListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LangResultListViewController.h; sourceTree = "<group>"; };
+		FDA415971FBFDCB200AF6CFE /* LangResultListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LangResultListViewController.m; sourceTree = "<group>"; };
+		FDA415991FBFDCC100AF6CFE /* HuResultListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HuResultListViewController.h; sourceTree = "<group>"; };
+		FDA4159A1FBFDCC100AF6CFE /* HuResultListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HuResultListViewController.m; sourceTree = "<group>"; };
 		FDA8EE571F07F21B00F3A01A /* FirstLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstLoginViewController.h; sourceTree = "<group>"; };
 		FDA8EE581F07F21B00F3A01A /* FirstLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstLoginViewController.m; sourceTree = "<group>"; };
 		FDA8EE5B1F07F3B800F3A01A /* UserDataVo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataVo.h; sourceTree = "<group>"; };
@@ -689,6 +695,10 @@
 			children = (
 				FD169E861FBDD42F000C1276 /* BeiSaiNumViewController.h */,
 				FD169E871FBDD42F000C1276 /* BeiSaiNumViewController.m */,
+				FDA415961FBFDCB200AF6CFE /* LangResultListViewController.h */,
+				FDA415971FBFDCB200AF6CFE /* LangResultListViewController.m */,
+				FDA415991FBFDCC100AF6CFE /* HuResultListViewController.h */,
+				FDA4159A1FBFDCC100AF6CFE /* HuResultListViewController.m */,
 			);
 			name = beisai;
 			sourceTree = "<group>";
@@ -1816,6 +1826,8 @@
 				FD58AFFF1F7A2C5C00AB6EAE /* ClubOBJ.m in Sources */,
 				FD169E881FBDD42F000C1276 /* BeiSaiNumViewController.m in Sources */,
 				FDAA379B1DD2BCF80038658F /* AppDelegate.m in Sources */,
+				FDA4159B1FBFDCC100AF6CFE /* HuResultListViewController.m in Sources */,
+				FDA415981FBFDCB200AF6CFE /* LangResultListViewController.m in Sources */,
 				FDEAC8311F623EE200AB25B2 /* SaiChengVo.m in Sources */,
 				FDD24CC61F0BEDF800DA16FC /* CityVo.m in Sources */,
 				FD9A52861F8B399F00A64E6D /* PicButton.m in Sources */,
