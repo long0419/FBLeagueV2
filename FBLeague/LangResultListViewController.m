@@ -62,7 +62,7 @@
 
 #pragma mark 返回分组数
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 44 ;
+    return 2 ;
 //    [kouList count] ;
 }
 
@@ -74,10 +74,12 @@
 #pragma mark返回每行的单元格
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentifier  = @"cell";
-    UITableViewCell *cell = [UITableViewCell new] ;
-    
-    LianSaiView *view = [LianSaiView new];
-    [cell addSubview: [view getHeSuiCell:@"洪山区" andToSai:@"武汉大学队" andWithResult:@"VS"]];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        [cell.contentView addSubview:[[LianSaiView new] getHeSuiCell:@"洪山区" andToSai:@"武汉大学队" andWithResult:@"VS"]];
+    }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone ;
     return cell ;

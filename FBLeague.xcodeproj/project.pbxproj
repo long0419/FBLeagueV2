@@ -39,6 +39,8 @@
 		FD352FD11F1FA4AA00EA2A60 /* CoachVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD352FD01F1FA4AA00EA2A60 /* CoachVo.m */; };
 		FD38A5BE1F84E6C9007CAF28 /* UpdateUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD38A5BD1F84E6C9007CAF28 /* UpdateUserInfoViewController.m */; };
 		FD396B2F1F343EEE00265CF7 /* AddZhanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD396B2E1F343EEE00265CF7 /* AddZhanViewController.m */; };
+		FD3B0D1B1FC5BF790018991A /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = FD3B0D191FC5BF780018991A /* Address.json */; };
+		FD3B0D1C1FC5BF790018991A /* XPAddressPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B0D1A1FC5BF780018991A /* XPAddressPicker.m */; };
 		FD41C4C91F98A99800EB24E4 /* UnReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD41C4C81F98A99800EB24E4 /* UnReadViewController.m */; };
 		FD4269641F6B6468006B7C56 /* PPNumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4269631F6B6468006B7C56 /* PPNumberButton.m */; };
 		FD4F6AF81F57B4B900DC1C10 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6AF21F57B4B900DC1C10 /* NSDate+Extension.m */; };
@@ -274,6 +276,9 @@
 		FD38A5BD1F84E6C9007CAF28 /* UpdateUserInfoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UpdateUserInfoViewController.m; sourceTree = "<group>"; };
 		FD396B2D1F343EEE00265CF7 /* AddZhanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddZhanViewController.h; sourceTree = "<group>"; };
 		FD396B2E1F343EEE00265CF7 /* AddZhanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddZhanViewController.m; sourceTree = "<group>"; };
+		FD3B0D181FC5BF780018991A /* XPAddressPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPAddressPicker.h; sourceTree = "<group>"; };
+		FD3B0D191FC5BF780018991A /* Address.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Address.json; sourceTree = "<group>"; };
+		FD3B0D1A1FC5BF780018991A /* XPAddressPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPAddressPicker.m; sourceTree = "<group>"; };
 		FD41C4C71F98A99800EB24E4 /* UnReadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnReadViewController.h; sourceTree = "<group>"; };
 		FD41C4C81F98A99800EB24E4 /* UnReadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnReadViewController.m; sourceTree = "<group>"; };
 		FD4269621F6B6468006B7C56 /* PPNumberButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPNumberButton.h; sourceTree = "<group>"; };
@@ -778,6 +783,16 @@
 				FD352FC71F1FA3DB00EA2A60 /* CoachChooseTableViewCell.m */,
 			);
 			name = shouye;
+			sourceTree = "<group>";
+		};
+		FD3B0D171FC5BF780018991A /* AddressPicker */ = {
+			isa = PBXGroup;
+			children = (
+				FD3B0D181FC5BF780018991A /* XPAddressPicker.h */,
+				FD3B0D191FC5BF780018991A /* Address.json */,
+				FD3B0D1A1FC5BF780018991A /* XPAddressPicker.m */,
+			);
+			path = AddressPicker;
 			sourceTree = "<group>";
 		};
 		FD4269611F6B6468006B7C56 /* PPNumberButton */ = {
@@ -1302,6 +1317,7 @@
 		FDAA38341DD2BF3D0038658F /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				FD3B0D171FC5BF780018991A /* AddressPicker */,
 				FD4269611F6B6468006B7C56 /* PPNumberButton */,
 				FDEAC8101F60FB2400AB25B2 /* shareres */,
 				FD242AA91F60E6330039A8A4 /* radar */,
@@ -1621,6 +1637,7 @@
 				FDEAC8151F60FB4000AB25B2 /* qq@2x.png in Resources */,
 				FDEAC8251F60FBB600AB25B2 /* qq-拷贝@2x.png in Resources */,
 				FDEAC8161F60FB4000AB25B2 /* qq@3x.png in Resources */,
+				FD3B0D1B1FC5BF790018991A /* Address.json in Resources */,
 				FD1F2C6E1F04B91700063765 /* LaunchScreen2.xib in Resources */,
 				FDAA37A31DD2BCF80038658F /* Assets.xcassets in Resources */,
 				FD94E8C91F9F5C6100294578 /* share.jpg in Resources */,
@@ -1881,6 +1898,7 @@
 				FDC497BB1F29AF1A002E7105 /* ACActionSheet.m in Sources */,
 				FD38A5BE1F84E6C9007CAF28 /* UpdateUserInfoViewController.m in Sources */,
 				FD9A53D91F8B4FB000A64E6D /* AddClubMemberViewController.m in Sources */,
+				FD3B0D1C1FC5BF790018991A /* XPAddressPicker.m in Sources */,
 				FD4269641F6B6468006B7C56 /* PPNumberButton.m in Sources */,
 				FDFAE5F61F10EE82008DF0BB /* FocusViewController.m in Sources */,
 				FDD3AF6D1F21C9B700EA7C23 /* VerifyClubViewController.m in Sources */,

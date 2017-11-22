@@ -95,5 +95,19 @@
 #define respondMatch [NSString stringWithFormat:@"%@/%@",API, @"schedule/respondMatch"]
 #define cancelMatch [NSString stringWithFormat:@"%@/%@",API, @"schedule/cancelMatch"]
 
+/******杯赛*********/
+#define leagueshow [NSString stringWithFormat:@"%@/%@",API,@"leagueshow/show"]
+#define leaguedefault [NSString stringWithFormat:@"%@/%@",API,@"leaguecup/getDefault"]
+#define getCountyAreas [NSString stringWithFormat:@"%@/%@",API,@"getCountyAreas"]
+#define prejoinincup [NSString stringWithFormat:@"%@/%@",API,@"joinincup/preJoin"]
+#define joinincup [NSString stringWithFormat:@"%@/%@",API,@"joinincup/join"]
+#define getJoininCount [NSString stringWithFormat:@"%@/%@",API,@"joinincup/getJoininCount"]
+#define getClubJoinin [NSString stringWithFormat:@"%@/%@",API,@"joinincup/getClubJoinin"]
+#define listSchedulesCup [NSString stringWithFormat:@"%@/%@",API,@"schedulecup/listSchedules"]
+#define listCurrentSchedules [NSString stringWithFormat:@"%@/%@",API,@"schedulecup/listCurrentSchedules"]
+#define submitCupResult [NSString stringWithFormat:@"%@/%@",API,@"schedulecup/submitResult"]
+
+
+
 
 #endif /* APIUrl_h */

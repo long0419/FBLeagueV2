@@ -18,4 +18,5 @@
 
 -(UIView *)getHeSuiCell :(NSString *) fromSai andToSai :(NSString *)toSai andWithResult :(NSString *)result ;
 
++ (UIView *)getLunContent :(NSString *)content andWithColor:(NSString *) color  andWithFontSize :(int) size;
 @end

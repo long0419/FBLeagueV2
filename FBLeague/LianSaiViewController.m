@@ -41,24 +41,19 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sairesult:) name:@"saiResult" object:nil];
     
-    _type = @"2" ;
-    if ([_type isEqualToString:@"1"]) {
-        index_ = 0 ;
-        [self getNeedData] ;
-    }
-    else{
-        self.title = @"虎啸狼吼贺岁杯" ;
-        [self setLeftBottom];
-        [self status2];
-    }
+    [self getLeagueStatus];
     
     //获取红点数据
     [self getRedPotData];
 }
 
 -(void)status2{
-
-    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, 20 + 44 + 130/2 + 82/2 + 78/2 )];
+//
+//    UIView *lunleft = [LianSaiView getLunContent:@"第一轮" andWithColor:@"0b63ac" andWithFontSize:15];
+//    lunleft.origin = CGPointMake(0, 0);
+//    [self.view addSubview:lunleft];
+        
+    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , kScreen_Width, 20 + 44 + 130/2 + 82/2 + 78/2 )];
     bg.backgroundColor = [UIColor colorWithHexString:@"323c45"];
     [self.view addSubview:bg];
     
@@ -197,6 +192,43 @@
 
 }
 
+-(void)getLeagueStatus{
+    cache = [YYCache cacheWithName:@"FB"];
+    uvo = [cache objectForKey:@"userData"];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone, @"phone" , uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:leagueshow parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+            _type = object[@"show"] ;
+            if ([_type isEqualToString:@"1"]) {
+                index_ = 0 ;
+                [self getNeedData] ;
+            }
+            else{
+                [PPNetworkHelper POST:leaguedefault parameters:params success:^(id object) {
+                    if([object[@"code"] isEqualToString:@"0000"]){
+                        NSString *hasJoinin = object[@"hasJoinin"];
+                        self.title = object[@"leagueCup"][@"name"] ;
+                        if (![hasJoinin isEqualToString:@"n"]) {
+                            [self status];
+                        }else{
+                            
+                            [self setLeftBottom];
+                            [self status2] ;
+                            
+                        }
+                    }
+                } failure:^(NSError *error) {
+                    
+                }];
+                
+            }
+
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+
+}
 
 -(void)getNeedData{
     cache = [YYCache cacheWithName:@"FB"];
@@ -247,6 +279,7 @@
          forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:sender];
     self.navigationItem.leftBarButtonItem = backItem ;
+
 }
 
 
@@ -266,17 +299,11 @@
 }
 
 -(void)chooseArea{
-    CGPoint tmp = self.navigationItem.leftBarButtonItem.badgeCenterOffset ;
-    CGPoint p = CGPointMake(tmp.x + 30 , tmp.y + 45) ;
-    
-    [YBPopupMenu showAtPoint:p titles:TITLES icons:nil menuWidth:110 otherSettings:^(YBPopupMenu *popupMenu) {
-        popupMenu.dismissOnSelected = NO;
-        popupMenu.isShowShadow = YES;
-        popupMenu.delegate = self;
-        popupMenu.offset = 10;
-        popupMenu.type = YBPopupMenuTypeDefault;
-        popupMenu.rectCorner = UIRectCornerBottomLeft | UIRectCornerBottomRight;
-    }];
+    XPAddressPicker *picker = [[XPAddressPicker alloc] init];
+    picker.delegate = self;
+    [picker setSelectionAddressForId:@"420000"];
+    [picker show];
+
 }
 
 -(void)explain{
@@ -378,10 +405,25 @@
     index_ = index ;
 }
 
-#pragma mark - YBPopupMenuDelegate
-- (void)ybPopupMenuDidSelectedAtIndex:(NSInteger)index ybPopupMenu:(YBPopupMenu *)ybPopupMenu
-{
-    NSLog(@"点击了 %@ 选项",TITLES[index]);
+- (void)addressPicker:(XPAddressPicker *)picker didFinishPickingAddress:(NSDictionary<NSString *,NSDictionary *> *)info {
+    NSDictionary *province = info[XPAddressPickerProvinceKey];
+    NSDictionary *city = info[XPAddressPickerCityKey];
+    NSDictionary *county = info[XPAddressPickerCountyKey];
+    
+    NSString *provinceName = province[XPAddressPickerNameKey];
+    NSString *cityName = city[XPAddressPickerNameKey];
+    
+    NSString *ID = city[XPAddressPickerIdKey];
+    NSMutableString *string = [[NSMutableString alloc] initWithFormat:@"%@ %@", provinceName, cityName];
+    if (nil != county) {
+        NSString *countyName = county[XPAddressPickerNameKey];
+        ID = county[XPAddressPickerIdKey];
+        [string appendFormat:@" %@", countyName];
+    }
+    [string appendFormat:@" id:%@", ID];
+    
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"您选择的地址是:" message:string delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alertView show];
 }
 
 @end
