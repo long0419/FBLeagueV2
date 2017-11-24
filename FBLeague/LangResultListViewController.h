@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "SaiChengVo.h"
 
 @interface LangResultListViewController : BaseViewController<UITableViewDelegate , UITableViewDataSource>
 
 @property  (nonatomic , strong) UITableView *goodTableView;
+@property  (nonatomic , strong) NSString *leagueId;
+@property  (nonatomic , strong) NSString *clubId;
+@property  (nonatomic , strong) NSString *camp;
+@property  (nonatomic , strong) NSString *areaCode;
+@property  (nonatomic , strong) NSString *roundNum;
+@property  (nonatomic , strong) SaiChengVo *vo;
+
 
 @end

@@ -150,14 +150,14 @@
     
     
     CGSize FromSize = [NSString getStringContentSizeWithFontSize:15 andContent:fromSai];
-    UILabel *FromLabel = [[UILabel alloc] initWithFrame:CGRectMake(numLabel.left - 50 - FromSize.width , (45 - FromSize.height)/2 , FromSize.width, FromSize.height)];
+    UILabel *FromLabel = [[UILabel alloc] initWithFrame:CGRectMake(20 , (45 - FromSize.height)/2 , FromSize.width, FromSize.height)];
     FromLabel.font = [UIFont systemFontOfSize:15];
     FromLabel.textColor = [UIColor colorWithHexString:@"242424"];
     FromLabel.text = fromSai;
     [duiView addSubview:FromLabel];
 
     CGSize ToSize = [NSString getStringContentSizeWithFontSize:15 andContent:toSai];
-    UILabel *TOLabel = [[UILabel alloc] initWithFrame:CGRectMake(numLabel.right +50 , (45 - ToSize.height)/2 , ToSize.width, ToSize.height)];
+    UILabel *TOLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreen_Width - ToSize.width - 20 , (45 - ToSize.height)/2 , ToSize.width, ToSize.height)];
     TOLabel.font = [UIFont systemFontOfSize:15];
     TOLabel.textColor = [UIColor colorWithHexString:@"242424"];
     TOLabel.text = toSai;

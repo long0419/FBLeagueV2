@@ -18,8 +18,6 @@
 #import "LangResultListViewController.h"
 #import "HuResultListViewController.h"
 
-#define TITLES @[@"修改", @"删除", @"扫一扫",@"付款"]
-
 @interface LianSaiViewController (){
     NSString *title ;
     YYCache *cache ;
@@ -30,6 +28,8 @@
     UIButton *explainViewBtn ;
     NSUInteger index_ ;
     UIButton *sender ;
+    NSString *clubId ;
+    NSString *lid ;
 }
 
 @end
@@ -47,7 +47,7 @@
     [self getRedPotData];
 }
 
--(void)status2 :(CupRoundVo *) vo{
+-(void)status2 :(CupRoundVo *) vo andWithAreaCode :(NSString *)areacode{
     UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , kScreen_Width, 60 + 130/2 + 82/2 + 78/2 + 60)];
     bg.backgroundColor = [UIColor colorWithHexString:@"323c45"];
     [self.view addSubview:bg];
@@ -80,11 +80,22 @@
     [bg addSubview:hudui];
 
     LangResultListViewController *langlist = [LangResultListViewController new];
-    HuResultListViewController *hu =[HuResultListViewController new];
+    langlist.leagueId = lid ;
+    langlist.clubId = clubId ;
+    langlist.camp = @"2" ;
+    langlist.areaCode = areacode ;
+    langlist.roundNum = vo.wolfRoundNum ;
     
+    HuResultListViewController *hu =[HuResultListViewController new];
+    hu.leagueId = lid ;
+    hu.clubId = clubId ;
+    hu.camp = @"1" ;
+    hu.areaCode = areacode ;
+    hu.roundNum = vo.tigerRoundNum ;
+
     NSArray *viewControllers = @[@{@"狼队":langlist},
                                  @{@"虎队":hu}];
-    YCSlideView * view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, bg.bottom , kScreen_Width, kScreen_Height/2 - 150) WithViewControllers:viewControllers] ;
+    YCSlideView * view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, bg.bottom , kScreen_Width, kScreen_Height - bg.height - 40 - 49 - 20 - 60) WithViewControllers:viewControllers] ;
     [self.view addSubview:view];
     
 }
@@ -231,13 +242,12 @@
             if ([_type isEqualToString:@"1"]) {
                 index_ = 0 ;
                 [self getNeedData] ;
-            }
-            else{
+            }else{
                 [PPNetworkHelper POST:leaguedefault parameters:params success:^(id object) {
                     if([object[@"code"] isEqualToString:@"0000"]){
                         NSString *hasJoinin = object[@"hasJoinin"];
                         self.title = object[@"leagueCup"][@"name"] ;
-                        NSString *lid = object[@"leagueCup"][@"id"] ;
+                        lid = object[@"leagueCup"][@"id"] ;
                         if ([hasJoinin isEqualToString:@"n"]) {
                             NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: lid , @"leagueId" , uvo.phone, @"phone" , uvo.phone ,  @"token", nil];
                             [PPNetworkHelper POST:getJoininCount parameters:params success:^(id object) {
@@ -258,7 +268,8 @@
                                 if([data[@"code"] isEqualToString:@"0000"]){
                                     NSString *areacode = data[@"user"][@"areacode"] ;
                                     NSString *areaname = data[@"user"][@"areaname"] ;
-
+                                    clubId = data[@"user"][@"club"];
+                                    
                                     NSDictionary *tmp = [NSDictionary dictionaryWithObjectsAndKeys: lid , @"leagueId" ,areacode , @"areaCode" , uvo.phone ,  @"phone" , uvo.phone , @"token" , nil];
                                     [PPNetworkHelper POST:getAreaJoininCount parameters:tmp success:^(id data) {
                                         if([data[@"code"] isEqualToString:@"0000"]){
@@ -273,7 +284,7 @@
                                             vo.tigerCount = data[@"tigerCount"];
 
                                             [self setLeftBottom : areaname];
-                                            [self status2 : vo] ;
+                                            [self status2 : vo andWithAreaCode:areacode] ;
                                             
                                         }else {
                                             [SVProgressHUD showErrorWithStatus: @"系统错误"];

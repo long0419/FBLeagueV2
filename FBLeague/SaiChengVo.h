@@ -33,4 +33,16 @@
 @property (nonatomic , strong) NSString *homeeva ;
 @property (nonatomic , strong) NSString *launchclub ;
 
+
+#pragma -- 添加杯赛数据使用
+@property (nonatomic , strong) NSString *areacode ;
+@property (nonatomic , strong) NSString *areaname ;
+@property (nonatomic , strong) NSString *visitingclubphone ;
+@property (nonatomic , strong) NSString *startdate ;
+@property (nonatomic , strong) NSString *camp ;
+@property (nonatomic , strong) NSString *enddate ;
+@property (nonatomic , strong) NSString *homeclubphone ;
+@property (nonatomic , strong) NSString *visitingclubjoininid ;
+@property (nonatomic , strong) NSString *homeclubjoininid ;
+
 @end
