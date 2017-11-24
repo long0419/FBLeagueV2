@@ -233,7 +233,11 @@
 }
 
 -(void)getLeagueStatus :(NSString *)areaCode andWithAreaName :(NSString *)areaName{
-    [SVProgressHUD show];
+    
+    if (![areaCode isEqualToString:@""] && ![areaName isEqualToString:@""]) {
+        [SVProgressHUD show];
+    }
+    
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone, @"phone" , uvo.phone ,  @"token", nil];
