@@ -41,7 +41,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sairesult:) name:@"saiResult" object:nil];
     
-    [self getLeagueStatus];
+    [self getLeagueStatus : @"" andWithAreaName:@""];
     
     //获取红点数据
     [self getRedPotData];
@@ -232,7 +232,8 @@
 
 }
 
--(void)getLeagueStatus{
+-(void)getLeagueStatus :(NSString *)areaCode andWithAreaName :(NSString *)areaName{
+    [SVProgressHUD show];
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone, @"phone" , uvo.phone ,  @"token", nil];
@@ -257,6 +258,9 @@
                                     NSString *wolfCount = object[@"wolfCount"] ;
 
                                     [self status :tigerCount andWith:bonus andWithWolfCount:wolfCount];
+                                    
+                                    [SVProgressHUD dismiss];
+
                                 }
                             } failure:^(NSError *error) {
                                 
@@ -270,7 +274,15 @@
                                     NSString *areaname = data[@"user"][@"areaname"] ;
                                     clubId = data[@"user"][@"club"];
                                     
-                                    NSDictionary *tmp = [NSDictionary dictionaryWithObjectsAndKeys: lid , @"leagueId" ,areacode , @"areaCode" , uvo.phone ,  @"phone" , uvo.phone , @"token" , nil];
+                                    NSDictionary *tmp = nil ;
+                                    if ([areaCode isEqualToString:@""] && [areaName isEqualToString:@""]) {
+                                        tmp = [NSDictionary dictionaryWithObjectsAndKeys: lid , @"leagueId" ,areacode , @"areaCode" , uvo.phone ,  @"phone" , uvo.phone , @"token" , nil];
+                                    }else{
+                                        tmp = [NSDictionary dictionaryWithObjectsAndKeys: lid , @"leagueId" ,areaCode , @"areaCode" , uvo.phone ,  @"phone" , uvo.phone , @"token" , nil];
+                                        areacode = areaCode ;
+                                        areaname = areaName ;
+                                    }
+                                    
                                     [PPNetworkHelper POST:getAreaJoininCount parameters:tmp success:^(id data) {
                                         if([data[@"code"] isEqualToString:@"0000"]){
                                             CupRoundVo *vo = [CupRoundVo new] ;
@@ -290,6 +302,9 @@
                                             [SVProgressHUD showErrorWithStatus: @"系统错误"];
                                             [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
                                         }
+                                        
+                                        [SVProgressHUD dismiss];
+
                                     } failure:^(NSError *error) {
                                     }];
                                 }else {
@@ -317,7 +332,8 @@
 -(void)getNeedData{
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
-    
+    [SVProgressHUD show];
+
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone ,@"phone" , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:liansaidetail parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
@@ -340,6 +356,8 @@
             self.navigationItem.leftBarButtonItem = backItem2 ;
 
         }
+        [SVProgressHUD dismiss];
+
     } failure:^(NSError *error) {
         
     }];
@@ -506,6 +524,11 @@
         ID = county[XPAddressPickerIdKey];
         [string appendFormat:@"%@", countyName];
         [sender setTitle:[NSString stringWithFormat:@"> %@" ,countyName] forState:UIControlStateNormal];
+        NSArray *views = [self.view subviews];
+        for(UIView *view in views){
+            [view removeFromSuperview];
+        }
+        [self getLeagueStatus : ID andWithAreaName:countyName];
     }
 //    [string appendFormat:@" id:%@", ID];
     
