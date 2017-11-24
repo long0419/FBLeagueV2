@@ -40,7 +40,7 @@
     //获取需要数据内容 (获取第一页)
     pageNO = @"1" ;
     
-//    [self getNeedDatas:pageNO];
+    [self getNeedDatas:pageNO];
     
     __weak LangResultListViewController *weakSelf = self ;
     [_goodTableView addPullToRefreshWithActionHandler:^{
@@ -60,9 +60,23 @@
     
 }
 
+-(void)getNeedDatas : (NSString *)pageNo{
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: @"" , @"leagueId" , uvo.phone, @"clubId" , @"1" , @"camp" , @"" , @"areaCode" , @"" , @"roundNum" , uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:listCurrentSchedules parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+
+            
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+
+}
+
 #pragma mark 返回分组数
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2 ;
+    return 44 ;
 //    [kouList count] ;
 }
 

@@ -15,6 +15,7 @@
 #import "AddSaiTimeViewController.h"
 #import "LianSaiView.h"
 #import "XPAddressPicker.h"
+#import "CupRoundVo.h"
 
 @interface LianSaiViewController : BaseViewController <ZYBannerViewDataSource, ZYBannerViewDelegate, UITextFieldDelegate,UITableViewDelegate , UITableViewDataSource , UIScrollViewDelegate, ScrollIndex , XPAddressPickerDelegate>
 

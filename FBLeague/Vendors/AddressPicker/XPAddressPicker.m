@@ -414,6 +414,7 @@ static NSTimeInterval const kAnimationDuration  =   0.25;
         [_cancelButton setTitle:@"取消" forState:UIControlStateNormal];
         [_cancelButton addTarget:self action:@selector(cancelButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         _cancelButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
+        [_cancelButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     }
     return _cancelButton;
 }
@@ -424,6 +425,8 @@ static NSTimeInterval const kAnimationDuration  =   0.25;
         [_doneButton setTitle:@"完成" forState:UIControlStateNormal];
         [_doneButton addTarget:self action:@selector(doneButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         _doneButton.titleLabel.font = [UIFont systemFontOfSize:15.0];
+        [_doneButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+
     }
     return _doneButton;
 }

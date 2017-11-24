@@ -15,6 +15,8 @@
 @property (nonatomic , strong) NSString *areaStr ;
 @property (nonatomic , strong) NSString *areaCodeStr ;
 @property (nonatomic , strong) NSString *leagueId ;
+@property (nonatomic , strong) NSString *cupType ; //1.联赛  2.杯赛
+@property (nonatomic , strong) NSString *camp ; //虎队为1   狼队为2
 
 - (void) share ;
 

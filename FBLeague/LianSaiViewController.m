@@ -47,58 +47,77 @@
     [self getRedPotData];
 }
 
--(void)status2{
-//
-//    UIView *lunleft = [LianSaiView getLunContent:@"第一轮" andWithColor:@"0b63ac" andWithFontSize:15];
-//    lunleft.origin = CGPointMake(0, 0);
-//    [self.view addSubview:lunleft];
-        
-    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , kScreen_Width, 20 + 44 + 130/2 + 82/2 + 78/2 )];
+-(void)status2 :(CupRoundVo *) vo{
+    UIView *bg = [[UIView alloc] initWithFrame:CGRectMake(0, 0 , kScreen_Width, 60 + 130/2 + 82/2 + 78/2 + 60)];
     bg.backgroundColor = [UIColor colorWithHexString:@"323c45"];
     [self.view addSubview:bg];
     
+    UIView *lunleft = [LianSaiView getLunContent:[NSString stringWithFormat:@"第%@轮" , vo.wolfRoundNum] andWithColor:@"0b63ac" andWithFontSize:15];
+    lunleft.origin = CGPointMake(0, 20 + 44);
+    [bg addSubview:lunleft];
+    
+    UIView *lunleft2 = [LianSaiView getLunContent:[NSString stringWithFormat:@"%@ ~ %@" , vo.wolfRoundBeginDate , vo.wolfRoundEndDate] andWithColor:@"2473b4" andWithFontSize:12];
+    lunleft2.origin = CGPointMake(0, lunleft.bottom);
+    [bg addSubview:lunleft2];
+    
+    UIView *lunright = [LianSaiView getLunContent:[NSString stringWithFormat:@"第%@轮" , vo.tigerRoundNum] andWithColor:@"c51a3e" andWithFontSize:15];
+    lunright.origin = CGPointMake(lunleft.right , 20 + 44);
+    [bg addSubview:lunright];
+    
+    UIView *lunright2 = [LianSaiView getLunContent:[NSString stringWithFormat:@"%@ ~ %@" , vo.tigerRoundBeginDate , vo.tigerRoundEndDate] andWithColor:@"cb3152" andWithFontSize:12];
+    lunright2.origin = CGPointMake(lunleft2.right , lunleft.bottom);
+    [bg addSubview:lunright2];
+
+
     UIImageView *vs = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VS-队徽用"]];
-    vs.frame = CGRectMake((kScreen_Width - 122/2)/2 , 68/2 + 44 + 20, 122/2 , 160/2);
+    vs.frame = CGRectMake((kScreen_Width - 122/2)/2 , 68/2 + lunright2.bottom , 122/2 , 160/2);
     [bg addSubview:vs];
-    
-    UIView *langdui = [LianSaiView getDuiView:@"1" andWithNum:@"1025" andWithPoint:CGPointMake(20, 78/2 + 20 + 44)];
+
+    UIView *langdui = [LianSaiView getDuiView:@"1" andWithNum:@"1025" andWithPoint:CGPointMake(20, 60 + 78/2 + 20 + 44)];
     [bg addSubview:langdui];
-    
-    UIView *hudui = [LianSaiView getDuiView:@"2" andWithNum:@"925" andWithPoint:CGPointMake(kScreen_Width - 20 - 236/2,78/2 + 20 + 44)];
+
+    UIView *hudui = [LianSaiView getDuiView:@"2" andWithNum:@"925" andWithPoint:CGPointMake(kScreen_Width - 20 - 236/2, 60 + 78/2 + 20 + 44)];
     [bg addSubview:hudui];
 
     LangResultListViewController *langlist = [LangResultListViewController new];
     HuResultListViewController *hu =[HuResultListViewController new];
     
-    NSArray *viewControllers = @[
-                                 @{@"狼队":langlist},
+    NSArray *viewControllers = @[@{@"狼队":langlist},
                                  @{@"虎队":hu}];
-    YCSlideView * view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, 130/2 + 82/2 + 78/2 + 20 + 44, kScreen_Width, kScreen_Height - 20 - 44) WithViewControllers:viewControllers] ;
+    YCSlideView * view = [[YCSlideView alloc] initWithFrame:CGRectMake(0, bg.bottom , kScreen_Width, kScreen_Height/2 - 150) WithViewControllers:viewControllers] ;
     [self.view addSubview:view];
-
+    
 }
 
--(void)status{
+-(void)status :(NSString *)tigerCount andWith :(NSString *)bonus andWithWolfCount :(NSString *)wolfCount{
     UIImageView *bg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"首页底背景"]];
     bg.frame = CGRectMake(0, 0, kScreen_Width, kScreen_Height);
     [self.view addSubview:bg];
-    
+
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     UIImageView *lang = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"首页狼队徽"]];
     lang.frame = CGRectMake(84/2 , 94/2 + 20 + 44 , 208/2, 208/2);
+    lang.userInteractionEnabled = YES;
+    lang.accessibilityHint = @"2" ;
+    [lang addGestureRecognizer:singleTap];
     [self.view addSubview:lang];
     
+    UITapGestureRecognizer *singleTap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
     UIImageView *hu = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"首页虎队徽"]];
     hu.frame = CGRectMake(kScreen_Width - 84/2 - 208/2 , 94/2 + 20 + 44, 208/2 , 208/2);
+    hu.userInteractionEnabled = YES;
+    hu.accessibilityHint = @"1" ;
+    [hu addGestureRecognizer:singleTap2];
     [self.view addSubview:hu];
     
     UIImageView *vs = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VS-队徽用"]];
     vs.frame = CGRectMake((kScreen_Width - 122/2)/2 , 94/2 + 20 + 44 + 15, 122/2 , 160/2);
     [self.view addSubview:vs];
     
-    UIView *langdui = [LianSaiView getDuiView:@"1" andWithNum:@"1025" andWithPoint:CGPointMake(35, lang.bottom + 20)];
+    UIView *langdui = [LianSaiView getDuiView:@"1" andWithNum:tigerCount andWithPoint:CGPointMake(35, lang.bottom + 20)];
     [self.view addSubview:langdui];
     
-    UIView *hudui = [LianSaiView getDuiView:@"2" andWithNum:@"925" andWithPoint:CGPointMake(kScreen_Width - 35 - 236/2, lang.bottom + 20)];
+    UIView *hudui = [LianSaiView getDuiView:@"2" andWithNum:wolfCount andWithPoint:CGPointMake(kScreen_Width - 35 - 236/2, lang.bottom + 20)];
     [self.view addSubview:hudui];
     
     UIImageView *jiangjin = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"奖金池底背景"]];
@@ -112,19 +131,19 @@
     titleLabel11.text = @"奖金池";
     [jiangjin addSubview:titleLabel11];
     
-    CGSize titleSize12 = [NSString getStringContentSizeWithFontSize:36/2 andContent:@"918382元"];
+    CGSize titleSize12 = [NSString getStringContentSizeWithFontSize:36/2 andContent:[NSString stringWithFormat:@"%@元" , bonus]];
     UILabel *titleLabel12 = [[UILabel alloc] initWithFrame:CGRectMake((jiangjin.width - titleSize12.width)/2 , 25 + titleLabel11.bottom , titleSize12.width, titleSize12.height)];
     titleLabel12.font = [UIFont systemFontOfSize:36/2];
     titleLabel12.textColor = [UIColor colorWithHexString:@"ffffff"];
-    titleLabel12.text = @"918382元";
+    titleLabel12.text = [NSString stringWithFormat:@"%@元" , bonus] ;
     [jiangjin addSubview:titleLabel12];
     
     UIImageView *btn = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"竞赛章程按钮"]];
     btn.frame = CGRectMake((kScreen_Width - 200)/2, jiangjin.bottom + 108/2, 200, 185/4) ;
     [self.view addSubview:btn];
     btn.userInteractionEnabled = YES;
-    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
-    [btn addGestureRecognizer:singleTap];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [btn addGestureRecognizer:tap];
     
     CGSize titleSize = [NSString getStringContentSizeWithFontSize:36/2 andContent:@"竞赛章程"];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((btn.width - titleSize.width)/2 , (btn.height - titleSize.height)/2 - 3 , titleSize.width, titleSize.height)];
@@ -132,6 +151,16 @@
     titleLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
     titleLabel.text = @"竞赛章程";
     [btn addSubview:titleLabel];
+}
+
+-(void)tap :(UIImageView *) view{
+    self.hidesBottomBarWhenPushed = YES ;
+    AddSaiViewController *add = [AddSaiViewController new] ;
+    add.leagueId = leagueId ;
+    add.cupType = @"2" ;
+    add.camp = view.accessibilityHint ;
+    [self.navigationController pushViewController:add animated:YES];
+    self.hidesBottomBarWhenPushed = NO ;
 }
 
 - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
@@ -208,12 +237,56 @@
                     if([object[@"code"] isEqualToString:@"0000"]){
                         NSString *hasJoinin = object[@"hasJoinin"];
                         self.title = object[@"leagueCup"][@"name"] ;
-                        if (![hasJoinin isEqualToString:@"n"]) {
-                            [self status];
-                        }else{
+                        NSString *lid = object[@"leagueCup"][@"id"] ;
+                        if ([hasJoinin isEqualToString:@"n"]) {
+                            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: lid , @"leagueId" , uvo.phone, @"phone" , uvo.phone ,  @"token", nil];
+                            [PPNetworkHelper POST:getJoininCount parameters:params success:^(id object) {
+                                if([object[@"code"] isEqualToString:@"0000"]){
+                                    NSString *tigerCount = object[@"tigerCount"];
+                                    NSString *bonus = object[@"bonus"];
+                                    NSString *wolfCount = object[@"wolfCount"] ;
+
+                                    [self status :tigerCount andWith:bonus andWithWolfCount:wolfCount];
+                                }
+                            } failure:^(NSError *error) {
+                                
+                            }];
                             
-                            [self setLeftBottom];
-                            [self status2] ;
+                        }else{
+                            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone ,  @"phone" , uvo.phone , @"token" , nil];
+                            [PPNetworkHelper POST:getCBDetail parameters:params success:^(id data) {
+                                if([data[@"code"] isEqualToString:@"0000"]){
+                                    NSString *areacode = data[@"user"][@"areacode"] ;
+                                    NSString *areaname = data[@"user"][@"areaname"] ;
+
+                                    NSDictionary *tmp = [NSDictionary dictionaryWithObjectsAndKeys: lid , @"leagueId" ,areacode , @"areaCode" , uvo.phone ,  @"phone" , uvo.phone , @"token" , nil];
+                                    [PPNetworkHelper POST:getAreaJoininCount parameters:tmp success:^(id data) {
+                                        if([data[@"code"] isEqualToString:@"0000"]){
+                                            CupRoundVo *vo = [CupRoundVo new] ;
+                                            vo.wolfRoundEndDate = data[@"wolfRoundEndDate"];
+                                            vo.tigerRoundEndDate = data[@"tigerRoundEndDate"];
+                                            vo.tigerRoundNum = data[@"tigerRoundNum"];
+                                            vo.wolfCount = data[@"wolfCount"];
+                                            vo.wolfRoundBeginDate = data[@"wolfRoundBeginDate"];
+                                            vo.wolfRoundNum = data[@"wolfRoundNum"];
+                                            vo.tigerRoundBeginDate = data[@"tigerRoundBeginDate"];
+                                            vo.tigerCount = data[@"tigerCount"];
+
+                                            [self setLeftBottom : areaname];
+                                            [self status2 : vo] ;
+                                            
+                                        }else {
+                                            [SVProgressHUD showErrorWithStatus: @"系统错误"];
+                                            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+                                        }
+                                    } failure:^(NSError *error) {
+                                    }];
+                                }else {
+                                    [SVProgressHUD showErrorWithStatus: @"系统错误"];
+                                    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+                                }
+                            } failure:^(NSError *error) {
+                            }];
                             
                         }
                     }
@@ -245,7 +318,7 @@
 
             [self setupBanner];
             
-            [self setRightBottom : hasJoinin];
+            [self setRightBottom : hasJoinin andWithType:@"1"];
             
             explainViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             explainViewBtn.frame = CGRectMake(0, 0, 17, 17);
@@ -268,11 +341,11 @@
     
 }
 
-- (void)setLeftBottom {
-    CGSize size = [NSString getStringContentSizeWithFontSize:15 andContent:@"选择地区"] ;
+- (void)setLeftBottom :(NSString *)areaname{
+    CGSize size = [NSString getStringContentSizeWithFontSize:15 andContent:[NSString stringWithFormat:@"> %@" , areaname]] ;
     sender = [UIButton buttonWithType:UIButtonTypeCustom];
-    sender.frame = CGRectMake(0, 0, size.width , size.height);
-    [sender setTitle:@"选择地区" forState:UIControlStateNormal];
+    sender.frame = CGRectMake(0, 0, size.width + 20 , size.height);
+    [sender setTitle:[NSString stringWithFormat:@"> %@" , areaname] forState:UIControlStateNormal];
     sender.titleLabel.font = [UIFont systemFontOfSize: 15];
     [sender setTitleColor:[UIColor colorWithHexString:@"ffffff"]forState:UIControlStateNormal];
     [sender addTarget:self action: @selector(chooseArea)
@@ -283,11 +356,12 @@
 }
 
 
-- (void)setRightBottom :(NSString *) hasJoinin{
+- (void)setRightBottom :(NSString *) hasJoinin andWithType : (NSString *) type{
     backViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backViewBtn.frame = CGRectMake(0, 0, 17, 17);
     [backViewBtn setImage:[UIImage imageNamed:@"addcircle"] forState:UIControlStateNormal];
-    [backViewBtn addTarget:self action: @selector(goAction)
+    backViewBtn.accessibilityHint = type ;
+    [backViewBtn addTarget:self action: @selector(goAction:)
           forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
     self.navigationItem.rightBarButtonItem = backItem ;
@@ -314,11 +388,12 @@
     self.hidesBottomBarWhenPushed = NO ;
 }
 
--(void)goAction{
+-(void)goAction : (UIButton *) btn{
     self.hidesBottomBarWhenPushed = YES ;
     if (index_ == 0) {
         AddSaiViewController *add = [AddSaiViewController new] ;
         add.leagueId = leagueId ;
+        add.cupType = btn.accessibilityHint ;
         [self.navigationController pushViewController:add animated:YES];
     }else if(index_ == 1){
         AddSaiTimeViewController *time = [AddSaiTimeViewController new];
@@ -418,12 +493,11 @@
     if (nil != county) {
         NSString *countyName = county[XPAddressPickerNameKey];
         ID = county[XPAddressPickerIdKey];
-        [string appendFormat:@" %@", countyName];
+        [string appendFormat:@"%@", countyName];
+        [sender setTitle:[NSString stringWithFormat:@"> %@" ,countyName] forState:UIControlStateNormal];
     }
-    [string appendFormat:@" id:%@", ID];
+//    [string appendFormat:@" id:%@", ID];
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"您选择的地址是:" message:string delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alertView show];
 }
 
 @end

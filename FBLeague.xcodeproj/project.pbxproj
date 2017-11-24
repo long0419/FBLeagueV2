@@ -41,6 +41,7 @@
 		FD396B2F1F343EEE00265CF7 /* AddZhanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD396B2E1F343EEE00265CF7 /* AddZhanViewController.m */; };
 		FD3B0D1B1FC5BF790018991A /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = FD3B0D191FC5BF780018991A /* Address.json */; };
 		FD3B0D1C1FC5BF790018991A /* XPAddressPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B0D1A1FC5BF780018991A /* XPAddressPicker.m */; };
+		FD3B0D1F1FC6CAE80018991A /* CupRoundVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B0D1E1FC6CAE80018991A /* CupRoundVo.m */; };
 		FD41C4C91F98A99800EB24E4 /* UnReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD41C4C81F98A99800EB24E4 /* UnReadViewController.m */; };
 		FD4269641F6B6468006B7C56 /* PPNumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4269631F6B6468006B7C56 /* PPNumberButton.m */; };
 		FD4F6AF81F57B4B900DC1C10 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6AF21F57B4B900DC1C10 /* NSDate+Extension.m */; };
@@ -279,6 +280,8 @@
 		FD3B0D181FC5BF780018991A /* XPAddressPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPAddressPicker.h; sourceTree = "<group>"; };
 		FD3B0D191FC5BF780018991A /* Address.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Address.json; sourceTree = "<group>"; };
 		FD3B0D1A1FC5BF780018991A /* XPAddressPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPAddressPicker.m; sourceTree = "<group>"; };
+		FD3B0D1D1FC6CAE80018991A /* CupRoundVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CupRoundVo.h; sourceTree = "<group>"; };
+		FD3B0D1E1FC6CAE80018991A /* CupRoundVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CupRoundVo.m; sourceTree = "<group>"; };
 		FD41C4C71F98A99800EB24E4 /* UnReadViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnReadViewController.h; sourceTree = "<group>"; };
 		FD41C4C81F98A99800EB24E4 /* UnReadViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnReadViewController.m; sourceTree = "<group>"; };
 		FD4269621F6B6468006B7C56 /* PPNumberButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PPNumberButton.h; sourceTree = "<group>"; };
@@ -1278,6 +1281,8 @@
 				FDEAC8361F626EEA00AB25B2 /* JiFenVo.m */,
 				FD58AFFD1F7A2C5C00AB6EAE /* ClubOBJ.h */,
 				FD58AFFE1F7A2C5C00AB6EAE /* ClubOBJ.m */,
+				FD3B0D1D1FC6CAE80018991A /* CupRoundVo.h */,
+				FD3B0D1E1FC6CAE80018991A /* CupRoundVo.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1881,6 +1886,7 @@
 				FDAA38301DD2BE1F0038658F /* LianmengViewController.m in Sources */,
 				FDD24CC31F0BECF900DA16FC /* ChooseCityViewController.m in Sources */,
 				FD5018C91F3C4E3E0077C418 /* openssl_wrapper.m in Sources */,
+				FD3B0D1F1FC6CAE80018991A /* CupRoundVo.m in Sources */,
 				FD4F6B521F59A18B00DC1C10 /* DHLaunchAdPageHUD.m in Sources */,
 				FD41C4C91F98A99800EB24E4 /* UnReadViewController.m in Sources */,
 				FDA8EE5D1F07F3B800F3A01A /* UserDataVo.m in Sources */,

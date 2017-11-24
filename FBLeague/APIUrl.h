@@ -106,8 +106,7 @@
 #define listSchedulesCup [NSString stringWithFormat:@"%@/%@",API,@"schedulecup/listSchedules"]
 #define listCurrentSchedules [NSString stringWithFormat:@"%@/%@",API,@"schedulecup/listCurrentSchedules"]
 #define submitCupResult [NSString stringWithFormat:@"%@/%@",API,@"schedulecup/submitResult"]
-
-
+#define getAreaJoininCount [NSString stringWithFormat:@"%@/%@",API,@"joinincup/getAreaJoininCount"]
 
 
 #endif /* APIUrl_h */

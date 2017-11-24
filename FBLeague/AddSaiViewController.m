@@ -177,6 +177,14 @@
     [buttons2[0] setGroupButtons:buttons2];
     [buttons2[0] setSelected:YES];
     
+    if ([_cupType isEqualToString:@"2"]) {
+        label13.hidden = YES ;
+        btnx.hidden = YES ;
+        btnx2.hidden = YES ;
+        btnx3.hidden = YES ;
+    }
+    
+    
     formatType = @"5" ;
 
     
@@ -364,10 +372,20 @@
     if ([type isEqualToString:@"微信"]){
         type_ = @"2" ;
     }
-
     NSArray *area = [_areaCodeStr componentsSeparatedByString:@" "];
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , uvo.club , @"clubId" , _leagueId , @"leagueId" , area[2] , @"areaCode" , groupType , @"groupType" , formatType , @"format" , type_ , @"paymentType" , @"21213123" , @"paymentOrder" ,uvo.phone ,  @"token", nil];
-    [PPNetworkHelper POST:joinLeague parameters:params success:^(id object) {
+    
+    
+    //联赛
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , uvo.club , @"clubId" , _leagueId , @"leagueId" , area[2] , @"areaCode" , groupType , @"groupType" , formatType , @"format" , type_ , @"paymentType" , [NSString stringWithFormat:@"%d",arc4random()] , @"paymentOrder" ,uvo.phone ,  @"token", nil];
+    NSString *url = joinincup ;
+    
+    //杯赛
+    if ([_cupType isEqualToString:@"2"]) {
+        url = joinLeague ;
+        params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.clubName , @"clubname" , uvo.phone , @"contactphone"  , uvo.club , @"clubid" , _leagueId , @"leagueId"
+                , _camp , @"camp" , area[2] , @"areacode" , type_ , @"paymenttype" ,  [NSString stringWithFormat:@"%d",arc4random()] , @"paymentorder" ,uvo.phone ,  @"token", nil];
+    }
+    [PPNetworkHelper POST:url parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
             [self.navigationController popViewControllerAnimated:YES];
         }else{
