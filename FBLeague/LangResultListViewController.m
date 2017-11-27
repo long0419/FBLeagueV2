@@ -65,7 +65,6 @@
     uvo = [cache objectForKey:@"userData"];
 
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _leagueId , @"leagueId" , _clubId , @"clubId"  , _camp , @"camp" , _areaCode , @"areaCode" , _roundNum , @"roundNum" , uvo.phone ,  @"token", nil];
-//    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: @"22222222" , @"leagueId" , @"15079662404091" , @"clubId"  , @"1" , @"camp" , @"420101" , @"areaCode" , @"1" , @"roundNum" , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:listCurrentSchedules parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
             NSDictionary *list = object[@"schedules"];
@@ -127,7 +126,12 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        [cell.contentView addSubview:[[LianSaiView new] getHeSuiCell:[CommonFunc textFromBase64String:vo.homeclubname] andToSai: [CommonFunc textFromBase64String:vo.visitingclubname]  andWithResult:[NSString stringWithFormat:@"%@:%@" , vo.homeeva , vo.visitingeva]]];
+        NSString *resultStr = [NSString stringWithFormat:@"%@:%@" , vo.homeeva , vo.visitingeva] ;
+        if(![vo.matchstatus isEqualToString:@"3"] || [vo.matchstatus isEqualToString:@"5"]){
+            resultStr = @"VS" ;
+        }
+        
+        [cell.contentView addSubview:[[LianSaiView new] getHeSuiCell:[CommonFunc textFromBase64String:vo.homeclubname] andToSai: [CommonFunc textFromBase64String:vo.visitingclubname]  andWithResult:resultStr]];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone ;

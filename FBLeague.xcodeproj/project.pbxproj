@@ -28,6 +28,7 @@
 		FD242A791F601B150039A8A4 /* AddSaiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD242A781F601B150039A8A4 /* AddSaiViewController.m */; };
 		FD242AA71F60E62F0039A8A4 /* JHChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FD242AA31F60E62E0039A8A4 /* JHChart.m */; };
 		FD242AA81F60E62F0039A8A4 /* JHRadarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FD242AA61F60E62F0039A8A4 /* JHRadarChart.m */; };
+		FD258F051FCAAD4100D3F735 /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = FD258F041FCAAD4100D3F735 /* Address.json */; };
 		FD265A9E1F29E0BF00F92316 /* UIResponder+FirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = FD265A9B1F29E0BF00F92316 /* UIResponder+FirstResponder.m */; };
 		FD265A9F1F29E0BF00F92316 /* WPAutoSpringTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD265A9D1F29E0BF00F92316 /* WPAutoSpringTextViewController.m */; };
 		FD265AA31F29E16900F92316 /* MyJiaoLianDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD265AA21F29E16900F92316 /* MyJiaoLianDataViewController.m */; };
@@ -39,7 +40,6 @@
 		FD352FD11F1FA4AA00EA2A60 /* CoachVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD352FD01F1FA4AA00EA2A60 /* CoachVo.m */; };
 		FD38A5BE1F84E6C9007CAF28 /* UpdateUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD38A5BD1F84E6C9007CAF28 /* UpdateUserInfoViewController.m */; };
 		FD396B2F1F343EEE00265CF7 /* AddZhanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD396B2E1F343EEE00265CF7 /* AddZhanViewController.m */; };
-		FD3B0D1B1FC5BF790018991A /* Address.json in Resources */ = {isa = PBXBuildFile; fileRef = FD3B0D191FC5BF780018991A /* Address.json */; };
 		FD3B0D1C1FC5BF790018991A /* XPAddressPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B0D1A1FC5BF780018991A /* XPAddressPicker.m */; };
 		FD3B0D1F1FC6CAE80018991A /* CupRoundVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3B0D1E1FC6CAE80018991A /* CupRoundVo.m */; };
 		FD41C4C91F98A99800EB24E4 /* UnReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD41C4C81F98A99800EB24E4 /* UnReadViewController.m */; };
@@ -257,6 +257,7 @@
 		FD242AA41F60E62E0039A8A4 /* JHChartHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHChartHeader.h; sourceTree = "<group>"; };
 		FD242AA51F60E62E0039A8A4 /* JHRadarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JHRadarChart.h; sourceTree = "<group>"; };
 		FD242AA61F60E62F0039A8A4 /* JHRadarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JHRadarChart.m; sourceTree = "<group>"; };
+		FD258F041FCAAD4100D3F735 /* Address.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Address.json; sourceTree = "<group>"; };
 		FD265A9A1F29E0BF00F92316 /* UIResponder+FirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+FirstResponder.h"; sourceTree = "<group>"; };
 		FD265A9B1F29E0BF00F92316 /* UIResponder+FirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+FirstResponder.m"; sourceTree = "<group>"; };
 		FD265A9C1F29E0BF00F92316 /* WPAutoSpringTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAutoSpringTextViewController.h; sourceTree = "<group>"; };
@@ -278,7 +279,6 @@
 		FD396B2D1F343EEE00265CF7 /* AddZhanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddZhanViewController.h; sourceTree = "<group>"; };
 		FD396B2E1F343EEE00265CF7 /* AddZhanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddZhanViewController.m; sourceTree = "<group>"; };
 		FD3B0D181FC5BF780018991A /* XPAddressPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPAddressPicker.h; sourceTree = "<group>"; };
-		FD3B0D191FC5BF780018991A /* Address.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Address.json; sourceTree = "<group>"; };
 		FD3B0D1A1FC5BF780018991A /* XPAddressPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XPAddressPicker.m; sourceTree = "<group>"; };
 		FD3B0D1D1FC6CAE80018991A /* CupRoundVo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CupRoundVo.h; sourceTree = "<group>"; };
 		FD3B0D1E1FC6CAE80018991A /* CupRoundVo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CupRoundVo.m; sourceTree = "<group>"; };
@@ -791,8 +791,8 @@
 		FD3B0D171FC5BF780018991A /* AddressPicker */ = {
 			isa = PBXGroup;
 			children = (
+				FD258F041FCAAD4100D3F735 /* Address.json */,
 				FD3B0D181FC5BF780018991A /* XPAddressPicker.h */,
-				FD3B0D191FC5BF780018991A /* Address.json */,
 				FD3B0D1A1FC5BF780018991A /* XPAddressPicker.m */,
 			);
 			path = AddressPicker;
@@ -1641,8 +1641,8 @@
 				FD4F6AFB1F57B4B900DC1C10 /* WSDatePickerView.xib in Resources */,
 				FDEAC8151F60FB4000AB25B2 /* qq@2x.png in Resources */,
 				FDEAC8251F60FBB600AB25B2 /* qq-拷贝@2x.png in Resources */,
+				FD258F051FCAAD4100D3F735 /* Address.json in Resources */,
 				FDEAC8161F60FB4000AB25B2 /* qq@3x.png in Resources */,
-				FD3B0D1B1FC5BF790018991A /* Address.json in Resources */,
 				FD1F2C6E1F04B91700063765 /* LaunchScreen2.xib in Resources */,
 				FDAA37A31DD2BCF80038658F /* Assets.xcassets in Resources */,
 				FD94E8C91F9F5C6100294578 /* share.jpg in Resources */,

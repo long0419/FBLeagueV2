@@ -73,10 +73,10 @@
     vs.frame = CGRectMake((kScreen_Width - 122/2)/2 , 68/2 + lunright2.bottom , 122/2 , 160/2);
     [bg addSubview:vs];
 
-    UIView *langdui = [LianSaiView getDuiView:@"1" andWithNum:@"1025" andWithPoint:CGPointMake(20, 60 + 78/2 + 20 + 44)];
+    UIView *langdui = [LianSaiView getDuiView:@"1" andWithNum:vo.wolfCount andWithPoint:CGPointMake(20, 60 + 78/2 + 20 + 44)];
     [bg addSubview:langdui];
 
-    UIView *hudui = [LianSaiView getDuiView:@"2" andWithNum:@"925" andWithPoint:CGPointMake(kScreen_Width - 20 - 236/2, 60 + 78/2 + 20 + 44)];
+    UIView *hudui = [LianSaiView getDuiView:@"2" andWithNum:vo.tigerCount andWithPoint:CGPointMake(kScreen_Width - 20 - 236/2, 60 + 78/2 + 20 + 44)];
     [bg addSubview:hudui];
 
     LangResultListViewController *langlist = [LangResultListViewController new];
@@ -271,12 +271,15 @@
                             }];
                             
                         }else{
-                            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone ,  @"phone" , uvo.phone , @"token" , nil];
-                            [PPNetworkHelper POST:getCBDetail parameters:params success:^(id data) {
+                            
+                            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: lid ,  @"leagueId" , uvo.club , @"clubId" , uvo.phone , @"token" , nil];
+                            [PPNetworkHelper POST:getClubJoinin parameters:params success:^(id data) {
+//                            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone ,  @"phone" , uvo.phone , @"token" , nil];
+//                            [PPNetworkHelper POST:getCBDetail parameters:params success:^(id data) {
                                 if([data[@"code"] isEqualToString:@"0000"]){
-                                    NSString *areacode = data[@"user"][@"areacode"] ;
-                                    NSString *areaname = data[@"user"][@"areaname"] ;
-                                    clubId = data[@"user"][@"club"];
+                                    NSString *areacode = data[@"joinin"][@"areacode"] ;
+                                    NSString *areaname = data[@"joinin"][@"areaname"] ;
+                                    clubId = data[@"joinin"][@"clubid"];
                                     
                                     NSDictionary *tmp = nil ;
                                     if ([areaCode isEqualToString:@""] && [areaName isEqualToString:@""]) {
