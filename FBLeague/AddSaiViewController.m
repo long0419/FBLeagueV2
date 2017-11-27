@@ -34,7 +34,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"联赛报名";
 
     [self setBackBottmAndTitle];
     
@@ -77,7 +76,7 @@
     btn.titleEdgeInsets = UIEdgeInsetsMake(0, 6, 0, 0);
     [self.view addSubview:btn];
     
-    groupType = @"1" ;
+    groupType = @"2" ;
     
     RadioButton* btn2 = [[RadioButton alloc] init];
     [btn2 addTarget:self action:@selector(onRadioButtonValueChanged:) forControlEvents:UIControlEventValueChanged];
@@ -92,21 +91,21 @@
     
     [buttons addObject:btn];
     
-    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(psw);
-        make.top.mas_equalTo(label3.mas_bottom).with.offset(15);
-        make.width.mas_equalTo(100);
-    }];
-    
     [btn2 mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(psw);
+        make.left.equalTo(psw);
         make.top.mas_equalTo(label3.mas_bottom).with.offset(15);
         make.width.mas_equalTo(60);
     }];
+    
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(psw);
+        make.top.mas_equalTo(label3.mas_bottom).with.offset(15);
+        make.width.mas_equalTo(100);
+    }];
     [buttons addObject:btn2];
     
-    [buttons[0] setGroupButtons:buttons];
-    [buttons[0] setSelected:YES];
+    [buttons[1] setGroupButtons:buttons];
+    [buttons[1] setSelected:YES];
 
     QMUILabel *label13 = [[QMUILabel alloc] init];
     label13.text = @"选择赛制";
@@ -157,16 +156,16 @@
     [self.view addSubview:btnx3];
     [buttons2 addObject:btnx3];
     
-    [btnx mas_makeConstraints:^(MASConstraintMaker *make) {
+    [btnx2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(psw);
         make.top.mas_equalTo(label13.mas_bottom).with.offset(10);
-        make.width.mas_equalTo(100);
+        make.width.mas_equalTo(60);
     }];
     
-    [btnx2 mas_makeConstraints:^(MASConstraintMaker *make) {
+    [btnx mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.view);
         make.top.mas_equalTo(label13.mas_bottom).with.offset(10);
-        make.width.mas_equalTo(60);
+        make.width.mas_equalTo(100);
     }];
     
     [btnx3 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -174,19 +173,19 @@
         make.top.mas_equalTo(label13.mas_bottom).with.offset(10);
         make.width.mas_equalTo(60);
     }];
-    [buttons2[0] setGroupButtons:buttons2];
-    [buttons2[0] setSelected:YES];
+    [buttons2[1] setGroupButtons:buttons2];
+    [buttons2[1] setSelected:YES];
     
     if ([_cupType isEqualToString:@"2"]) {
-        label13.hidden = YES ;
         btnx.hidden = YES ;
-        btnx2.hidden = YES ;
+        btn.hidden = YES ;
         btnx3.hidden = YES ;
+        self.title = @"杯赛报名";
+    }else{
+        self.title = @"联赛报名";
     }
     
-    
-    formatType = @"5" ;
-
+    formatType = @"8" ;
     
     QMUILabel *label14 = [[QMUILabel alloc] init];
     label14.text = @"报名费";

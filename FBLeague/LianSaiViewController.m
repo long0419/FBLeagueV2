@@ -253,7 +253,7 @@
                         NSString *hasJoinin = object[@"hasJoinin"];
                         self.title = object[@"leagueCup"][@"name"] ;
                         lid = object[@"leagueCup"][@"id"] ;
-                        if ([hasJoinin isEqualToString:@"n"]) {
+                        if (![hasJoinin isEqualToString:@"n"]) {
                             NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: lid , @"leagueId" , uvo.phone, @"phone" , uvo.phone ,  @"token", nil];
                             [PPNetworkHelper POST:getJoininCount parameters:params success:^(id object) {
                                 if([object[@"code"] isEqualToString:@"0000"]){
