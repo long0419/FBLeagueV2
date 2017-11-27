@@ -131,7 +131,7 @@
             resultStr = @"VS" ;
         }
         
-        [cell.contentView addSubview:[[LianSaiView new] getHeSuiCell:[CommonFunc textFromBase64String:vo.homeclubname] andToSai: [CommonFunc textFromBase64String:vo.visitingclubname]  andWithResult:resultStr]];
+        [cell.contentView addSubview:[[LianSaiView new] getHeSuiCell:[CommonFunc textFromBase64String:vo.homeclubname] andToSai: [CommonFunc textFromBase64String:vo.visitingclubname]  andWithResult:resultStr andWithSaiVo :vo]];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone ;

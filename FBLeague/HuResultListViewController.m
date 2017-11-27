@@ -126,10 +126,14 @@
     static NSString *cellIdentifier  = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     SaiChengVo *vo = [kouList objectAtIndex:indexPath.section];
+    NSString *resultStr = [NSString stringWithFormat:@"%@:%@" , vo.homeeva , vo.visitingeva] ;
+    if(![vo.matchstatus isEqualToString:@"3"] || [vo.matchstatus isEqualToString:@"5"]){
+        resultStr = @"VS" ;
+    }
 
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        [cell.contentView addSubview:[[LianSaiView new] getHeSuiCell:[CommonFunc textFromBase64String:vo.homeclubname] andToSai: [CommonFunc textFromBase64String:vo.visitingclubname]  andWithResult:[NSString stringWithFormat:@"%@:%@" , vo.homeeva , vo.visitingeva]]];
+        [cell.contentView addSubview:[[LianSaiView new] getHeSuiCell:[CommonFunc textFromBase64String:vo.homeclubname] andToSai: [CommonFunc textFromBase64String:vo.visitingclubname]  andWithResult:resultStr andWithSaiVo :vo]];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone ;

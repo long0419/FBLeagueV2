@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SaiChengVo.h"
 
 @interface LianSaiView : UITableViewCell
 
@@ -16,7 +17,7 @@
 
 + (UIView *)getDuiView :(NSString *) type andWithNum :(NSString *) num andWithPoint : (CGPoint) point ;
 
--(UIView *)getHeSuiCell :(NSString *) fromSai andToSai :(NSString *)toSai andWithResult :(NSString *)result ;
+-(UIView *)getHeSuiCell :(NSString *) fromSai andToSai :(NSString *)toSai andWithResult :(NSString *)result andWithSaiVo :(SaiChengVo *) vo ;
 
 + (UIView *)getLunContent :(NSString *)content andWithColor:(NSString *) color  andWithFontSize :(int) size;
 @end
