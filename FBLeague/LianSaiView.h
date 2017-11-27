@@ -17,7 +17,7 @@
 
 + (UIView *)getDuiView :(NSString *) type andWithNum :(NSString *) num andWithPoint : (CGPoint) point ;
 
--(UIView *)getHeSuiCell :(NSString *) fromSai andToSai :(NSString *)toSai andWithResult :(NSString *)result andWithSaiVo :(SaiChengVo *) vo ;
+-(UIView *)getHeSuiCell :(NSString *) fromSai andToSai :(NSString *)toSai andWithResult :(NSString *)result andWithSaiVo :(SaiChengVo *) vo andWithUser :(UserDataVo *) uvo;
 
 + (UIView *)getLunContent :(NSString *)content andWithColor:(NSString *) color  andWithFontSize :(int) size;
 @end

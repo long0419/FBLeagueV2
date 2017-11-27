@@ -136,7 +136,7 @@
     return duiView;
 }
 
--(UIView *)getHeSuiCell :(NSString *) fromSai andToSai :(NSString *)toSai andWithResult :(NSString *)result andWithSaiVo :(SaiChengVo *)vo {
+-(UIView *)getHeSuiCell :(NSString *) fromSai andToSai :(NSString *)toSai andWithResult :(NSString *)result andWithSaiVo :(SaiChengVo *)vo andWithUser :(UserDataVo *) uvo {
     UIView *duiView = [[UIView alloc] init];
     duiView.frame = CGRectMake(0, 0, kScreen_Width, 45);
     duiView.backgroundColor = [UIColor whiteColor];
@@ -163,15 +163,21 @@
     TOLabel.text = toSai;
     [duiView addSubview:TOLabel];
 
-    UIView *shu = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3, 44)];
-    shu.backgroundColor = [UIColor colorWithHexString:@"5b73d3"] ;
-    duiView.backgroundColor = [UIColor colorWithHexString:@"eef0fb"];
-    [duiView addSubview:shu];
+    
+    if ([uvo.club isEqualToString:vo.homeclub]
+//        || [uvo.club isEqualToString:vo.visitingclub]
+        ) {
+        UIView *shu = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3, 44)];
+        shu.backgroundColor = [UIColor colorWithHexString:@"5b73d3"] ;
+        duiView.backgroundColor = [UIColor colorWithHexString:@"eef0fb"];
+        [duiView addSubview:shu];
 
-    if([vo.camp isEqualToString:@"1"]){
-        shu.backgroundColor = [UIColor colorWithHexString:@"e03358"] ;
-        duiView.backgroundColor = [UIColor colorWithHexString:@"f9e8eb"];
+        if([vo.camp isEqualToString:@"1"]){
+            shu.backgroundColor = [UIColor colorWithHexString:@"e03358"] ;
+            duiView.backgroundColor = [UIColor colorWithHexString:@"f9e8eb"];
+        }
     }
+    
     
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 45 - 0.5 , kScreen_Width, .5)];
     line.backgroundColor = [UIColor colorWithHexString:@"e0e0e0"];

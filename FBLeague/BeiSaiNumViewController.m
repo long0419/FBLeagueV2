@@ -16,6 +16,9 @@
     DSLLoginTextField *fen1 ;
     DSLLoginTextField *fen2 ;
     PPNumberButton *slider ;
+    NSString *ravalue ;
+    YYCache *cache ;
+    UserDataVo *uvo ;
 }
 
 @end
@@ -24,6 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    cache = [YYCache cacheWithName:@"FB"];
+    uvo = [cache objectForKey:@"userData"];
     
     self.title = @"虎啸狼吼贺岁杯" ;
     self.view.backgroundColor = [UIColor colorWithHexString:@"323c45"];
@@ -73,7 +78,7 @@
     [self.view addSubview:fen2];
     
     UIImageView *bifen = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"VS-比分用"]];
-    bifen.frame = CGRectMake((kScreen_Width - 72/2) , fen1.top, 72/2, 96/2);
+    bifen.frame = CGRectMake((kScreen_Width - 72/2)/2 , fen1.top, 72/2, 96/2);
     [self.view addSubview:bifen];
     
     QMUILabel *name3 = [[QMUILabel alloc] init];
@@ -93,7 +98,7 @@
     slider.minValue = 1 ;
     slider.rawValue = 5 ;
     slider.resultBlock = ^(NSString *num){
-
+        ravalue = num ;
     };
     [self.view addSubview:slider];
     
@@ -107,6 +112,48 @@
     [button addTarget:self action:@selector(submitSaiResult) forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"提交赛果" forState:UIControlStateNormal];
     [self.view addSubview:button];
+    
+    if ([_vo.hasplayed isEqualToString:@"y"]) {
+        if([_vo.matchstatus isEqualToString:@"1"]){
+            if ([_vo.homesubmit isEqualToString:@"<null>"] && [_vo.homeclub isEqualToString:uvo.club]) {
+                button.hidden = NO ;
+            }else if([_vo.visitingsubmit isEqualToString:@"<null>"] && [_vo.visitingclub isEqualToString:uvo.club]){
+                button.hidden = NO ;
+            }
+        }else if([_vo.matchstatus isEqualToString:@"0"]){
+            button.hidden = NO ;
+        }else{
+            button.hidden = YES ;
+        }
+    }else{
+        button.hidden = NO ;
+    }
+
+    
+    
+    
+    
+
+    
+}
+
+-(void)submitSaiResult{
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *uvo = [cache objectForKey:@"userData"];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid ,@"scheduleId" , uvo.club , @"clubId" , [NSString stringWithFormat:@"%@:%@" , fen1.text , fen2.text] , @"result" , ravalue , @"eva" , uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:submitCupResult parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+            [SVProgressHUD showSuccessWithStatus:@"赛果提交成功"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+            [self.navigationController popViewControllerAnimated:YES];
+        }else{
+            [SVProgressHUD showErrorWithStatus:object[@"msg"]];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
 
     
 }
@@ -120,5 +167,11 @@
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backViewBtn];
     self.navigationItem.leftBarButtonItem = backItem ;
 }
+
+-(void)back{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 
 @end

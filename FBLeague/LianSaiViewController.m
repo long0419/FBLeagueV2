@@ -41,6 +41,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sairesult:) name:@"saiResult" object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beiresult:) name:@"beiResult" object:nil];
+
     [self getLeagueStatus : @"" andWithAreaName:@""];
     
     //获取红点数据
@@ -219,6 +221,17 @@
     SaiResultViewController *mem = [SaiResultViewController new] ;
     mem.vo = vo ;
     mem.matchId = vo.matchid ;
+    [self.navigationController pushViewController:mem animated:YES];
+    self.hidesBottomBarWhenPushed=NO;
+    
+}
+
+-(void)beiresult :(NSNotification *)notification{
+    SaiChengVo *vo = [notification object];
+    
+    self.hidesBottomBarWhenPushed=YES;
+    BeiSaiNumViewController *mem = [BeiSaiNumViewController new] ;
+    mem.vo = vo ;
     [self.navigationController pushViewController:mem animated:YES];
     self.hidesBottomBarWhenPushed=NO;
     

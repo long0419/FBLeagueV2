@@ -131,7 +131,7 @@
             resultStr = @"VS" ;
         }
         
-        [cell.contentView addSubview:[[LianSaiView new] getHeSuiCell:[CommonFunc textFromBase64String:vo.homeclubname] andToSai: [CommonFunc textFromBase64String:vo.visitingclubname]  andWithResult:resultStr andWithSaiVo :vo]];
+        [cell.contentView addSubview:[[LianSaiView new] getHeSuiCell:[CommonFunc textFromBase64String:vo.homeclubname] andToSai: [CommonFunc textFromBase64String:vo.visitingclubname]  andWithResult:resultStr andWithSaiVo :vo andWithUser:uvo]];
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone ;
@@ -149,6 +149,12 @@
 #pragma mark 点击行
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    SaiChengVo *vo = [kouList objectAtIndex:indexPath.section];
+    
+    if ([uvo.club isEqualToString:vo.homeclub] || [uvo.club isEqualToString:vo.visitingclub]) {
+        [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"beiResult" object:vo userInfo:nil]];
+    }
+
 }
 
 

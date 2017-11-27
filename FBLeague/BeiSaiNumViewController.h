@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "SaiChengVo.h"
 
 @interface BeiSaiNumViewController : BaseViewController
+
+@property (nonatomic , strong) SaiChengVo *vo ;
+@property (nonatomic , strong) NSString *matchId ;
+
 
 @end
