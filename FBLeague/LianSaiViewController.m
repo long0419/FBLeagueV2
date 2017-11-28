@@ -175,13 +175,28 @@
 }
 
 -(void)tap :(UIImageView *) view{
-    self.hidesBottomBarWhenPushed = YES ;
-    AddSaiViewController *add = [AddSaiViewController new] ;
-    add.leagueId = leagueId ;
-    add.cupType = @"2" ;
-    add.camp = view.accessibilityHint ;
-    [self.navigationController pushViewController:add animated:YES];
-    self.hidesBottomBarWhenPushed = NO ;
+    cache = [YYCache cacheWithName:@"FB"];
+    uvo = [cache objectForKey:@"userData"];
+
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: lid , @"leagueId" , uvo.phone , @"phone" , uvo.phone ,  @"token", nil];
+    [PPNetworkHelper POST:prejoinincup parameters:params success:^(id object) {
+        if(![object[@"code"] isEqualToString:@"0000"]){
+            [SVProgressHUD showErrorWithStatus: object[@"msg"]];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+
+        }else{
+            self.hidesBottomBarWhenPushed = YES ;
+            AddSaiViewController *add = [AddSaiViewController new] ;
+            add.leagueId = leagueId ;
+            add.cupType = @"2" ;
+            add.camp = view.accessibilityHint ;
+            [self.navigationController pushViewController:add animated:YES];
+            self.hidesBottomBarWhenPushed = NO ;
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+    
 }
 
 - (void)handleSingleTap:(UIGestureRecognizer *)gestureRecognizer {
@@ -274,6 +289,7 @@
                         NSString *hasJoinin = object[@"hasJoinin"];
                         self.title = object[@"leagueCup"][@"name"] ;
                         lid = object[@"leagueCup"][@"id"] ;
+                        
                         if (![hasJoinin isEqualToString:@"n"]) {
                             NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: lid , @"leagueId" , uvo.phone, @"phone" , uvo.phone ,  @"token", nil];
                             [PPNetworkHelper POST:getJoininCount parameters:params success:^(id object) {
