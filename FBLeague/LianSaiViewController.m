@@ -155,7 +155,7 @@
     btn.frame = CGRectMake((kScreen_Width - 200)/2, jiangjin.bottom + 108/2, 200, 185/4) ;
     [self.view addSubview:btn];
     btn.userInteractionEnabled = YES;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zc)];
     [btn addGestureRecognizer:tap];
     
     CGSize titleSize = [NSString getStringContentSizeWithFontSize:36/2 andContent:@"竞赛章程"];
@@ -164,6 +164,14 @@
     titleLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
     titleLabel.text = @"竞赛章程";
     [btn addSubview:titleLabel];
+}
+
+-(void)zc{
+    self.hidesBottomBarWhenPushed = YES ;
+    ReadDetailContentViewController *read = [[ReadDetailContentViewController alloc] init];
+    read.type = @"3" ;
+    [self.navigationController pushViewController:read animated:YES];
+    self.hidesBottomBarWhenPushed = NO ;
 }
 
 -(void)tap :(UIImageView *) view{
@@ -266,7 +274,7 @@
                         NSString *hasJoinin = object[@"hasJoinin"];
                         self.title = object[@"leagueCup"][@"name"] ;
                         lid = object[@"leagueCup"][@"id"] ;
-                        if ([hasJoinin isEqualToString:@"n"]) {
+                        if (![hasJoinin isEqualToString:@"n"]) {
                             NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: lid , @"leagueId" , uvo.phone, @"phone" , uvo.phone ,  @"token", nil];
                             [PPNetworkHelper POST:getJoininCount parameters:params success:^(id object) {
                                 if([object[@"code"] isEqualToString:@"0000"]){
@@ -287,8 +295,6 @@
                             
                             NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: lid ,  @"leagueId" , uvo.club , @"clubId" , uvo.phone , @"token" , nil];
                             [PPNetworkHelper POST:getClubJoinin parameters:params success:^(id data) {
-//                            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone ,  @"phone" , uvo.phone , @"token" , nil];
-//                            [PPNetworkHelper POST:getCBDetail parameters:params success:^(id data) {
                                 if([data[@"code"] isEqualToString:@"0000"]){
                                     NSString *areacode = data[@"joinin"][@"areacode"] ;
                                     NSString *areaname = data[@"joinin"][@"areaname"] ;
@@ -391,11 +397,11 @@
 }
 
 - (void)setLeftBottom :(NSString *)areaname{
-    CGSize size = [NSString getStringContentSizeWithFontSize:15 andContent:[NSString stringWithFormat:@"> %@" , areaname]] ;
+    CGSize size = [NSString getStringContentSizeWithFontSize:12 andContent:[NSString stringWithFormat:@"> %@" , areaname]] ;
     sender = [UIButton buttonWithType:UIButtonTypeCustom];
     sender.frame = CGRectMake(0, 0, size.width + 20 , size.height);
     [sender setTitle:[NSString stringWithFormat:@"> %@" , areaname] forState:UIControlStateNormal];
-    sender.titleLabel.font = [UIFont systemFontOfSize: 15];
+    sender.titleLabel.font = [UIFont systemFontOfSize: 12];
     [sender setTitleColor:[UIColor colorWithHexString:@"ffffff"]forState:UIControlStateNormal];
     [sender addTarget:self action: @selector(chooseArea)
          forControlEvents:UIControlEventTouchUpInside];

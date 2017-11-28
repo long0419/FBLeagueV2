@@ -30,9 +30,10 @@
     [self.view addSubview:self.uview];
     
     NSString *urlx = getProtocolURL ;
-//    @"http://120.27.152.254:8081/club/generator/league_protocol.html" ;
     if ([_type isEqualToString:@"2"]) {
         urlx = getCoachProtocol ;
+    }else if([_type isEqualToString:@"3"]){
+        urlx = getCUPProtocolURL ;
     }
     
     NSURL *url = [NSURL URLWithString:urlx];

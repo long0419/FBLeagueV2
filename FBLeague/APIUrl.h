@@ -71,6 +71,7 @@
 #define getCoachProtocol [NSString stringWithFormat:@"%@/%@",API,@"ht/user/getCoachProtocol"]
 #define isAuth [NSString stringWithFormat:@"%@/%@",API,@"api/user/isAuth"]
 #define getProtocolURL [NSString stringWithFormat:@"%@/%@",IP,@"club/league_protocol.html"]
+#define getCUPProtocolURL [NSString stringWithFormat:@"%@/%@",IP,@"club/league_cup_protocol.html"]
 
 
 /******支付*******/
