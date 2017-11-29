@@ -264,6 +264,7 @@
 {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"saiResult" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"beiResult" object:nil];
     [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
 
 }
@@ -290,7 +291,7 @@
                         self.title = object[@"leagueCup"][@"name"] ;
                         lid = object[@"leagueCup"][@"id"] ;
                         
-                        if (![hasJoinin isEqualToString:@"n"]) {
+                        if ([hasJoinin isEqualToString:@"n"]) {
                             NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: lid , @"leagueId" , uvo.phone, @"phone" , uvo.phone ,  @"token", nil];
                             [PPNetworkHelper POST:getJoininCount parameters:params success:^(id object) {
                                 if([object[@"code"] isEqualToString:@"0000"]){
