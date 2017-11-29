@@ -133,6 +133,22 @@
                 button.hidden = NO ;
             }else if(([_vo.visitingsubmit isEqualToString:@"<null>"] || [_vo.visitingsubmit isEqualToString:@""])  && [_vo.visitingclub isEqualToString:uvo.club]){
                 button.hidden = NO ;
+            }else{
+                button.hidden = YES ;
+                fen1.userInteractionEnabled = NO ;
+                fen2.userInteractionEnabled = NO ;
+                if (![_vo.homesubmit isEqualToString:@"<null>"] || ![_vo.homesubmit isEqualToString:@""]) {
+                    NSArray *fen = [_vo.homesubmit componentsSeparatedByString:@":"] ;
+                    fen1.text = [fen objectAtIndex:0] ;
+                    fen2.text = [fen objectAtIndex:1] ;
+                }
+                
+                if (![_vo.visitingsubmit isEqualToString:@"<null>"] || ![_vo.visitingsubmit isEqualToString:@""]) {
+                    NSArray *fen = [_vo.visitingsubmit componentsSeparatedByString:@":"] ;
+                    fen1.text = [fen objectAtIndex:0] ;
+                    fen2.text = [fen objectAtIndex:1] ;
+                }
+
             }
         }else if([_vo.matchstatus isEqualToString:@"0"]){
             button.hidden = NO ;
@@ -144,8 +160,9 @@
     }
 }
 
--(void)call:(UIView *)view{
-    NSMutableString  * str = [[NSMutableString alloc] initWithFormat:@"tel:%@",view.accessibilityHint];
+-(void)call:(UITapGestureRecognizer *)tap{
+    UIView *views = (UIView*) tap.view;
+    NSMutableString  * str = [[NSMutableString alloc] initWithFormat:@"tel:%@",views.accessibilityHint];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 
