@@ -11,6 +11,7 @@
 #import "PPNumberButton.h"
 #import "LangResultListViewController.h"
 #import "HuResultListViewController.h"
+#import "LianSaiView.h"
 
 @interface BeiSaiNumViewController (){
     DSLLoginTextField *fen1 ;
@@ -51,6 +52,9 @@
     vs.frame = CGRectMake((kScreen_Width - 122/2)/2 , 94/2 + 20 + 44 + 15, 122/2 , 160/2);
     [self.view addSubview:vs];
     
+    
+    UIView *detail1 = [LianSaiView getDetailView:@"xxx" andWithNum:@"11" andWithPoint:CGPointMake(35, lang.bottom + 10)];
+    [self.view addSubview:detail1];
     
     fen1=[[DSLLoginTextField alloc]init];
     fen1.frame = CGRectMake(50 , image.bottom + 50 , 40, 40) ;
@@ -115,9 +119,9 @@
     
     if ([_vo.hasplayed isEqualToString:@"y"]) {
         if([_vo.matchstatus isEqualToString:@"1"]){
-            if ([_vo.homesubmit isEqualToString:@"<null>"] && [_vo.homeclub isEqualToString:uvo.club]) {
+            if (([_vo.homesubmit isEqualToString:@"<null>"] || [_vo.homesubmit isEqualToString:@""]) && [_vo.homeclub isEqualToString:uvo.club]) {
                 button.hidden = NO ;
-            }else if([_vo.visitingsubmit isEqualToString:@"<null>"] && [_vo.visitingclub isEqualToString:uvo.club]){
+            }else if(([_vo.visitingsubmit isEqualToString:@"<null>"] || [_vo.visitingsubmit isEqualToString:@""])  && [_vo.visitingclub isEqualToString:uvo.club]){
                 button.hidden = NO ;
             }
         }else if([_vo.matchstatus isEqualToString:@"0"]){

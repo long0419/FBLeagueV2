@@ -136,6 +136,51 @@
     return duiView;
 }
 
+
++ (UIView *)getDetailView :(NSString *) type andWithNum :(NSString *) num andWithPoint : (CGPoint) point {
+    
+    UIView *duiView = [[UIView alloc] init];
+    duiView.origin = point ;
+    duiView.size = CGSizeMake(230/2, 88/2);
+    duiView.layer.cornerRadius = 5 ;
+    duiView.layer.masksToBounds = YES;
+    duiView.layer.borderWidth = 2 ;
+    duiView.layer.borderColor =[[UIColor whiteColor] CGColor];
+    
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0 , 23 , duiView.width , 2)];
+    line.backgroundColor = [UIColor whiteColor];
+    [duiView addSubview:line];
+    
+    NSString *image = @"分数页面狼队用-上" ;
+    NSString *duiText = @"狼队";
+    NSString *numText = [NSString stringWithFormat:@"15927645775"] ;
+    if ([type isEqualToString:@"2"]) {
+        image = @"分数页面虎队用-上" ;
+        duiText = @"虎队";
+    }
+    UIImageView *bg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:image]];
+    bg.frame = CGRectMake(0, 0, duiView.width, 23);
+    [duiView addSubview:bg];
+    
+    CGSize titleSize = [NSString getStringContentSizeWithFontSize:14 andContent:duiText];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((duiView.width - titleSize.width)/2 , 7 , titleSize.width, titleSize.height)];
+    titleLabel.font = [UIFont systemFontOfSize:14];
+    titleLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
+    titleLabel.text = duiText;
+    [bg addSubview:titleLabel];
+    
+    CGSize numSize = [NSString getStringContentSizeWithFontSize:13 andContent:numText];
+    UILabel *numLabel = [[UILabel alloc] initWithFrame:CGRectMake((duiView.width - numSize.width)/2 , 7 + line.bottom , numSize.width, numSize.height)];
+    numLabel.font = [UIFont systemFontOfSize:13];
+    numLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
+    numLabel.text = numText;
+    [bg addSubview:numLabel];
+    
+    
+    return duiView;
+
+}
+
 -(UIView *)getHeSuiCell :(NSString *) fromSai andToSai :(NSString *)toSai andWithResult :(NSString *)result andWithSaiVo :(SaiChengVo *)vo andWithUser :(UserDataVo *) uvo {
     UIView *duiView = [[UIView alloc] init];
     duiView.frame = CGRectMake(0, 0, kScreen_Width, 45);
@@ -165,7 +210,7 @@
 
     
     if ([uvo.club isEqualToString:vo.homeclub]
-//        || [uvo.club isEqualToString:vo.visitingclub]
+        || [uvo.club isEqualToString:vo.visitingclub]
         ) {
         UIView *shu = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3, 44)];
         shu.backgroundColor = [UIColor colorWithHexString:@"5b73d3"] ;
