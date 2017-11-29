@@ -17,7 +17,7 @@
 
 + (UIView *)getDuiView :(NSString *) type andWithNum :(NSString *) num andWithPoint : (CGPoint) point ;
 
-+ (UIView *)getDetailView :(NSString *) type andWithNum :(NSString *) num andWithPoint : (CGPoint) point ;
++ (UIView *)getDetailView :(NSString *) type andWithNum :(NSString *) num andWithClubName :(NSString *) clubName andWithPoint : (CGPoint) point ;
 
 
 -(UIView *)getHeSuiCell :(NSString *) fromSai andToSai :(NSString *)toSai andWithResult :(NSString *)result andWithSaiVo :(SaiChengVo *) vo andWithUser :(UserDataVo *) uvo;

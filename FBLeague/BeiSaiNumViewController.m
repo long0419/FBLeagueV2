@@ -53,8 +53,18 @@
     [self.view addSubview:vs];
     
     
-    UIView *detail1 = [LianSaiView getDetailView:@"xxx" andWithNum:@"11" andWithPoint:CGPointMake(35, lang.bottom + 10)];
+    UITapGestureRecognizer *call1=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(call:)];
+    UIView *detail1 = [LianSaiView getDetailView:@"1" andWithNum:_vo.homeclubphone andWithClubName: [CommonFunc textFromBase64String:_vo.homeclubname] andWithPoint:CGPointMake(30, lang.bottom + 10)];
+    detail1.accessibilityHint = _vo.homeclubphone ;
+    [detail1 addGestureRecognizer:call1];
     [self.view addSubview:detail1];
+    
+    UITapGestureRecognizer *call2=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(call:)];
+    UIView *detail2 = [LianSaiView getDetailView:@"2" andWithNum:_vo.visitingclubphone andWithClubName: [CommonFunc textFromBase64String:_vo.visitingclubname] andWithPoint:CGPointMake(kScreen_Width - 30 - 230/2 , lang.bottom + 10)];
+    detail2.accessibilityHint = _vo.visitingclubphone ;
+    [detail2 addGestureRecognizer:call2];
+    [self.view addSubview:detail2];
+
     
     fen1=[[DSLLoginTextField alloc]init];
     fen1.frame = CGRectMake(50 , image.bottom + 50 , 40, 40) ;
@@ -132,13 +142,11 @@
     }else{
         button.hidden = NO ;
     }
+}
 
-    
-    
-    
-    
-
-    
+-(void)call:(UIView *)view{
+    NSMutableString  * str = [[NSMutableString alloc] initWithFormat:@"tel:%@",view.accessibilityHint];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 
 -(void)submitSaiResult{
