@@ -137,13 +137,13 @@
                 button.hidden = YES ;
                 fen1.userInteractionEnabled = NO ;
                 fen2.userInteractionEnabled = NO ;
-                if (![_vo.homesubmit isEqualToString:@"<null>"] || ![_vo.homesubmit isEqualToString:@""]) {
+                if (![_vo.homesubmit isEqualToString:@"<null>"] && ![_vo.homesubmit isEqualToString:@""]) {
                     NSArray *fen = [_vo.homesubmit componentsSeparatedByString:@":"] ;
                     fen1.text = [fen objectAtIndex:0] ;
                     fen2.text = [fen objectAtIndex:1] ;
                 }
                 
-                if (![_vo.visitingsubmit isEqualToString:@"<null>"] || ![_vo.visitingsubmit isEqualToString:@""]) {
+                if (![_vo.visitingsubmit isEqualToString:@"<null>"] && ![_vo.visitingsubmit isEqualToString:@""]) {
                     NSArray *fen = [_vo.visitingsubmit componentsSeparatedByString:@":"] ;
                     fen1.text = [fen objectAtIndex:0] ;
                     fen2.text = [fen objectAtIndex:1] ;

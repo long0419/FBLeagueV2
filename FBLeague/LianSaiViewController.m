@@ -42,7 +42,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(sairesult:) name:@"saiResult" object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beiresult:) name:@"beiResult" object:nil];
-
+    
     [self getLeagueStatus : @"" andWithAreaName:@""];
     
     //获取红点数据
