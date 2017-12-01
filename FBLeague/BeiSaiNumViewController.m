@@ -181,6 +181,33 @@
         }else if([_vo.matchstatus isEqualToString:@"0"]){
             button.hidden = NO ;
         }else{
+            if (![_vo.homesubmit isEqualToString:@"<null>"]
+                && ![_vo.homesubmit isEqualToString:@""]) {//当前主队提交了比分
+                if ([_vo.homeclub isEqualToString:uvo.club] ) {
+                    NSArray *fen = [_vo.homesubmit componentsSeparatedByString:@":"] ;
+                    fen1.text = [fen objectAtIndex:0] ;
+                    fen2.text = [fen objectAtIndex:1] ;
+                    slider.rawValue = [_vo.homeeva integerValue] ;
+                    button.hidden = YES ;
+                    fen1.userInteractionEnabled = NO ;
+                    fen2.userInteractionEnabled = NO ;
+                    slider.userInteractionEnabled = NO ;
+                }
+            }
+            
+            if (![_vo.visitingsubmit isEqualToString:@"<null>"] && ![_vo.visitingsubmit isEqualToString:@""]) {
+                if ([_vo.visitingclub isEqualToString:uvo.club] ) {
+                    NSArray *fen = [_vo.visitingsubmit componentsSeparatedByString:@":"] ;
+                    fen1.text = [fen objectAtIndex:0] ;
+                    fen2.text = [fen objectAtIndex:1] ;
+                    slider.rawValue = [_vo.visitingeva integerValue] ;
+                    button.hidden = YES ;
+                    fen1.userInteractionEnabled = NO ;
+                    fen2.userInteractionEnabled = NO ;
+                    slider.userInteractionEnabled = NO ;
+                }
+            }
+            
             button.hidden = YES ;
         }
     }else{

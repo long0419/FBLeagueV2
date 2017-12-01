@@ -31,7 +31,7 @@
     pageNO = @"1" ;
     
     coachList = [[NSMutableArray alloc] init] ;
-    _coachTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height - 20 - 44 - 50)];
+    _coachTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height - 20 - 44 - 40 - 49)];
     _coachTableView.delegate = self ;
     _coachTableView.dataSource = self;
     _coachTableView.backgroundColor = [UIColor colorWithHexString:@"ffffff"];

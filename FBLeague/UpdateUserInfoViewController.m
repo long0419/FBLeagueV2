@@ -349,7 +349,15 @@
 -(void)showImage : (NSString *) url{
     UIImageView *logo = [julebu viewWithTag:12];
     [logo setImageWithURL:[NSURL URLWithString:url] placeholderImage:[UIImage imageNamed:@"defaulthead"]];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"modifyImg" object:self userInfo:@{@"url":url}];
+    
 }
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 
 //打开本地相册

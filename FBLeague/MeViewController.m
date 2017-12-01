@@ -23,6 +23,8 @@
     NSString *desc ;
     UILabel *titleLabel ;
     UILabel *titleLabel2 ;
+    UIImageView *head ;
+
 }
 
 @end
@@ -33,6 +35,9 @@
     [self getRedPotData];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showNew:) name:@"shownew" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(modifyImg:) name:@"modifyImg" object:nil];
+
 }
 
 - (void)viewDidLoad {
@@ -51,7 +56,6 @@
     [header addGestureRecognizer:tapGesturRecognizer1];
     [self.view addSubview:header];
     
-    UIImageView *head ;
     if (nil == uvo.headpicurl || [uvo.headpicurl isEqual:[NSNull null]]) {
         head = [[UIImageView alloc]
                 initWithImage:[UIImage imageNamed:@"head"]];
@@ -173,6 +177,13 @@
 
 }
 
+-(void)modifyImg:(NSNotification*)notification{
+    NSDictionary *urlDic = [notification userInfo];
+    [head setImageWithURL:[urlDic objectForKey:@"url"] placeholderImage:[UIImage imageNamed:@"defaulthead"]];
+
+
+}
+
 -(void)orgi{
     self.hidesBottomBarWhenPushed=YES;
     ManageClubViewController *manage = [ManageClubViewController new];
@@ -199,7 +210,6 @@
             if (total > 0) {
                 [[NSNotificationCenter defaultCenter]
                  postNotificationName:@"shownew" object:nil userInfo:nil]  ;
-                
             }
         }
     } failure:^(NSError *error) {
