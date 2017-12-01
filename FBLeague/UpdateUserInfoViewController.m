@@ -266,7 +266,6 @@
 
 }
 
-
 -(void)area{
     ChooseAreaViewController *area = [[ChooseAreaViewController alloc] init];
     area.isfrom = @"1" ;
@@ -328,14 +327,16 @@
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     [picker dismissViewControllerAnimated:YES completion:^{}];
     
+    cache = [YYCache cacheWithName:@"FB"];
+    uvo = [cache objectForKey:@"userData"];
     
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     NSData *datas = UIImageJPEGRepresentation(image, 0.4);
     NSString *_encodedImageStr = [datas base64Encoding];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_encodedImageStr , @"base64file" , nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_encodedImageStr , @"base64file" , uvo.phone  , @"phoneNum", nil];
     
-    [PPNetworkHelper POST:uploadPic parameters:params success:^(id data) {
+    [PPNetworkHelper POST:uploadHeadPics parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){
             picUrl = data[@"URL"] ;
             [self showImage:picUrl];
