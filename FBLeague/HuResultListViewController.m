@@ -126,9 +126,11 @@
     static NSString *cellIdentifier  = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     SaiChengVo *vo = [kouList objectAtIndex:indexPath.section];
-    NSString *resultStr = [NSString stringWithFormat:@"%@:%@" , vo.homeeva , vo.visitingeva] ;
+    NSString * resultStr = @"";
     if(![vo.matchstatus isEqualToString:@"3"] || [vo.matchstatus isEqualToString:@"5"]){
         resultStr = @"VS" ;
+    }else{
+        resultStr = [NSString stringWithFormat:@"%@:%@" , vo.homegoalcount , vo.visitinggoalcount];
     }
 
     if (cell == nil) {

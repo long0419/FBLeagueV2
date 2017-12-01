@@ -126,11 +126,13 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        NSString *resultStr = [NSString stringWithFormat:@"%@:%@" , vo.homeeva , vo.visitingeva] ;
+        NSString * resultStr = @"";
         if(![vo.matchstatus isEqualToString:@"3"] || [vo.matchstatus isEqualToString:@"5"]){
             resultStr = @"VS" ;
+        }else{
+            resultStr = [NSString stringWithFormat:@"%@:%@" , vo.homegoalcount , vo.visitinggoalcount];
         }
-        
+
         [cell.contentView addSubview:[[LianSaiView new] getHeSuiCell:[CommonFunc textFromBase64String:vo.homeclubname] andToSai: [CommonFunc textFromBase64String:vo.visitingclubname]  andWithResult:resultStr andWithSaiVo :vo andWithUser:uvo]];
     }
     
