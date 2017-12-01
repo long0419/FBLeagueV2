@@ -55,6 +55,9 @@
         UserDataVo *vo = [kouList objectAtIndex:indexPath.row];
         
         [cell setPhoneContactCellByImageName:vo.headpicurl andWithName:[CommonFunc textFromBase64String:vo.nickname] andWithPhoneNum:vo.cityName andWithChoose:vo.hasfocus andWithindex:indexPath.section];
+
+        cell.delegate =  self ;
+
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone ;
     return cell ;
@@ -75,6 +78,38 @@
     [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"forwardSeDetail" object:vo userInfo:nil]];
 
 }
+
+#pragma mark - error
+-(void) focusContact :(UIView *) view {
+    YYCache *cache = [YYCache cacheWithName:@"FB"];
+    UserDataVo *uvo = [cache objectForKey:@"userData"];
+    
+    UserDataVo *vo = [kouList objectAtIndex:view.tag];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone , @"fanphone" , vo.phone , @"famousphone" , @"1", @"famoustype", uvo.phone , @"token" , nil];
+    
+    [PPNetworkHelper POST:focusPerson parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+            view.backgroundColor = [UIColor colorWithHexString:@"000000"];
+            
+            UILabel *focusLabel = [view viewWithTag:12];
+            focusLabel.font = [UIFont systemFontOfSize:14];
+            focusLabel.textColor = [UIColor whiteColor];
+            focusLabel.text = @"已关注" ;
+            view.userInteractionEnabled = NO ;
+            
+            [SVProgressHUD showSuccessWithStatus:@"关注成功"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+            
+        }else {
+            [SVProgressHUD showSuccessWithStatus:@"系统错误"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
 
 
 @end

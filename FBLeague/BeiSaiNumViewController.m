@@ -203,7 +203,6 @@
         return ;
     }
     
-    
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid ,@"scheduleId" , uvo.club , @"clubId" , [NSString stringWithFormat:@"%@:%@" , fen1.text , fen2.text] , @"result" , ravalue , @"eva" , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:submitCupResult parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){

@@ -57,7 +57,7 @@
     atme5.tag = 11 ;
     UITapGestureRecognizer *tapGesturRecognizer22=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction2)];
     [atme5 addGestureRecognizer:tapGesturRecognizer22];
-    [self.view addSubview:atme5];
+//    [self.view addSubview:atme5];
 
 }
 

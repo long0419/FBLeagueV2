@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "SearchJiaoLianViewController.h"
+#import "CoachChooseTableViewCell.h"
 
-@interface SearchCoachViewController : BaseViewController <UIAlertViewDelegate,UITableViewDelegate , UITableViewDataSource>
+@interface SearchCoachViewController : BaseViewController <UIAlertViewDelegate,UITableViewDelegate ,focusAction , UITableViewDataSource>
 
 @property (nonatomic , strong) UITableView *soTableView;
 @property (nonatomic , strong) NSMutableArray *soGoods ;
