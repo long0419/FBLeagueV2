@@ -55,7 +55,6 @@
     typeLabel.text = [NSString stringWithFormat:@"%@" , type] ;
     [header addSubview:typeLabel];
     
-    
     UIImageView *imageView = [[UIImageView alloc] init];
     imageView.size = CGSizeMake(72/2, 72/2) ;
     imageView.origin = CGPointMake(12 , (bg.height - 72/2)/2);
@@ -102,7 +101,7 @@
     CGSize textSize = [NSString getStringContentSizeWithFontSize:14 andContent:@"已通过"];
     label.size = textSize ;
     label.textColor = [UIColor colorWithHexString:@"ffffff"];
-    [self.delegate sendapply:label.accessibilityHint andWith:@""];
+    [self.delegate sendapply:label.accessibilityHint andWith:label.accessibilityHint];
 }
 
 -(void) setPhoneContactCellByImageName :(NSString *) imageName andWithName :(NSString *) name andWithPhoneNum : (NSString *) num  andWithindex :(NSInteger) indexPath andWithRole :(NSString *)role andPosition : (NSString *) position {

@@ -103,8 +103,9 @@
     [self.view addSubview:name3];
     name3.origin = CGPointMake((kScreen_Width - name3.size.width)/2 , fen2.bottom + 20);
     
+    ravalue = @"5" ;
     slider = [PPNumberButton numberButtonWithFrame:CGRectMake((kScreen_Width - 280)/2 , name3.bottom + 40 , 280.f, 44.f)];
-    //设置边框颜色
+
     slider.borderColor = [UIColor grayColor];
     slider.increaseTitle = @"＋";
     slider.decreaseTitle = @"－";
@@ -196,6 +197,12 @@
 -(void)submitSaiResult{
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
+    if ([fen1.text isEqualToString:@""] || [fen2.text isEqualToString:@""]) {
+        [SVProgressHUD showErrorWithStatus:@"请填写比分"];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        return ;
+    }
+    
     
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: _vo.sid ,@"scheduleId" , uvo.club , @"clubId" , [NSString stringWithFormat:@"%@:%@" , fen1.text , fen2.text] , @"result" , ravalue , @"eva" , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:submitCupResult parameters:params success:^(id object) {
