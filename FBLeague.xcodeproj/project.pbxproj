@@ -51,11 +51,7 @@
 		FD4F6B511F59A18B00DC1C10 /* DHGifImageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B291F59A18B00DC1C10 /* DHGifImageOperation.m */; };
 		FD4F6B521F59A18B00DC1C10 /* DHLaunchAdPageHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B2B1F59A18B00DC1C10 /* DHLaunchAdPageHUD.m */; };
 		FD4F6B531F59A18B00DC1C10 /* DHRegularExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B2D1F59A18B00DC1C10 /* DHRegularExpression.m */; };
-		FD4F6B731F59A33500DC1C10 /* adImage1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B6E1F59A33500DC1C10 /* adImage1.jpg */; };
-		FD4F6B741F59A33500DC1C10 /* adImage2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B6F1F59A33500DC1C10 /* adImage2.jpg */; };
 		FD4F6B751F59A33500DC1C10 /* adImage3.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B701F59A33500DC1C10 /* adImage3.gif */; };
-		FD4F6B761F59A33500DC1C10 /* adImage4.gif in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B711F59A33500DC1C10 /* adImage4.gif */; };
-		FD4F6B771F59A33500DC1C10 /* view_bg_image.png in Resources */ = {isa = PBXBuildFile; fileRef = FD4F6B721F59A33500DC1C10 /* view_bg_image.png */; };
 		FD4F6B8B1F5A6B1000DC1C10 /* JiFenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B8A1F5A6B1000DC1C10 /* JiFenViewController.m */; };
 		FD4F6B951F5A73A300DC1C10 /* ZRGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B8E1F5A73A300DC1C10 /* ZRGridView.m */; };
 		FD4F6B961F5A73A300DC1C10 /* ZRGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FD4F6B901F5A73A300DC1C10 /* ZRGridViewCell.m */; };
@@ -175,12 +171,6 @@
 		FDEAC8201F60FB5E00AB25B2 /* friend.png in Resources */ = {isa = PBXBuildFile; fileRef = FDEAC81D1F60FB5E00AB25B2 /* friend.png */; };
 		FDEAC8211F60FB5E00AB25B2 /* friend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDEAC81E1F60FB5E00AB25B2 /* friend@2x.png */; };
 		FDEAC8221F60FB5E00AB25B2 /* friend@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDEAC81F1F60FB5E00AB25B2 /* friend@3x.png */; };
-		FDEAC8251F60FBB600AB25B2 /* qq-拷贝@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDEAC8231F60FBB600AB25B2 /* qq-拷贝@2x.png */; };
-		FDEAC8261F60FBB600AB25B2 /* qq-拷贝@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDEAC8241F60FBB600AB25B2 /* qq-拷贝@3x.png */; };
-		FDEAC8291F610D6200AB25B2 /* weibo-拷贝@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDEAC8271F610D6200AB25B2 /* weibo-拷贝@2x.png */; };
-		FDEAC82A1F610D6200AB25B2 /* weibo-拷贝@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDEAC8281F610D6200AB25B2 /* weibo-拷贝@3x.png */; };
-		FDEAC82D1F610D7600AB25B2 /* weixin-拷贝@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDEAC82B1F610D7600AB25B2 /* weixin-拷贝@2x.png */; };
-		FDEAC82E1F610D7600AB25B2 /* weixin-拷贝@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FDEAC82C1F610D7600AB25B2 /* weixin-拷贝@3x.png */; };
 		FDEAC8311F623EE200AB25B2 /* SaiChengVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEAC8301F623EE200AB25B2 /* SaiChengVo.m */; };
 		FDEAC8341F625F9A00AB25B2 /* AddSaiTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEAC8331F625F9A00AB25B2 /* AddSaiTimeViewController.m */; };
 		FDEAC8371F626EEA00AB25B2 /* JiFenVo.m in Sources */ = {isa = PBXBuildFile; fileRef = FDEAC8361F626EEA00AB25B2 /* JiFenVo.m */; };
@@ -299,11 +289,7 @@
 		FD4F6B2B1F59A18B00DC1C10 /* DHLaunchAdPageHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHLaunchAdPageHUD.m; sourceTree = "<group>"; };
 		FD4F6B2C1F59A18B00DC1C10 /* DHRegularExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHRegularExpression.h; sourceTree = "<group>"; };
 		FD4F6B2D1F59A18B00DC1C10 /* DHRegularExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHRegularExpression.m; sourceTree = "<group>"; };
-		FD4F6B6E1F59A33500DC1C10 /* adImage1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = adImage1.jpg; sourceTree = "<group>"; };
-		FD4F6B6F1F59A33500DC1C10 /* adImage2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = adImage2.jpg; sourceTree = "<group>"; };
 		FD4F6B701F59A33500DC1C10 /* adImage3.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = adImage3.gif; sourceTree = "<group>"; };
-		FD4F6B711F59A33500DC1C10 /* adImage4.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = adImage4.gif; sourceTree = "<group>"; };
-		FD4F6B721F59A33500DC1C10 /* view_bg_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = view_bg_image.png; sourceTree = "<group>"; };
 		FD4F6B891F5A6B1000DC1C10 /* JiFenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiFenViewController.h; sourceTree = "<group>"; };
 		FD4F6B8A1F5A6B1000DC1C10 /* JiFenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiFenViewController.m; sourceTree = "<group>"; };
 		FD4F6B8D1F5A73A300DC1C10 /* ZRGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZRGridView.h; sourceTree = "<group>"; };
@@ -587,12 +573,6 @@
 		FDEAC81D1F60FB5E00AB25B2 /* friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friend.png; sourceTree = "<group>"; };
 		FDEAC81E1F60FB5E00AB25B2 /* friend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend@2x.png"; sourceTree = "<group>"; };
 		FDEAC81F1F60FB5E00AB25B2 /* friend@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "friend@3x.png"; sourceTree = "<group>"; };
-		FDEAC8231F60FBB600AB25B2 /* qq-拷贝@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qq-拷贝@2x.png"; sourceTree = "<group>"; };
-		FDEAC8241F60FBB600AB25B2 /* qq-拷贝@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qq-拷贝@3x.png"; sourceTree = "<group>"; };
-		FDEAC8271F610D6200AB25B2 /* weibo-拷贝@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weibo-拷贝@2x.png"; sourceTree = "<group>"; };
-		FDEAC8281F610D6200AB25B2 /* weibo-拷贝@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weibo-拷贝@3x.png"; sourceTree = "<group>"; };
-		FDEAC82B1F610D7600AB25B2 /* weixin-拷贝@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weixin-拷贝@2x.png"; sourceTree = "<group>"; };
-		FDEAC82C1F610D7600AB25B2 /* weixin-拷贝@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weixin-拷贝@3x.png"; sourceTree = "<group>"; };
 		FDEAC82F1F623EE200AB25B2 /* SaiChengVo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaiChengVo.h; sourceTree = "<group>"; };
 		FDEAC8301F623EE200AB25B2 /* SaiChengVo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaiChengVo.m; sourceTree = "<group>"; };
 		FDEAC8321F625F9A00AB25B2 /* AddSaiTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSaiTimeViewController.h; sourceTree = "<group>"; };
@@ -839,11 +819,7 @@
 		FD4F6B6D1F59A33500DC1C10 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				FD4F6B6E1F59A33500DC1C10 /* adImage1.jpg */,
-				FD4F6B6F1F59A33500DC1C10 /* adImage2.jpg */,
 				FD4F6B701F59A33500DC1C10 /* adImage3.gif */,
-				FD4F6B711F59A33500DC1C10 /* adImage4.gif */,
-				FD4F6B721F59A33500DC1C10 /* view_bg_image.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1453,12 +1429,6 @@
 			children = (
 				FD94E8C81F9F5C6100294578 /* share.jpg */,
 				FD94E8B71F9F2FBB00294578 /* ad.jpg */,
-				FDEAC82B1F610D7600AB25B2 /* weixin-拷贝@2x.png */,
-				FDEAC82C1F610D7600AB25B2 /* weixin-拷贝@3x.png */,
-				FDEAC8271F610D6200AB25B2 /* weibo-拷贝@2x.png */,
-				FDEAC8281F610D6200AB25B2 /* weibo-拷贝@3x.png */,
-				FDEAC8231F60FBB600AB25B2 /* qq-拷贝@2x.png */,
-				FDEAC8241F60FBB600AB25B2 /* qq-拷贝@3x.png */,
 				FDEAC81D1F60FB5E00AB25B2 /* friend.png */,
 				FDEAC81E1F60FB5E00AB25B2 /* friend@2x.png */,
 				FDEAC81F1F60FB5E00AB25B2 /* friend@3x.png */,
@@ -1634,31 +1604,21 @@
 			files = (
 				FDEAC8141F60FB4000AB25B2 /* qq.png in Resources */,
 				FD5018C11F3C4E3E0077C418 /* AlipaySDK.bundle in Resources */,
-				FD4F6B771F59A33500DC1C10 /* view_bg_image.png in Resources */,
-				FDEAC8291F610D6200AB25B2 /* weibo-拷贝@2x.png in Resources */,
-				FDEAC82D1F610D7600AB25B2 /* weixin-拷贝@2x.png in Resources */,
 				FDEAC81B1F60FB5000AB25B2 /* wechat@2x.png in Resources */,
 				FD4F6AFB1F57B4B900DC1C10 /* WSDatePickerView.xib in Resources */,
 				FDEAC8151F60FB4000AB25B2 /* qq@2x.png in Resources */,
-				FDEAC8251F60FBB600AB25B2 /* qq-拷贝@2x.png in Resources */,
 				FD258F051FCAAD4100D3F735 /* Address.json in Resources */,
 				FDEAC8161F60FB4000AB25B2 /* qq@3x.png in Resources */,
 				FD1F2C6E1F04B91700063765 /* LaunchScreen2.xib in Resources */,
 				FDAA37A31DD2BCF80038658F /* Assets.xcassets in Resources */,
 				FD94E8C91F9F5C6100294578 /* share.jpg in Resources */,
-				FDEAC82A1F610D6200AB25B2 /* weibo-拷贝@3x.png in Resources */,
-				FD4F6B741F59A33500DC1C10 /* adImage2.jpg in Resources */,
 				FDEAC8211F60FB5E00AB25B2 /* friend@2x.png in Resources */,
 				FD94E8BE1F9F39F500294578 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				FDEAC8221F60FB5E00AB25B2 /* friend@3x.png in Resources */,
-				FDEAC82E1F610D7600AB25B2 /* weixin-拷贝@3x.png in Resources */,
 				FDEAC81A1F60FB5000AB25B2 /* wechat.png in Resources */,
-				FD4F6B731F59A33500DC1C10 /* adImage1.jpg in Resources */,
-				FD4F6B761F59A33500DC1C10 /* adImage4.gif in Resources */,
 				FDC497BA1F29AF1A002E7105 /* ACActionSheet.bundle in Resources */,
 				FDEAC8201F60FB5E00AB25B2 /* friend.png in Resources */,
 				FDEAC81C1F60FB5000AB25B2 /* wechat@3x.png in Resources */,
-				FDEAC8261F60FBB600AB25B2 /* qq-拷贝@3x.png in Resources */,
 				FD94E8B81F9F2FBB00294578 /* ad.jpg in Resources */,
 				FDAA37A11DD2BCF80038658F /* Main.storyboard in Resources */,
 				FD4F6B751F59A33500DC1C10 /* adImage3.gif in Resources */,
