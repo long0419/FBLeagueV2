@@ -17,6 +17,7 @@
 @interface JiaoLianViewController (){
     NSString *pageNO ;
     NSMutableArray *coachList ;
+    Boolean isFirst ;
 }
 
 @end
@@ -30,6 +31,8 @@
     
     pageNO = @"1" ;
     
+    isFirst = false ;
+    
     coachList = [[NSMutableArray alloc] init] ;
     _coachTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height - 20 - 44 - 40 - 49)];
     _coachTableView.delegate = self ;
@@ -38,16 +41,16 @@
     _coachTableView.separatorStyle = NO ;
     [self.view addSubview:_coachTableView];
     
-    
     __weak JiaoLianViewController *weakSelf = self ;
     [_coachTableView addPullToRefreshWithActionHandler:^{
         [weakSelf getCoachDatas : @"1"];
+        isFirst = true ;
         [weakSelf.coachTableView.pullToRefreshView stopAnimating];
     }];
     
-    __weak NSString *no = pageNO ;
     [_coachTableView addInfiniteScrollingWithActionHandler:^{
-        [weakSelf getCoachDatas : [NSString stringWithFormat:@"%@", no]];
+        [weakSelf getCoachDatas : pageNO];
+        isFirst = false ;
         [weakSelf.coachTableView.infiniteScrollingView stopAnimating];
     }];
     
@@ -68,8 +71,11 @@
         
         if([object[@"code"] isEqualToString:@"0000"]){
             NSDictionary *list = object[@"page"][@"list"];
+            NSString *currPage = object[@"page"][@"currPage"];
+            NSString *nextPage = object[@"page"][@"nextPage"];
+
             UserDataVo *model = nil ;
-            [coachList removeAllObjects];
+//            [coachList removeAllObjects];
             
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
@@ -100,9 +106,20 @@
                     model.certification =  [NSString stringWithFormat:@"%@" ,dic[@"certification"]]  ;
                     model.desc =  [NSString stringWithFormat:@"%@" ,dic[@"description"]]  ;
 
-                    [coachList addObject:model];
+                    if (currPage.longLongValue != nextPage.longLongValue) {
+                        if (isFirst && coachList.count > 0) {
+                            break ;
+                        }
+                        [coachList addObject:model];
+                    }
                 }
                 
+                if (currPage == nextPage) {
+                    pageNO =  [NSString stringWithFormat:@"%@" , currPage] ;
+                }else{
+                    pageNO =  [NSString stringWithFormat:@"%@" , nextPage] ;
+                }
+
                 [_coachTableView reloadData];
             }
         }else {

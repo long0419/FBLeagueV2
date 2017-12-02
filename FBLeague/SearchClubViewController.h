@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "ClubOBJ.h"
+#import "ClubDetailViewController.h"
+
 @interface SearchClubViewController : BaseViewController <UIAlertViewDelegate,UITableViewDelegate , UITableViewDataSource>
 
 @property (nonatomic , strong) UITableView *soTableView;

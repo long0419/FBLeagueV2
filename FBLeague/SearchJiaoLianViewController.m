@@ -42,6 +42,9 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(forward:) name:@"forwardSeDetail" object:nil];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(club:) name:@"ClubDetail" object:nil];
+
+    
 }
 
 -(void)forward : (NSNotification *) notification {
@@ -49,7 +52,15 @@
     MemberViewController *mem = [MemberViewController new] ;
     mem.userVo = vo ;
     [self.navigationController pushViewController:mem animated:YES];
-        
+}
+
+-(void)club : (NSNotification *) notification {
+    self.hidesBottomBarWhenPushed = YES ;
+    ClubOBJ *vo = [notification object];
+    ClubDetailViewController *detail = [[ClubDetailViewController alloc] init];
+    detail.clubVo = vo ;
+    [self.navigationController pushViewController:detail animated:YES];
+    self.hidesBottomBarWhenPushed = NO ;
 }
 
 

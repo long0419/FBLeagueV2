@@ -10,7 +10,7 @@
 #import "BaseViewController.h"
 #import "SaiChengVo.h"
 
-@interface BeiSaiNumViewController : BaseViewController
+@interface BeiSaiNumViewController : BaseViewController<UITextFieldDelegate>
 
 @property (nonatomic , strong) SaiChengVo *vo ;
 @property (nonatomic , strong) NSString *matchId ;

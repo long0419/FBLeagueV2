@@ -19,7 +19,7 @@
     YYCache *cache ;
     UserDataVo *uvo ;
     NSString *pageNO ;
-
+    Boolean isFirst ;
 }
 
 @end
@@ -96,12 +96,14 @@
         __weak JulebuViewController *weakSelf = self ;
         [_soTableView addPullToRefreshWithActionHandler:^{
             [weakSelf getNeedDatas : @"1"];
+            isFirst = true ;
             [weakSelf.soTableView.pullToRefreshView stopAnimating];
         }];
         
-        __weak NSString *no = pageNO ;
+//        __weak NSString *no = pageNO ;
         [_soTableView addInfiniteScrollingWithActionHandler:^{
-            [weakSelf getNeedDatas : [NSString stringWithFormat:@"%@", no]];
+            [weakSelf getNeedDatas : pageNO] ;
+            isFirst = false ;
             [weakSelf.soTableView.infiniteScrollingView stopAnimating];
         }];
         
@@ -223,8 +225,11 @@
         
         if([object[@"code"] isEqualToString:@"0000"]){
             NSDictionary *list = object[@"page"][@"list"];
+            NSString *currPage = object[@"page"][@"currPage"];
+            NSString *nextPage = object[@"page"][@"nextPage"];
+            
             ClubOBJ *model = nil ;
-            [kouList removeAllObjects];
+//            [kouList removeAllObjects];
             
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
@@ -245,11 +250,21 @@
                     model.fansCount = [NSString stringWithFormat:@"%@" , dic[@"fansCount"]] ;
                     model.name = [NSString stringWithFormat:@"%@" , [CommonFunc textFromBase64String:dic[@"name"]]] ;
                     
-                    if (![uvo.club isEqualToString:model.cid]) {
+                    if (![uvo.club isEqualToString:model.cid] &&currPage.longLongValue != nextPage.longLongValue) {
+                        if (isFirst && kouList.count > 0) {
+                            break ;
+                        }
                         [kouList addObject:model];
                     }
-                }
-                [_soTableView reloadData];
+            }
+            
+            if (currPage == nextPage) {
+                pageNO =  [NSString stringWithFormat:@"%@" , currPage] ;
+            }else{
+                pageNO =  [NSString stringWithFormat:@"%@" , nextPage] ;
+            }
+                
+            [_soTableView reloadData];
             }
             
         }

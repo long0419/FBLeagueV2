@@ -70,6 +70,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
+    ClubOBJ *vo = [kouList objectAtIndex:indexPath.row];
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"ClubDetail" object:vo userInfo:nil]];
+
+    
 }
 
 @end

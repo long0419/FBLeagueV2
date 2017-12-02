@@ -243,8 +243,16 @@
     } failure:^(NSError *error) {
         
     }];
+}
 
-    
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [fen1 resignFirstResponder];
+    [fen2 resignFirstResponder];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder] ;
+    return true;
 }
 
 -(void)setBackBottmAndTitle{
