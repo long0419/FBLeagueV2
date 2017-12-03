@@ -17,7 +17,7 @@
 @interface JiaoLianViewController (){
     NSString *pageNO ;
     NSMutableArray *coachList ;
-    Boolean isFirst ;
+    int isFirst ;
 }
 
 @end
@@ -31,7 +31,7 @@
     
     pageNO = @"1" ;
     
-    isFirst = false ;
+    isFirst = 0 ;
     
     coachList = [[NSMutableArray alloc] init] ;
     _coachTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height - 20 - 44 - 40 - 49)];
@@ -44,13 +44,13 @@
     __weak JiaoLianViewController *weakSelf = self ;
     [_coachTableView addPullToRefreshWithActionHandler:^{
         [weakSelf getCoachDatas : @"1"];
-        isFirst = true ;
+        isFirst = 1 ;
         [weakSelf.coachTableView.pullToRefreshView stopAnimating];
     }];
     
     [_coachTableView addInfiniteScrollingWithActionHandler:^{
         [weakSelf getCoachDatas : pageNO];
-        isFirst = false ;
+        isFirst = 0 ;
         [weakSelf.coachTableView.infiniteScrollingView stopAnimating];
     }];
     
@@ -107,7 +107,7 @@
                     model.desc =  [NSString stringWithFormat:@"%@" ,dic[@"description"]]  ;
 
                     if (currPage.longLongValue != nextPage.longLongValue) {
-                        if (isFirst && coachList.count > 0) {
+                        if (isFirst == 1 && coachList.count > 0) {
                             break ;
                         }
                         [coachList addObject:model];

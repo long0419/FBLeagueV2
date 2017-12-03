@@ -19,7 +19,7 @@
     YYCache *cache ;
     UserDataVo *uvo ;
     NSString *pageNO ;
-    Boolean isFirst ;
+    int isFirst ;
 }
 
 @end
@@ -96,14 +96,14 @@
         __weak JulebuViewController *weakSelf = self ;
         [_soTableView addPullToRefreshWithActionHandler:^{
             [weakSelf getNeedDatas : @"1"];
-            isFirst = true ;
+            isFirst = 1 ;
             [weakSelf.soTableView.pullToRefreshView stopAnimating];
         }];
         
 //        __weak NSString *no = pageNO ;
         [_soTableView addInfiniteScrollingWithActionHandler:^{
             [weakSelf getNeedDatas : pageNO] ;
-            isFirst = false ;
+            isFirst = 0 ;
             [weakSelf.soTableView.infiniteScrollingView stopAnimating];
         }];
         
@@ -251,7 +251,7 @@
                     model.name = [NSString stringWithFormat:@"%@" , [CommonFunc textFromBase64String:dic[@"name"]]] ;
                     
                     if (![uvo.club isEqualToString:model.cid] &&currPage.longLongValue != nextPage.longLongValue) {
-                        if (isFirst && kouList.count > 0) {
+                        if (isFirst == 1 && kouList.count > 0) {
                             break ;
                         }
                         [kouList addObject:model];
