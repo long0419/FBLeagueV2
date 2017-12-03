@@ -2082,6 +2082,7 @@
 				PRODUCT_NAME = "咖盟";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7 armv7s armv6";
 			};
 			name = Debug;
@@ -2150,6 +2151,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FLeague;
 				PRODUCT_NAME = "咖盟";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "arm64 armv7 armv7s armv6";
 			};
 			name = Release;
