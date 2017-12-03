@@ -157,7 +157,9 @@
     SaiChengVo *vo = [kouList objectAtIndex:indexPath.section];
     
     if ([uvo.club isEqualToString:vo.homeclub] || [uvo.club isEqualToString:vo.visitingclub]) {
-        [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"beiResult" object:vo userInfo:nil]];
+        if ([uvo.phone isEqualToString:vo.homeclubphone] || [uvo.phone isEqualToString:vo.visitingclubphone]) {
+            [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:@"beiResult" object:vo userInfo:nil]];
+        }
     }
 
 }

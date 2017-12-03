@@ -209,18 +209,24 @@
     [duiView addSubview:TOLabel];
 
     
-    if ([uvo.club isEqualToString:vo.homeclub]
+    if (([uvo.club isEqualToString:vo.homeclub]
         || [uvo.club isEqualToString:vo.visitingclub]
-        ) {
-        UIView *shu = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3, 44)];
-        shu.backgroundColor = [UIColor colorWithHexString:@"5b73d3"] ;
-        duiView.backgroundColor = [UIColor colorWithHexString:@"eef0fb"];
-        [duiView addSubview:shu];
+        )) {
+        
+            if ([uvo.phone isEqualToString:vo.homeclubphone] || [uvo.phone isEqualToString:vo.visitingclubphone]) {
+            
+            UIView *shu = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 3, 44)];
+            shu.backgroundColor = [UIColor colorWithHexString:@"5b73d3"] ;
+            duiView.backgroundColor = [UIColor colorWithHexString:@"eef0fb"];
+            [duiView addSubview:shu];
 
-        if([vo.camp isEqualToString:@"1"]){
-            shu.backgroundColor = [UIColor colorWithHexString:@"e03358"] ;
-            duiView.backgroundColor = [UIColor colorWithHexString:@"f9e8eb"];
+            if([vo.camp isEqualToString:@"1"]){
+                shu.backgroundColor = [UIColor colorWithHexString:@"e03358"] ;
+                duiView.backgroundColor = [UIColor colorWithHexString:@"f9e8eb"];
+            }
+            
         }
+
     }
     
     

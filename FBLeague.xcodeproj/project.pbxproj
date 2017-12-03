@@ -2078,7 +2078,7 @@
 					"$(PROJECT_DIR)/FBLeague/Vendors/Alipay",
 				);
 				OTHER_LDFLAGS = "${inherited}";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FLeague;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FBLeague;
 				PRODUCT_NAME = "咖盟";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2148,7 +2148,7 @@
 					"$(PROJECT_DIR)/FBLeague/Vendors/Alipay",
 				);
 				OTHER_LDFLAGS = "${inherited}";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FLeague;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mileworks.FBLeague;
 				PRODUCT_NAME = "咖盟";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
