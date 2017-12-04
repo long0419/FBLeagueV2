@@ -180,7 +180,7 @@
 
             NSString *desc =  @"联盟认证号：暂无" ;
             titleLabel2.text = desc ;
-            if (![object[@"user"][@"certification"] isEqualToString:@"<null>"]) {
+            if(![object[@"user"][@"certification"] isEqual:[NSNull null]]){
                 titleLabel2.text = [NSString stringWithFormat:@"联盟认证号： %@" , object[@"user"][@"certification"]];
                 CGSize titleSize2 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:titleLabel2.text];
                 titleLabel2.size = titleSize2;
@@ -188,11 +188,15 @@
         
             NSString *desc3 =  @"手机号：暂无" ;
             titleLabel3.text = desc3 ;
-            if (![object[@"user"][@"phone"] isEqualToString:@"<null>"]) {
+            if(![object[@"user"][@"phone"] isEqual:[NSNull null]]){
                 titleLabel3.text = [NSString stringWithFormat:@"手机号： %@" , object[@"user"][@"phone"]];
                 CGSize titleSize3 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:titleLabel3.text];
                 titleLabel3.size = titleSize3;
 
+            }
+            
+            if (!object[@"user"][@"headpicurl"]) {
+                [head sd_setImageWithURL:[NSURL URLWithString:object[@"user"][@"headpicurl"]] placeholderImage:[UIImage imageNamed:@"defaulthead"]];
             }
         }
     } failure:^(NSError *error) {
