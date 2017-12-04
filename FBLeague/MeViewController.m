@@ -23,6 +23,7 @@
     NSString *desc ;
     UILabel *titleLabel ;
     UILabel *titleLabel2 ;
+    UILabel *titleLabel3 ;
     UIImageView *head ;
 
 }
@@ -100,6 +101,19 @@
     titleLabel2.y = titleLabel.bottom + 5 ;
     [header addSubview:titleLabel2];
     
+    titleLabel3 = [UILabel new];
+    titleLabel3.font = [UIFont systemFontOfSize:10];
+    titleLabel3.numberOfLines = 0;//多行显示，计算高度
+    titleLabel3.textColor = [UIColor colorWithHexString:@"000"];
+    NSString *desc3 = @"手机号号：暂无" ;
+    CGSize titleSize3 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc3];
+    titleLabel3.size = titleSize3;
+    titleLabel3.text = desc3 ;
+    titleLabel3.x = nameLabel.left ;
+    titleLabel3.y = titleLabel2.bottom + 5 ;
+    [header addSubview:titleLabel3];
+
+    
     UIImageView *next = [[UIImageView alloc]
                          initWithImage:[UIImage imageNamed:@"下一步"]];
     next.frame = CGRectMake(kScreen_Width - 30, (header.height - 20)/2 , 20/2, 40/2) ;
@@ -166,10 +180,20 @@
 
             NSString *desc =  @"联盟认证号：暂无" ;
             titleLabel2.text = desc ;
-            if ([object[@"user"][@"certification"] isEqualToString:@"<null>"]) {
-                titleLabel2.text = [NSString stringWithFormat:@"%@" , object[@"user"][@"certification"]];
+            if (![object[@"user"][@"certification"] isEqualToString:@"<null>"]) {
+                titleLabel2.text = [NSString stringWithFormat:@"联盟认证号： %@" , object[@"user"][@"certification"]];
+                CGSize titleSize2 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:titleLabel2.text];
+                titleLabel2.size = titleSize2;
             }
+        
+            NSString *desc3 =  @"手机号：暂无" ;
+            titleLabel3.text = desc3 ;
+            if (![object[@"user"][@"phone"] isEqualToString:@"<null>"]) {
+                titleLabel3.text = [NSString stringWithFormat:@"手机号： %@" , object[@"user"][@"phone"]];
+                CGSize titleSize3 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:titleLabel3.text];
+                titleLabel3.size = titleSize3;
 
+            }
         }
     } failure:^(NSError *error) {
         

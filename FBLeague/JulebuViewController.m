@@ -103,7 +103,7 @@
 //        __weak NSString *no = pageNO ;
         [_soTableView addInfiniteScrollingWithActionHandler:^{
             [weakSelf getNeedDatas : pageNO] ;
-            isFirst = 0 ;
+            isFirst = 0;
             [weakSelf.soTableView.infiniteScrollingView stopAnimating];
         }];
         

@@ -174,7 +174,9 @@
     self.hidesBottomBarWhenPushed = NO ;
 }
 
--(void)tap :(UIImageView *) view{
+-(void)tap :(UITapGestureRecognizer *) tap{
+    UIView *view = (UIView *) tap.view ;
+
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
 
@@ -187,7 +189,7 @@
         }else{
             self.hidesBottomBarWhenPushed = YES ;
             AddSaiViewController *add = [AddSaiViewController new] ;
-            add.leagueId = leagueId ;
+            add.leagueId = lid ;
             add.cupType = @"2" ;
             add.camp = view.accessibilityHint ;
             [self.navigationController pushViewController:add animated:YES];
