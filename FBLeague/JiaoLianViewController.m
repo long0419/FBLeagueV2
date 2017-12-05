@@ -26,10 +26,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [self getCoachDatas:@"1"];
     
     pageNO = @"1" ;
+
+    [self getCoachDatas:@"1"];
     
     isFirst = 0 ;
     
@@ -57,8 +57,6 @@
     [_coachTableView.pullToRefreshView setTitle:@"下拉刷新..." forState:SVPullToRefreshStateStopped];
     [_coachTableView.pullToRefreshView setTitle:@"释放更新..." forState:SVPullToRefreshStateTriggered];
     [_coachTableView.pullToRefreshView setTitle:@"加载中..." forState:SVPullToRefreshStateLoading];
-    
-
 }
 
 -(void)getCoachDatas : (NSString *) page {
@@ -75,8 +73,6 @@
             NSString *nextPage = object[@"page"][@"nextPage"];
 
             UserDataVo *model = nil ;
-//            [coachList removeAllObjects];
-            
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
                     model = [UserDataVo new];

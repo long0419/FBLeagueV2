@@ -195,7 +195,7 @@
 
             }
             
-            if (!object[@"user"][@"headpicurl"]) {
+            if (![object[@"user"][@"phone"] isEqual:[NSNull null]]) {
                 [head sd_setImageWithURL:[NSURL URLWithString:object[@"user"][@"headpicurl"]] placeholderImage:[UIImage imageNamed:@"defaulthead"]];
             }
         }
@@ -208,8 +208,7 @@
 -(void)modifyImg:(NSNotification*)notification{
     NSDictionary *urlDic = [notification userInfo];
     [head setImageWithURL:[urlDic objectForKey:@"url"] placeholderImage:[UIImage imageNamed:@"defaulthead"]];
-
-
+    
 }
 
 -(void)orgi{
