@@ -141,12 +141,12 @@
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
     [tmpList removeAllObjects];
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: pageNO, @"page" ,uvo.phone ,@"token" , nil];
-    [PPNetworkHelper POST:listTheme parameters:params success:^(id object) {
+    [SVProgressHUD show];
+
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone ,@"token" , nil];
+    [PPNetworkHelper POST:getAllThemes parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
-                
-            NSDictionary *list = object[@"page"][@"list"];
+            NSDictionary *list = object[@"themes"];
             DongtaiVo *model = nil ;
             CommentVo *cmv = nil ;
             if (![list isEqual:[NSNull null]]) {
@@ -199,6 +199,8 @@
                             [PPNetworkHelper POST:apicmsave parameters:params success:^(id object) {
                                 commentItem.commentId = object[@"id"] ;
                                 [self addCommentItem:commentItem itemId:itemId replyCommentId:commentId];
+                                [SVProgressHUD dismiss];
+
                             } failure:^(NSError *error) {
                             }];
                         }
@@ -313,22 +315,22 @@
         if ([dt.did isEqualToString:itemId]) {
             if ([dt.phone isEqualToString:uvo.phone]) {
                 isMe = true ;
+                return ;
             }
         }
     }
     
-    if(!isMe){
-        DFLineLikeItem *likeItem = [[DFLineLikeItem alloc] init];
-        likeItem.userId = uvo.phone;
-        likeItem.userNick = uvo.nickname;
-        [self addLikeItem:likeItem itemId:itemId];
+    DFLineLikeItem *likeItem = [[DFLineLikeItem alloc] init];
+    likeItem.userId = uvo.phone;
+    likeItem.userNick = uvo.nickname;
+    [self addLikeItem:likeItem itemId:itemId];
         
-        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: itemId , @"themeid" , uvo.phone , @"phone" , @"praise" ,@"headpicurl", uvo.phone , @"token" , nil];
-        [PPNetworkHelper POST:apicmsave parameters:params success:^(id object) {
-        } failure:^(NSError *error) {
-            
-        }];
-    }
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: itemId , @"themeid" , uvo.phone , @"phone" , @"praise" ,@"headpicurl", uvo.phone , @"token" , nil];
+    [PPNetworkHelper POST:apicmsave parameters:params success:^(id object) {
+        if([object[@"code"] isEqualToString:@"0000"]){
+        }
+    } failure:^(NSError *error) {
+    }];
 }
 
 
