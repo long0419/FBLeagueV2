@@ -67,6 +67,11 @@
             notifyUrl = wxPayForCourseNotify ;
         }
         
+        NSString *attach = [NSString stringWithFormat:@"%@-2" , uvo.phone];
+        if (![@"申请联盟认证费用" isEqualToString : title]) {
+            attach = [NSString stringWithFormat:@"%@-1" , uvo.phone];
+        }
+        
         //获取SIGN签名
         MXWechatSignAdaptor *adaptor = [[MXWechatSignAdaptor alloc] initWithWechatAppId:MXWechatAPPID
                                                                             wechatMCHId:MCH_ID
@@ -78,7 +83,8 @@
                                                                                deviceIp:addressIP
                                                                               notifyUrl:notifyUrl
                                                                               tradeType:tradeType
-                                                                                attach : uvo.phone];
+                                        
+                                                            attach : uvo.phone];
         
         NSString *string = [[adaptor dic] XMLString];
         

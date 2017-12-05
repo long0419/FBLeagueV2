@@ -212,7 +212,7 @@
         YYCache *cache = [YYCache cacheWithName:@"FB"];
         UserDataVo *vo = [cache objectForKey:@"userData"];
 
-        order.passback_params = vo.phone ;
+        order.passback_params = [NSString stringWithFormat:@"%@-2" ,vo.phone] ;
         order.notify_url = zfbPayNotify ;
         
         //将商品信息拼接成字符串
