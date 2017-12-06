@@ -73,34 +73,66 @@
 
 -(void)getNeedDatas{
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_code , @"provinceCode" , nil];
-    
-    [PPNetworkHelper POST:getCities parameters:params success:^(id data) {
-        if([data[@"code"] isEqualToString:@"0000"]){
-            NSDictionary *list = data[@"cities"];
-            CityVo *model = nil ;
-            [kouList removeAllObjects];
-            
-            if (![list isEqual:[NSNull null]]) {
-                for (NSDictionary *dic in list) {
-                    model = [CityVo new];
-                    model.code = [NSString stringWithFormat:@"%@" , dic[@"provincecode"]] ;
-                    model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]] ;
-                    model.provincecode = [NSString stringWithFormat:@"%@" ,dic[@"code"]] ;
-                    model.cid = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
-                    [kouList addObject:model];
+    if ([_isfrom isEqualToString:@"2"]) {
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_code , @"provinceCode" , nil];
+        [PPNetworkHelper POST:getCountyAreas parameters:nil success:^(id data) {
+            if([data[@"code"] isEqualToString:@"0000"]){
+                NSDictionary *list = data[@"cities"];
+                CityVo *model = nil ;
+                [kouList removeAllObjects];
+                
+                if (![list isEqual:[NSNull null]]) {
+                    for (NSDictionary *dic in list) {
+                        model = [CityVo new];
+                        model.provincecode = [NSString stringWithFormat:@"%@" , dic[@"provincecode"]] ;
+                        model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]] ;
+                        model.code = [NSString stringWithFormat:@"%@" ,dic[@"code"]] ;
+                        model.cid = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
+                        if ([dic[@"provincecode"] isEqualToString:_code]) {
+                            [kouList addObject:model];
+                        }
+                    }
                 }
+                [_goodTableView reloadData];
+            }else {
+                
+                [SVProgressHUD showErrorWithStatus:@"系统错误"];
+                [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+                
             }
-            [_goodTableView reloadData];
-        }else {
+        } failure:^(NSError *error) {
+            
+        }];
 
-             [SVProgressHUD showErrorWithStatus:@"系统错误"];
-             [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-
-        }
-    } failure:^(NSError *error) {
-        
-    }];
+    }else{
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_code , @"provinceCode" , nil];
+        [PPNetworkHelper POST:getCities parameters:params success:^(id data) {
+            if([data[@"code"] isEqualToString:@"0000"]){
+                NSDictionary *list = data[@"cities"];
+                CityVo *model = nil ;
+                [kouList removeAllObjects];
+                
+                if (![list isEqual:[NSNull null]]) {
+                    for (NSDictionary *dic in list) {
+                        model = [CityVo new];
+                        model.code = [NSString stringWithFormat:@"%@" , dic[@"provincecode"]] ;
+                        model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]] ;
+                        model.provincecode = [NSString stringWithFormat:@"%@" ,dic[@"code"]] ;
+                        model.cid = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
+                        [kouList addObject:model];
+                    }
+                }
+                [_goodTableView reloadData];
+            }else {
+                
+                [SVProgressHUD showErrorWithStatus:@"系统错误"];
+                [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+                
+            }
+        } failure:^(NSError *error) {
+            
+        }];
+    }
     
 }
 
@@ -145,7 +177,11 @@
     self.hidesBottomBarWhenPushed=YES;
     ChooseSectionViewController *city = [[ChooseSectionViewController alloc] init];
     city.code = proCityCode ;
-    city.cityCode = vo.provincecode ;
+    if ([_isfrom isEqualToString:@"2"]) {
+        city.cityCode = vo.code ;
+    }else{
+        city.cityCode = vo.provincecode ;
+    }
     city.name = chooseProAndCity ;
     city.isfrom = _isfrom ;
     [self.navigationController pushViewController:city animated:YES];

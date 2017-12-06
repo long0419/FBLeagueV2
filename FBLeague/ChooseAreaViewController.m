@@ -43,29 +43,56 @@
 }
 
 -(void)getNeedDatas{
-    [PPNetworkHelper POST:getProvinces parameters:nil success:^(id data) {
-        if([data[@"code"] isEqualToString:@"0000"]){
-            NSDictionary *list = data[@"provinces"];
-            ProvinceVo *model = nil ;
-            [kouList removeAllObjects];
-            
-            if (![list isEqual:[NSNull null]]) {
-                for (NSDictionary *dic in list) {
-                    model = [ProvinceVo new];
-                    model.code = [NSString stringWithFormat:@"%@" , dic[@"code"]] ;
-                    model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]] ;
-                    model.pid = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
-                    [kouList addObject:model];
+    if ([_isfrom isEqualToString:@"2"]) {
+        [PPNetworkHelper POST:getCountyAreas parameters:nil success:^(id data) {
+            if([data[@"code"] isEqualToString:@"0000"]){
+                NSDictionary *list = data[@"provinces"];
+                ProvinceVo *model = nil ;
+                [kouList removeAllObjects];
+                
+                if (![list isEqual:[NSNull null]]) {
+                    for (NSDictionary *dic in list) {
+                        model = [ProvinceVo new];
+                        model.code = [NSString stringWithFormat:@"%@" , dic[@"code"]] ;
+                        model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]] ;
+                        model.pid = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
+                        [kouList addObject:model];
+                    }
                 }
+                [_goodTableView reloadData];
+            }else {
+                [SVProgressHUD showErrorWithStatus:@"系统错误"];
+                [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
             }
-            [_goodTableView reloadData];
-        }else {
-            [SVProgressHUD showErrorWithStatus:@"系统错误"];
-            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-        }
-    } failure:^(NSError *error) {
-        
-    }];
+        } failure:^(NSError *error) {
+            
+        }];
+
+    }else{
+        [PPNetworkHelper POST:getProvinces parameters:nil success:^(id data) {
+            if([data[@"code"] isEqualToString:@"0000"]){
+                NSDictionary *list = data[@"provinces"];
+                ProvinceVo *model = nil ;
+                [kouList removeAllObjects];
+                
+                if (![list isEqual:[NSNull null]]) {
+                    for (NSDictionary *dic in list) {
+                        model = [ProvinceVo new];
+                        model.code = [NSString stringWithFormat:@"%@" , dic[@"code"]] ;
+                        model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]] ;
+                        model.pid = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
+                        [kouList addObject:model];
+                    }
+                }
+                [_goodTableView reloadData];
+            }else {
+                [SVProgressHUD showErrorWithStatus:@"系统错误"];
+                [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+            }
+        } failure:^(NSError *error) {
+            
+        }];
+    }
     
 }
 

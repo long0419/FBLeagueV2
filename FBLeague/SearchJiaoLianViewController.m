@@ -146,12 +146,14 @@
 
 -(void)search {
     [searchTxt resignFirstResponder];
+    
+    soText = searchTxt.text ;
+    
     if ([go.titleLabel.text isEqualToString:@"取消"]) {
         [self back];
     }else{
         [self getNeedDatas];
     }
-    soText = searchTxt.text ;
 }
 
 -(void)getNeedDatas {

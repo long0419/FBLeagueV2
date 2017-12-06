@@ -32,6 +32,7 @@
 }
 
 -(void) searchCoachByContent :(NSArray *) contents  {
+    [kouList removeAllObjects];
     [kouList addObjectsFromArray:contents] ;
     [_soTableView reloadData];
 }

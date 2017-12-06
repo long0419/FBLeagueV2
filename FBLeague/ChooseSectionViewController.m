@@ -88,34 +88,67 @@
 }
 
 -(void)getNeedDatas{
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_cityCode , @"cityCode" , nil];
     
-    [PPNetworkHelper POST:getAreas parameters:params success:^(id data) {
-        if([data[@"code"] isEqualToString:@"0000"]){
-            NSDictionary *list = data[@"areas"];
-            CityVo *model = nil ;
-            [kouList22 removeAllObjects];
-            
-            if (![list isEqual:[NSNull null]]) {
-                for (NSDictionary *dic in list) {
-                    model = [CityVo new];
-//                    model.code = [NSString stringWithFormat:@"%@" , dic[@"code"]] ;
-                    model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]] ;
-                    model.citycode = [NSString stringWithFormat:@"%@" ,dic[@"code"]] ;
-                    model.cid = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
-                    [kouList22 addObject:model];
+    if ([_isfrom isEqualToString:@"2"]) {
+        [PPNetworkHelper POST:getCountyAreas parameters:nil success:^(id data) {
+            if([data[@"code"] isEqualToString:@"0000"]){
+                NSDictionary *list = data[@"areas"];
+                CityVo *model = nil ;
+                [kouList22 removeAllObjects];
+                
+                if (![list isEqual:[NSNull null]]) {
+                    for (NSDictionary *dic in list) {
+                        model = [CityVo new];
+                        model.code = [NSString stringWithFormat:@"%@" , dic[@"code"]] ;
+                        model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]] ;
+                        model.citycode = [NSString stringWithFormat:@"%@" ,dic[@"citycode"]] ;
+                        model.cid = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
+                        if ([dic[@"citycode"] isEqualToString:_cityCode]) {
+                            [kouList22 addObject:model];
+                        }
+                    }
                 }
+                [_goodTableView reloadData];
+            }else {
+                [SVProgressHUD showErrorWithStatus: @"系统错误"];
+                [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+                
             }
-            [_goodTableView reloadData];
-        }else {
-            [SVProgressHUD showErrorWithStatus: @"系统错误"];
-            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        } failure:^(NSError *error) {
+            
+        }];
 
-        }
-    } failure:^(NSError *error) {
-        
-    }];
-        
+    }else{
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:_cityCode , @"cityCode" , nil];
+        [PPNetworkHelper POST:getAreas parameters:params success:^(id data) {
+            if([data[@"code"] isEqualToString:@"0000"]){
+                NSDictionary *list = data[@"areas"];
+                CityVo *model = nil ;
+                [kouList22 removeAllObjects];
+                
+                if (![list isEqual:[NSNull null]]) {
+                    for (NSDictionary *dic in list) {
+                        model = [CityVo new];
+                        //                    model.code = [NSString stringWithFormat:@"%@" , dic[@"code"]] ;
+                        model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]] ;
+                        model.citycode = [NSString stringWithFormat:@"%@" ,dic[@"code"]] ;
+                        model.cid = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;
+                        [kouList22 addObject:model];
+                    }
+                }
+                [_goodTableView reloadData];
+            }else {
+                [SVProgressHUD showErrorWithStatus: @"系统错误"];
+                [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+                
+            }
+        } failure:^(NSError *error) {
+            
+        }];
+
+    }
+    
+    
 }
 
 #pragma mark 返回分组数
@@ -162,7 +195,12 @@
     [self cancelChooseStatus:tableView : indexPath];
     
     chooseProAndCity = [NSString stringWithFormat:@"%@ %@" , _name , vo.name];
-    proCityCode = [NSString stringWithFormat:@"%@ %@" , _code , vo.citycode];
+    
+    if ([_isfrom isEqualToString:@"2"]) {
+        proCityCode = [NSString stringWithFormat:@"%@ %@" , _code , vo.citycode];
+    }else{
+        proCityCode = [NSString stringWithFormat:@"%@ %@" , _code , vo.code];
+    }
 
 }
 

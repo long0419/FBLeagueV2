@@ -127,10 +127,10 @@
     vs.frame = CGRectMake((kScreen_Width - 122/2)/2 , 94/2 + 20 + 44 + 15, 122/2 , 160/2);
     [self.view addSubview:vs];
     
-    UIView *langdui = [LianSaiView getDuiView:@"1" andWithNum:tigerCount andWithPoint:CGPointMake(35, lang.bottom + 20)];
+    UIView *langdui = [LianSaiView getDuiView:@"1" andWithNum:wolfCount andWithPoint:CGPointMake(35, lang.bottom + 20)];
     [self.view addSubview:langdui];
     
-    UIView *hudui = [LianSaiView getDuiView:@"2" andWithNum:wolfCount andWithPoint:CGPointMake(kScreen_Width - 35 - 236/2, lang.bottom + 20)];
+    UIView *hudui = [LianSaiView getDuiView:@"2" andWithNum:tigerCount andWithPoint:CGPointMake(kScreen_Width - 35 - 236/2, lang.bottom + 20)];
     [self.view addSubview:hudui];
     
     UIImageView *jiangjin = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"奖金池底背景"]];
