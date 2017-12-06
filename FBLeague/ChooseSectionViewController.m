@@ -196,11 +196,8 @@
     
     chooseProAndCity = [NSString stringWithFormat:@"%@ %@" , _name , vo.name];
     
-    if ([_isfrom isEqualToString:@"2"]) {
-        proCityCode = [NSString stringWithFormat:@"%@ %@" , _code , vo.citycode];
-    }else{
-        proCityCode = [NSString stringWithFormat:@"%@ %@" , _code , vo.code];
-    }
+    proCityCode = [NSString stringWithFormat:@"%@ %@" , _code , vo.code];
+    
 
 }
 
