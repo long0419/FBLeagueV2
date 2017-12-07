@@ -42,7 +42,8 @@
                 [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
                 [SVProgressHUD dismissWithDelay:1];
                 
-                [self share];
+//                [self share];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"baoming" object:nil];
                 
                 break;
                 
@@ -91,7 +92,7 @@
 
 -(void)share{
     
-    [((AppDelegate *)[UIApplication sharedApplication].delegate) share];
+//    [((AppDelegate *)[UIApplication sharedApplication].delegate) share];
 
 }
 

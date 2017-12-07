@@ -160,6 +160,7 @@
 		FDD3AF6D1F21C9B700EA7C23 /* VerifyClubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD3AF6C1F21C9B700EA7C23 /* VerifyClubViewController.m */; };
 		FDD7E3F11F1F271600D05FE4 /* UserDataVo.h in Sources */ = {isa = PBXBuildFile; fileRef = FDA8EE5B1F07F3B800F3A01A /* UserDataVo.h */; };
 		FDDF5A391FD8CE4A0050A7A7 /* 杯赛分享.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDDF5A381FD8CE4A0050A7A7 /* 杯赛分享.jpg */; };
+		FDDF5A3A1FD8E8700050A7A7 /* AppDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = FDAA37991DD2BCF80038658F /* AppDelegate.h */; };
 		FDE1538A1F95FD3B00099B2E /* QiuYuanDataDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE153891F95FD3B00099B2E /* QiuYuanDataDetailViewController.m */; };
 		FDE1538F1F96015800099B2E /* ExplainView.h in Sources */ = {isa = PBXBuildFile; fileRef = FDE1538E1F96011700099B2E /* ExplainView.h */; };
 		FDE153901F96015800099B2E /* ExplainView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE1538D1F96011700099B2E /* ExplainView.m */; };
@@ -1739,6 +1740,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDDF5A3A1FD8E8700050A7A7 /* AppDelegate.h in Sources */,
 				FDE1538F1F96015800099B2E /* ExplainView.h in Sources */,
 				FDE153901F96015800099B2E /* ExplainView.m in Sources */,
 				FD4F6B961F5A73A300DC1C10 /* ZRGridViewCell.m in Sources */,

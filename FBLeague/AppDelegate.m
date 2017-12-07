@@ -130,11 +130,8 @@
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"支付成功1 = %@",resultDic);
             
-            [SVProgressHUD showSuccessWithStatus:@"报名成功"] ;
-            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-            [SVProgressHUD dismissWithDelay:.5];
-                        
-            [self share];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"baoming" object:nil];
+
         }];
         
         // 授权跳转支付宝钱包进行支付，处理支付结果
@@ -152,7 +149,6 @@
                     }
                 }
             }
-            NSLog(@"授权结果 authCode = %@", authCode?:@"");
         }];
     }else{
         return [TencentOAuth HandleOpenURL:url] || [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]] || [QQApiInterface handleOpenURL:url delegate:self] ;
@@ -183,7 +179,6 @@
                     }
                 }
             }
-            NSLog(@"授权结果 authCode = %@", authCode?:@"");
         }];
     }else{
         return [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]] ;
@@ -199,7 +194,6 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
-    // IOS 7 Support Required
     completionHandler(UIBackgroundFetchResultNewData);
 }
 
@@ -256,9 +250,13 @@
     
 }
 
-
--(void)share{
+-(void)share :(NSString *)_cupType {
     
+    NSString *share = @"share" ;
+    if ([_cupType isEqualToString:@"2"]) {
+        share = @"杯赛分享" ;
+    }
+
     [BHBPopView showToView:self.window
                  andImages:@[@"wechat.png",
                              @"qq.png",
@@ -271,7 +269,7 @@
                     [message setThumbImage:[UIImage imageNamed:@"QR"]];
                     WXImageObject *imageObject = [WXImageObject object];
                     
-                    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"jpg"];
+                    NSString *filePath = [[NSBundle mainBundle] pathForResource:share ofType:@"jpg"];
                     imageObject.imageData = [NSData dataWithContentsOfFile:filePath];
                     message.mediaObject = imageObject ;
                     
@@ -281,8 +279,9 @@
                     req.scene = WXSceneSession ;
                     [WXApi sendReq :req];
                     
+                    
                 }else if([item.title isEqualToString:@"QQ"]){
-                    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"jpg"];
+                    NSString *filePath = [[NSBundle mainBundle] pathForResource:share ofType:@"jpg"];
                     NSData *imgData = [NSData dataWithContentsOfFile:filePath];
                     QQApiImageObject *imgObj = [QQApiImageObject
                                                 objectWithData:
@@ -293,12 +292,13 @@
                                                 description:@"咖盟报名成功"];
                     SendMessageToQQReq *req = [SendMessageToQQReq reqWithContent:imgObj];
                     [QQApiInterface sendReq:req];
+                    
                 }else if([item.title isEqualToString:@"朋友圈"]){
                     WXMediaMessage *message = [WXMediaMessage message];
                     [message setThumbImage:[UIImage imageNamed:@"150876415"]];
                     WXImageObject *imageObject = [WXImageObject object];
                     
-                    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"jpg"];
+                    NSString *filePath = [[NSBundle mainBundle] pathForResource:share ofType:@"jpg"];
                     imageObject.imageData = [NSData dataWithContentsOfFile:filePath];
                     message.mediaObject = imageObject ;
                     
