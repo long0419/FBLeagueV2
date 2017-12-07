@@ -259,7 +259,7 @@
                     
                     if(![cvo.targetname isEqual:[NSNull null]]) {
                         commentItem1_1.replyUserId = cvo.phone;
-                        commentItem1_1.replyUserNick = [CommonFunc textFromBase64String:cvo.name] ;
+                        commentItem1_1.replyUserNick = [CommonFunc textFromBase64String:cvo.targetname] ;
                     }
                     [textImageItem.comments addObject:commentItem1_1];
                 }

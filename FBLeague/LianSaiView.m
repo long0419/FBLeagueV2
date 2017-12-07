@@ -162,16 +162,16 @@
     bg.frame = CGRectMake(0, 0, duiView.width, 23);
     [duiView addSubview:bg];
     
-    CGSize titleSize = [NSString getStringContentSizeWithFontSize:14 andContent:duiText];
+    CGSize titleSize = [NSString getStringContentSizeWithFontSize:13 andContent:duiText];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake((duiView.width - titleSize.width)/2 , 3 , titleSize.width, titleSize.height)];
-    titleLabel.font = [UIFont systemFontOfSize:14];
+    titleLabel.font = [UIFont systemFontOfSize:13];
     titleLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
     titleLabel.text = duiText;
     [bg addSubview:titleLabel];
     
-    CGSize numSize = [NSString getStringContentSizeWithFontSize:13 andContent:numText];
+    CGSize numSize = [NSString getStringContentSizeWithFontSize:12 andContent:numText];
     UILabel *numLabel = [[UILabel alloc] initWithFrame:CGRectMake((duiView.width - numSize.width)/2 , 1 + line.bottom , numSize.width, numSize.height)];
-    numLabel.font = [UIFont systemFontOfSize:13];
+    numLabel.font = [UIFont systemFontOfSize:12];
     numLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
     numLabel.text = numText;
     [bg addSubview:numLabel];

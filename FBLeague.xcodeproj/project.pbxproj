@@ -159,6 +159,7 @@
 		FDD3AF6A1F21B01900EA7C23 /* CreateClubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD3AF691F21B01900EA7C23 /* CreateClubViewController.m */; };
 		FDD3AF6D1F21C9B700EA7C23 /* VerifyClubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDD3AF6C1F21C9B700EA7C23 /* VerifyClubViewController.m */; };
 		FDD7E3F11F1F271600D05FE4 /* UserDataVo.h in Sources */ = {isa = PBXBuildFile; fileRef = FDA8EE5B1F07F3B800F3A01A /* UserDataVo.h */; };
+		FDDF5A391FD8CE4A0050A7A7 /* 杯赛分享.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FDDF5A381FD8CE4A0050A7A7 /* 杯赛分享.jpg */; };
 		FDE1538A1F95FD3B00099B2E /* QiuYuanDataDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE153891F95FD3B00099B2E /* QiuYuanDataDetailViewController.m */; };
 		FDE1538F1F96015800099B2E /* ExplainView.h in Sources */ = {isa = PBXBuildFile; fileRef = FDE1538E1F96011700099B2E /* ExplainView.h */; };
 		FDE153901F96015800099B2E /* ExplainView.m in Sources */ = {isa = PBXBuildFile; fileRef = FDE1538D1F96011700099B2E /* ExplainView.m */; };
@@ -560,6 +561,7 @@
 		FDD3AF691F21B01900EA7C23 /* CreateClubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateClubViewController.m; sourceTree = "<group>"; };
 		FDD3AF6B1F21C9B700EA7C23 /* VerifyClubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyClubViewController.h; sourceTree = "<group>"; };
 		FDD3AF6C1F21C9B700EA7C23 /* VerifyClubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyClubViewController.m; sourceTree = "<group>"; };
+		FDDF5A381FD8CE4A0050A7A7 /* 杯赛分享.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "杯赛分享.jpg"; sourceTree = "<group>"; };
 		FDE153881F95FD3B00099B2E /* QiuYuanDataDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QiuYuanDataDetailViewController.h; sourceTree = "<group>"; };
 		FDE153891F95FD3B00099B2E /* QiuYuanDataDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QiuYuanDataDetailViewController.m; sourceTree = "<group>"; };
 		FDE1538D1F96011700099B2E /* ExplainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExplainView.m; sourceTree = "<group>"; };
@@ -1427,6 +1429,7 @@
 		FDEAC8101F60FB2400AB25B2 /* shareres */ = {
 			isa = PBXGroup;
 			children = (
+				FDDF5A381FD8CE4A0050A7A7 /* 杯赛分享.jpg */,
 				FD94E8C81F9F5C6100294578 /* share.jpg */,
 				FD94E8B71F9F2FBB00294578 /* ad.jpg */,
 				FDEAC81D1F60FB5E00AB25B2 /* friend.png */,
@@ -1615,6 +1618,7 @@
 				FDEAC8211F60FB5E00AB25B2 /* friend@2x.png in Resources */,
 				FD94E8BE1F9F39F500294578 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
 				FDEAC8221F60FB5E00AB25B2 /* friend@3x.png in Resources */,
+				FDDF5A391FD8CE4A0050A7A7 /* 杯赛分享.jpg in Resources */,
 				FDEAC81A1F60FB5000AB25B2 /* wechat.png in Resources */,
 				FDC497BA1F29AF1A002E7105 /* ACActionSheet.bundle in Resources */,
 				FDEAC8201F60FB5E00AB25B2 /* friend.png in Resources */,

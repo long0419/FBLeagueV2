@@ -31,7 +31,7 @@
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
     
-    self.title = @"虎啸狼吼贺岁杯" ;
+    self.title = @"EFES 2018贺岁杯虎狼争霸赛" ;
     self.view.backgroundColor = [UIColor colorWithHexString:@"323c45"];
     
     [self setBackBottmAndTitle];
