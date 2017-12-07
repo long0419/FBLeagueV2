@@ -9,8 +9,11 @@
 #ifndef APIUrl_h
 #define APIUrl_h
 
-#define API @"http://120.27.152.254:8081/club/api"
-#define IP @"http://120.27.152.254:8081/"
+//#define API @"http://120.27.152.254:8081/club/api"
+//#define IP @"http://120.27.152.254:8081/"
+
+#define API @"http://101.37.27.202:8080/club/api"
+#define IP @"http://101.37.27.202:8080/"
 
 /*******登录注册********/
 #define login [NSString stringWithFormat:@"%@/%@",API,@"login"]

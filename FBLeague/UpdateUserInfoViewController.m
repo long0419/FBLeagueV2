@@ -244,7 +244,7 @@
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[CommonFunc base64StringFromText:txtField.text] , @"nickname" , uvo.phone , @"phone" ,picUrl , @"headpicurl" , uvo.phone  , @"token" , nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[CommonFunc base64StringFromText:txtField.text] , @"nickname" , uvo.phone , @"phone" , uvo.phone  , @"token" ,picUrl , @"headpicurl" , nil];
     
     [PPNetworkHelper POST:changeNicknameHeadPic parameters:params success:^(id data) {
         if([data[@"code"] isEqualToString:@"0000"]){

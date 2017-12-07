@@ -37,12 +37,7 @@
             case WXSuccess:
                 strMsg = @"支付结果：成功！";
                 NSLog(@"支付成功－PaySuccess，retcode = %d", resp.errCode);
-                
-                [SVProgressHUD showSuccessWithStatus:@"报名成功"] ;
-                [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-                [SVProgressHUD dismissWithDelay:1];
-                
-//                [self share];
+                //                [self share];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"baoming" object:nil];
                 
                 break;
@@ -50,6 +45,9 @@
             default:
                 strMsg = [NSString stringWithFormat:@"支付结果：失败！retcode = %d, retstr = %@", resp.errCode,resp.errStr];
                 NSLog(@"错误，retcode = %d, retstr = %@", resp.errCode,resp.errStr);
+                [SVProgressHUD showErrorWithStatus:strMsg];
+                [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+
                 break;
         }
     }else if([resp isKindOfClass:[SendMessageToWXResp class]]){

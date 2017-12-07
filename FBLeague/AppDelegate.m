@@ -130,7 +130,13 @@
         [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
             NSLog(@"支付成功1 = %@",resultDic);
             
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"baoming" object:nil];
+            if ([resultDic[@"resultStatus"] isEqualToString:@"9000"]) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"baoming" object:nil];
+            }else{
+                [SVProgressHUD showSuccessWithStatus:resultDic[@"memo"]];
+                [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+
+            }
 
         }];
         
