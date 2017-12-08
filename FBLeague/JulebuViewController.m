@@ -143,11 +143,16 @@
     nameLabel.text = name ;
     [header addSubview:nameLabel];
     
+    NSString *aname = @"" ;
+    if(![clubVo.areaname isEqual:[NSNull null]]){
+        aname = clubVo.areaname ;
+    }
+    
     UILabel *titleLabel2 = [UILabel new];
     titleLabel2.font = [UIFont systemFontOfSize:10];
     titleLabel2.numberOfLines = 0;//多行显示，计算高度
     titleLabel2.textColor = [UIColor colorWithHexString:@"000"];
-    NSString *desc2 = [NSString stringWithFormat:@"%@ %@" , clubVo.cityname , clubVo.areaname] ;
+    NSString *desc2 = [NSString stringWithFormat:@"%@ %@" , clubVo.cityname , aname] ;
     CGSize titleSize2 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc2];
     titleLabel2.size = titleSize2;
     titleLabel2.text = desc2 ;

@@ -75,11 +75,15 @@
     nameLabel.text = name ;
     [header addSubview:nameLabel];
     
+    NSString *aname = @"" ;
+    if (![_clubVo.areaname isEqualToString:@"<null>"]) {
+        aname = _clubVo.areaname ;
+    }
     UILabel *titleLabel = [UILabel new];
     titleLabel.font = [UIFont systemFontOfSize:10];
     titleLabel.numberOfLines = 0;//多行显示，计算高度
     titleLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
-    NSString *desc = [NSString stringWithFormat:@"%@ %@" , _clubVo.desc ,_clubVo.areaname]  ;
+    NSString *desc = [NSString stringWithFormat:@"%@ %@" , _clubVo.desc ,aname]  ;
     CGSize titleSize = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc];
     titleLabel.size = titleSize;
     titleLabel.text = desc ;
