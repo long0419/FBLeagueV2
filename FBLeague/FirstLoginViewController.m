@@ -32,11 +32,11 @@
     bg = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"图层-1"]];
     [self.view addSubview:bg];
     
-    imagePositionButton1 = [[QMUIButton alloc] init];
-    imagePositionButton1.imagePosition = QMUIButtonImagePositionTop;// 将图片位置改为在文字上方
-    imagePositionButton1.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
-    [imagePositionButton1 setImage:UIImageMake(@"随便逛逛") forState:UIControlStateNormal];
-    imagePositionButton1.titleLabel.font = UIFontMake(11);
+//    imagePositionButton1 = [[QMUIButton alloc] init];
+//    imagePositionButton1.imagePosition = QMUIButtonImagePositionTop;// 将图片位置改为在文字上方
+//    imagePositionButton1.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0);
+//    [imagePositionButton1 setImage:UIImageMake(@"随便逛逛") forState:UIControlStateNormal];
+//    imagePositionButton1.titleLabel.font = UIFontMake(11);
 //    imagePositionButton1.qmui_borderPosition = QMUIBorderViewPositionTop | QMUIBorderViewPositionRight | QMUIBorderViewPositionBottom;
 //    [self.view addSubview:imagePositionButton1];
 
@@ -59,6 +59,8 @@
     
     [bg mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.view);
+        make.width.mas_equalTo(self.view.width);
+        make.height.mas_equalTo(self.view.height);
     }] ;
     
 //    [imagePositionButton1 mas_makeConstraints:^(MASConstraintMaker *make) {
