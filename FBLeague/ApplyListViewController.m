@@ -86,6 +86,12 @@
     YYCache *cache = [YYCache cacheWithName:@"FB"];
     UserDataVo *uvo = [cache objectForKey:@"userData"];
     
+    if ([uvo.club isEqualToString:@""]) {
+        [SVProgressHUD showErrorWithStatus: @"请创建俱乐部"];
+        [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
+        return ;
+    }
+    
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.club , @"clubId"  , uvo.phone ,  @"token", nil];
     [PPNetworkHelper POST:getApplyTrainee parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){

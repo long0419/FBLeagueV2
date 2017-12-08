@@ -20,12 +20,13 @@
     if (![position isEqualToString:@"1"]) {
         type = @"已通过" ;
     }else{
-        UITapGestureRecognizer *singleTap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(apply:)];
+        UITapGestureRecognizer *singleTap4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(apply2:)];
         UIView *focus = [[UIView alloc] initWithFrame:CGRectMake(kScreen_Width - 20 - 134/2, 20 + (70 - 58/2)/2, 134/2, 58/2)] ;
         [[focus layer]setCornerRadius:5];
         focus.tag = indexPath ;
-        focus.accessibilityHint = [NSString stringWithFormat:@"%ld" , (long)indexPath] ;
-        focus.accessibilityHint = role ;
+//        focus.accessibilityHint = [NSString stringWithFormat:@"%ld" , (long)indexPath] ;
+//        focus.accessibilityHint = role ;
+//        focus.accessibilityValue = num ;
         UILabel *focusLabel = nil ;
         focus.backgroundColor = [UIColor whiteColor];
         focus.layer.borderWidth = 1;
@@ -37,7 +38,8 @@
         focusLabel.textColor = [UIColor colorWithHexString:@"000"];
         focusLabel.text = @"审核通过" ;
         focusLabel.tag = 12 ;
-        focusLabel.accessibilityHint = num ;
+        focusLabel.accessibilityHint = role ;
+        focusLabel.accessibilityValue = num ;
         focus.userInteractionEnabled = YES;
         [focus addGestureRecognizer:singleTap4];
         [focus addSubview:focusLabel];
@@ -103,6 +105,17 @@
     label.textColor = [UIColor colorWithHexString:@"ffffff"];
     [self.delegate sendapply:label.accessibilityHint andWith:label.accessibilityHint];
 }
+
+-(void)apply2:(UITapGestureRecognizer *)sender{
+    sender.self.view.backgroundColor = [UIColor blackColor];
+    UILabel *label = [sender.self.view viewWithTag:12];
+    label.text = @"已通过" ;
+    CGSize textSize = [NSString getStringContentSizeWithFontSize:14 andContent:@"已通过"];
+    label.size = textSize ;
+    label.textColor = [UIColor colorWithHexString:@"ffffff"];
+    [self.delegate sendapply:label.accessibilityHint andWith:label.accessibilityValue];
+}
+
 
 -(void) setPhoneContactCellByImageName :(NSString *) imageName andWithName :(NSString *) name andWithPhoneNum : (NSString *) num  andWithindex :(NSInteger) indexPath andWithRole :(NSString *)role andPosition : (NSString *) position {
 
@@ -330,7 +343,6 @@
     nameLabel.textColor = [UIColor colorWithHexString:@"333333"];
     nameLabel.text = name;
     [bg addSubview:nameLabel];
-    
     
     CGSize phoneSize = [NSString getStringContentSizeWithFontSize:11 andContent:num];
     UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.right + 32/2 , nameLabel.bottom + 6, phoneSize.width, phoneSize.height)];

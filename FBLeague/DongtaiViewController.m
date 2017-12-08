@@ -112,6 +112,9 @@
                         nextPageNo = nextPage ;
                         
                         [self initData];
+                        
+                        [self endLoadMore];
+                        [self endRefresh];
                     }
                 }
                 [self endLoadMore];
@@ -119,6 +122,7 @@
             }
         } failure:^(NSError *error) {
     }];
+
 }
 
 -(void)setBackBottmAndTitle{

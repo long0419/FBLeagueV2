@@ -6,6 +6,7 @@
 //  Copyright © 2017年 long-laptop. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "AddSaiViewController.h"
 #import "DSLLoginTextField.h"
 #import "ChooseAreaViewController.h"
@@ -20,6 +21,7 @@
     NSString *type ;
     NSString *groupType ;
     NSString *formatType ;
+    NSString *baomingTitle;
 }
 
 @end
@@ -30,6 +32,18 @@
     if (_areaStr != nil && ![@"" isEqualToString:_areaStr] && psw != nil) {
         ((UITextField *)psw).text = _areaStr ;
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getBaoming) name:@"baoming" object:nil];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"baoming" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"baoming" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad {
@@ -176,11 +190,15 @@
     [buttons2[1] setGroupButtons:buttons2];
     [buttons2[1] setSelected:YES];
     
+    NSString *money = @"1000元" ;
+    NSString *moneyTxt = @"500元" ;
     if ([_cupType isEqualToString:@"2"]) {
         btnx.hidden = YES ;
         btn.hidden = YES ;
         btnx3.hidden = YES ;
         self.title = @"杯赛报名";
+        money = @"500元" ;
+        moneyTxt = @"200元" ;
     }else{
         self.title = @"联赛报名";
     }
@@ -204,7 +222,7 @@
     money1.placeholderColor=[UIColor colorWithHexString:@"000000"];
     money1.textColor = [UIColor blackColor] ;
     money1.font=[UIFont systemFontOfSize:14];
-    money1.placeholder=@"500元";
+    money1.placeholder= moneyTxt;
     money1.enabled = NO ;
     money1.maxTextLength= 11;
     money1.textAlignment = NSTextAlignmentCenter ;
@@ -233,7 +251,7 @@
     money12.placeholderColor=[UIColor colorWithHexString:@"000000"];
     money12.textColor = [UIColor blackColor] ;
     money12.font=[UIFont systemFontOfSize:14];
-    money12.placeholder=@"1000元";
+    money12.placeholder= money ;
     money12.enabled = NO ;
     money12.maxTextLength= 11;
     money12.textAlignment = NSTextAlignmentCenter ;
@@ -354,14 +372,24 @@
         return ;
     }
     
+    baomingTitle = @"联赛报名" ;
+    if ([_cupType isEqualToString:@"2"]) {
+        baomingTitle = @"EFES 2018贺岁杯虎狼争霸赛" ;
+    }
+    
     if ([type_ isEqualToString:@"2"]) { //微信
-        [MXWechatPayHandler jumpToWxPay:@"150000" andWithTitle:@"联赛报名"];
+        NSString *money = @"150000" ;
+        if ([_cupType isEqualToString:@"2"]) {
+            money = @"70000" ;
+        }
+        [MXWechatPayHandler jumpToWxPay:
+                            money
+//                            @"1"
+                           andWithTitle:baomingTitle];
     }else{
         [self doAlipayPay];
     }
-    
-    [self getBaoming];
-    
+//    [self getBaoming];
 }
 
 -(void)getBaoming{
@@ -373,29 +401,34 @@
     }
     NSArray *area = [_areaCodeStr componentsSeparatedByString:@" "];
     
-    
     //联赛
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.phone , @"phone"  , uvo.club , @"clubId" , _leagueId , @"leagueId" , area[2] , @"areaCode" , groupType , @"groupType" , formatType , @"format" , type_ , @"paymentType" , [NSString stringWithFormat:@"%d",arc4random()] , @"paymentOrder" ,uvo.phone ,  @"token", nil];
-    NSString *url = joinincup ;
+    NSString *url = joinLeague ;
     
     //杯赛
     if ([_cupType isEqualToString:@"2"]) {
-        url = joinLeague ;
-        params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.clubName , @"clubname" , uvo.phone , @"contactphone"  , uvo.club , @"clubid" , _leagueId , @"leagueId"
+        url = joinincup ;
+        params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone , @"contactphone"  , uvo.club , @"clubid" , _leagueId , @"leagueid"
                 , _camp , @"camp" , area[2] , @"areacode" , type_ , @"paymenttype" ,  [NSString stringWithFormat:@"%d",arc4random()] , @"paymentorder" ,uvo.phone ,  @"token", nil];
     }
     [PPNetworkHelper POST:url parameters:params success:^(id object) {
         if([object[@"code"] isEqualToString:@"0000"]){
             [self.navigationController popViewControllerAnimated:YES];
-        }else{
-            [SVProgressHUD showErrorWithStatus:object[@"msg"]] ;
+            
+            [SVProgressHUD showSuccessWithStatus:@"报名成功"] ;
             [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
-            [SVProgressHUD dismissWithDelay:2];
+            [SVProgressHUD dismissWithDelay:1];
+            
+            AppDelegate * appDelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+
+            [appDelegate share:_cupType];
+            
+        }else{
+            [SVProgressHUD dismiss];
         }
     } failure:^(NSError *error) {
         
     }];
-
 }
 
 
@@ -451,18 +484,27 @@
         order.sign_type = (rsa2PrivateKey.length > 1)?@"RSA2":@"RSA";
         
         // NOTE: 商品数据
+        
+        double money = 1500.00 ;
+        if ([_cupType isEqualToString:@"2"]) {
+            money = 700.00 ;
+        }
+
+        
         order.biz_content = [BizContent new];
-        order.biz_content.body = @"联赛报名";
-        order.biz_content.subject = @"联赛报名";
+        order.biz_content.body = baomingTitle;
+        order.biz_content.subject = baomingTitle;
         order.biz_content.out_trade_no = data[@"randomId"] ;
         order.biz_content.timeout_express = @"30m"; //超时时间设置
-        order.biz_content.total_amount = [NSString stringWithFormat:@"%.2f", 1500.00];
+        order.biz_content.total_amount =
+//        [NSString stringWithFormat:@"%.2f", 0.10];
+        [NSString stringWithFormat:@"%.2f", money];
         
         
         YYCache *cache = [YYCache cacheWithName:@"FB"];
         UserDataVo *vo = [cache objectForKey:@"userData"];
         
-        order.passback_params = vo.phone ;
+        order.passback_params = [NSString stringWithFormat:@"%@-1" , vo.phone] ;
         order.notify_url = zfbPayNotify ;
         
         //将商品信息拼接成字符串
@@ -509,6 +551,11 @@
 
 -(void)share{
    
+    NSString *share = @"share" ;
+    if ([_cupType isEqualToString:@"2"]) {
+        share = @"杯赛分享" ;
+    }
+    
     [BHBPopView showToView:self.view
                  andImages:@[@"wechat.png",
                              @"qq.png",
@@ -521,7 +568,7 @@
                     [message setThumbImage:[UIImage imageNamed:@"QR"]];
                     WXImageObject *imageObject = [WXImageObject object];
 
-                    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"jpg"];
+                    NSString *filePath = [[NSBundle mainBundle] pathForResource:share ofType:@"jpg"];
                     imageObject.imageData = [NSData dataWithContentsOfFile:filePath];
                     message.mediaObject = imageObject ;
 
@@ -532,7 +579,7 @@
                     [WXApi sendReq :req];
 
                 }else if([item.title isEqualToString:@"QQ"]){
-                    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"jpg"];
+                    NSString *filePath = [[NSBundle mainBundle] pathForResource:share ofType:@"jpg"];
                     NSData *imgData = [NSData dataWithContentsOfFile:filePath];
                     QQApiImageObject *imgObj = [QQApiImageObject
                                                     objectWithData:
@@ -548,7 +595,7 @@
                     [message setThumbImage:[UIImage imageNamed:@"150876415"]];
                     WXImageObject *imageObject = [WXImageObject object];
 
-                    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"share" ofType:@"jpg"];
+                    NSString *filePath = [[NSBundle mainBundle] pathForResource:share ofType:@"jpg"];
                     imageObject.imageData = [NSData dataWithContentsOfFile:filePath];
                     message.mediaObject = imageObject ;
 
