@@ -137,7 +137,7 @@
                 if (![list isEqual:[NSNull null]]) {
                     for (NSDictionary *dic in list) {
                         model = [CityVo new];
-                        //                    model.code = [NSString stringWithFormat:@"%@" , dic[@"code"]] ;
+                        model.code = [NSString stringWithFormat:@"%@" , dic[@"code"]] ;
                         model.name = [NSString stringWithFormat:@"%@" ,dic[@"name"]] ;
                         model.citycode = [NSString stringWithFormat:@"%@" ,dic[@"code"]] ;
                         model.cid = [NSString stringWithFormat:@"%@" ,dic[@"id"]] ;

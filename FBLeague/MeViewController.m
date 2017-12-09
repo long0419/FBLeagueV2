@@ -77,11 +77,22 @@
     nameLabel.text = name ;
     [header addSubview:nameLabel];
     
+    NSString *aname = @"" ;
+    if(![uvo.areaname isEqual:[NSNull null]]){
+        aname = uvo.areaname ;
+    }
+
+    NSString *cityname = @"" ;
+    if(![uvo.cityName isEqual:[NSNull null]]){
+        cityname = uvo.cityName ;
+    }
+
+    
     titleLabel = [UILabel new];
     titleLabel.font = [UIFont systemFontOfSize:10];
     titleLabel.numberOfLines = 0;//多行显示，计算高度
     titleLabel.textColor = [UIColor colorWithHexString:@"000"];
-    desc = [NSString stringWithFormat:@"%@ %@" , uvo.areaname , uvo.cityName] ;
+    desc = [NSString stringWithFormat:@"%@ %@" , aname , cityname] ;
     CGSize titleSize = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc];
     titleLabel.size = titleSize;
     titleLabel.text = desc ;

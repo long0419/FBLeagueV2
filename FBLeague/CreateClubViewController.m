@@ -280,8 +280,8 @@
                             moto.text ,@"description" ,
                             uvo.phone ,  @"token",
                             time , @"createdate" ,
-                            [areas objectAtIndex:0] , @"provincecode" ,
-                            [areas objectAtIndex:1] , @"citycode" ,
+                            [areas objectAtIndex:0] , @"citycode" ,
+                            [areas objectAtIndex:1] , @"provincecode" ,
                             [areas objectAtIndex:2] , @"areacode" ,
                             url , @"logourl" ,
                             nil];
@@ -332,6 +332,18 @@
     
 }
 
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    
+    return YES;
+    
+}
+
+
 
 -(void)textFieldDidBeginEditing:(UITextField*)textField {
     
@@ -340,7 +352,7 @@
     if(textField.tag == 10){
         self.hidesBottomBarWhenPushed=YES;
         ChooseAreaViewController *area = [[ChooseAreaViewController alloc] init];
-        area.isfrom = @"2" ;
+        area.isfrom = @"1" ;
         [self.navigationController pushViewController:area animated:YES];
         self.hidesBottomBarWhenPushed=NO;
     }else if(textField.tag == 11){

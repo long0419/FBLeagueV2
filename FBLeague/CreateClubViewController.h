@@ -10,8 +10,9 @@
 #import "BaseViewController.h"
 #import "ChooseAreaViewController.h"
 #import "VerifyClubViewController.h"
+#import "WPAutoSpringTextViewController.h"
 
-@interface CreateClubViewController : BaseViewController<UITextFieldDelegate>
+@interface CreateClubViewController : WPAutoSpringTextViewController <UITextFieldDelegate>
 
 @property (nonatomic , strong) NSString *areaStr ;
 @property (nonatomic , strong) NSString *areaCodeStr ;

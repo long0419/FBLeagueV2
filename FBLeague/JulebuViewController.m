@@ -45,70 +45,84 @@
     cache = [YYCache cacheWithName:@"FB"];
     uvo = [cache objectForKey:@"userData"];
     
-    if(![uvo.club isEqual:[NSNull null]] && ![uvo.club isEqualToString:@""]){
-        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.club , @"id" ,uvo.phone ,  @"token", nil];
-        [PPNetworkHelper POST:clubDetail parameters:params success:^(id object) {
-            if([object[@"code"] isEqualToString:@"0000"]){
-                ClubOBJ *clubVo = [ClubOBJ new] ;
-                clubVo.desc = object[@"club"][@"description"] ;
-                clubVo.areacode = object[@"club"][@"areacode"] ;
-                clubVo.logourl = object[@"club"][@"logourl"] ;
-                clubVo.cityname = object[@"club"][@"cityname"] ;
-                clubVo.creator = object[@"club"][@"creator"] ;
-                clubVo.areaname = object[@"club"][@"areaname"] ;
-                clubVo.name = object[@"club"][@"name"];
-                clubVo.cid = object[@"club"][@"id"] ;
-                clubVo.fansCount = object[@"club"][@"fansCount"] ;
-                clubVo.provincecode = object[@"club"][@"provincecode"] ;
-                clubVo.cid = object[@"club"][@"id"] ;
-                clubVo.creator = object[@"club"][@"creator"] ;
-                clubVo.hasfocus = object[@"club"][@"hasfocus"] ;
-                clubVo.citycode = object[@"club"][@"citycode"] ;
-                clubVo.areaname = object[@"club"][@"areaname"] ;
-                clubVo.certification = object[@"club"][@"certification"] ;
-                clubVo.createdate = object[@"club"][@"createdate"] ;
-                clubVo.areaname = object[@"club"][@"areaname"] ;
-                self.navigationItem.rightBarButtonItem.customView.hidden = YES;
-
-                [self setJulebuView : clubVo];
-
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone ,  @"phone" , uvo.phone , @"token" , nil];
+    [PPNetworkHelper POST:getCBDetail parameters:params success:^(id data) {
+        if([data[@"code"] isEqualToString:@"0000"]){
+            NSString *clubID = data[@"user"][@"club"];
+            if(![clubID isEqual:[NSNull null]] && ![clubID isEqualToString:@""]){
+                NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: clubID , @"id" ,uvo.phone ,  @"token", nil];
+                [PPNetworkHelper POST:clubDetail parameters:params success:^(id object) {
+                    if([object[@"code"] isEqualToString:@"0000"]){
+                        ClubOBJ *clubVo = [ClubOBJ new] ;
+                        clubVo.desc = object[@"club"][@"description"] ;
+                        clubVo.areacode = object[@"club"][@"areacode"] ;
+                        clubVo.logourl = object[@"club"][@"logourl"] ;
+                        clubVo.cityname = object[@"club"][@"cityname"] ;
+                        clubVo.creator = object[@"club"][@"creator"] ;
+                        clubVo.areaname = object[@"club"][@"areaname"] ;
+                        clubVo.name = object[@"club"][@"name"];
+                        clubVo.cid = object[@"club"][@"id"] ;
+                        clubVo.fansCount = object[@"club"][@"fansCount"] ;
+                        clubVo.provincecode = object[@"club"][@"provincecode"] ;
+                        clubVo.cid = object[@"club"][@"id"] ;
+                        clubVo.creator = object[@"club"][@"creator"] ;
+                        clubVo.hasfocus = object[@"club"][@"hasfocus"] ;
+                        clubVo.citycode = object[@"club"][@"citycode"] ;
+                        clubVo.areaname = object[@"club"][@"areaname"] ;
+                        clubVo.certification = object[@"club"][@"certification"] ;
+                        clubVo.createdate = object[@"club"][@"createdate"] ;
+                        clubVo.areaname = object[@"club"][@"areaname"] ;
+                        self.navigationItem.rightBarButtonItem.customView.hidden = YES;
+                        
+                        [self setJulebuView : clubVo];
+                        
+                    }
+                } failure:^(NSError *error) {
+                    
+                }];
+                
+            }else{
+                if([uvo.role isEqualToString:@"1"]){
+                    self.navigationItem.leftBarButtonItem.customView.hidden = NO ;
+                    [self setBackBottmAndTitle];
+                }
+                
+                [self getNeedDatas : @"1"];
+                pageNO = @"1" ;
+                
+                self.soTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,  20 + 44 , kScreen_Width, kScreen_Height - 20 - 44 - 30)];
+                _soTableView.delegate = self ;
+                _soTableView.dataSource = self;
+                _soTableView.backgroundColor = [UIColor clearColor];
+                _soTableView.separatorStyle = NO ;
+                [self.view addSubview:_soTableView];
+                
+                __weak JulebuViewController *weakSelf = self ;
+                [_soTableView addPullToRefreshWithActionHandler:^{
+                    [weakSelf getNeedDatas : @"1"];
+                    [weakSelf.soTableView.pullToRefreshView stopAnimating];
+                }];
+                
+                //        __weak NSString *no = pageNO ;
+                [_soTableView addInfiniteScrollingWithActionHandler:^{
+                    [weakSelf getNeedDatas : pageNO] ;
+                    [weakSelf.soTableView.infiniteScrollingView stopAnimating];
+                }];
+                
+                [_soTableView.pullToRefreshView setTitle:@"下拉刷新..." forState:SVPullToRefreshStateStopped];
+                [_soTableView.pullToRefreshView setTitle:@"释放更新..." forState:SVPullToRefreshStateTriggered];
+                [_soTableView.pullToRefreshView setTitle:@"加载中..." forState:SVPullToRefreshStateLoading];
             }
-        } failure:^(NSError *error) {
-            
-        }];
-        
-    }else{
-        if([uvo.role isEqualToString:@"1"]){
-            self.navigationItem.leftBarButtonItem.customView.hidden = NO ;
-            [self setBackBottmAndTitle];
+
+        }else {
+            [SVProgressHUD showErrorWithStatus: @"系统错误"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
         }
         
-        [self getNeedDatas : @"1"];
-        pageNO = @"1" ;
+    } failure:^(NSError *error) {
         
-        self.soTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,  20 + 44 , kScreen_Width, kScreen_Height - 20 - 44 - 30)];
-        _soTableView.delegate = self ;
-        _soTableView.dataSource = self;
-        _soTableView.backgroundColor = [UIColor clearColor];
-        _soTableView.separatorStyle = NO ;
-        [self.view addSubview:_soTableView];
-        
-        __weak JulebuViewController *weakSelf = self ;
-        [_soTableView addPullToRefreshWithActionHandler:^{
-            [weakSelf getNeedDatas : @"1"];
-            [weakSelf.soTableView.pullToRefreshView stopAnimating];
-        }];
-        
-//        __weak NSString *no = pageNO ;
-        [_soTableView addInfiniteScrollingWithActionHandler:^{
-            [weakSelf getNeedDatas : pageNO] ;
-            [weakSelf.soTableView.infiniteScrollingView stopAnimating];
-        }];
-        
-        [_soTableView.pullToRefreshView setTitle:@"下拉刷新..." forState:SVPullToRefreshStateStopped];
-        [_soTableView.pullToRefreshView setTitle:@"释放更新..." forState:SVPullToRefreshStateTriggered];
-        [_soTableView.pullToRefreshView setTitle:@"加载中..." forState:SVPullToRefreshStateLoading];
-    }
+    }];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated
