@@ -231,9 +231,7 @@
             NSString *currPage = object[@"page"][@"currPage"];
             NSString *nextPage = object[@"page"][@"nextPage"];
             
-            ClubOBJ *model = nil ;
-//            [kouList removeAllObjects];
-            
+            ClubOBJ *model = nil ;            
             if (![list isEqual:[NSNull null]]) {
                 for (NSDictionary *dic in list) {
                     model = [ClubOBJ new];
@@ -253,12 +251,7 @@
                     model.fansCount = [NSString stringWithFormat:@"%@" , dic[@"fansCount"]] ;
                     model.name = [NSString stringWithFormat:@"%@" , [CommonFunc textFromBase64String:dic[@"name"]]] ;
                     
-//                    if (![uvo.club isEqualToString:model.cid] &&currPage.longLongValue != nextPage.longLongValue) {
-//                        if (isFirst == 1 && kouList.count > 0) {
-//                            break ;
-//                        }
                     [kouList addObject:model];
-                    //                    }
             }
             
             if (currPage == nextPage) {

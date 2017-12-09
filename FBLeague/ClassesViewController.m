@@ -67,7 +67,7 @@
 -(void)getNeedDatas :(NSString *) page{
     
     NSString *clubId = uvo.club ;
-    if (![_cid isEqualToString:@""]) {
+    if (_cid != nil) {
         clubId = _cid ;
     }
     

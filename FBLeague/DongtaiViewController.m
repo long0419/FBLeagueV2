@@ -42,7 +42,7 @@
     NSString *url = apilist ;
     if ([_type isEqualToString:@"2"]) {
         NSString *cid = uvo.club ;
-        if (![_club isEqualToString:@""]) {
+        if (_club != nil) {
             cid = _club ;
         }
         params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" , cid , @"clubId" ,uvo.phone ,@"token" , nil];
