@@ -280,8 +280,8 @@
                             moto.text ,@"description" ,
                             uvo.phone ,  @"token",
                             time , @"createdate" ,
-                            [areas objectAtIndex:0] , @"citycode" ,
-                            [areas objectAtIndex:1] , @"provincecode" ,
+                            [areas objectAtIndex:0] , @"provincecode" ,
+                            [areas objectAtIndex:1] , @"citycode" ,
                             [areas objectAtIndex:2] , @"areacode" ,
                             url , @"logourl" ,
                             nil];
@@ -340,7 +340,7 @@
     if(textField.tag == 10){
         self.hidesBottomBarWhenPushed=YES;
         ChooseAreaViewController *area = [[ChooseAreaViewController alloc] init];
-        area.isfrom = @"1" ;
+        area.isfrom = @"2" ;
         [self.navigationController pushViewController:area animated:YES];
         self.hidesBottomBarWhenPushed=NO;
     }else if(textField.tag == 11){

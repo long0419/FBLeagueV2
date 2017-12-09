@@ -10,6 +10,7 @@
 #import "ProvinceVo.h"
 #import "PersonInfoViewController.h"
 #import "AddSaiViewController.h"
+#import "ChooseAreaViewController.h"
 
 @interface ChooseSectionViewController (){
     NSString *chooseProAndCity ;
@@ -80,10 +81,17 @@
         info.areaCodeStr = proCityCode ;
         [self.rt_navigationController popToViewController:info animated:YES];
     }else{
-        AddSaiViewController *info =  verifyCode2.contentViewController;
-        info.areaStr = chooseProAndCity ;
-        info.areaCodeStr = proCityCode ;
-        [self.rt_navigationController popToViewController:info animated:YES];
+        if ( [verifyCode2.contentViewController isKindOfClass:CreateClubViewController.class]) {
+            CreateClubViewController *info =  verifyCode2.contentViewController;
+            info.areaStr = chooseProAndCity ;
+            info.areaCodeStr = proCityCode ;
+            [self.rt_navigationController popToViewController:info animated:YES];
+        }else{
+            AddSaiViewController *info =  verifyCode2.contentViewController;
+            info.areaStr = chooseProAndCity ;
+            info.areaCodeStr = proCityCode ;
+            [self.rt_navigationController popToViewController:info animated:YES];
+        }
     }
 }
 

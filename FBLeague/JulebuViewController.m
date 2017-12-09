@@ -126,8 +126,13 @@
     header.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:header];
     
+    NSString *url = @"" ;
+    if(![clubVo.logourl isEqual:[NSNull null]]){
+        url = clubVo.logourl ;
+    }
+    
     UIImageView *head = [[UIImageView alloc] init];
-    [head sd_setImageWithURL:[NSURL URLWithString:clubVo.logourl] placeholderImage:[UIImage imageNamed:@"defaulthead"]];
+    [head sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@"defaulthead"]];
     head.frame = CGRectMake(30, 25 , 140/2, 140/2) ;
     head.layer.masksToBounds =YES;
     head.layer.cornerRadius = 10 ;
@@ -146,11 +151,16 @@
         aname = clubVo.areaname ;
     }
     
+    NSString *cityname = @"" ;
+    if(![clubVo.cityname isEqual:[NSNull null]]){
+        cityname = clubVo.cityname ;
+    }
+    
     UILabel *titleLabel2 = [UILabel new];
     titleLabel2.font = [UIFont systemFontOfSize:10];
     titleLabel2.numberOfLines = 0;//多行显示，计算高度
     titleLabel2.textColor = [UIColor colorWithHexString:@"000"];
-    NSString *desc2 = [NSString stringWithFormat:@"%@ %@" , clubVo.cityname , aname] ;
+    NSString *desc2 = [NSString stringWithFormat:@"%@ %@" , cityname , aname] ;
     CGSize titleSize2 = [NSString getMultiStringContentSizeWithFontSize:10 andContent:desc2];
     titleLabel2.size = titleSize2;
     titleLabel2.text = desc2 ;

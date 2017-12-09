@@ -17,5 +17,4 @@
 
 @property  (nonatomic , strong) NSString *isfrom; //0.从注册开始 1.从俱乐部开始 2.联赛
 
-
 @end
