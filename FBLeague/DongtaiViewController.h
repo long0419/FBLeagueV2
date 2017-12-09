@@ -21,6 +21,7 @@
 @property (nonatomic , strong) NSString *type ; //1.首页 2.俱乐部 3.个人动态 4.已关注动态 5.未读帖子列表
 
 @property (nonatomic , strong) NSString *phone ; 
+@property (nonatomic , strong) NSString *club ;
 
 - (void) onFCTextImage:(NSString *) text images:(NSArray *)images ;
 

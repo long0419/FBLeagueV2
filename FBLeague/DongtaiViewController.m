@@ -41,7 +41,11 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" ,uvo.phone ,@"token" , nil];
     NSString *url = apilist ;
     if ([_type isEqualToString:@"2"]) {
-        params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" , uvo.club , @"clubId" ,uvo.phone ,@"token" , nil];
+        NSString *cid = uvo.club ;
+        if (![_club isEqualToString:@""]) {
+            cid = _club ;
+        }
+        params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" , cid , @"clubId" ,uvo.phone ,@"token" , nil];
         url = clubTheme ;
     }else if([_type isEqualToString:@"3"]){
         params = [NSDictionary dictionaryWithObjectsAndKeys:page , @"page" , _phone , @"phone" ,uvo.phone ,@"token" , nil];
@@ -117,8 +121,6 @@
                         [self endRefresh];
                     }
                 }
-                [self endLoadMore];
-                [self endRefresh];
             }
         } failure:^(NSError *error) {
     }];
@@ -248,13 +250,7 @@
         DFLineCommentItem *commentItem = nil ;
         if(nil != dt.comments && [dt.comments count]>0){
             for(CommentVo *cvo in dt.comments){
-                if([cvo.headpicurl isEqualToString:@"praise"]){ //点赞
-                    DFLineLikeItem *likeItem1_1 = [[DFLineLikeItem alloc] init];
-                    likeItem1_1.userId = cvo.phone;
-                    likeItem1_1.userNick = [CommonFunc textFromBase64String:cvo.name];
-                    [textImageItem.likes addObject:likeItem1_1];
-                    
-                }else{
+                if([cvo.headpicurl isEqual:[NSNull null]]) {
                     DFLineCommentItem *commentItem1_1 = [[DFLineCommentItem alloc] init];
                     commentItem1_1.commentId = cvo.cid;
                     commentItem1_1.userId =  cvo.phone;
@@ -266,7 +262,33 @@
                         commentItem1_1.replyUserNick = [CommonFunc textFromBase64String:cvo.targetname] ;
                     }
                     [textImageItem.comments addObject:commentItem1_1];
+
+                }else{
+                    DFLineLikeItem *likeItem1_1 = [[DFLineLikeItem alloc] init];
+                    likeItem1_1.userId = cvo.phone;
+                    likeItem1_1.userNick = [CommonFunc textFromBase64String:cvo.name];
+                    [textImageItem.likes addObject:likeItem1_1];
                 }
+                
+//                if([cvo.headpicurl isEqualToString:@"praise"]){ //点赞
+//                    DFLineLikeItem *likeItem1_1 = [[DFLineLikeItem alloc] init];
+//                    likeItem1_1.userId = cvo.phone;
+//                    likeItem1_1.userNick = [CommonFunc textFromBase64String:cvo.name];
+//                    [textImageItem.likes addObject:likeItem1_1];
+//
+//                }else{
+//                    DFLineCommentItem *commentItem1_1 = [[DFLineCommentItem alloc] init];
+//                    commentItem1_1.commentId = cvo.cid;
+//                    commentItem1_1.userId =  cvo.phone;
+//                    commentItem1_1.userNick =  [CommonFunc textFromBase64String:cvo.name] ;
+//                    commentItem1_1.text = [CommonFunc textFromBase64String:cvo.contents];
+//
+//                    if(![cvo.targetname isEqual:[NSNull null]]) {
+//                        commentItem1_1.replyUserId = cvo.phone;
+//                        commentItem1_1.replyUserNick = [CommonFunc textFromBase64String:cvo.targetname] ;
+//                    }
+//                    [textImageItem.comments addObject:commentItem1_1];
+//                }
             }
         }
         [self addItem:textImageItem];        

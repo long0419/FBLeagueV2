@@ -15,5 +15,6 @@
 
 @property (nonatomic , strong) UITableView *soTableView;
 @property (nonatomic , strong) NSString *type; //2.从我里面进入 
+@property (nonatomic , strong) NSString *cid; 
 
 @end

@@ -147,5 +147,6 @@
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "WXApiManager.h"
 #import "BHBPopView.h"
+#import "NSObject+BWJSONMatcher.h"
 
 #endif /* CarManager_Prefix_pch */

@@ -119,10 +119,11 @@
     [header addSubview:titleLabel3];
         
     DongtaiViewController *focus = [DongtaiViewController new];
-    focus.type = @"3" ;
-    focus.phone = _clubVo.areacode ;
+    focus.type = @"2" ;
+    focus.club = _clubVo.cid ;
     
     ClassesViewController *jiaolian = [ClassesViewController new] ;
+    jiaolian.cid = _clubVo.cid ;
     
     //这里做不了 他的赛程 由于leagueid 没有
     NSArray *viewControllers = @[

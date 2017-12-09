@@ -19,7 +19,7 @@
     YYCache *cache ;
     UserDataVo *uvo ;
     NSString *pageNO ;
-    int isFirst ;
+    NSSet *set ;
 }
 
 @end
@@ -96,14 +96,12 @@
         __weak JulebuViewController *weakSelf = self ;
         [_soTableView addPullToRefreshWithActionHandler:^{
             [weakSelf getNeedDatas : @"1"];
-            isFirst = 1 ;
             [weakSelf.soTableView.pullToRefreshView stopAnimating];
         }];
         
 //        __weak NSString *no = pageNO ;
         [_soTableView addInfiniteScrollingWithActionHandler:^{
             [weakSelf getNeedDatas : pageNO] ;
-            isFirst = 0;
             [weakSelf.soTableView.infiniteScrollingView stopAnimating];
         }];
         
@@ -255,12 +253,12 @@
                     model.fansCount = [NSString stringWithFormat:@"%@" , dic[@"fansCount"]] ;
                     model.name = [NSString stringWithFormat:@"%@" , [CommonFunc textFromBase64String:dic[@"name"]]] ;
                     
-                    if (![uvo.club isEqualToString:model.cid] &&currPage.longLongValue != nextPage.longLongValue) {
-                        if (isFirst == 1 && kouList.count > 0) {
-                            break ;
-                        }
-                        [kouList addObject:model];
-                    }
+//                    if (![uvo.club isEqualToString:model.cid] &&currPage.longLongValue != nextPage.longLongValue) {
+//                        if (isFirst == 1 && kouList.count > 0) {
+//                            break ;
+//                        }
+                    [kouList addObject:model];
+                    //                    }
             }
             
             if (currPage == nextPage) {
@@ -269,11 +267,18 @@
                 pageNO =  [NSString stringWithFormat:@"%@" , nextPage] ;
             }
                 
+            for (NSInteger i = 0; i < kouList.count; i++) {
+                for (NSInteger j = i+1;j < kouList.count; j++) {
+                    ClubOBJ *tempModel = kouList[i];
+                    ClubOBJ *model = kouList[j];
+                    if ([tempModel.cid isEqualToString:model.cid]) {
+                        [kouList removeObject:model];
+                    }
+                }
+            }
             [_soTableView reloadData];
             }
-            
         }
-        
     } failure:^(NSError *error) {
         
     }];

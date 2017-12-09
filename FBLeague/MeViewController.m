@@ -195,7 +195,7 @@
 
             }
             
-            if (![object[@"user"][@"phone"] isEqual:[NSNull null]]) {
+            if (![object[@"user"][@"headpicurl"] isEqual:[NSNull null]]) {
                 [head sd_setImageWithURL:[NSURL URLWithString:object[@"user"][@"headpicurl"]] placeholderImage:[UIImage imageNamed:@"defaulthead"]];
             }
         }

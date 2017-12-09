@@ -66,7 +66,12 @@
 
 -(void)getNeedDatas :(NSString *) page{
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:uvo.club , @"id" , uvo.phone , @"token" , nil];
+    NSString *clubId = uvo.club ;
+    if (![_cid isEqualToString:@""]) {
+        clubId = _cid ;
+    }
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:clubId , @"id" , uvo.phone , @"token" , nil];
     [PPNetworkHelper POST:getUsersByClubId parameters:params success:^(id object) {
         
         if([object[@"code"] isEqualToString:@"0000"]){

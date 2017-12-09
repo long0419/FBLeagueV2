@@ -17,7 +17,6 @@
 @interface JiaoLianViewController (){
     NSString *pageNO ;
     NSMutableArray *coachList ;
-    int isFirst ;
 }
 
 @end
@@ -31,8 +30,6 @@
 
     [self getCoachDatas:@"1"];
     
-    isFirst = 0 ;
-    
     coachList = [[NSMutableArray alloc] init] ;
     _coachTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreen_Width, kScreen_Height - 20 - 44 - 40 - 49)];
     _coachTableView.delegate = self ;
@@ -44,13 +41,11 @@
     __weak JiaoLianViewController *weakSelf = self ;
     [_coachTableView addPullToRefreshWithActionHandler:^{
         [weakSelf getCoachDatas : @"1"];
-        isFirst = 1 ;
         [weakSelf.coachTableView.pullToRefreshView stopAnimating];
     }];
     
     [_coachTableView addInfiniteScrollingWithActionHandler:^{
         [weakSelf getCoachDatas : pageNO];
-        isFirst = 0 ;
         [weakSelf.coachTableView.infiniteScrollingView stopAnimating];
     }];
     
@@ -101,19 +96,24 @@
                     model.brithday =  [NSString stringWithFormat:@"%@" ,dic[@"brithday"]]  ;
                     model.certification =  [NSString stringWithFormat:@"%@" ,dic[@"certification"]]  ;
                     model.desc =  [NSString stringWithFormat:@"%@" ,dic[@"description"]]  ;
-
-                    if (currPage.longLongValue != nextPage.longLongValue) {
-                        if (isFirst == 1 && coachList.count > 0) {
-                            break ;
-                        }
-                        [coachList addObject:model];
-                    }
+                    [coachList addObject:model];
+                
                 }
                 
                 if (currPage == nextPage) {
                     pageNO =  [NSString stringWithFormat:@"%@" , currPage] ;
                 }else{
                     pageNO =  [NSString stringWithFormat:@"%@" , nextPage] ;
+                }
+                
+                for (NSInteger i = 0; i < coachList.count; i++) {
+                    for (NSInteger j = i+1;j < coachList.count; j++) {
+                        UserDataVo *tempModel = coachList[i];
+                        UserDataVo *model = coachList[j];
+                        if ([tempModel.phone isEqualToString:model.phone]) {
+                            [coachList removeObject:model];
+                        }
+                    }
                 }
 
                 [_coachTableView reloadData];
