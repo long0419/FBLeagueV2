@@ -82,7 +82,7 @@
     
     NSString *roleName = @"教练员";
     if(![role isEqualToString:@"1"]){
-        roleName = @"队员" ;
+        roleName = @"球员" ;
     }
     CGSize phoneSize = [NSString getStringContentSizeWithFontSize:11 andContent:roleName];
     UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.right + 32/2 , nameLabel.bottom + 6, phoneSize.width, phoneSize.height)];
@@ -175,7 +175,7 @@
     
     NSString *roleName = @"教练员";
     if(![role isEqualToString:@"1"]){
-        roleName = @"队员" ;
+        roleName = @"球员" ;
     }
     CGSize phoneSize = [NSString getStringContentSizeWithFontSize:11 andContent:roleName];
     UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(imageView.right + 32/2 , nameLabel.bottom + 6, phoneSize.width, phoneSize.height)];

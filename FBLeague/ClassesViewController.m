@@ -37,7 +37,7 @@
         self.title =@"俱乐部成员" ;
     }
     
-    self.soTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,  0 , kScreen_Width, kScreen_Height)];
+    self.soTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,  0 , kScreen_Width, kScreen_Height - 20 - 44 - 150)];
     _soTableView.delegate = self ;
     _soTableView.dataSource = self;
     _soTableView.backgroundColor = [UIColor clearColor];
@@ -66,60 +66,75 @@
 
 -(void)getNeedDatas :(NSString *) page{
     
-    NSString *clubId = uvo.club ;
-    if (_cid != nil) {
-        clubId = _cid ;
-    }
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:clubId , @"id" , uvo.phone , @"token" , nil];
-    [PPNetworkHelper POST:getUsersByClubId parameters:params success:^(id object) {
-        
-        if([object[@"code"] isEqualToString:@"0000"]){
-            NSDictionary *list = object[@"users"];
-            NSString *clubName = object[@"clubName"] ;
-            UserDataVo *vo = nil ;
-            [kouList removeAllObjects];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys: uvo.phone ,  @"phone" , uvo.phone , @"token" , nil];
+    [PPNetworkHelper POST:getCBDetail parameters:params success:^(id data) {
+        if([data[@"code"] isEqualToString:@"0000"]){
+            NSString *clubId = data[@"user"][@"club"] ;
             
-            if (![list isEqual:[NSNull null]]) {
-                for (NSDictionary *dic in list) {
-                    vo = [UserDataVo new];
-                    vo.areacode = [NSString stringWithFormat:@"%@" , dic[@"areacode"]] ;
-                    vo.clubName = [CommonFunc textFromBase64String:clubName] ;
-                    vo.brithday = [NSString stringWithFormat:@"%@" ,dic[@"brithday"]] ;
-                    vo.citycode = [NSString stringWithFormat:@"%@" ,dic[@"citycode"]] ;
-                    vo.cityName = [NSString stringWithFormat:@"%@" ,dic[@"cityname"]] ;
-                    vo.club = [NSString stringWithFormat:@"%@" ,dic[@"club"]]  ;
-                    vo.desc = [NSString stringWithFormat:@"%@" ,dic[@"description"]]  ;
-                    vo.firstletter =  [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]]  ;
-                    vo.headpicurl =  [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]]  ;
-                    vo.firstletter =  [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]]  ;
-                    vo.level =  [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
-                    vo.nickname = dic[@"nickname"]  ;
-                    vo.openid = dic[@"openid"]  ;
-                    vo.phone = dic[@"phone"]  ;
-                    vo.position = dic[@"position"]  ;
-                    vo.provincecode = dic[@"provincecode"]  ;
-                    vo.pwd = dic[@"pwd"]  ;
-                    vo.realname = dic[@"realname"]  ;
-                    vo.registrationid = dic[@"registrationid"]  ;
-                    vo.regtime = dic[@"regtime"]  ;
-                    vo.role = dic[@"role"]  ;
-                    vo.areaname = dic[@"areaname"] ;
-                    vo.sex = dic[@"sex"] ;
-                    vo.team = dic[@"team"] ;
-                    vo.openidbyqq = dic[@"openidbyqq"] ;
-                    vo.openidbywx = dic[@"openidbywx"] ;
-                    vo.certification = dic[@"certification"] ;
-                    vo.fansCount = dic[@"fansCount"] ;
-                    [kouList addObject:vo];
-                }
+            if (_cid != nil) {
+                clubId = _cid ;
             }
-            [_soTableView reloadData];
+
+            NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:clubId , @"id" , uvo.phone , @"token" , nil];
+            [PPNetworkHelper POST:getUsersByClubId parameters:params success:^(id object) {
+                
+                if([object[@"code"] isEqualToString:@"0000"]){
+                    NSDictionary *list = object[@"users"];
+                    NSString *clubName = object[@"clubName"] ;
+                    UserDataVo *vo = nil ;
+                    [kouList removeAllObjects];
+                    
+                    if (![list isEqual:[NSNull null]]) {
+                        for (NSDictionary *dic in list) {
+                            vo = [UserDataVo new];
+                            vo.areacode = [NSString stringWithFormat:@"%@" , dic[@"areacode"]] ;
+                            vo.clubName = [CommonFunc textFromBase64String:clubName] ;
+                            vo.brithday = [NSString stringWithFormat:@"%@" ,dic[@"brithday"]] ;
+                            vo.citycode = [NSString stringWithFormat:@"%@" ,dic[@"citycode"]] ;
+                            vo.cityName = [NSString stringWithFormat:@"%@" ,dic[@"cityname"]] ;
+                            vo.club = [NSString stringWithFormat:@"%@" ,dic[@"club"]]  ;
+                            vo.desc = [NSString stringWithFormat:@"%@" ,dic[@"description"]]  ;
+                            vo.firstletter =  [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]]  ;
+                            vo.headpicurl =  [NSString stringWithFormat:@"%@" ,dic[@"headpicurl"]]  ;
+                            vo.firstletter =  [NSString stringWithFormat:@"%@" ,dic[@"firstletter"]]  ;
+                            vo.level =  [NSString stringWithFormat:@"%@" ,dic[@"level"]]  ;
+                            vo.nickname = dic[@"nickname"]  ;
+                            vo.openid = dic[@"openid"]  ;
+                            vo.phone = dic[@"phone"]  ;
+                            vo.position = dic[@"position"]  ;
+                            vo.provincecode = dic[@"provincecode"]  ;
+                            vo.pwd = dic[@"pwd"]  ;
+                            vo.realname = dic[@"realname"]  ;
+                            vo.registrationid = dic[@"registrationid"]  ;
+                            vo.regtime = dic[@"regtime"]  ;
+                            vo.role = dic[@"role"]  ;
+                            vo.areaname = dic[@"areaname"] ;
+                            vo.sex = dic[@"sex"] ;
+                            vo.team = dic[@"team"] ;
+                            vo.openidbyqq = dic[@"openidbyqq"] ;
+                            vo.openidbywx = dic[@"openidbywx"] ;
+                            vo.certification = dic[@"certification"] ;
+                            vo.fansCount = dic[@"fansCount"] ;
+                            [kouList addObject:vo];
+                        }
+                    }
+                    [_soTableView reloadData];
+                }
+                
+            } failure:^(NSError *error) {
+                
+            }];
+
+            
+        }else {
+            [SVProgressHUD showErrorWithStatus: @"系统错误"];
+            [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];
         }
         
     } failure:^(NSError *error) {
         
     }];
+
 }
 
 #pragma mark 返回分组数

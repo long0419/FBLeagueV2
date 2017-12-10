@@ -52,7 +52,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0.1</string>
+	<string>1.0.3</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>wechat</string>
@@ -95,11 +95,11 @@
 		<true/>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string></string>
+	<string>咖盟使用相册</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>咖盟使用位置服务</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string></string>
+	<string>咖盟使用相机</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
