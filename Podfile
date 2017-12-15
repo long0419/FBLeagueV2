@@ -31,6 +31,7 @@ target 'FBLeague' do
 	pod 'SVProgressHUD'
 	pod 'UMengAnalytics-NO-IDFA'
 	pod 'YYKeyboardManager'
+	# pod 'DateTools'
 	# pod 'BWJSONMatcher', '~>1.1.3'	
 end
 
