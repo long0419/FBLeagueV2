@@ -549,6 +549,11 @@
             explainViewBtn.hidden = YES ;
             [backViewBtn setImage:[UIImage imageNamed:@"clock"] forState:UIControlStateNormal];
         }
+        
+        if (![uvo.role isEqualToString:@"1"]) {
+            backViewBtn.hidden = YES ;
+        }
+        
     }
     index_ = index ;
 }

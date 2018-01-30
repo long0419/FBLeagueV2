@@ -835,7 +835,6 @@
 				FD50C4231F5D1A9A00010C88 /* SaiResultViewController.h */,
 				FD50C4241F5D1A9A00010C88 /* SaiResultViewController.m */,
 				FD242A671F5FD6150039A8A4 /* BaomingViewController.h */,
-				FD242A681F5FD6150039A8A4 /* BaomingViewController.m */,
 				FD242A741F5FF9DF0039A8A4 /* SaiListViewController.h */,
 				FD242A751F5FF9DF0039A8A4 /* SaiListViewController.m */,
 				FD242A771F601B150039A8A4 /* AddSaiViewController.h */,
@@ -1291,9 +1290,10 @@
 				FDAA382C1DD2BE1F0038658F /* JulebuViewController.h */,
 				FDAA382D1DD2BE1F0038658F /* JulebuViewController.m */,
 				FDAA382E1DD2BE1F0038658F /* MeViewController.h */,
-				FDAA382F1DD2BE1F0038658F /* MeViewController.m */,
+				FD242A681F5FD6150039A8A4 /* BaomingViewController.m */,
 				FD265AA41F29E20600F92316 /* LianSaiViewController.h */,
 				FD265AA51F29E20600F92316 /* LianSaiViewController.m */,
+				FDAA382F1DD2BE1F0038658F /* MeViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";

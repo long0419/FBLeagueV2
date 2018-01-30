@@ -191,7 +191,7 @@
     [buttons2[1] setSelected:YES];
     
     NSString *money = @"1000元" ;
-    NSString *moneyTxt = @"500元" ;
+    NSString *moneyTxt = @"0元" ;
     if ([_cupType isEqualToString:@"2"]) {
         btnx.hidden = YES ;
         btn.hidden = YES ;
@@ -200,7 +200,7 @@
         money = @"500元" ;
         moneyTxt = @"200元" ;
     }else{
-        self.title = @"联赛报名";
+        self.title = @"排位赛报名";
     }
     
     formatType = @"8" ;
@@ -378,7 +378,7 @@
     }
     
     if ([type_ isEqualToString:@"2"]) { //微信
-        NSString *money = @"150000" ;
+        NSString *money = @"100000" ;
         if ([_cupType isEqualToString:@"2"]) {
             money = @"70000" ;
         }
@@ -485,7 +485,7 @@
         
         // NOTE: 商品数据
         
-        double money = 1500.00 ;
+        double money = 1000.00 ;
         if ([_cupType isEqualToString:@"2"]) {
             money = 700.00 ;
         }
@@ -623,7 +623,8 @@
     if(textField.tag == 10){
         self.hidesBottomBarWhenPushed = YES ;
         ChooseAreaViewController *area = [[ChooseAreaViewController alloc] init];
-        area.isfrom = @"2" ;
+        //联赛为2  排位赛为1
+        area.isfrom = @"1" ;
         [self.navigationController pushViewController:area animated:YES];
     }
 }
